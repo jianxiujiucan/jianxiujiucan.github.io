@@ -84,8 +84,11 @@ button:focus {
           align-items: center;
   width: 100vw;
   height: 100vh;
+  padding-bottom: 80px;
   background: -webkit-gradient(linear, left top, left bottom, from(rgba(var(--colorMain), 0.1)), to(rgba(var(--colorMain), 0.4)));
   background: linear-gradient(rgba(var(--colorMain), 0.1), rgba(var(--colorMain), 0.4));
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 .panel {
@@ -242,7 +245,7 @@ button:focus {
       -ms-flex-align: center;
           align-items: center;
   width: 100vw;
-  height: 100px;
+  height: 80px;
   font-size: 14px;
   color: rgba(var(--colorMain), 1);
   background: rgba(255, 255, 255, 0.5);
