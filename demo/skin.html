@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>换肤</title>
+    <link rel="stylesheet" href="css/skin.css">
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="panel">
+            <div class="main">
+                <div class="avatar"><img src="https://s2.ax1x.com/2020/02/11/1ozQZn.png" alt="头像"></div>
+                <p class="user-name">人生天地间</p>
+                <p class="number"><span>125</span>人关注</p>
+                <div class="detail">
+                    <ul>
+                        <li>卡券<span>658</span></li>
+                        <li>金币<span>1547</span></li>
+                    </ul>
+                </div>
+                <div class="percent">
+                    <div class="outer">
+                        <div class="inner">
+                            成长值<span>78<i>%</i> </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="popup">
+
+            <div class="inner">改变颜色：<input type="color" id="inputColor" value="#da6069"></div>
+
+        </div>
+    </div>
+    <script>
+        var inputColor = document.getElementById('inputColor');
+        inputColor.addEventListener('change', function () { 
+            var regex1 = /\((.+?)\)/g;
+            //console.log(inputColor.value.colorRgb().match(regex1));
+            var str = inputColor.value.colorRgb();
+         
+            var colorMain = regex1.exec(str)[1];
+            document.body.style.setProperty("--colorMain", colorMain)
+        })
+
+        String.prototype.colorRgb = function(){
+        var sColor = this.toLowerCase();
+        //十六进制颜色值的正则表达式
+        var reg = /^#([0-9a-fA-f]{3}|[0-9a-fA-f]{6})$/;
+        // 如果是16进制颜色
+        if (sColor && reg.test(sColor)) {
+            if (sColor.length === 4) {
+                var sColorNew = "#";
+                for (var i=1; i<4; i+=1) {
+                    sColorNew += sColor.slice(i, i+1).concat(sColor.slice(i, i+1));    
+                }
+                sColor = sColorNew;
+            }
+            //处理六位的颜色值
+            var sColorChange = [];
+            for (var i=1; i<7; i+=2) {
+                sColorChange.push(parseInt("0x"+sColor.slice(i, i+2)));    
+            }
+            return "RGB(" + sColorChange.join(",") + ")";
+        }
+        return sColor;
+    };
+    </script>
+</body>
+
+</html>

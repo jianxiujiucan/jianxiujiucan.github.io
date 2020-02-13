@@ -1,0 +1,262 @@
+body,
+dl,
+dd,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+form {
+  margin: 0;
+}
+
+p:focus,
+span:focus,
+a:focus,
+div:focus {
+  outline: none;
+}
+
+ol,
+ul,
+input,
+button {
+  margin: 0;
+  padding: 0;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+body,
+input,
+textarea,
+button {
+  font-family: "microsoft yahei", -apple-system, "PingFang SC", "simsun", Arial, sans-serif;
+  font-size: var(--font-size-base);
+  color: var(--color-default);
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  word-wrap: break-word;
+}
+
+a {
+  color: var(--color-link);
+  text-decoration: none;
+}
+
+a:focus {
+  outline: 0;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:focus {
+  outline: 0;
+}
+
+@font-face {
+  font-family: 'Omega';
+  src: url("../font/Omega.ttf") format("truetype");
+}
+
+:root {
+  --colorMain: 212, 70, 80;
+}
+
+.wrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(var(--colorMain), 0.1)), to(rgba(var(--colorMain), 0.4)));
+  background: linear-gradient(rgba(var(--colorMain), 0.1), rgba(var(--colorMain), 0.4));
+}
+
+.panel {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 260;
+  height: 380px;
+  background: #fff;
+  border-radius: 8px;
+  -webkit-box-shadow: 0 1px 3px 3px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 1px 3px 3px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.main {
+  width: 260px;
+  padding-top: 30px;
+  text-align: center;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(var(--colorMain), 0.5)), to(#fff));
+  background: linear-gradient(rgba(var(--colorMain), 0.5), #fff);
+}
+
+.avatar {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 10px;
+  border: solid 3px rgba(var(--colorMain), 1);
+  border-radius: 50%;
+  -webkit-box-shadow: 0 2px 3px 1px rgba(var(--colorMain), 0.3);
+          box-shadow: 0 2px 3px 1px rgba(var(--colorMain), 0.3);
+  overflow: hidden;
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+}
+
+.user-name {
+  margin-bottom: 5px;
+  font-size: 16px;
+  color: rgba(var(--colorMain), 1);
+}
+
+.number {
+  font-size: 12px;
+  color: rgba(var(--colorMain), 0.6);
+}
+
+.number span {
+  font-family: Omega;
+  font-weight: bold;
+}
+
+.detail {
+  margin-top: 20px;
+}
+
+.detail ul {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.detail ul:after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -10px;
+  width: 1px;
+  height: 20px;
+  background: rgba(var(--colorMain), 0.4);
+  content: '';
+}
+
+.detail li {
+  margin: 0 20px;
+  font-size: 12px;
+  color: #fff;
+}
+
+.detail li span {
+  display: block;
+  margin-top: 5px;
+  font-size: 18px;
+  font-family: Omega;
+  color: rgba(var(--colorMain), 1);
+}
+
+.percent {
+  margin: 20px auto;
+  padding: 5px;
+  width: 100px;
+  height: 100px;
+  font-family: Omega;
+  background-image: conic-gradient(rgba(var(--colorMain), 1) 80%, transparent 80%);
+  border-radius: 50%;
+}
+
+.percent .outer {
+  padding: 10px;
+  height: 100%;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#ccc));
+  background-image: linear-gradient(#fff, #ccc);
+  border-radius: 50%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.percent .inner {
+  padding-top: 15px;
+  height: 100%;
+  font-size: 12px;
+  color: #777;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#ccc));
+  background-image: linear-gradient(#fff, #ccc);
+  -webkit-box-shadow: 0 2px 2px 2px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 2px 2px 2px rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.percent .inner span {
+  display: block;
+  font-size: 30px;
+  color: rgba(var(--colorMain), 1);
+}
+
+.percent .inner span i {
+  font-size: 12px;
+  font-style: normal;
+}
+
+.popup {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100vw;
+  height: 100px;
+  font-size: 14px;
+  color: rgba(var(--colorMain), 1);
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.popup .inner {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+/*# sourceMappingURL=skin.css.map */
