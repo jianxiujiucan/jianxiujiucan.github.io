@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>滤镜</title>
+<style type="text/css">
+body{background: #353e47;color: #cad2dd}
+body, dl, dd, h1, h2, h3, h4, h5, h6, p, form { margin: 0; }ol, ul, input {margin: 0; padding: 0; }
+.wrap{width: 1200px;margin: 0 auto;padding: 0 20px;}
+h1{padding: 30px 0;font-size: 40px;font-weight: bold;text-align: center;
+color: #fff; }
+.box{width: 580px;height: 500px;text-align: center;margin: 5px;display: inline-block;border-radius: 10px;margin: 0 auto;}
+.box .pic{border-radius: 6px;box-shadow: 0 0 8px 2px rgba(0,0,0,.4);overflow: hidden;width: 550px;height: 340px;margin: 0 auto;}
+.box img{width: 100%;}
+.txt{text-align: center;line-height: 40px;}
+.ratings-bars{height:27px;margin-top:10px;display: flex;align-items: center;justify-content: center;font-size: 13px;}
+.num{height:25px;text-align:center;line-height:25px;color:#a0a0a0;margin:0 10px;background:#24292f;color: #cad2dd;border-radius: 4px;box-shadow: 0 1px  rgba(255,255,255,.1),0 0 5px 2px rgba(0,0,0,.2) inset;display: inline-block;padding: 0 10px;font-weight: lighter;width: 160px;}
+.ratings-bars .scale{width:320px;height:10px;float:left;margin:7px 10px auto 10px;position:relative;background: #24292f;border-radius: 5px;box-shadow: 0 0 1px rgba(255,255,255,.1)}
+.ratings-bars .scale div{width:0;position:absolute;width:0;left:0;height:100%;bottom:0;background: linear-gradient(#03bd74,#0b944c);border-radius: 5px 0 0 5px;}
+.ratings-bars .scale span{width:20px;height:20px;position:absolute;left:-2px;top:-5px;cursor:pointer;border-radius: 10px;border: solid 5px #dcd8d9;box-sizing: border-box;background: #4d4b4c;}
+.ratings-bars .scale span:hover{box-shadow: 0 0 4px 2px rgba(0,0,0,.5)}
+
+</style>
+</head>
+<body>
+	<div class="wrap">
+		<h1>CSS滤镜</h1>
+		<div class="box">
+			<div class="pic"><img id="pic1" src="img/1.jpg" alt="logo" /></div>
+			<p class="txt">灰度 </p>
+			<span class="num" id="title1">filter:grayscale(0)</span>
+			<div class="ratings-bars">				
+				<div class="scale" id="bar1">
+					<div></div>
+					<span id="btn1"></span>
+				</div>
+			</div>
+		</div>
+
+		<div class="box">
+			<div class="pic"><img  id="pic2" src="img/1.jpg" alt="logo" /></div>
+			<p class="txt">褐色</p>
+			<span class="num" id="title2">filter:sepia(0)</span>
+			<div class="ratings-bars">
+				
+				<div class="scale" id="bar2">
+					<div></div>
+					<span id="btn2"></span>
+				</div>
+			</div>
+		</div>
+
+		<div class="box">
+			<div class="pic"><img id="pic7" src="img/1.jpg" alt="logo" /></div>
+			<p class="txt">色相</p>
+			<span class="num" id="title7" style="width: 180px">filter:hue-rotate(0deg)</span>
+			<div class="ratings-bars">				
+				<div class="scale" id="bar7">
+					<div></div>
+					<span id="btn7"></span>
+				</div>
+			</div>
+		</div>
+
+		<div class="box">
+			<div class="pic"><img id="pic3" src="img/1.jpg" alt="logo" /></div>
+			<p class="txt">饱和度</p>
+			<span class="num" id="title3">filter:saturate(1)</span>
+			<div class="ratings-bars">
+				
+				<div class="scale" id="bar3">
+					<div style="width: 44px;"></div>
+					<span id="btn3" style="left: 39px"></span>
+				</div>
+			</div>
+		</div>
+
+		<div class="box">
+			<div class="pic"><img id="pic4" src="img/1.jpg" alt="logo" /></div>
+			<p class="txt">反色</p>
+			<span class="num" id="title4">filter:invert(0)</span>
+			<div class="ratings-bars">
+				
+				<div class="scale" id="bar4">
+					<div></div>
+					<span id="btn4"></span>
+				</div>
+			</div>
+		</div>
+
+		<div class="box">
+			<div class="pic"><img id="pic5" src="img/1.jpg" alt="logo" /></div>
+			<p class="txt">亮度</p>
+			<span class="num" id="title5">filter:brightness(1)</span>
+			<div class="ratings-bars">
+				
+				<div class="scale" id="bar5">
+					<div  style="width: 107px"></div>
+					<span id="btn5" style="left: 102px;"></span>
+				</div>
+			</div>
+		</div>
+
+		<div class="box">
+			<div class="pic"><img id="pic6" src="img/1.jpg" alt="logo" /></div>
+			<p class="txt">对比度</p>
+			<span class="num" id="title6">filter:contrast(1)</span>
+			<div class="ratings-bars">
+				<div class="scale" id="bar6">
+					<div style="width: 64px;"></div>
+					<span id="btn6" style="left: 59px;"></span>
+				</div>
+			</div>
+		</div>
+	
+		<div class="box">
+			<div class="pic"><img id="pic8" src="img/1.jpg" alt="logo" /></div>
+			<p class="txt">模糊</p>
+			<span class="num" id="title8">filter:blur(0px)</span>
+			<div class="ratings-bars">
+				
+				<div class="scale" id="bar8">
+					<div></div>
+					<span id="btn8"></span>
+				</div>
+			</div>
+		</div>
+	</div>
+<script type="text/javascript">
+scale = function (btn, bar, pic,title,filter,mul) {
+	this.btn = document.getElementById(btn);
+	this.bar = document.getElementById(bar);
+	this.title = document.getElementById(title);
+	this.step = this.bar.getElementsByTagName("DIV")[0];
+	this.pic = document.getElementById(pic)
+	this.filter = filter;
+	this.mul = mul
+	this.init();
+	
+};
+scale.prototype = {
+	init: function () {
+		var f = this, g = document, b = window, m = Math;
+		f.btn.onmousedown = function (e) {
+			var x = (e || b.event).clientX;
+			var l = this.offsetLeft;
+			var max = f.bar.offsetWidth - this.offsetWidth;
+			g.onmousemove = function (e) {
+				var thisX = (e || b.event).clientX;
+				var to = m.min(max, m.max(-2, l + (thisX - x)));
+				f.btn.style.left = to + 'px';
+				f.ondrag(m.round(m.max(0, to / max) * 100), to);
+				b.getSelection ? b.getSelection().removeAllRanges() : g.selection.empty();
+			};
+			g.onmouseup = new Function('this.onmousemove=null');
+		};
+	},
+	ondrag: function (pos, x) {		
+		this.step.style.width = Math.max(0, x) + 5 + 'px';						
+		if(this.filter == 'hue-rotate'){
+			var num = (pos / 100 * this.mul).toFixed(0)
+			this.pic.style.filter = this.filter + '(' + num + 'deg)'
+			num = num + 'deg'
+		}else if(this.filter == 'blur'){
+			var num = (pos / 100 * this.mul).toFixed(0)
+			this.pic.style.filter = this.filter + '(' + num + 'px)'
+			num = num + 'px'			
+		}else{
+			var num = (pos / 100 * this.mul).toFixed(2)
+			this.pic.style.filter = this.filter + '(' + num + ')'
+		}
+		this.title.innerHTML = 'filter:' + this.filter + '(' + num +')';
+	}
+}
+new scale('btn1', 'bar1', 'pic1','title1','grayscale',"1");
+new scale('btn2', 'bar2', 'pic2','title2','sepia',"1");
+new scale('btn3', 'bar3', 'pic3','title3','saturate',"8");
+new scale('btn4', 'bar4', 'pic4','title4','invert',"1");
+new scale('btn5', 'bar5', 'pic5','title5','brightness',"3");
+new scale('btn6', 'bar6', 'pic6','title6','contrast',"5");
+new scale('btn7', 'bar7', 'pic7','title7','hue-rotate',"360");
+new scale('btn8', 'bar8', 'pic8','title8','blur',"10");
+</script>
+</body>
+</html>
