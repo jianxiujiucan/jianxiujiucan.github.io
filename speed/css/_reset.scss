@@ -1,0 +1,9 @@
+/* reset */
+:root{
+  content:"designer:huangxiaoyi;author:ningwenjing;date:2020-04-15;display:none";
+}
+body,dl,dd,h1,h2,h3,h4,h5,h6,p,form{margin:0;}ol,ul,input{margin:0; padding:0;}body,button,input,select,textarea{font:12px/1.5 "microsoft yahei",-apple-system,"PingFang SC",simsun,Arial,sans-serif;outline:none;}ul,ol{list-style:none;}a{text-decoration:none;outline:0 none;color:#000;}img{border:0;}table{border-collapse:collapse;border-spacing:0;}h1,h2,h3,h4,h5,h6{font-weight: normal;}img{width: 100%;}i,em{font-style: normal;}
+body{overflow-x: hidden;}
+body::-webkit-scrollbar{width:8px;background:transparent;}
+body::-webkit-scrollbar-thumb{background:rgba(0,0,0,.3);border-radius: 6px;margin: 0 2px 0 0;}
+body::-webkit-scrollbar:horizontal{height: 8px;}
