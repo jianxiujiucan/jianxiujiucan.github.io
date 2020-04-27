@@ -52,38 +52,52 @@
       </div>
     </div>
     <script>
-      let vipSpeed = document.querySelector(".ani-tips--vip")
-      let normalSpeed = document.querySelector(".ani-tips--normal")
+      let vipSpeed = document.querySelector(".ani-tips--vip");
+      let normalSpeed = document.querySelector(".ani-tips--normal");
 
-      let vipRate = 0
-      let normalRate = 0
+      let a = 0
+      let b = 1
+      let c = 0
+      let d = 1
       let str = ""
 
       let speed1 = setInterval(() => {
-        if (vipRate < 32.1) {
-          vipRate = vipRate + .1
-          str = `${vipRate.toFixed(1)}MB/s`
+        if (a < 9) {
+          a++
+          if (a == 9) {
+            a = 0
+            b++
+          }
+          str = `${b}.${a}MB/s`
           vipSpeed.innerHTML = str
-        }else{
+        }
+        if (b == 32) {
+          a = 1
+          str = `${b}.${a}MB/s`
+          vipSpeed.innerHTML = str
           clearInterval(speed1)
         }
-      }, 11)
+      }, 15)
 
       setTimeout(() => {
         let speed2 = setInterval(fn, 100)
         function fn() {
-          if (normalRate < 1.2) {
-            normalRate = normalRate + .1
-            if (normalRate > .8) {
+          if (d < 9) {
+            d++
+            if (d == 9) {
+              d = 0;
               clearInterval(speed2)
               speed2 = setInterval(fn, 1500)
+              c++
             }
-            str = `${normalRate.toFixed(1)}KB/s`
+            str = `${c}.${d}KB/s`
             normalSpeed.innerHTML = str
-          }else{
+          }
+          if (c == 1 && d == 3) {
             clearInterval(speed2)
           }
         }
+        
       }, 1500)
     </script>
   </body>
