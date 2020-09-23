@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .bird {
+            width: 120px;height: 120px;
+            background: url(img/spr-bird.png) no-repeat;
+            transform: rotate(30deg);
+            offset-path: path("M30.74,132.25c0,0,49-84,149-62s170,194,275,169s60-154,174-156s209,184,209,184");
+            offset-rotate:0deg;
+            animation: move 10s ease-in-out forwards infinite, bird .72s 0s steps(12) both infinite;;
+        }
+/* 
+        .bird{background: url(../img/spr_bird.png) no-repeat ;-webkit-animation:bird .72s 0s steps(12) both infinite;animation:bird .72s 0s steps(12) both infinite;} */
+
+        @keyframes bird{
+            0%{ background-position: 0 0;}
+            100%{ background-position: 0 -1440px;}		
+        }
+
+        @keyframes move {
+            0% {
+                offset-distance: 0%;
+            }
+            100% {
+                offset-distance: 100%;
+             
+            }
+        }
+    </style>
+</head>
+
+<body style="background: #000;">
+    <!-- <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="800px" height="600px">
+        <path d="M249.89,159.37C188.14,15.13,12.63,48.78,11.47,216.2c-0.64,91.95,83.58,126.32,139.65,163.08
+        c54.37,35.65,93.07,84.42,99.13,105.18c5.19-20.34,48.29-70.49,98.62-106.17c55.03-39.02,140.29-71.13,139.65-163.08
+        C487.36,47.37,308.8,20.88,249.89,159.37z" stroke="lightgrey" stroke-width="2" fill="none" id="theMotionPath" />
+        <image xlink:href="img/bird.png" height="117" width="167">
+            <animateMotion dur="6s" repeatCount="indefinite">
+                <mpath xlink:href="#theMotionPath" />
+            </animateMotion>
+        </image>
+    </svg> -->
+    <svg>
+        <path d="M30.74,132.25c0,0,49-84,149-62s170,194,275,169s60-154,174-156s209,184,209,184" stroke="lightgrey" stroke-width="2"></path>
+    </svg>
+    <div class="bird"></div>
+</body>
+
+</html>
