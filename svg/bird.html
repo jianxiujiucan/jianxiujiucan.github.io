@@ -1,54 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
-        .bird {
-            width: 120px;height: 120px;
-            background: url(img/spr-bird.png) no-repeat;
-            transform: rotate(30deg);
-            offset-path: path("M30.74,132.25c0,0,49-84,149-62s170,194,275,169s60-154,174-156s209,184,209,184");
-            offset-rotate:0deg;
-            animation: move 10s ease-in-out forwards infinite, bird .72s 0s steps(12) both infinite;;
-        }
-/* 
-        .bird{background: url(../img/spr_bird.png) no-repeat ;-webkit-animation:bird .72s 0s steps(12) both infinite;animation:bird .72s 0s steps(12) both infinite;} */
+      .bird {
+          position: absolute;
+          top: 30px;
+        width: 120px;
+        height: 120px;
+        background: url(img/spr-bird.png) no-repeat;
+        offset-path: path(
+          "M0.000,178.000 C0.000,178.000 96.000,-50.000 192.000,11.000 C288.000,72.000 285.000,459.000 358.000,392.000 C431.000,325.000 426.000,76.000 526.000,82.000 C626.000,88.000 738.000,197.000 882.000,200.000 C929.000,202.000 972.000,198.000 972.000,198.000"
+        );
+        offset-rotate: 30deg;
+        animation: move 10s ease-in-out forwards,
+          bird 0.72s 0s steps(12) both infinite;
+      }
 
-        @keyframes bird{
-            0%{ background-position: 0 0;}
-            100%{ background-position: 0 -1440px;}		
+      @keyframes bird {
+        0% {
+          background-position: 0 0;
         }
+        100% {
+          background-position: 0 -1440px;
+        }
+      }
 
-        @keyframes move {
-            0% {
-                offset-distance: 0%;
-            }
-            100% {
-                offset-distance: 100%;
-             
-            }
+      @keyframes move {
+        0% {
+          offset-distance: 0%;
         }
+        100% {
+          offset-distance: 100%;
+        }
+      }
+      .path {
+        fill: none;
+        stroke: #fff;
+      }
     </style>
-</head>
+  </head>
 
-<body style="background: #000;">
-    <!-- <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="800px" height="600px">
-        <path d="M249.89,159.37C188.14,15.13,12.63,48.78,11.47,216.2c-0.64,91.95,83.58,126.32,139.65,163.08
-        c54.37,35.65,93.07,84.42,99.13,105.18c5.19-20.34,48.29-70.49,98.62-106.17c55.03-39.02,140.29-71.13,139.65-163.08
-        C487.36,47.37,308.8,20.88,249.89,159.37z" stroke="lightgrey" stroke-width="2" fill="none" id="theMotionPath" />
-        <image xlink:href="img/bird.png" height="117" width="167">
-            <animateMotion dur="6s" repeatCount="indefinite">
-                <mpath xlink:href="#theMotionPath" />
-            </animateMotion>
-        </image>
-    </svg> -->
-    <svg>
-        <path d="M30.74,132.25c0,0,49-84,149-62s170,194,275,169s60-154,174-156s209,184,209,184" stroke="lightgrey" stroke-width="2"></path>
-    </svg>
+  <body style="background: #000">
     <div class="bird"></div>
-</body>
-
+    <!-- <svg
+      xmlns="http://www.w3.org/2000/svg"
+      xmlns:xlink="http://www.w3.org/1999/xlink"
+      width="972px"
+      height="400px"
+    >
+      <path
+        fill-rule="evenodd"
+        class="path"
+        d="M0.000,178.000 C0.000,178.000 96.000,-50.000 192.000,11.000 C288.000,72.000 285.000,459.000 358.000,392.000 C431.000,325.000 426.000,76.000 526.000,82.000 C626.000,88.000 738.000,197.000 882.000,200.000 C929.000,202.000 972.000,198.000 972.000,198.000 "
+      />
+    </svg> -->
+  </body>
 </html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="css/stroke.css">
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="box">
+      <h2>线</h2>
+      <svg id="svg" class="svg" width="600" height="200">
+        <line id="line" fill="none" stroke="#69f" stroke-width="10"   x1="0" y1="90" x2="600" y2="90" />
+      </svg>
+
+      <ul>
+        <li>
+          <input id="range" type="range" min="0" max="600" value="0" step="1"
+            oninput="change1('range','value','line')" onchange="change1('range','value','line')">
+          <label>stroke-dasharray：<span id="value">0</span></label></li>
+        <li>
+          <input id="range1" type="range" min="0" max="600" value="0" step="1"
+            oninput="change2('range1','value1','line')" onchange="change2('range1','value1','line')">
+          <label>stroke-dashoffset：<span id="value1">0</span></label>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <script>
+  window.onload = function() {
+    const line = document.getElementById('line')
+   
+
+    change1 = (range, label, svg) => {
+      const obj = document.getElementById(svg)
+      let value = document.getElementById(range).value
+      const text = document.getElementById(label)
+      text.innerHTML = value
+      obj.style.strokeDasharray = value
+    }
+
+    change2 = (range, label, svg) => {
+      const obj = document.getElementById(svg)
+      let value = document.getElementById(range).value
+      const text = document.getElementById(label)
+      text.innerHTML = value
+      obj.style.strokeDashoffset = value
+    }
+  }
+    
+  </script>
+</body>
+
+</html>
