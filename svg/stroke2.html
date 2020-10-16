@@ -10,41 +10,23 @@
 
 <body>
   <div class="wrap">
-    <div class="box">
-      <h2>线</h2>
-      <svg id="svg" class="svg" width="400" height="200" xmlns="http://www.w3.org/2000/svg">
-        <line id="line" fill="none" stroke="#69f" stroke-width="5" 
-          stroke-linecap="round" x1="0" y1="90" x2="400" y2="90" />
-      </svg>
 
-      <ul>
-        <li>
-          <input id="range" type="range" min="0" max="400" value="0" step="1"
-            oninput="change1('range','value','line')" onchange="change1('range','value','line')">
-          <label>stroke-dasharray：<span id="value">0</span></label></li>
-        <li>
-          <input id="range1" type="range" min="0" max="400" value="0" step="1"
-            oninput="change2('range1','value1','line')" onchange="change2('range1','value1','line')">
-          <label>stroke-dashoffset：<span id="value1">0</span></label>
-        </li>
-      </ul>
-    </div>
     <div class="box">
       <h2>圆</h2>
-      <svg class="svg" width="200" height="200" viewBox="0 0 200 200">
-        <circle id="circle" class="circle circle1" cx="105" cy="105" r="50" stroke-width="8" fill="none"
+      <svg class="svg" width="400" height="400" viewBox="0 0 400 400">
+        <circle id="circle" class="circle circle1" cx="205" cy="205" r="100" stroke-width="10" fill="none"
           stroke="#69f" />
       </svg>
 
       <ul>
         <li>
-          <input id="range2" type="range" min="0" max="314" value="0" step="1"
+          <input id="range2" type="range" min="0" max="672" value="0" step="1"
             oninput="change1('range2','value3','circle')" onchange="change1('range2','value3','circle')">
           <label>stroke-dasharray：<span id="value3">0</span></label>
         </li>
 
         <li>
-          <input id="range3" type="range" min="0" max="314" value="0" step="1"
+          <input id="range3" type="range" min="0" max="672" value="0" step="1"
             oninput="change2('range3','value4','circle')" onchange="change2('range3','value4','circle')">
           <label>stroke-dashoffset：<span id="value4">0</span></label>
         </li>
@@ -53,10 +35,9 @@
   </div>
   <script>
   window.onload = function() {
-    const line = document.getElementById('line')
     const circle = document.getElementById('circle')
     const length = circle.getTotalLength()
-   
+    console.log(length)
 
     change1 = (range, label, svg) => {
       const obj = document.getElementById(svg)
