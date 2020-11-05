@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>HTML/SVG Example</title>
+    <style>
+      *{
+        margin: 0;
+        padding: 0;
+      }
+      .wrap{
+        width: 800px;
+        margin: 30px auto;
+      }
+      li{
+        list-style: none;
+        margin: 10px 0;
+      }
+      input[type=text]{
+        padding: 5px;
+        margin-left: 5px;
+        border: solid 1px #ccc;
+        border-radius: 3px;
+      }
+      input[type=radio]{
+        margin: 0 15px 0 5px;
+      }
+      .button{
+        width: 72px;
+        height: 30px;
+        line-height: 30px;
+        color: #fff;
+        background: #69f;
+        border: 0;
+        border-radius: 4px;
+        outline: none;
+      }.button:hover{
+        background: #5087f5;
+      }
+    </style>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function () {
+        $(".button").click(function () {
+          
+          var XaspectRatio =
+            $("input[name=VP_width]").val() / $("input[name=VB_width]").val();
+          var YaspectRatio =
+            $("input[name=VP_height]").val() / $("input[name=VB_height]").val();
+
+          var aspectRatio = Math.min(XaspectRatio, YaspectRatio);
+          var preserveAspectRatioSetting =
+            $("input[name=xAlignType]:checked").val() +
+            "" +
+            $("input[name=YAlignType]:checked").val();
+
+          var meetOrSlice = $("input[name=meetOrSlice]:checked").val();
+          if (meetOrSlice === "meet") {
+            aspectRatio = Math.min(XaspectRatio, YaspectRatio);
+          } else {
+            aspectRatio = Math.max(XaspectRatio, YaspectRatio);
+          }
+          console.log("meetOrSlice:" + meetOrSlice);
+          var viewBoxX = $("input[name=VB_x]").val() * aspectRatio;
+          var viewBoxY = $("input[name=VB_y]").val() * aspectRatio;
+
+          var viewBoxWidth = $("input[name=VB_width]").val() * aspectRatio;
+          var viewBoxHeight = $("input[name=VB_height]").val() * aspectRatio;
+
+          var viewBoxxMid = viewBoxX + viewBoxWidth * 0.5;
+          var viewBoxYMid = viewBoxY + viewBoxHeight * 0.5;
+          var viewBoxxMax = viewBoxX + viewBoxWidth;
+          var viewBoxYMax = viewBoxY + viewBoxHeight;
+
+          var viewportX = 0;
+          var viewportY = 0;
+          var viewportWidth = $("input[name=VP_width]").val() * 1;
+          var viewportHeight = $("input[name=VP_height]").val() * 1;
+          var viewportxMid = viewportX + viewportWidth * 0.5;
+          var viewportYMid = viewportY + viewportHeight * 0.5;
+          var viewportxMax = (viewportX + viewportWidth) * 1;
+          var viewportYMax = (viewportY + viewportHeight) * 1;
+
+          var rectWidth = $("input[name=rect_width]").val() * aspectRatio;
+          var rectHeight = $("input[name=rect_height]").val() * aspectRatio;
+          var rectX = $("input[name=rect_x]").val() * aspectRatio;
+          var rectY = $("input[name=rect_y]").val() * aspectRatio;
+
+          console.log(viewBoxX + " " + viewBoxWidth + " " + viewBoxYMid);
+          console.log(preserveAspectRatioSetting);
+          console.log(viewportYMax + " " + viewBoxYMax);
+
+          switch (preserveAspectRatioSetting) {
+            case "xMinYMin":
+              viewBoxX = viewportX - viewBoxX;
+              viewBoxY = viewportY - viewBoxY;
+              break;
+            case "xMinYMid":
+              viewBoxX = viewportX - viewBoxX;
+              viewBoxY = viewportYMid - viewBoxYMid;
+              break;
+            case "xMinYMax":
+              viewBoxX = viewportX - viewBoxX;
+              viewBoxY = viewportYMax - viewBoxYMax;
+
+              break;
+            case "xMidYMin":
+              viewBoxX = viewportxMid - viewBoxxMid;
+              viewBoxY = viewportY - viewBoxY;
+
+              break;
+            case "xMidYMid":
+              viewBoxX = viewportxMid - viewBoxxMid;
+              viewBoxY = viewportYMid - viewBoxYMid;
+              break;
+            case "xMidYMax":
+              viewBoxX = viewportxMid - viewBoxxMid;
+              viewBoxY = viewportYMax - viewBoxYMax;
+              break;
+            case "xMaxYMin":
+              viewBoxX = viewportxMax - viewBoxxMax;
+              viewBoxY = viewportY - viewBoxY;
+              break;
+            case "xMaxYMid":
+              viewBoxX = viewportxMax - viewBoxxMax;
+              viewBoxY = viewportYMid - viewBoxYMid;
+              break;
+            case "xMaxYMax":
+              viewBoxX = viewportxMax - viewBoxxMax;
+              viewBoxY = viewportYMax - viewBoxYMax;
+              break;
+            default:
+              viewBoxX = viewportX - viewBoxX;
+              viewBoxY = viewportY - viewBoxY;
+            //xMidYMid
+          }
+
+          $("div#svg").css({
+            width: $("input[name=VP_width]").val(),
+            height: $("input[name=VP_height]").val(),
+            "margin-left": "0px",
+            "margin-right": "0px",
+          });
+
+          $("div#viewBox").css({
+            width:
+              ($("input[name=VB_width]").val() * 1 +
+                $("input[name=VB_x]").val() * 1) *
+              aspectRatio,
+            height:
+              ($("input[name=VB_height]").val() * 1 +
+                $("input[name=VB_y]").val() * 1) *
+              aspectRatio,
+            "margin-left": viewBoxX * 1 + "px",
+            "margin-top": viewBoxY * 1 + "px",
+          });
+          $("div#rect").css({
+            width: $("input[name=rect_width]").val() * aspectRatio,
+            height: $("input[name=rect_height]").val() * aspectRatio,
+            "margin-left": rectX * 1 + "px",
+            "margin-top": rectY * 1 + "px",
+          });
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div class="wrap">
+      <div
+        id="svg"
+        style="
+          margin-left: 0px;
+          margin-top: 0px;
+          width: 200px;
+          height: 50px;
+          border: 1px solid black;
+          zoom: 5;
+        "
+      >
+        <div
+          id="viewBox"
+          style="
+            margin-left: 50px;
+            margin-top: 0px;
+            width: 100px;
+            height: 50px;
+            background-color: #666;
+            opacity: 0.3;
+          "
+        >
+          <div
+            id="rect"
+            style="
+              margin-left: 0px;
+              margin-top: 0px;
+              width: 25px;
+              height: 25px;
+              background-color:red;
+            "
+          ></div>
+        </div>
+      </div>
+    
+
+    <div style="margin-top: 10px">
+      <ul>
+        <li>
+          <h3>参数一：</h3>
+          <label
+            >xMin:<input type="radio" name="xAlignType" value="xMin"
+          /></label>
+          <label
+            >xMid(default):<input
+              type="radio"
+              name="xAlignType"
+              value="xMid"
+              checked
+          /></label>
+          <label
+            >xMax:<input type="radio" name="xAlignType" value="xMax"
+          /></label>
+        </li>
+        <li>
+          <div>
+            
+            <label
+              >YMin:<input type="radio" name="YAlignType" value="YMin"
+            /></label>
+            <label
+              >YMid(default):<input
+                type="radio"
+                name="YAlignType"
+                value="YMid"
+                checked
+            /></label>
+            <label
+              >YMax:<input type="radio" name="YAlignType" value="YMax"
+            /></label>
+          </div>
+        </li>
+        <li>
+          <div>
+            <h3>参数二：</h3>
+            <label
+              >meet(default):<input
+                type="radio"
+                name="meetOrSlice"
+                value="meet"
+                checked
+            /></label>
+            <label
+              >slice:<input type="radio" name="meetOrSlice" value="slice"
+            /></label>
+          </div>
+        </li>
+        <li>
+          <div>
+            <h3>viewPort</h3>
+            <label
+              >width:<input
+                type="text"
+                name="VP_width"
+                value="200"
+                style="width: 50px"
+            /></label>
+            <label>
+              height:<input
+                type="text"
+                name="VP_height"
+                value="50"
+                style="width: 50px"
+            /></label>
+          </div>
+        </li>
+        <li>
+          <div>
+            <h3>viewBox</h3>
+            <label
+              >viewBox width:<input
+                type="text"
+                name="VB_width"
+                value="400"
+                style="width: 50px"
+            /></label>
+            <label>
+              height:<input
+                type="text"
+                name="VB_height"
+                value="200"
+                style="width: 50px"
+            /></label>
+            <label>
+              x:<input type="text" name="VB_x" value="0" style="width: 50px"
+            /></label>
+            <label>
+              y:<input type="text" name="VB_y" value="0" style="width: 50px"
+            /></label>
+          </div>
+        </li>
+        <li>
+          <div>
+            <h3>矩形</h3>
+            <label
+              >width:<input
+                type="text"
+                name="rect_width"
+                value="100"
+                style="width: 50px"
+            /></label>
+            <label>
+              height:<input
+                type="text"
+                name="rect_height"
+                value="100"
+                style="width: 50px"
+            /></label>
+            <label>
+              x:<input type="text" name="rect_x" value="0" style="width: 50px"
+            /></label>
+            <label>
+              y:<input type="text" name="rect_y" value="0" style="width: 50px"
+            /></label>
+          </div>
+        </li>
+      </ul>
+
+      <button class="button">确定</button>
+    </div>
+  </div>
+  </body>
+</html>
