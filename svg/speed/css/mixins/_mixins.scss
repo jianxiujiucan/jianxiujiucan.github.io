@@ -1,0 +1,66 @@
+
+/* scrollbar */
+@mixin scrollbar {
+  $--scrollbar-thumb-background: rgba(0,0,0,.15);
+  $--scrollbar-track-background: #fff;
+  
+  &::-webkit-scrollbar {
+    width: 8px;
+    background: transparent;
+    &:horizontal {
+      height: 6px;
+    }
+    &-thumb {
+      border-radius: 4px;
+      width: 8px;
+      background: $--scrollbar-thumb-background;
+      border-right: solid 2px #fff;
+    }
+  }
+}
+
+@mixin arrow($width1,$width2,$color,$pos) {
+	position: absolute;
+	width: 0;
+	height: 0;
+	font-size: 0;
+	overflow: hidden;
+	border-style: dashed;
+	border-color: transparent;
+	border-width: $width1 $width2;
+	border-#{$pos}-color: $color;
+	content:'';
+}
+
+
+@mixin bgGradient($deg, $start, $end) {
+	background-image:linear-gradient($deg, $start, $end);
+}
+
+@mixin cover($opacity){
+	width: 100vw;
+	height: 100vh;
+	background: rgba(0,0,0,$opacity);
+	position: fixed;
+	z-index: 9999;
+	left: 0;
+	top: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+@mixin line($num) {
+	@if($num == 1) {
+	    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;word-break: break-all;
+	}
+	@else {
+		-webkit-line-clamp: $num; display: -webkit-box;word-break: break-all; overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical;
+	}
+	
+}
+
+
+
+
+

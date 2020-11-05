@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>免费畅享加速</title>
+    <link rel="stylesheet" href="css/speed.css" />
+  </head>
+  <body>
+    <div class="wrap-speed">
+      <div class="wrap-speed__inner">
+        <div class="wrap-speed__main">
+          <h1>免费畅享加速</h1>
+          <p class="text">扫码下载手雷，登录注册领白金会员加速</p>
+          <div class="wrap-speed__code">
+            <p class="title">
+              <i class="icon-android"></i> <span>Android</span>下载
+            </p>
+            <img
+              src="https://img-vip-ssl.a.88cdn.com/img/xunleiadmin/5e730cb34de60.png"
+              class="img-code"
+              alt="安卓客户端"
+            />
+          </div>
+        </div>
+        <div class="wrap-speed__form">
+          <div class="wrap-speed__sample">
+            <ul>
+              <li><span class="tags tags--vip"></span>会员用户</li>
+              <li><span class="tags tags--normal"></span>普通用户</li>
+            </ul>
+          </div>
+          <div class="wrap-speed__svg">
+            <svg width="396" height="208" viewBox="0 0 396 208">
+              <path
+                class="speed-line speed-line--vip"
+                d="M3,207c1.371-5.683,19.811-30.553,65-51,89.1-40.317,247.781-44.943,326.029-152.613"
+              />
+              <path
+                class="speed-line speed-line--normal"
+                d="M5,206c10.53-6.705,29.436-23.611,80-25,215.967-5.934,229-2,229-2"
+              />
+            </svg>
+          </div>
+          <div class="wrap-speed__ani">
+            <div class="ani-tips ani-tips--vip"></div>
+            <div class="ani-tips ani-tips--normal"></div>
+            <div class="ani-element ani-element--vip"></div>
+            <div class="ani-element ani-element--normal"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      let vipSpeed = document.querySelector(".ani-tips--vip");
+      let normalSpeed = document.querySelector(".ani-tips--normal");
+
+      let a = 0
+      let b = 1
+      let c = 0
+      let d = 1
+      let str = ""
+
+      let speed1 = setInterval(() => {
+        if (a < 9) {
+          a++
+          if (a == 9) {
+            a = 0
+            b++
+          }
+          str = `${b}.${a}MB/s`
+          vipSpeed.innerHTML = str
+        }
+        if (b == 32) {
+          a = 1
+          str = `${b}.${a}MB/s`
+          vipSpeed.innerHTML = str
+          clearInterval(speed1)
+        }
+      }, 15)
+
+      setTimeout(() => {
+        let speed2 = setInterval(fn, 100)
+        function fn() {
+          if (d < 9) {
+            d++
+            if (d == 9) {
+              d = 0;
+              clearInterval(speed2)
+              speed2 = setInterval(fn, 1500)
+              c++
+            }
+            str = `${c}.${d}KB/s`
+            normalSpeed.innerHTML = str
+          }
+          if (c == 1 && d == 3) {
+            clearInterval(speed2)
+          }
+        }
+        
+      }, 1500)
+    </script>
+  </body>
+</html>
