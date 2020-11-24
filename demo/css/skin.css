@@ -65,7 +65,7 @@ button:focus {
 
 @font-face {
   font-family: 'Omega';
-  src: url("../font/Omega.ttf") format("truetype");
+  src: url("../font/dincond.woff") format("woff");
 }
 
 :root {
@@ -138,6 +138,15 @@ button:focus {
 }
 
 .number {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   font-size: 12px;
   color: rgba(var(--colorMain), 0.6);
 }
@@ -145,6 +154,7 @@ button:focus {
 .number span {
   font-family: Omega;
   font-weight: bold;
+  font-size: 16px;
 }
 
 .detail {
@@ -181,7 +191,7 @@ button:focus {
 .detail li span {
   display: block;
   margin-top: 5px;
-  font-size: 18px;
+  font-size: 20px;
   font-family: Omega;
   color: rgba(var(--colorMain), 1);
 }
@@ -192,7 +202,7 @@ button:focus {
   width: 100px;
   height: 100px;
   font-family: Omega;
-  background-image: conic-gradient(rgba(var(--colorMain), 1) 80%, transparent 80%);
+  background-image: conic-gradient(rgba(var(--colorMain), 0.8) 80%, transparent 80%);
   border-radius: 50%;
 }
 
