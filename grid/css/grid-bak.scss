@@ -1,0 +1,51 @@
+.main{
+  max-width: 1024px;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.main{
+  display: grid;
+  grid-template-areas: 
+    "cgheader cgheader cgheader"
+    "cgnav cgnav cgnav"
+    "cgaside cgmain cgmain"
+    "cgft cgft cgft";
+  grid-template-rows:100px 30px 1fr 50px;
+  grid-template-columns: 200px 1fr;
+  grid-gap: 2px;
+}
+
+header,nav,section,aside,footer{
+  font-size: 18px;
+  text-align: center;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+header{
+  grid-area: cgheader;
+  background-color: rgba(0,0,0, .3);
+}
+
+nav{
+  grid-area: cgnav;
+  background-color: rgba(0,0,0, .4);
+}
+
+section{
+  grid-area: cgmain;
+  background-color: rgba(0,0,0, .5);
+}
+
+aside{
+  grid-area: cgaside;
+  background-color: rgba(0,0,0, .1);
+}
+
+footer{
+  grid-area: cgft;
+  background-color: rgba(0,0,0, .2);
+}

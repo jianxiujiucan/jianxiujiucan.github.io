@@ -1,0 +1,124 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-size: 18px;
+  font-family: arial;
+}
+
+body,
+html {
+  height: 100%;
+}
+
+.main {
+  display: -ms-grid;
+  display: grid;
+      grid-template-areas: "aheader aheader" "aside acontent";
+  height: 100vh;
+  -ms-grid-rows: 100px 1fr;
+      grid-template-rows: 100px 1fr;
+  -ms-grid-columns: 200px 1fr;
+      grid-template-columns: 200px 1fr;
+}
+
+header {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-area: aheader;
+  background: #eee;
+}
+
+aside {
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  grid-area: aside;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+section {
+  -ms-grid-row: 2;
+  -ms-grid-column: 2;
+  grid-area: acontent;
+  background: rgba(0, 0, 0, 0.15);
+}
+
+.list {
+  display: -ms-grid;
+  display: grid;
+  width: 1200px;
+  margin: 0 auto;
+  -ms-grid-columns: 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 10px;
+}
+
+.list .item {
+  height: 100px;
+  background: #eee;
+}
+
+.movie {
+  display: -ms-grid;
+  display: grid;
+  max-width: 1200px;
+  height: 600px;
+      grid-template-areas: "aa cc" "bb cc" "bb cc";
+  -ms-grid-columns: 1fr 300px;
+      grid-template-columns: 1fr 300px;
+  grid-gap: 20px;
+  margin: 0 auto;
+}
+
+.movie-image {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: aa;
+}
+
+.movie-image ul {
+  padding: 10px;
+  display: -ms-grid;
+  display: grid;
+  height: 100%;
+  -ms-grid-columns: 2fr 1fr 1fr;
+      grid-template-columns: 2fr 1fr 1fr;
+  grid-gap: 10px;
+  background: rgba(0, 0, 0, 0.1);
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.movie-image li {
+  background: #fff;
+  border-radius: 4px;
+}
+
+.movie-image li:nth-child(1) {
+  -ms-grid-column: 1;
+      grid-column-start: 1;
+  grid-column-end: 2;
+  -ms-grid-row: 1;
+      grid-row-start: 1;
+  grid-row-end: 3;
+}
+
+.movie-article {
+  -ms-grid-row: 2;
+  -ms-grid-row-span: 2;
+  -ms-grid-column: 1;
+  grid-area: bb;
+  background: rgba(0, 0, 0, 0.15);
+}
+
+.movie-list {
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 3;
+  -ms-grid-column: 2;
+  grid-area: cc;
+  background: rgba(0, 0, 0, 0.2);
+}
+/*# sourceMappingURL=grid.css.map */

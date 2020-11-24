@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .box{
+      display: flex;
+      
+      width: 300px;
+      background: #eee;
+    }
+    .box-item{
+      border: solid 1px #ccc;
+      /* flex: 1; */
+      flex-grow: 1;
+      flex-basis: 0%;
+      /* flex-shrink: 1; */
+    }
+    .box-item:nth-child(1){
+      flex-grow: 1;
+    }
+    .box-item:nth-child(2){
+      
+    }
+    .box-item:nth-child(3){
+      
+      flex-grow: 1;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <div class="box-item">111</div>
+    <div class="box-item">2</div>
+    <div class="box-item">3333</div>
+    <div class="box-item">44</div>
+  </div>
+</body>
+</html>

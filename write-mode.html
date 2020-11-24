@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>write-mode</title>
+    <style>
+      .box {
+        width: 100px;
+        height: 100px;
+        writing-mode: vertical-lr;
+        text-orientation: upright;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      .example.Text1 span, .example.Text1 { writing-mode: horizontal-tb;
+      -webkit-writing-mode: horizontal-tb; -ms-writing-mode: horizontal-tb; }
+      .example.Text2 span, .example.Text2 { writing-mode: vertical-lr;
+      -webkit-writing-mode: vertical-lr; -ms-writing-mode: vertical-lr;
+    </div>
+  </body>
+</html>
