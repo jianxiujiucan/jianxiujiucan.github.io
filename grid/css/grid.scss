@@ -39,7 +39,7 @@ section{
 
 .list{
   display: grid;
-  width: 1200px;
+  width: 1400px;
   margin: 0 auto;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 10px;
@@ -73,7 +73,7 @@ section{
     display: grid;
     height: 100%;
     grid-template-columns: 2fr 1fr 1fr ;
-    grid-gap: 10px;
+    gap: 10px 20px;
     background: rgba(0,0,0,.1);
     box-sizing: border-box;
   }
@@ -96,4 +96,5 @@ section{
 .movie-list{
   grid-area: cc;
   background: rgba(0,0,0,.2);
+  
 }

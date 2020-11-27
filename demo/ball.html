@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <link rel="stylesheet" href="css/xly-suspension.css" />
+    <title>悬浮球</title>
+    <style>
+      .box{
+        display: flex;
+        zoom: 2;
+      }
+      .xly-suspension {
+        
+        position: relative;
+        margin: 50px auto;
+      }
+    
+    </style>
+  </head>
+
+  <body>
+    <div id="app">
+      <div class="box">
+        <div class="xly-suspension" :class="[classType, vipType]">
+          <!-- 洞 -->
+          <div class="xly-suspension-hole">
+            <i class="xly-suspension-hole__line-1"></i>
+            <i class="xly-suspension-hole__line-2"></i>
+            <svg viewBox="0 0 47 12" class="xly-suspension-hole__svg">
+              <path
+                d="M24.368,0.137 L46.120,5.014 C46.660,5.135 47.000,5.674 46.880,6.218 C46.796,6.601 46.499,6.900 46.120,6.985 L24.368,11.862 C23.797,11.990 23.204,11.990 22.632,11.862 L0.880,6.985 C0.341,6.864 0.001,6.325 0.121,5.780 C0.205,5.398 0.501,5.099 0.880,5.014 L22.632,0.137 C23.204,0.009 23.797,0.009 24.368,0.137 Z"
+              />
+            </svg>
+          </div>
+          <!-- 洞 end -->
+          <!-- 速度面板 -->
+          <div class="xly-suspension-status">
+            <div class="xly-suspension-status__inner">
+              <span
+                class="xly-suspension-status__progress"
+                style="width: 50%"
+              ></span>
+              <p class="xly-suspension-status__text">连接资源</p>
+              <p class="xly-suspension-status__speed"><span>354</span>kb/s</p>
+            </div>
+          </div>
+          <!-- 速度面板 end -->
+          <div class="xly-suspension-wrap">
+            <!-- 背景面板 -->
+            <div class="xly-suspension-panel">
+              
+            </div>
+            <!-- 背景面板 end -->
+          </div>
+        </div>
+      </div>
+
+      <div style="position: fixed; top: 400px; width: 100%; text-align: center;">
+        <button @click="handleVipLogin">会员登录</button>
+       
+      </div>
+    </div>
+
+    <script src="js/vue.js"></script>
+    <script>
+      new Vue({
+        el: "#app",
+        data: {
+          classType: "",
+          vipType:"",
+          showRight: false,
+          tabs: [
+            { title: "正在下载(99+)", key: "download" },
+            { title: "云盘取回(99+)", key: "netdisk" },
+          ],
+          activeKey: "download",
+         
+        },
+        methods: {
+          
+          handleVipLogin() {
+            this.classType = "is-vip-login";
+          },
+      
+        },
+      });
+    </script>
+  </body>
+</html>
+

@@ -1,0 +1,143 @@
+/* scrollbar */
+@mixin scrollbar ($width, $radius, $background-thumb,$background-thumb-hover){
+  &::-webkit-scrollbar {
+    width: $width; 
+    background: transparent;
+
+    &:horizontal {
+      height: $width;
+    }
+
+    &-thumb {
+      border-radius: $radius;
+      width: $width;
+      background: $background-thumb;
+      &:hover{
+        background: $background-thumb-hover;
+      }
+    }
+  }
+}
+
+@mixin scrollbarNormal(){
+  &::-webkit-scrollbar {
+    width: 8px; 
+    background: transparent;
+
+    &:horizontal {
+      height: 8px;
+    }
+
+    &-thumb {
+      border-radius: 2px;
+      width: 6px;
+      background: #e6e6e6,;
+      &:hover{
+        background: #ccc;
+      }
+    }
+  }
+}
+
+/* BEM */
+@mixin b($block) {
+  $B: $namespace+'-'+$block !global;
+
+  .#{$B} {
+    @content;
+  }
+}
+
+@mixin e($element) {
+  $selector: &;
+  $currentSelector: "";
+
+  @each $unit in $element {
+    $currentSelector: #{$currentSelector + "." + $B + $element-separator + $unit + ","};
+  }
+
+  @at-root {
+    #{$currentSelector} {
+      @content;
+    }
+  }
+}
+
+@mixin m($modifier) {
+  $selector: &;
+  $currentSelector: "";
+
+  @each $unit in $modifier {
+    $currentSelector: #{$currentSelector + & + $modifier-separator + $unit + ","};
+  }
+
+  @at-root {
+    #{$currentSelector} {
+      @content;
+    }
+  }
+}
+
+@mixin when($state) {
+  @at-root {
+    &.#{$state-prefix + $state} {
+      @content;
+    }
+  }
+}
+
+@mixin middle() {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin arrow($width1, $width2, $color, $pos) {
+  position: absolute;
+  width: 0;
+  height: 0;
+  font-size: 0;
+  overflow: hidden;
+  border-style: dashed;
+  border-color: transparent;
+  border-width: $width1 $width2;
+  border-#{$pos}-color: $color;
+  content: '';
+}
+
+
+@mixin bgGradient($deg, $start, $end) {
+  background-image: linear-gradient($deg, $start, $end);
+}
+
+@mixin cover($opacity) {
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, $opacity);
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin line($num) {
+  @if($num==1) {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-all;
+  }
+
+  @else {
+    -webkit-line-clamp: $num;
+    display: -webkit-box;
+    word-break: break-all;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+  }
+
+}

@@ -49,7 +49,7 @@ section {
 .list {
   display: -ms-grid;
   display: grid;
-  width: 1200px;
+  width: 1400px;
   margin: 0 auto;
   -ms-grid-columns: 1fr 1fr 1fr;
       grid-template-columns: 1fr 1fr 1fr;
@@ -86,7 +86,7 @@ section {
   height: 100%;
   -ms-grid-columns: 2fr 1fr 1fr;
       grid-template-columns: 2fr 1fr 1fr;
-  grid-gap: 10px;
+  gap: 10px 20px;
   background: rgba(0, 0, 0, 0.1);
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
