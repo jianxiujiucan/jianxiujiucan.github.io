@@ -469,7 +469,8 @@ input {
 /* media */
 @media only screen and (min-width: 769px) and (max-width: 1920px) {
   .wrap {
-    zoom: 3.2;
+		width: 1080px;
+    zoom: 2.4;
   }
 }
 @media only screen and (min-width: 541px) and (max-width: 768px) {

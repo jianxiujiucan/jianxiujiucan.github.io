@@ -22,10 +22,15 @@
       
       background: linear-gradient(#d0e7f5,#96cbff) no-repeat;
     }
-    .box ul{
-      margin: 0 auto;
-      width: 1000px;
+    .box{
+      display: flex;
+      flex-flow: column wrap;
+      justify-content: center;
       height: 100vh;
+    }
+    ul{
+      margin: 20px  auto;
+      width: 1000px;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -43,12 +48,28 @@
     .box li:nth-child(1){
       margin: 0;
     }
-    
+    .mix img{
+      mix-blend-mode: darken;
+    }
   </style>
 </head>
 <body>
   <div class="box">
     <ul>
+      <li>
+        <img src="img/logo1.png" alt="">
+      </li>
+      <li>
+        <img src="img/logo2.png" alt="">
+      </li>
+      <li>
+        <img src="img/logo3.png" alt="">
+      </li>
+      <li>
+        <img src="img/logo4.png" alt="">
+      </li>
+    </ul>
+    <ul class="mix">
       <li>
         <img src="img/logo1.png" alt="">
       </li>
