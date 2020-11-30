@@ -1,0 +1,111 @@
+.box {
+  position: absolute;
+  top: 300px;
+  left: 500px;
+  width: 400px;
+  height: 400px;
+}
+
+.ball {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  background: radial-gradient(at center 5px, #fff, #000);
+  border-radius: 50%;
+  background-size: 100% auto;
+  offset-path: path("M179.99,4.8C98.19,10.28,4.65,56.48,4.65,99.54c0,52.6,87.48,95.24,195.39,95.24s195.39-42.64,195.39-95.24\a 	c0-46.01-106.81-93.82-195.39-95.24L179.99,4.8z");
+  offset-rotate: 0deg;
+}
+
+.ball1 {
+  -webkit-animation: move 5s 2s linear infinite;
+          animation: move 5s 2s linear infinite;
+}
+
+.ball2 {
+  offset-path: path("M382.82,65.81c8.15,10.49,12.61,21.86,12.61,33.73c0,52.6-87.48,95.24-195.39,95.24S4.65,152.14,4.65,99.54\a 	S92.13,4.3,200.04,4.3c73.1,0,136.82,19.57,170.33,48.54L382.82,65.81z");
+  animation: move2 5s .1s reverse  linear infinite;
+}
+
+.ball3 {
+  offset-path: path("M323.72,173.28c43.77-17.47,71.71-44.01,71.71-73.73c0-52.6-87.48-95.24-195.39-95.24S4.65,46.94,4.65,99.54\a 	s87.48,95.24,195.39,95.24c36.82,0,71.26-4.96,100.66-13.59L323.72,173.28z");
+}
+
+@-webkit-keyframes move {
+  0% {
+    offset-distance: 0%;
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  50% {
+    -webkit-transform: scale(2);
+            transform: scale(2);
+  }
+  100% {
+    offset-distance: 100%;
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+
+@keyframes move {
+  0% {
+    offset-distance: 0%;
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  50% {
+    -webkit-transform: scale(2);
+            transform: scale(2);
+  }
+  100% {
+    offset-distance: 100%;
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+
+@-webkit-keyframes move2 {
+  0% {
+    offset-distance: 0%;
+    -webkit-transform: scale(1.2);
+            transform: scale(1.2);
+  }
+  30% {
+    -webkit-transform: scale(2);
+            transform: scale(2);
+  }
+  70% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  100% {
+    offset-distance: 100%;
+    -webkit-transform: scale(1.2);
+            transform: scale(1.2);
+  }
+}
+
+@keyframes move2 {
+  0% {
+    offset-distance: 0%;
+    -webkit-transform: scale(1.2);
+            transform: scale(1.2);
+  }
+  30% {
+    -webkit-transform: scale(2);
+            transform: scale(2);
+  }
+  70% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  100% {
+    offset-distance: 100%;
+    -webkit-transform: scale(1.2);
+            transform: scale(1.2);
+  }
+}
+/*# sourceMappingURL=group.css.map */

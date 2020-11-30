@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>backdrop-filter</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    :root{
+      --color: 0,0,0;
+    }
+    .page{
+      display: flex;
+      height: 100vh;
+      background: url(img/2.jpg) no-repeat;
+      background-position: center bottom;
+      background-size: cover;
+    }
+    .dialog{
+      padding: 40px 60px;
+      margin: auto;
+      width: 800px;
+      height: 550px;
+      color: rgba(255,255,255,.8);
+      font-size: 20px;
+      line-height: 1.6;
+      text-align: justify;
+      font-weight: lighter;
+      background:rgba(var(--color),.2);
+      backdrop-filter: blur(20px);
+      border-radius: 10px;
+      box-sizing: border-box;
+    }
+    .dialog:first-letter{
+      font-size: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="dialog">Equality and Greatness Between persons of equal income there is no social distinction except the distinction of merit. Money is nothing; character, conduct and capacity are everything. Instead of all the workers being leveled down to low wage standards and all the rich leveled up to fashionbale income standards,everybody under a system of equal incomes would find his or her own natural level.There would be great people and ordinary people and little peolpe,but the great would always be those who had done great things,and never the idiot whose mother had spoiled them and whose father had left a hunred thousand a year;and the little would be persons of small minds and mean characters,and not poor persons who had never had a chance.That is why idiots are always in favour of inequality of income(their only chance of eminence),and the really great in favour of equality.
+    </div>
+  </div>
+</body>
+</html>
