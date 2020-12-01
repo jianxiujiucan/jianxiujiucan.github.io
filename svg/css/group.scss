@@ -11,7 +11,7 @@
   left: 0;
   width: 20px;
   height: 20px;
-  background: radial-gradient(at center 5px, #fff, #000);
+  background: #000;
   border-radius: 50%;
   background-size: 100% auto;
   offset-path: path(
@@ -22,14 +22,15 @@
   
 }
 .ball1{
-  animation: move 5s 2s linear infinite;
+  background: #000;
+  animation: move1 10s linear infinite;
 }
 .ball2 {
   offset-path: path(
     "M382.82,65.81c8.15,10.49,12.61,21.86,12.61,33.73c0,52.6-87.48,95.24-195.39,95.24S4.65,152.14,4.65,99.54
 	S92.13,4.3,200.04,4.3c73.1,0,136.82,19.57,170.33,48.54L382.82,65.81z"
   );
-  animation: move2 5s .1s reverse  linear infinite;
+  animation: move2 10s .1s reverse  linear infinite;
 }
 
 .ball3 {
@@ -37,24 +38,24 @@
     "M323.72,173.28c43.77-17.47,71.71-44.01,71.71-73.73c0-52.6-87.48-95.24-195.39-95.24S4.65,46.94,4.65,99.54
 	s87.48,95.24,195.39,95.24c36.82,0,71.26-4.96,100.66-13.59L323.72,173.28z"
   );
-  // animation: move 5s 2s linear infinite;
+  animation: move3 10s linear infinite;
 }
 
 .ball4 {
-  // animation: move 5s 3s linear infinite;
+  // animation: move 10s 3s linear infinite;
 }
 .ball5 {
-  // animation: move 5s 4s linear infinite;
+  // animation: move 10s 4s linear infinite;
 }
 
-@keyframes move {
+@keyframes move1 {
   0% {
     offset-distance: 0%;
     transform: scale(1);
   }
 
   50% {
-    transform: scale(2);
+    transform: scale(2.8);
   }
   100% {
     offset-distance: 100%;
@@ -65,17 +66,36 @@
 @keyframes move2 {
   0% {
     offset-distance: 0%;
-    transform: scale(1.2);
+    transform: scale(1.5);
   }
 
   30% {
-    transform: scale(2);
+    transform: scale(2.8);
   }
   70%{
     transform: scale(1);
   }
   100% {
     offset-distance: 100%;
-    transform: scale(1.2);
+    transform: scale(1.5);
+  }
+}
+
+@keyframes move3 {
+  0% {
+    offset-distance: 0%;
+    transform: scale(2.3);
+  }
+
+  40% {
+    transform: scale(1);
+  }
+
+  85%{
+    transform: scale(2.8);
+  }
+  100% {
+    offset-distance: 100%;
+    transform: scale(2.3);
   }
 }
