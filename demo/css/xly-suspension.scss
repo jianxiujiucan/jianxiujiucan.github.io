@@ -80,20 +80,29 @@ button{
       display: block;
       animation: lightShow1 2.5s 0.5s both;
       &:before {
-        animation: lightShow1 2.2s 0.5s both;
-        @keyframes lightShow1 {
-          0% {
-            transform: scale(0);
-          }
-          10%,
-          90% {
-            transform: scale(1);
-            opacity: 1;
-          }
-          100% {
-            opacity: 0;
-            transform: scale(0);
-          }
+        animation: lightShow1 2.2s 0.5s both,filterAni 2.2s 0.5s both;
+        
+      }
+      @keyframes filterAni{
+        0%,55%{
+          filter: hue-rotate(0deg);
+        }
+        60%,100%{
+          filter: hue-rotate(-132deg);
+        }
+      }
+      @keyframes lightShow1 {
+        0% {
+          transform: scale(0);
+        }
+        10%,
+        90% {
+          transform: scale(1);
+          opacity: 1;
+        }
+        100% {
+          opacity: 0;
+          transform: scale(0);
         }
       }
     }
@@ -102,113 +111,6 @@ button{
     }
   }
 
-  @include when(left-vip-hide) {
-    .xly-suspension-card {
-      .xly-suspension-card__inner {
-        right: 0;
-        animation: slideOutLeft 0.3s 0.3s both;
-      }
-      .xly-suspension-card__close {
-        animation: hide 0.3s 0s both;
-      }
-    }
-  }
-
-  @keyframes slideInLeft {
-    0% {
-      opacity: 0;
-      transform: translateX(100%);
-    }
-
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
-  }
-
-  @keyframes slideOutLeft {
-    0% {
-      opacity: 1;
-      transform: translateX(0);
-    }
-
-    to {
-      opacity: 1;
-      transform: translateX(100%);
-    }
-  }
-
-  @keyframes show {
-    0% {
-      opacity: 0;
-    }
-
-    to {
-      opacity: 1;
-    }
-  }
-
-  @keyframes hide {
-    0% {
-      opacity: 1;
-    }
-
-    to {
-      opacity: 0;
-    }
-  }
-
-  @include when(right-vip) {
-    .xly-suspension-card {
-      left: 25px;
-      display: flex;
-      .xly-suspension-card__inner {
-        left: 0;
-        padding: 0 0 0 20px;
-        animation: slideInRight 0.3s 0.3s both;
-      }
-      .xly-suspension-card__close {
-        left: auto;
-        right: 12px;
-      }
-    }
-  }
-
-  @include when(right-vip-hide) {
-    .xly-suspension-card {
-      .xly-suspension-card__inner {
-        right: 0;
-        animation: slideOutRight 0.3s 0.3s both;
-      }
-      .xly-suspension-card__close {
-        animation: hide 0.3s 0s both;
-      }
-    }
-  }
-
-  @keyframes slideInRight {
-    0% {
-      opacity: 0;
-      transform: translateX(-100%);
-    }
-
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
-  }
-
-  @keyframes slideOutRight {
-    0% {
-      opacity: 1;
-      transform: translateX(0);
-    }
-
-    to {
-      opacity: 1;
-      transform: translateX(-100%);
-    }
-  }
 }
 
 

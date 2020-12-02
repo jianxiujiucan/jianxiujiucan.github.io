@@ -130,8 +130,30 @@ button:hover {
 }
 
 .xly-suspension.is-vip-login .xly-suspension-hole:before {
-  -webkit-animation: lightShow1 2.2s 0.5s both;
-          animation: lightShow1 2.2s 0.5s both;
+  -webkit-animation: lightShow1 2.2s 0.5s both,filterAni 2.2s 0.5s both;
+          animation: lightShow1 2.2s 0.5s both,filterAni 2.2s 0.5s both;
+}
+
+@-webkit-keyframes filterAni {
+  0%, 55% {
+    -webkit-filter: hue-rotate(0deg);
+            filter: hue-rotate(0deg);
+  }
+  60%, 100% {
+    -webkit-filter: hue-rotate(-132deg);
+            filter: hue-rotate(-132deg);
+  }
+}
+
+@keyframes filterAni {
+  0%, 55% {
+    -webkit-filter: hue-rotate(0deg);
+            filter: hue-rotate(0deg);
+  }
+  60%, 100% {
+    -webkit-filter: hue-rotate(-132deg);
+            filter: hue-rotate(-132deg);
+  }
 }
 
 @-webkit-keyframes lightShow1 {
@@ -173,187 +195,6 @@ button:hover {
 .xly-suspension.is-vip-login .xly-suspension-hole__svg {
   -webkit-animation: lightShow1 2.2s 0.5s both;
           animation: lightShow1 2.2s 0.5s both;
-}
-
-.xly-suspension.is-left-vip-hide .xly-suspension-card .xly-suspension-card__inner {
-  right: 0;
-  -webkit-animation: slideOutLeft 0.3s 0.3s both;
-          animation: slideOutLeft 0.3s 0.3s both;
-}
-
-.xly-suspension.is-left-vip-hide .xly-suspension-card .xly-suspension-card__close {
-  -webkit-animation: hide 0.3s 0s both;
-          animation: hide 0.3s 0s both;
-}
-
-@-webkit-keyframes slideInLeft {
-  0% {
-    opacity: 0;
-    -webkit-transform: translateX(100%);
-            transform: translateX(100%);
-  }
-  to {
-    opacity: 1;
-    -webkit-transform: translateX(0);
-            transform: translateX(0);
-  }
-}
-
-@keyframes slideInLeft {
-  0% {
-    opacity: 0;
-    -webkit-transform: translateX(100%);
-            transform: translateX(100%);
-  }
-  to {
-    opacity: 1;
-    -webkit-transform: translateX(0);
-            transform: translateX(0);
-  }
-}
-
-@-webkit-keyframes slideOutLeft {
-  0% {
-    opacity: 1;
-    -webkit-transform: translateX(0);
-            transform: translateX(0);
-  }
-  to {
-    opacity: 1;
-    -webkit-transform: translateX(100%);
-            transform: translateX(100%);
-  }
-}
-
-@keyframes slideOutLeft {
-  0% {
-    opacity: 1;
-    -webkit-transform: translateX(0);
-            transform: translateX(0);
-  }
-  to {
-    opacity: 1;
-    -webkit-transform: translateX(100%);
-            transform: translateX(100%);
-  }
-}
-
-@-webkit-keyframes show {
-  0% {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes show {
-  0% {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@-webkit-keyframes hide {
-  0% {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-  }
-}
-
-@keyframes hide {
-  0% {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-  }
-}
-
-.xly-suspension.is-right-vip .xly-suspension-card {
-  left: 25px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.xly-suspension.is-right-vip .xly-suspension-card .xly-suspension-card__inner {
-  left: 0;
-  padding: 0 0 0 20px;
-  -webkit-animation: slideInRight 0.3s 0.3s both;
-          animation: slideInRight 0.3s 0.3s both;
-}
-
-.xly-suspension.is-right-vip .xly-suspension-card .xly-suspension-card__close {
-  left: auto;
-  right: 12px;
-}
-
-.xly-suspension.is-right-vip-hide .xly-suspension-card .xly-suspension-card__inner {
-  right: 0;
-  -webkit-animation: slideOutRight 0.3s 0.3s both;
-          animation: slideOutRight 0.3s 0.3s both;
-}
-
-.xly-suspension.is-right-vip-hide .xly-suspension-card .xly-suspension-card__close {
-  -webkit-animation: hide 0.3s 0s both;
-          animation: hide 0.3s 0s both;
-}
-
-@-webkit-keyframes slideInRight {
-  0% {
-    opacity: 0;
-    -webkit-transform: translateX(-100%);
-            transform: translateX(-100%);
-  }
-  to {
-    opacity: 1;
-    -webkit-transform: translateX(0);
-            transform: translateX(0);
-  }
-}
-
-@keyframes slideInRight {
-  0% {
-    opacity: 0;
-    -webkit-transform: translateX(-100%);
-            transform: translateX(-100%);
-  }
-  to {
-    opacity: 1;
-    -webkit-transform: translateX(0);
-            transform: translateX(0);
-  }
-}
-
-@-webkit-keyframes slideOutRight {
-  0% {
-    opacity: 1;
-    -webkit-transform: translateX(0);
-            transform: translateX(0);
-  }
-  to {
-    opacity: 1;
-    -webkit-transform: translateX(-100%);
-            transform: translateX(-100%);
-  }
-}
-
-@keyframes slideOutRight {
-  0% {
-    opacity: 1;
-    -webkit-transform: translateX(0);
-            transform: translateX(0);
-  }
-  to {
-    opacity: 1;
-    -webkit-transform: translateX(-100%);
-            transform: translateX(-100%);
-  }
 }
 
 .xly-suspension-panel {

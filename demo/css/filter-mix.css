@@ -1,0 +1,65 @@
+.box {
+  position: relative;
+  left: 200px;
+  top: 200px;
+  width: 300px;
+  height: 500px;
+  background: #ccc;
+  -webkit-filter: contrast(20);
+          filter: contrast(20);
+}
+
+.box1 {
+  left: 20px;
+  top: 50%;
+  margin-top: -50px;
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background: #000;
+  -webkit-filter: blur(5px);
+          filter: blur(5px);
+  -webkit-animation: move1 3s ease-out infinite;
+          animation: move1 3s ease-out infinite;
+  border-radius: 50%;
+}
+
+.box2 {
+  right: 40px;
+  top: 50%;
+  margin-top: -40px;
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  background: red;
+  -webkit-filter: blur(5px);
+          filter: blur(5px);
+  -webkit-animation: move2 3s ease-out infinite;
+          animation: move2 3s ease-out infinite;
+  border-radius: 50%;
+}
+
+@-webkit-keyframes move2 {
+  50% {
+    right: 140px;
+  }
+}
+
+@keyframes move2 {
+  50% {
+    right: 140px;
+  }
+}
+
+@-webkit-keyframes move1 {
+  50% {
+    left: 140px;
+  }
+}
+
+@keyframes move1 {
+  50% {
+    left: 140px;
+  }
+}
+/*# sourceMappingURL=filter-mix.css.map */
