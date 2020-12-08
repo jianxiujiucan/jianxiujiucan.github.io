@@ -1,0 +1,538 @@
+/***
+ @author ----- ningwenjing 
+ @design ----- dinglan 
+ @time   ----- 2014-06-11
+***/
+body,
+dl,
+dd,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+form {
+  margin: 0;
+}
+ol,
+ul,
+input {
+  margin: 0;
+  padding: 0;
+}
+body,
+button,
+input,
+select,
+textarea {
+  font: 12px/1.5 tahoma, arial, \5b8b\4f53, sans-serif;
+  outline: none;
+}
+ul,
+ol {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  outline: 0 none;
+  color: #000;
+}
+a:hover {
+  text-decoration: underline;
+}
+img {
+  border: 0;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+button {
+  cursor: pointer;
+}
+i,
+em {
+  font-style: normal;
+}
+.fix:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: ".";
+  clear: both;
+  height: 0;
+}
+.fix {
+  *zoom: 1;
+}
+.hide {
+  display: none;
+}
+.font_yh {
+  font-family: \5fae\8f6f\96c5\9ed1, sans-serif;
+}
+html {
+  overflow-x: hidden;
+}
+body {
+  background: url(../img/bg.jpg) repeat;
+}
+.wp {
+  background: url(../img/bg_body.jpg) center 0 no-repeat;
+  font-family: \5fae\8f6f\96c5\9ed1, sans-serif;
+}
+.wp_in {
+  width: 1000px;
+  margin: 0 auto;
+  background: url(../img/bg_t_1.jpg) center 0 no-repeat;
+}
+.wp_in .top {
+  height: 848px;
+  background: url(../img/bg_t_2.jpg) 0 360px no-repeat;
+  position: relative;
+}
+.wp_in .logo {
+  width: 150px;
+  height: 65px;
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 10px;
+  text-indent: -999em;
+}
+.wp_in h2 {
+  width: 230px;
+  height: 418px;
+  background: url(../img/spr_24.png) 0 -216px no-repeat;
+  position: absolute;
+  text-indent: -999em;
+  left: 132px;
+  top: 48px;
+}
+.wp_in h3 {
+  width: 23px;
+  height: 236px;
+  background: url(../img/spr_24.png) -230px -433px no-repeat;
+  position: absolute;
+  text-indent: -999em;
+  left: 378px;
+  top: 105px;
+}
+.wp_in .btn_start {
+  width: 326px;
+  height: 108px;
+  display: block;
+  position: absolute;
+  text-indent: -999em;
+  left: 122px;
+  top: 458px;
+  background: url(../img/spr_24.png) no-repeat;
+}
+.wp_in .btn_start:hover {
+  background-position: 0 -108px;
+}
+.wp_in .flag {
+  width: 64px;
+  height: 205px;
+  background: url(../img/spr_24.png) -230px -216px no-repeat;
+  position: absolute;
+  display: block;
+  text-indent: -999em;
+  left: 42px;
+  top: 130px;
+}
+.wp_in .ser {
+  width: 132px;
+  height: 34px;
+  position: absolute;
+  left: 180px;
+  top: 550px;
+  z-index: 2;
+}
+.wp_in .ser .ser_cho {
+  width: 132px;
+  height: 34px;
+  line-height: 34px;
+  display: block;
+  background: url(../img/spr_8.png) no-repeat;
+  padding-left: 35px;
+  color: #7b7472;
+  z-index: 3;
+  position: relative;
+}
+.wp_in .ser_dp {
+  width: 124px;
+  border: solid 3px #cfc7b6;
+  position: absolute;
+  top: 24px;
+  padding: 12px 0 0 0;
+  background: #f4f2ee;
+}
+.wp_in .ser_dp a {
+  color: #7b7472;
+  display: block;
+  padding-left: 32px;
+  line-height: 20px;
+}
+.wp_in .link_enter {
+  color: #852d37;
+  font-weight: bold;
+  left: 317px;
+  top: 555px;
+  position: absolute;
+  font-size: 14px;
+  text-shadow: 1px 1px 2px #fff;
+}
+.wp_in .btn_player {
+  width: 41px;
+  height: 42px;
+  background: url(../img/spr_24.png) -260px -434px no-repeat;
+  position: absolute;
+  left: 215px;
+  top: 647px;
+  text-indent: -999em;
+}
+
+.wp_in .main {
+  margin-top: -53px;
+}
+.wp_in .main h4 {
+  position: relative;
+  font-size: 28px;
+  color: #898380;
+  font-weight: normal;
+  padding: 0 0 0 130px;
+  *zoom: 1;
+}
+.wp_in .ico_tit {
+  width: 106px;
+  height: 93px;
+  background: url(../img/spr_8.png) 0 -249px no-repeat;
+  display: block;
+  position: absolute;
+  left: 10px;
+  top: -20px;
+}
+.wp_in .tit2 {
+  background-position: -112px -249px;
+}
+.wp_in .rule {
+  margin: 10px 0 0 130px;
+  line-height: 20px;
+}
+.wp_in .rule li {
+  position: relative;
+  padding: 0 0 0 64px;
+  color: #898380;
+  *zoom: 1;
+}
+.wp_in .rule em {
+  color: #df7a49;
+}
+.wp_in .rule span {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.wp_in .rule .sub li {
+  padding: 0 0 0 34px;
+}
+.wp_in .rule .sub li i {
+  width: 18px;
+  height: 17px;
+  line-height: 15px;
+  text-align: center;
+  color: #fff;
+  position: absolute;
+  left: 0;
+  background: url(../img/spr_8.png) 0 -34px no-repeat;
+}
+.wp_in .reel {
+  width: 962px;
+  height: 280px;
+  
+  margin: 15px 0 0;
+  position: relative;
+  overflow: hidden;
+}
+.wp_in .reel_l,
+.wp_in .reel_r {
+  width: 41px;
+  height: 285px;
+  display: block;
+  position: absolute;
+  top: 141px;
+  background: url(../img/spr_24.png) no-repeat;
+}
+.wp_in .reel_l {
+  left: -10px;
+  background-position: 0 -670px;
+  display: none;
+  _display: block;
+}
+.wp_in .reel_r {
+  right: 36px;
+  background-position: -41px -670px;
+  display: none;
+  _display: block;
+}
+.wp_in .reel_con {
+  width: 962px;
+  height: 280px;
+  padding: 5px 0 0 63px;
+  color: #54514f;
+  font-size: 14px;
+  background: url(../img/reel.png) no-repeat;
+  box-sizing: border-box;
+}
+.wp_in .reel_con h6 {
+  font-size: 16px;
+  margin: 0 0 40px;
+  line-height: 20px;
+}
+.wp_in .reel_con li {
+  width: 145px;
+  float: left;
+  text-align: center;
+  padding: 20px 0 0;
+  line-height: 38px;
+}
+.wp_in .reel_con .n {
+  width: 90px;
+  height: 54px;
+  padding: 6px;
+  display: block;
+  margin: 60px auto 15px;
+  text-align: center;
+}
+.wp_in .reel_con .g {
+  width: 52px;
+  height: 54px;
+  padding: 6px;
+  background: url(../img/spr_8.png) 0 -342px no-repeat;
+  display: block;
+  margin: 60px auto 15px;
+}
+.wp_in .reel_con .c {
+  color: #983d00;
+}
+.wp_in .mark_l,
+.wp_in .mark_r {
+  background: url(../img/bg.jpg) repeat;
+  width: 481px;
+  height: 280px;
+  position: absolute;
+  top: 145px;
+}
+.wp_in .mark_r {
+  left: 481px;
+}
+.wp_in .part1,
+.wp_in .part2 {
+  position: relative;
+}
+.part1{
+  opacity: 0;
+}
+.wp_in .part2 {
+  margin: 30px 0 0 0;
+}
+.wp_in .cloud {
+  width: 582px;
+  height: 187px;
+  display: block;
+  position: absolute;
+  background: url(../img/bg_cloud.jpg) no-repeat;
+  left: 657px;
+  top: -35px;
+}
+
+.wp_in .btn_nor {
+  width: 260px;
+  height: 100px;
+  display: block;
+  margin: 0 auto;
+  line-height: 100px;
+  color: #5b3c40;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  background: url(../img/spr_8.png) 0 -51px no-repeat;
+}
+.wp_in .btn_nor:hover {
+  background-position: 0 -152px;
+  text-decoration: none;
+}
+.txt_note {
+  text-align: right;
+  margin: 2px 60px 0 0;
+  position: relative;
+}
+.txt_note span {
+  font-size: 20px;
+  color: #aa6849;
+  display: inline-block;
+  padding: 0 5px 0 0;
+  vertical-align: middle;
+}
+.txt_warn {
+  text-align: center;
+  font-size: 16px;
+  color: #e5682c;
+  font-weight: bold;
+}
+.txt_warn em {
+  color: #983d00;
+  font-weight: bold;
+}
+.level li {
+  margin: 60px 0 0 190px;
+  width: 282px;
+  float: left;
+}
+.level li p {
+  font-size: 16px;
+  color: #afa27f;
+  margin: 30px 0 0;
+}
+.level .lev_mrg {
+  margin: 60px 0 0 123px;
+}
+.lev_des {
+  width: 282px;
+  height: 282px;
+  background: url(../img/spr_8.png) 0 -412px no-repeat;
+  text-align: center;
+  margin: 0 0 15px 0;
+}
+.level h5 {
+  font-size: 22px;
+  color: #864639;
+  line-height: 80px;
+  margin: 0 0 10px 0;
+}
+
+.sys_footer {
+  background: url(../img/bg_f.jpg) center 0 no-repeat;
+}
+.foot {
+  padding: 98px 0 40px 0;
+  color: #a8a59f;
+}
+.foot a {
+  color: #a8a59f;
+}
+
+/* CSS3 Animation */
+.wp_in h2 {
+  -webkit-animation: show 0.2s 0.8s ease both;
+  animation: show 0.2s 0.8s ease both;
+}
+@-webkit-keyframes show {
+  0% {
+    -webkit-transform: scale(2);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: scale(1);
+    opacity: 1;
+  }
+}
+@keyframes show {
+  0% {
+    transform: scale(2);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+.wp_in h3 {
+  -webkit-animation: fadeIn 1s 1s ease both;
+  animation: fadeIn 1s 1s ease both;
+}
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.wp_in .btn_start {
+  animation: full 0.3s 1.8s ease both;
+}
+@-webkit-keyframes full {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 326px;
+  }
+}
+@keyframes full {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 326px;
+  }
+}
+.part1.ani{
+  opacity: 1;
+}
+.ani .reel_l {
+  display: block;
+
+  animation: moveL1 1.8s .5s both;
+}
+.ani .reel_r {
+  display: block;
+  animation: moveR1 1.6s .5s both;
+}
+
+
+
+@keyframes moveL1 {
+  0% {
+    transform: translateX(481px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+
+
+@keyframes moveR1 {
+  0% {
+    transform: translateX(-446px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.ani .reel_con{
+  animation: clip-con 1.8s .5s both;
+}
+
+@keyframes clip-con{
+  0%{
+    clip-path: polygon(50% 0%, 50% 0, 50% 100%, 50% 100%);
+  }
+  100%{
+    clip-path: polygon(0% 0%, 100% 0, 100% 100%, 0 100%);
+  }
+}

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>预研</title>
+    <link rel="stylesheet" href="css/group.css" />
+  </head>
+  <body>
+    <div class="box">
+      <div class="xly-gathor-effect is-rotate">
+        <span class="xly-gathor-effect__round-1"></span>
+        <span class="xly-gathor-effect__round-2"></span>
+        <span class="xly-gathor-effect__round-4"></span>
+        <span class="xly-gathor-effect__round-main">
+          <img
+            src="http://xl_public_service.gitlab.xunlei.cn/thunder-ui/lib/img/user.jpg"
+            alt=""
+          />
+        </span>
+        <div class="xly-ball-wrap is-rotate">
+          <div class="xly-ball-box">
+            <div class="xly-gathor-ball xly-gathor-ball-1">
+              <div class="xly-gathor-ball__inner"></div>
+            </div>
+            <div class="xly-gathor-ball xly-gathor-ball-2">
+              <div class="xly-gathor-ball__inner"></div>
+            </div>
+            <div class="xly-gathor-ball xly-gathor-ball-3">
+              <div class="xly-gathor-ball__inner"></div>
+            </div>
+            <div class="xly-gathor-ball xly-gathor-ball-4">
+              <div class="xly-gathor-ball__inner"></div>
+            </div>
+            <div class="xly-gathor-ball xly-gathor-ball-5">
+              <div class="xly-gathor-ball__inner"></div>
+            </div>
+            <div class="xly-gathor-ball xly-gathor-ball-6">
+              <div class="xly-gathor-ball__inner"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="button">显示遮罩</button>
+    <script>
+      let wrap = document.querySelector(".xly-ball-wrap");
+      document.querySelector(".button").addEventListener("click", function () {
+        if (wrap.classList.contains("show-mask")) {
+          this.innerHTML = "显示遮罩";
+          wrap.classList.remove("show-mask");
+        } else {
+          this.innerHTML = "隐藏遮罩";
+          wrap.classList.add("show-mask");
+        }
+      });
+    </script>
+  </body>
+</html>

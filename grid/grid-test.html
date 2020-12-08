@@ -6,9 +6,10 @@
   <title>Test</title>
   <style>
     .box{
-      width: 800px;
+      width: 700px;
       display: grid;
-      grid-template-columns: 100px auto 100px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px
     }
     .item1{
       background: rgba(0,0,0,.1);
@@ -19,21 +20,72 @@
     .item3{
       background: rgba(0,0,0,.3);
     }
+    .item{
+      background: #ccc;
+    }
+    .pic{
+      display: flex;
+      margin: 15px auto;
+      width: 200px;
+      height: 200px;
+      background: #ccc;
+    }
+    .pic:before{
+      margin: auto;
+      content: '200x200';
+    }
   </style>
 </head>
 <body>
   <div class="box">
-    <div class="item1">1111</div>
-    <div class="item2">222</div>
-    <div class="item3">333</div>
+    <div class="item1">
+      <div class="pic"></div>
+      <p>111</p>
+    </div>
+    <div class="item2">
+      <div class="pic"></div>
+      <p>222</p>
+    </div>
+    <div class="item3">
+      <div class="pic"></div>
+      <p>333</p>
+    </div>
+    <div class="item">
+      <div class="pic"></div>
+    </div>
+    <div class="item">
+      <div class="pic"></div>
+    </div>
+    <div class="item">
+      <div class="pic"></div>
+    </div>
+    <div class="item">
+      <div class="pic"></div>
+    </div>
+    <div class="item">
+      <div class="pic"></div>
+    </div>
   </div>
+  
   <div class="box">
-    <div class="item1">1111</div>
-    <div class="item2">222</div>
-  </div>
-  <div class="box">
-    <div class="item1">1111</div>
-    <div class="item2">222</div>
+    <div class="item1">
+      <div class="pic"></div>
+      <p>111</p>
+    </div>
+    <div class="item2">
+      <div class="pic"></div>
+      <p>222</p>
+    </div>
+    <div class="item3">
+      <div class="pic"></div>
+      <p>333</p>
+    </div>
+    <div class="item">
+      <div class="pic"></div>
+    </div>
+    <div class="item">
+      <div class="pic"></div>
+    </div>
   </div>
 </body>
 </html>

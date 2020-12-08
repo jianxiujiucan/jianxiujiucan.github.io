@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      main {
+        width: 150px;
+        height: 80px;
+      
+        border-radius: 50%;
+        position: relative;
+        margin: 20px;
+      }
+      div {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+      animation: move 3s linear infinite;
+      }
+      @keyframes move {
+        0%,
+        100% {
+          transform: translate(20px, 0);
+        }
+
+        25%,
+        75% {
+          transform: translate(0, 0);
+        }
+        50% {
+          transform: translate(-20px, 0);
+        }
+      }
+      p {
+        margin: 0;
+        width: 20px;
+        height: 20px;
+        margin: -50%;
+        border-radius: 50%;
+        background: radial-gradient(at center 5px, #eee, #000);
+        animation: rotate 3s linear infinite;
+      }
+      @keyframes rotate {
+        0% {
+          transform: rotate(0deg) translate(40px, 0);
+        }
+        100% {
+          transform: rotate(360deg) translate(40px, 0);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div>
+        <p></p>
+      </div>
+    </main>
+  </body>
+</html>
