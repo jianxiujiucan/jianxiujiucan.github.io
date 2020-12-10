@@ -88,6 +88,7 @@
   width: 12px;
   height: 12px;
   offset-rotate: 0deg;
+  offset-path: path("M88.25,1.1c47.52,0.16,85.85,9.95,85.85,22c0,12.15-38.95,22-87,22c-48.05,0-87-9.85-87-22\a     c0-12.15,38.95-22,87-22L88.25,1.1 M88.25,1.1");
   -webkit-transition: 0.8s;
   transition: 0.8s;
 }
@@ -139,73 +140,66 @@
   margin: auto;
 }
 
-.xly-gathor-ball-1 {
-  offset-path: path("M88.25,1.1c47.52,0.16,85.85,9.95,85.85,22c0,12.15-38.95,22-87,22c-48.05,0-87-9.85-87-22\a c0-12.15,38.95-22,87-22L88.25,1.1 M88.25,1.1");
-}
-
-.xly-gathor-ball-2 {
-  offset-path: path("M150.5,8.1c14.6,3.9,23.5,9.2,23.5,15c0,12.2-39,22-87,22c-48,0-87-9.8-87-22c0-17.5,39-22,87-22\a c23.9,0,45.6,2.4,61.3,6.4L150.5,8.1z");
-}
-
-.xly-gathor-ball-3 {
-  offset-path: path("M146.2,39.2c-15.5,3.7-36.4,5.9-59.3,5.9c-48,0-87-9.8-87-22c0-17.5,39-22,87-22c48,0,87,9.8,87,22\a c0,6.2-10,11.7-26.2,15.7L146.2,39.2z");
-}
-
-.xly-gathor-ball-4 {
-  offset-path: path("M87.2,45.1c-0.1,0-0.1,0-0.2,0l-0.6,0C38.6,45,0,35.2,0,23.1c0-17.5,39-22,87-22c48,0,87,9.8,87,22\a C174,35.2,135.1,45.1,87.2,45.1");
-}
-
-.xly-gathor-ball-5 {
-  offset-path: path("M20.9,37.4C7.9,33.6,0,28.6,0,23.1c0-17.5,39-22,87-22c48,0,87,9.8,87,22c0,12.2-39,22-87,22\a c-25.7,0-48.8-2.8-64.7-7.3L20.9,37.4z");
-}
-
-.xly-gathor-ball-6 {
-  offset-path: path("M23.4,6C39.3,2.3,61.9,1.1,87,1.1c48,0,87,9.8,87,22c0,12.2-39,22-87,22c-48,0-87-9.8-87-22\a C0,15,8.3,9.7,22.1,6.3L23.4,6z");
-}
-
 .is-rotate .xly-gathor-ball-1 {
-  -webkit-animation: rotate1 6s linear infinite;
-          animation: rotate1 6s linear infinite;
+  -webkit-animation: rotate 6s -1s linear infinite, scale 6s -1s linear infinite;
+          animation: rotate 6s -1s linear infinite, scale 6s -1s linear infinite;
 }
 
 .is-rotate .xly-gathor-ball-2 {
-  -webkit-animation: rotate2 6s linear infinite;
-          animation: rotate2 6s linear infinite;
+  -webkit-animation: rotate 6s -2s linear infinite, scale 6s -2s linear infinite;
+          animation: rotate 6s -2s linear infinite, scale 6s -2s linear infinite;
 }
 
 .is-rotate .xly-gathor-ball-3 {
-  -webkit-animation: rotate3 6s linear infinite;
-          animation: rotate3 6s linear infinite;
+  -webkit-animation: rotate 6s -3s linear infinite, scale 6s -3s linear infinite;
+          animation: rotate 6s -3s linear infinite, scale 6s -3s linear infinite;
 }
 
 .is-rotate .xly-gathor-ball-4 {
-  -webkit-animation: rotate4 6s linear infinite;
-          animation: rotate4 6s linear infinite;
+  -webkit-animation: rotate 6s -4s linear infinite, scale 6s -4s linear infinite;
+          animation: rotate 6s -4s linear infinite, scale 6s -4s linear infinite;
 }
 
 .is-rotate .xly-gathor-ball-5 {
-  -webkit-animation: rotate5 6s linear infinite;
-          animation: rotate5 6s linear infinite;
+  -webkit-animation: rotate 6s -5s linear infinite, scale 6s -5s linear infinite;
+          animation: rotate 6s -5s linear infinite, scale 6s -5s linear infinite;
 }
 
 .is-rotate .xly-gathor-ball-6 {
-  -webkit-animation: rotate6 6s linear infinite;
-          animation: rotate6 6s linear infinite;
+  -webkit-animation: rotate 6s -6s linear infinite, scale 6s -6s linear infinite;
+          animation: rotate 6s -6s linear infinite, scale 6s -6s linear infinite;
 }
 
 .is-rotate .xly-gathor-ball-7 {
-  -webkit-animation: rotate7 6s linear infinite;
-          animation: rotate7 6s linear infinite;
+  -webkit-animation: rotate 6s -7s linear infinite, scale 6s -7s linear infinite;
+          animation: rotate 6s -7s linear infinite, scale 6s -7s linear infinite;
 }
 
 .is-rotate .xly-gathor-ball-8 {
-  -webkit-animation: rotate8 6s linear infinite;
-          animation: rotate8 6s linear infinite;
+  -webkit-animation: rotate 6s -8s linear infinite, scale 6s -8s linear infinite;
+          animation: rotate 6s -8s linear infinite, scale 6s -8s linear infinite;
 }
 
-@-webkit-keyframes rotate1 {
+@-webkit-keyframes rotate {
   0% {
     offset-distance: 0%;
+  }
+  100% {
+    offset-distance: 100%;
+  }
+}
+
+@keyframes rotate {
+  0% {
+    offset-distance: 0%;
+  }
+  100% {
+    offset-distance: 100%;
+  }
+}
+
+@-webkit-keyframes scale {
+  0%, 100% {
     -webkit-transform: scale(1);
             transform: scale(1);
   }
@@ -213,229 +207,16 @@
     -webkit-transform: scale(2);
             transform: scale(2);
   }
-  100% {
-    offset-distance: 100%;
-    -webkit-transform: scale(1);
-            transform: scale(1);
-  }
 }
 
-@keyframes rotate1 {
-  0% {
-    offset-distance: 0%;
+@keyframes scale {
+  0%, 100% {
     -webkit-transform: scale(1);
             transform: scale(1);
   }
   50% {
     -webkit-transform: scale(2);
             transform: scale(2);
-  }
-  100% {
-    offset-distance: 100%;
-    -webkit-transform: scale(1);
-            transform: scale(1);
-  }
-}
-
-@-webkit-keyframes rotate2 {
-  0% {
-    offset-distance: 0%;
-    -webkit-transform: scale(1.33);
-            transform: scale(1.33);
-  }
-  28.6% {
-    -webkit-transform: scale(2);
-            transform: scale(2);
-  }
-  85.7% {
-    -webkit-transform: scale(1);
-            transform: scale(1);
-  }
-  100% {
-    offset-distance: 100%;
-    -webkit-transform: scale(1.33);
-            transform: scale(1.33);
-  }
-}
-
-@keyframes rotate2 {
-  0% {
-    offset-distance: 0%;
-    -webkit-transform: scale(1.33);
-            transform: scale(1.33);
-  }
-  28.6% {
-    -webkit-transform: scale(2);
-            transform: scale(2);
-  }
-  85.7% {
-    -webkit-transform: scale(1);
-            transform: scale(1);
-  }
-  100% {
-    offset-distance: 100%;
-    -webkit-transform: scale(1.33);
-            transform: scale(1.33);
-  }
-}
-
-@-webkit-keyframes rotate3 {
-  0% {
-    offset-distance: 0%;
-    -webkit-transform: scale(1.66);
-            transform: scale(1.66);
-  }
-  14.3% {
-    -webkit-transform: scale(2);
-            transform: scale(2);
-  }
-  57.1% {
-    -webkit-transform: scale(1);
-            transform: scale(1);
-  }
-  100% {
-    offset-distance: 100%;
-    -webkit-transform: scale(1.66);
-            transform: scale(1.66);
-  }
-}
-
-@keyframes rotate3 {
-  0% {
-    offset-distance: 0%;
-    -webkit-transform: scale(1.66);
-            transform: scale(1.66);
-  }
-  14.3% {
-    -webkit-transform: scale(2);
-            transform: scale(2);
-  }
-  57.1% {
-    -webkit-transform: scale(1);
-            transform: scale(1);
-  }
-  100% {
-    offset-distance: 100%;
-    -webkit-transform: scale(1.66);
-            transform: scale(1.66);
-  }
-}
-
-@-webkit-keyframes rotate4 {
-  0% {
-    offset-distance: 0%;
-    -webkit-transform: scale(2);
-            transform: scale(2);
-  }
-  50% {
-    -webkit-transform: scale(1);
-            transform: scale(1);
-  }
-  100% {
-    offset-distance: 100%;
-    -webkit-transform: scale(2);
-            transform: scale(2);
-  }
-}
-
-@keyframes rotate4 {
-  0% {
-    offset-distance: 0%;
-    -webkit-transform: scale(2);
-            transform: scale(2);
-  }
-  50% {
-    -webkit-transform: scale(1);
-            transform: scale(1);
-  }
-  100% {
-    offset-distance: 100%;
-    -webkit-transform: scale(2);
-            transform: scale(2);
-  }
-}
-
-@-webkit-keyframes rotate5 {
-  0% {
-    offset-distance: 0%;
-    -webkit-transform: scale(1.66);
-            transform: scale(1.66);
-  }
-  28.6% {
-    -webkit-transform: scale(1);
-            transform: scale(1);
-  }
-  85.7% {
-    -webkit-transform: scale(2);
-            transform: scale(2);
-  }
-  100% {
-    offset-distance: 100%;
-    -webkit-transform: scale(1.66);
-            transform: scale(1.66);
-  }
-}
-
-@keyframes rotate5 {
-  0% {
-    offset-distance: 0%;
-    -webkit-transform: scale(1.66);
-            transform: scale(1.66);
-  }
-  28.6% {
-    -webkit-transform: scale(1);
-            transform: scale(1);
-  }
-  85.7% {
-    -webkit-transform: scale(2);
-            transform: scale(2);
-  }
-  100% {
-    offset-distance: 100%;
-    -webkit-transform: scale(1.66);
-            transform: scale(1.66);
-  }
-}
-
-@-webkit-keyframes rotate6 {
-  0% {
-    offset-distance: 0%;
-    -webkit-transform: scale(1.33);
-            transform: scale(1.33);
-  }
-  14.3% {
-    -webkit-transform: scale(1);
-            transform: scale(1);
-  }
-  57.1% {
-    -webkit-transform: scale(2);
-            transform: scale(2);
-  }
-  100% {
-    offset-distance: 100%;
-    -webkit-transform: scale(1.33);
-            transform: scale(1.33);
-  }
-}
-
-@keyframes rotate6 {
-  0% {
-    offset-distance: 0%;
-    -webkit-transform: scale(1.33);
-            transform: scale(1.33);
-  }
-  14.3% {
-    -webkit-transform: scale(1);
-            transform: scale(1);
-  }
-  57.1% {
-    -webkit-transform: scale(2);
-            transform: scale(2);
-  }
-  100% {
-    offset-distance: 100%;
-    -webkit-transform: scale(1.33);
-            transform: scale(1.33);
   }
 }
 
