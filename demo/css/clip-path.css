@@ -2,7 +2,7 @@
   position: relative;
   width: 500px;
   height: 500px;
-  border: dashed 1px #ccc;
+  margin: auto;
 }
 
 .triangle {
@@ -36,8 +36,8 @@
 }
 
 .box:hover .triangle2 {
-  -webkit-clip-path: polygon(173px 150px, 219px 163px, 220px 341px);
-          clip-path: polygon(173px 150px, 219px 163px, 220px 341px);
+  -webkit-clip-path: polygon(173px 151px, 219px 164px, 220px 342px);
+          clip-path: polygon(173px 151px, 219px 164px, 220px 342px);
   background: #3cae58;
 }
 
