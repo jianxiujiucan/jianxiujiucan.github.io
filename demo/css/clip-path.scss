@@ -1,0 +1,42 @@
+.box {
+  position: relative;
+  width: 500px;
+  height: 500px;
+  border: dashed 1px #ccc;
+}
+.triangle {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  transition: 0.5s;
+}
+
+$bg1: #f8b551, #f19149,#ec6941,#f29b76, #ec6941,#f19149, #ec6941;
+$bg2: #53a245, #3cae58,#5ec857,#51c356, #8ad36d,#44af3c, #51c356;
+$path1: polygon(224px 150px, 276px 150px, 160px 350px),
+  polygon(245px 204px, 200px 350px, 160px 350px),
+  polygon(276px 150px, 292px 350px, 247px 200px),
+  polygon(276px 150px, 320px 282px, 291px 350px),
+  polygon(320px 282px, 340px 350px, 291px 350px),
+  polygon(224px 272px, 269px 272px, 280px 309px),
+  polygon(224px 272px, 280px 309px, 212px 309px);
+$path2: polygon(173px 150px, 220px 341px, 174px 350px),
+  polygon(173px 150px, 219px 163px, 220px 341px),
+  polygon(327px 150px, 282px 163px, 282px 335px),
+  polygon(327px 150px, 282px 335px, 328px 266px),
+  polygon(328px 266px, 282px 335px, 328px 350px),
+  polygon(219px 228px, 282px 267px, 282px 228px),
+  polygon(219px 228px, 219px 267px, 282px 266px);
+
+@for $i from 1 through 7 {
+  .triangle#{$i} {
+    clip-path: nth($path1, $i);
+    background: nth($bg1, $i);
+    transition-delay: #{$i * 0.1}s;
+  }
+  .box:hover .triangle#{$i} {
+    clip-path: nth($path2, $i);
+    
+    background: nth($bg2, $i);
+  }
+}

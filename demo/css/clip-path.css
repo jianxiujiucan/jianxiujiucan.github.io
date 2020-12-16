@@ -1,0 +1,113 @@
+.box {
+  position: relative;
+  width: 500px;
+  height: 500px;
+  border: dashed 1px #ccc;
+}
+
+.triangle {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.triangle1 {
+  -webkit-clip-path: polygon(224px 150px, 276px 150px, 160px 350px);
+          clip-path: polygon(224px 150px, 276px 150px, 160px 350px);
+  background: #f8b551;
+  -webkit-transition-delay: 0.1s;
+          transition-delay: 0.1s;
+}
+
+.box:hover .triangle1 {
+  -webkit-clip-path: polygon(173px 150px, 220px 341px, 174px 350px);
+          clip-path: polygon(173px 150px, 220px 341px, 174px 350px);
+  background: #53a245;
+}
+
+.triangle2 {
+  -webkit-clip-path: polygon(245px 204px, 200px 350px, 160px 350px);
+          clip-path: polygon(245px 204px, 200px 350px, 160px 350px);
+  background: #f19149;
+  -webkit-transition-delay: 0.2s;
+          transition-delay: 0.2s;
+}
+
+.box:hover .triangle2 {
+  -webkit-clip-path: polygon(173px 150px, 219px 163px, 220px 341px);
+          clip-path: polygon(173px 150px, 219px 163px, 220px 341px);
+  background: #3cae58;
+}
+
+.triangle3 {
+  -webkit-clip-path: polygon(276px 150px, 292px 350px, 247px 200px);
+          clip-path: polygon(276px 150px, 292px 350px, 247px 200px);
+  background: #ec6941;
+  -webkit-transition-delay: 0.3s;
+          transition-delay: 0.3s;
+}
+
+.box:hover .triangle3 {
+  -webkit-clip-path: polygon(327px 150px, 282px 163px, 282px 335px);
+          clip-path: polygon(327px 150px, 282px 163px, 282px 335px);
+  background: #5ec857;
+}
+
+.triangle4 {
+  -webkit-clip-path: polygon(276px 150px, 320px 282px, 291px 350px);
+          clip-path: polygon(276px 150px, 320px 282px, 291px 350px);
+  background: #f29b76;
+  -webkit-transition-delay: 0.4s;
+          transition-delay: 0.4s;
+}
+
+.box:hover .triangle4 {
+  -webkit-clip-path: polygon(327px 150px, 282px 335px, 328px 266px);
+          clip-path: polygon(327px 150px, 282px 335px, 328px 266px);
+  background: #51c356;
+}
+
+.triangle5 {
+  -webkit-clip-path: polygon(320px 282px, 340px 350px, 291px 350px);
+          clip-path: polygon(320px 282px, 340px 350px, 291px 350px);
+  background: #ec6941;
+  -webkit-transition-delay: 0.5s;
+          transition-delay: 0.5s;
+}
+
+.box:hover .triangle5 {
+  -webkit-clip-path: polygon(328px 266px, 282px 335px, 328px 350px);
+          clip-path: polygon(328px 266px, 282px 335px, 328px 350px);
+  background: #8ad36d;
+}
+
+.triangle6 {
+  -webkit-clip-path: polygon(224px 272px, 269px 272px, 280px 309px);
+          clip-path: polygon(224px 272px, 269px 272px, 280px 309px);
+  background: #f19149;
+  -webkit-transition-delay: 0.6s;
+          transition-delay: 0.6s;
+}
+
+.box:hover .triangle6 {
+  -webkit-clip-path: polygon(219px 228px, 282px 267px, 282px 228px);
+          clip-path: polygon(219px 228px, 282px 267px, 282px 228px);
+  background: #44af3c;
+}
+
+.triangle7 {
+  -webkit-clip-path: polygon(224px 272px, 280px 309px, 212px 309px);
+          clip-path: polygon(224px 272px, 280px 309px, 212px 309px);
+  background: #ec6941;
+  -webkit-transition-delay: 0.7s;
+          transition-delay: 0.7s;
+}
+
+.box:hover .triangle7 {
+  -webkit-clip-path: polygon(219px 228px, 219px 267px, 282px 266px);
+          clip-path: polygon(219px 228px, 219px 267px, 282px 266px);
+  background: #51c356;
+}
+/*# sourceMappingURL=clip-path.css.map */
