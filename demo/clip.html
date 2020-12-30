@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>矩形裁切</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        display: flex;
+        justify-content: center;
+      }
+      .wrapper {
+        position: relative;
+        margin: 30px;
+      }
+      .box {
+        position: relative;
+        width: 300px;
+        height: 300px;
+        background: conic-gradient(#fff 25%,#ccc 25% 50%,#fff 50% 75%,#ccc 75%);
+        background-size: 16px 16px;
+        border: dashed 1px #000;
+      }
+      .box1:after {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        clip: rect(10px 180px 130px 20px);
+        background: #69f;
+        content: "";
+      }
+
+      .box2:after {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        clip-path: inset(10px 180px 130px 20px);
+        background: #69f;
+        content: "";
+      }
+      h2 {
+        line-height: 50px;
+        font-size: 15px;
+      }
+      .line {
+        position: absolute;
+        
+        width: 180px;
+        height: 2px;
+        text-align: center;
+        background: #ee6723;
+      }
+      .line:before,
+      .line:after {
+        position: absolute;
+        top: -4px;
+        width: 2px;
+        height: 10px;
+        background: #ee6723;
+        content: "";
+      }
+      .line:before {
+        left: 0px;
+      }
+      .line:after {
+        right: 0;
+      }
+      .wrapper1 .line {
+        top: 150px;
+        left: 0;
+      }
+      .wrapper1 .line2 {
+        left: 200px;
+        top: 0;
+        width: 130px;
+        transform: rotate(90deg);
+        transform-origin: left top;
+      }
+      .wrapper2 .line {
+        top: 100px;
+        right: 0;
+      }
+      .wrapper2 .line2 {
+        left: 70px;
+        top: 170px;
+        width: 130px;
+        transform: rotate(90deg);
+        transform-origin: left top;
+      }
+      .line span {
+        position: relative;
+        top: -10px;
+        padding: 2px 8px;
+        color: #fff;
+        font-size: 13px;
+        background: #ee6723;
+        border-radius: 3px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper wrapper1">
+      <h2>clip: rect(10px 180px 130px 20px)</h2>
+      <div class="box box1">
+        <div class="line">
+          <span>180px</span>
+        </div>
+        <div class="line line2">
+          <span>130px</span>
+        </div>
+      </div>
+    </div>
+    <div class="wrapper wrapper2">
+      <h2>clip-path: inset(10px 180px 130px 20px)</h2>
+      <div class="box box2">
+        <div class="line">
+          <span>180px</span>
+        </div>
+        <div class="line line2">
+          <span>130px</span>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

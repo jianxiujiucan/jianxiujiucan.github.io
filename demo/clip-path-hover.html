@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>响应区域</title>
+    <style>
+      .clip-box {
+        margin: 0 auto;
+        width: 200px;
+        height: 200px;
+        background: #000;
+        clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+        /* clip-path: inset(0 0 2em 1em round 2em); */
+      }
+      .show-box {
+        margin: 30px auto;
+        width: 200px;
+        line-height: 30px;
+        text-align: center;
+        background: #fff;
+        border-radius: 4px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+      }
+
+      .box {
+        width: 500px;
+        height: 500px;
+        background: #000;
+        -webkit-mask: linear-gradient(transparent 50%, #000 50%);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <div class="wrapper">
+        <div
+          class="clip-box"
+          @mouseover="handleHover"
+          @mouseleave="handleLeave"
+        ></div>
+        <div class="show-box" v-show="visible">这是一个测试盒子</div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+      new Vue({
+        el: "#app",
+        data: {
+          visible: false,
+        },
+        methods: {
+          handleHover() {
+            this.visible = true;
+          },
+          handleLeave() {
+            this.visible = false;
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
