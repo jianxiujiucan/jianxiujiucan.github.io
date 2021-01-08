@@ -41,7 +41,7 @@ button:hover {
           user-select: none;
   --ball-width: 50px;
   --ball-height: 50px;
-  height: 92px;
+  height: 112px;
 }
 
 .xly-suspension p {
@@ -49,9 +49,11 @@ button:hover {
 }
 
 .xly-suspension.is-vip-login {
-  -webkit-clip-path: polygon(100% 0, 100% 86px, 50% 100%, 0 86px, 0 0);
-          clip-path: polygon(100% 0, 100% 86px, 50% 100%, 0 86px, 0 0);
+  -webkit-clip-path: polygon(100% 0, 100% 106px, 50% 100%, 0 106px, 0 0);
+          clip-path: polygon(100% 0, 100% 106px, 50% 100%, 0 106px, 0 0);
   overflow: hidden;
+  -webkit-animation: maskAni 1s .2s both;
+          animation: maskAni 1s .2s both;
 }
 
 .xly-suspension.is-vip-login .xly-suspension-panel {
@@ -65,8 +67,8 @@ button:hover {
             transform: translate3d(0, 0, 0) scale(1) rotate(0);
   }
   50% {
-    -webkit-transform: translate3d(0, 85px, 0) scale(0.5) rotate(-90deg);
-            transform: translate3d(0, 85px, 0) scale(0.5) rotate(-90deg);
+    -webkit-transform: translate3d(0, 95px, 0) scale(0.5) rotate(-90deg);
+            transform: translate3d(0, 95px, 0) scale(0.5) rotate(-90deg);
   }
   80% {
     -webkit-transform: translate3d(0, -8px, 0) scale(1) rotate(0);
@@ -88,8 +90,8 @@ button:hover {
             transform: translate3d(0, 0, 0) scale(1) rotate(0);
   }
   50% {
-    -webkit-transform: translate3d(0, 85px, 0) scale(0.5) rotate(-90deg);
-            transform: translate3d(0, 85px, 0) scale(0.5) rotate(-90deg);
+    -webkit-transform: translate3d(0, 95px, 0) scale(0.5) rotate(-90deg);
+            transform: translate3d(0, 95px, 0) scale(0.5) rotate(-90deg);
   }
   80% {
     -webkit-transform: translate3d(0, -8px, 0) scale(1) rotate(0);
@@ -199,6 +201,7 @@ button:hover {
 
 .xly-suspension-panel {
   position: relative;
+  top: 10px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -386,7 +389,7 @@ button:hover {
 
 .xly-suspension-hole {
   position: absolute;
-  top: 75px;
+  top: 95px;
   left: 2px;
   display: none;
 }

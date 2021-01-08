@@ -34,28 +34,26 @@ button{
   user-select: none;
   --ball-width: 50px;
   --ball-height: 50px;
-  height: 92px;
-
+  height: 112px;
   p {
     cursor: default;
   }
 
-  @include when(vip-signup) {
-  }
 
   @include when(vip-login) {
-    clip-path: polygon(100% 0, 100% 86px, 50% 100%, 0 86px, 0 0);
-    overflow: hidden;
+    
+    clip-path: polygon(100% 0, 100% 106px, 50% 100%, 0 106px, 0 0);
+        overflow: hidden;
+    animation: maskAni 1s .2s both;
     .xly-suspension-panel {
       animation: changeBox 1.6s 0.9s both, changePanel 0.4s 1.3s both;
     }
-  
     @keyframes changeBox {
       0% {
         transform: translate3d(0, 0, 0) scale(1) rotate(0);
       }
       50% {
-        transform: translate3d(0, 85px, 0) scale(0.5) rotate(-90deg);
+        transform: translate3d(0, 95px, 0) scale(0.5) rotate(-90deg);
       }
       80%{
         transform: translate3d(0, -8px, 0) scale(1) rotate(0);
@@ -116,6 +114,7 @@ button{
 
 @include b(suspension-panel) {
   position: relative;
+  top: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -246,7 +245,7 @@ button{
 
 @include b(suspension-hole) {
   position: absolute;
-  top: 75px;
+  top: 95px;
   left: 2px;
   display: none;
   &:before {
