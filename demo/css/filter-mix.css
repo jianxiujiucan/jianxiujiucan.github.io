@@ -1,69 +1,84 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background: #000;
+}
+
 .box {
   position: relative;
-  left: 200px;
-  top: 200px;
-  width: 300px;
-  height: 500px;
-  background: #ccc;
-  -webkit-filter: contrast(20);
-          filter: contrast(20);
+  width: 400px;
+  height: 100vh;
+  -webkit-filter: contrast(10);
+          filter: contrast(10);
+  background: #000;
 }
 
 .box1 {
-  left: 20px;
+  left: 120px;
   top: 50%;
-  margin-top: -50px;
+  margin-top: -75px;
   position: absolute;
-  width: 100px;
-  height: 100px;
-  background: #000;
+  width: 150px;
+  height: 150px;
+  background: #fff;
   -webkit-filter: blur(5px);
           filter: blur(5px);
-  -webkit-animation: move1 3s ease-out infinite;
-          animation: move1 3s ease-out infinite;
+  -webkit-animation: move1 5s ease-out infinite;
+          animation: move1 5s ease-out infinite;
   border-radius: 50%;
-  color: #fff;
 }
 
 .box2 {
-  right: 40px;
+  left: 250px;
   top: 50%;
-  margin-top: -40px;
+  margin-top: -60px;
   position: absolute;
-  width: 80px;
-  height: 80px;
-  color: #fff;
+  width: 120px;
+  height: 120px;
   text-align: center;
   line-height: 100px;
-  background: black;
+  background: red;
   -webkit-filter: blur(5px);
           filter: blur(5px);
-  -webkit-animation: move2 3s ease-out infinite;
-          animation: move2 3s ease-out infinite;
+  -webkit-animation: move2 5s ease-out infinite;
+          animation: move2 5s ease-out infinite;
   border-radius: 50%;
-}
-
-@-webkit-keyframes move2 {
-  50% {
-    right: 140px;
-  }
-}
-
-@keyframes move2 {
-  50% {
-    right: 140px;
-  }
 }
 
 @-webkit-keyframes move1 {
   50% {
-    left: 140px;
+    -webkit-transform: translateX(100px);
+            transform: translateX(100px);
   }
 }
 
 @keyframes move1 {
   50% {
-    left: 140px;
+    -webkit-transform: translateX(100px);
+            transform: translateX(100px);
+  }
+}
+
+@-webkit-keyframes move2 {
+  50% {
+    -webkit-transform: translateX(-200px);
+            transform: translateX(-200px);
+  }
+}
+
+@keyframes move2 {
+  50% {
+    -webkit-transform: translateX(-200px);
+            transform: translateX(-200px);
   }
 }
 /*# sourceMappingURL=filter-mix.css.map */
