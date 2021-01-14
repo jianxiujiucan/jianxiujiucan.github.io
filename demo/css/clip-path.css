@@ -13,7 +13,7 @@
   transition: 0.5s;
 }
 
-.triangle1 {
+.triangle:nth-child(1) {
   background: #f8b551;
   -webkit-clip-path: polygon(224px 150px, 276px 150px, 160px 350px);
           clip-path: polygon(224px 150px, 276px 150px, 160px 350px);
@@ -21,13 +21,13 @@
           transition-delay: 0.1s;
 }
 
-.box:hover .triangle1 {
+.box:hover .triangle:nth-child(1) {
   -webkit-clip-path: polygon(173px 150px, 220px 341px, 174px 350px);
           clip-path: polygon(173px 150px, 220px 341px, 174px 350px);
   background: #53a245;
 }
 
-.triangle2 {
+.triangle:nth-child(2) {
   background: #f19149;
   -webkit-clip-path: polygon(245px 204px, 200px 350px, 160px 350px);
           clip-path: polygon(245px 204px, 200px 350px, 160px 350px);
@@ -35,13 +35,13 @@
           transition-delay: 0.2s;
 }
 
-.box:hover .triangle2 {
+.box:hover .triangle:nth-child(2) {
   -webkit-clip-path: polygon(173px 151px, 219px 164px, 220px 342px);
           clip-path: polygon(173px 151px, 219px 164px, 220px 342px);
   background: #3cae58;
 }
 
-.triangle3 {
+.triangle:nth-child(3) {
   background: #ec6941;
   -webkit-clip-path: polygon(276px 150px, 292px 350px, 247px 200px);
           clip-path: polygon(276px 150px, 292px 350px, 247px 200px);
@@ -49,13 +49,13 @@
           transition-delay: 0.3s;
 }
 
-.box:hover .triangle3 {
+.box:hover .triangle:nth-child(3) {
   -webkit-clip-path: polygon(327px 150px, 282px 163px, 282px 335px);
           clip-path: polygon(327px 150px, 282px 163px, 282px 335px);
   background: #5ec857;
 }
 
-.triangle4 {
+.triangle:nth-child(4) {
   background: #f29b76;
   -webkit-clip-path: polygon(276px 150px, 320px 282px, 291px 350px);
           clip-path: polygon(276px 150px, 320px 282px, 291px 350px);
@@ -63,13 +63,13 @@
           transition-delay: 0.4s;
 }
 
-.box:hover .triangle4 {
+.box:hover .triangle:nth-child(4) {
   -webkit-clip-path: polygon(327px 150px, 282px 335px, 328px 266px);
           clip-path: polygon(327px 150px, 282px 335px, 328px 266px);
   background: #51c356;
 }
 
-.triangle5 {
+.triangle:nth-child(5) {
   background: #ec6941;
   -webkit-clip-path: polygon(320px 282px, 340px 350px, 291px 350px);
           clip-path: polygon(320px 282px, 340px 350px, 291px 350px);
@@ -77,13 +77,13 @@
           transition-delay: 0.5s;
 }
 
-.box:hover .triangle5 {
+.box:hover .triangle:nth-child(5) {
   -webkit-clip-path: polygon(328px 266px, 282px 335px, 328px 350px);
           clip-path: polygon(328px 266px, 282px 335px, 328px 350px);
   background: #8ad36d;
 }
 
-.triangle6 {
+.triangle:nth-child(6) {
   background: #f19149;
   -webkit-clip-path: polygon(224px 272px, 269px 272px, 280px 309px);
           clip-path: polygon(224px 272px, 269px 272px, 280px 309px);
@@ -91,13 +91,13 @@
           transition-delay: 0.6s;
 }
 
-.box:hover .triangle6 {
+.box:hover .triangle:nth-child(6) {
   -webkit-clip-path: polygon(219px 228px, 282px 267px, 282px 228px);
           clip-path: polygon(219px 228px, 282px 267px, 282px 228px);
   background: #44af3c;
 }
 
-.triangle7 {
+.triangle:nth-child(7) {
   background: #ec6941;
   -webkit-clip-path: polygon(224px 272px, 280px 309px, 212px 309px);
           clip-path: polygon(224px 272px, 280px 309px, 212px 309px);
@@ -105,7 +105,7 @@
           transition-delay: 0.7s;
 }
 
-.box:hover .triangle7 {
+.box:hover .triangle:nth-child(7) {
   -webkit-clip-path: polygon(219px 228px, 219px 267px, 282px 266px);
           clip-path: polygon(219px 228px, 219px 267px, 282px 266px);
   background: #51c356;

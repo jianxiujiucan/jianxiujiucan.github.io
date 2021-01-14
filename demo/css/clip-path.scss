@@ -29,12 +29,12 @@ $path2: polygon(173px 150px, 220px 341px, 174px 350px),
   polygon(219px 228px, 219px 267px, 282px 266px);
 
 @for $i from 1 through 7 {
-  .triangle#{$i} {
+  .triangle:nth-child(#{$i}) {
     background: nth($bg1, $i);
     clip-path: nth($path1, $i);
     transition-delay: #{$i * 0.1}s;
   }
-  .box:hover .triangle#{$i} {
+  .box:hover .triangle:nth-child(#{$i}){
     clip-path: nth($path2, $i);
     background: nth($bg2, $i);
   }
