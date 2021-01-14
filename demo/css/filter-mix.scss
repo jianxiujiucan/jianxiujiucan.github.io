@@ -18,6 +18,8 @@
   filter: blur(5px);
   animation: move1 3s ease-out infinite;
   border-radius: 50%;
+  color: #fff;
+ 
 }
 
 .box2{
@@ -27,7 +29,10 @@
   position: absolute;
   width: 80px;
   height: 80px;
-  background:red;
+  color: #fff;
+  text-align: center;
+  line-height: 100px;
+  background:black;
   filter: blur(5px);
   animation: move2 3s ease-out infinite;
   border-radius: 50%;

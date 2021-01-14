@@ -37,7 +37,7 @@
     </div>
     <script>
         var inputColor = document.getElementById('inputColor');
-        inputColor.addEventListener('change', function () { 
+        inputColor.addEventListener('input', function () { 
             var regex1 = /\((.+?)\)/g;
             //console.log(inputColor.value.colorRgb().match(regex1));
             var str = inputColor.value.colorRgb();
