@@ -1,0 +1,48 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+.box{
+  margin: 20px auto;
+  display: flex;
+}
+.item{
+  margin: 0 10px;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-image: conic-gradient(from 40deg, #c9ddff,#e1ecff 50%,#c9ddff 50%, #e1ecff 100%);
+}
+.icon{
+  width: 80px;
+  height: 80px;
+  -webkit-mask: url(../img/mask.png) no-repeat;
+  -webkit-mask-size: 320px auto;
+  background: linear-gradient(145deg,#8cb8ff,#1c85ff);
+}
+
+@for $i from 1 through 4{
+  .item:nth-child(#{$i}) .icon{
+    $n: $i - 1;
+    -webkit-mask-position: #{$n*-80}px 0;
+  }
+}
+
+.is-vip{
+  .item{
+    background-image: conic-gradient(from 40deg, #fcdf9d,#fad48d 50%, #fcdf9d 50%, #fad48d 100%);
+  }
+  .icon{
+    background: linear-gradient(145deg,#e7a568,#9d5a1a);
+  }
+}
+
+.is-super{
+  .item{
+    background-image: conic-gradient(from 40deg, #474747,#0e0d0d 50%, #474747 50%, #0e0d0d 100%);
+  }
+  .icon{
+    background: linear-gradient(145deg,#ffeccb,#ffcb76);
+  }
+}
+
