@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <title>混合模式</title>
+    <link rel="stylesheet" href="css/mix.css">
+  </head>
+  <body style="display: flex; justify-content: center; align-items: center; height: 100vh;">
+    <div class="wrap-background">
+      <div class="opt-box">
+        <ul>
+          <li>
+            <label>混合模式：</label
+            ><select id="selDrop" class="sel-drop">
+              <option value="0">正常</option>
+              <option value="1">滤色</option>
+              <option value="2">变暗</option>
+              <option value="3">正片叠底</option>
+              <option value="4">变亮</option>
+              <option value="5">颜色减淡</option>
+              <option value="6">颜色加深</option>
+              <option value="7">叠加</option>
+              <option value="8">强光</option>
+              <option value="9">柔光</option>
+              <option value="10">差值</option>
+              <option value="11">排除</option>
+              <option value="12">色相</option>
+              <option value="13">饱和度</option>
+              <option value="14">颜色</option>
+              <option value="15">亮度</option>
+              <option value="16">初始</option>
+              <option value="17">复原</option>
+            </select>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </body>
+  <script type="text/javascript">
+    var $btnPic = document.getElementById("btnPic");
+    var $selDrop = document.getElementById("selDrop");
+    $selDrop.onchange = function () {
+      var index = this.selectedIndex;
+      var value = parseInt(this.options[index].value);
+      switch (value) {
+        case 0:
+          document.querySelector(".wrap-background").style.backgroundBlendMode = "normal";
+          break;
+        case 1:
+          document.querySelector(".wrap-background").style.backgroundBlendMode = "screen";
+          break;
+        case 2:
+          document.querySelector(".wrap-background").style.backgroundBlendMode = "darken";
+          break;
+        case 3:
+          document.querySelector(".wrap-background").style.backgroundBlendMode = "multiliply";
+          break;
+        case 4:
+          document.querySelector(".wrap-background").style.backgroundBlendMode = "lighten";
+          break;
+        case 5:
+          document.querySelector(".wrap-background").style.backgroundBlendMode = "color-dodge";
+          break;
+        case 6:
+          document.querySelector(".wrap-background").style.backgroundBlendMode = "color-burn";
+          break;
+        case 7:
+          document.querySelector(".wrap-background").style.backgroundBlendMode = "overlay";
+          break;
+        case 8:
+          document.querySelector(".wrap-background").style.backgroundBlendMode = "hard-light";
+          break;
+        case 9:
+          document.querySelector(".wrap-background").style.backgroundBlendMode = "soft-light";
+          break;
+        case 10:
+          document.querySelector(".wrap-background").style.backgroundBlendMode = "difference";
+          break;
+        case 11:
+          document.querySelector(".wrap-background").style.backgroundBlendMode = "exclusion";
+          break;
+        case 12:
+          document.querySelector(".wrap-background").style.backgroundBlendMode = "hue";
+          break;
+        case 13:
+          document.querySelector(".wrap-background").style.backgroundBlendMode = "saturation";
+          break;
+        case 14:
+          document.querySelector(".wrap-background").style.backgroundBlendMode = "color";
+          break;
+        case 15:
+          document.querySelector(".wrap-background").style.backgroundBlendMode = "luminosity";
+          break;
+        case 16:
+          document.querySelector(".wrap-background").style.backgroundBlendMode = "initial";
+          break;
+        case 17:
+          document.querySelector(".wrap-background").style.backgroundBlendMode = " unset";
+          break;
+      }
+    };
+
+  </script>
+</html>

@@ -1,0 +1,109 @@
+body,
+dl,
+dd,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+form {
+  margin: 0;
+}
+a {
+  text-decoration: none;
+}
+select:focus {
+  outline: 0;
+}
+
+ul,
+ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-size: 14px;
+}
+.wrap {
+  position: relative;
+  width: 1080px;
+  height: 700px; 
+  overflow: hidden;
+  background-attachment: fixed;
+  background: url(http://sf.co.ua/14/04/wallpaper-2830210.jpg) no-repeat;
+  background-size: cover;
+  overflow: hidden;
+}
+.wrap-background {
+  width: 1080px;
+  height: 700px; 
+  overflow: hidden;
+  background: linear-gradient(red, purple), url(http://sf.co.ua/14/04/wallpaper-2830210.jpg) no-repeat;
+  background-size: cover;
+}
+.box {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: var(--width);
+  height: 100%;
+  background: linear-gradient(red, purple);
+}
+.box1 {
+  width: 100%;
+}
+.opt-box {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px 0;
+  display: inline-block;
+  z-index: 1;
+  zoom: 1.35;
+}
+.opt-box li {
+  line-height: 30px;
+  position: relative;
+}
+.opt-box li:nth-child(1):after {
+  width: 6px;
+  height: 6px;
+  border-left: solid 1px #ccc;
+  border-top: solid 1px #ccc;
+  content: "";
+  position: absolute;
+  left: 138px;
+  transform: rotate(-135deg);
+  top: 10px;
+}
+.sel-drop {
+  -webkit-appearance: none;
+  border: solid 1px #666;
+  background: #333;
+  color: #ccc;
+  padding: 0 20px 0 10px;
+  height: 26px;
+  line-height: 26px;
+  position: relative;
+}
+#btnPic {
+  opacity: 0;
+  cursor: pointer;
+  width: 90px;
+}
+.btn-file {
+  width: 74px;
+  height: 24px;
+  line-height: 24px;
+  border: solid 1px #666;
+  background: #333;
+  color: #ccc;
+  padding: 0 0 0 10px;
+  position: absolute;
+  left: 70px;
+  pointer-events: none;
+}
