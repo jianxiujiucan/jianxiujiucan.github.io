@@ -37,7 +37,7 @@ body {
   height: 700px;
   overflow: hidden;
   background-attachment: fixed;
-  background: url(http://chuantu.xyz/t6/741/1611297271x1033348159.jpg) no-repeat;
+  background: url(https://i.postimg.cc/sxP01mn5/05.jpg) no-repeat;
   background-size: cover;
   overflow: hidden;
 }
@@ -46,8 +46,8 @@ body {
   width: 1080px;
   height: 700px;
   overflow: hidden;
-  background: -webkit-gradient(linear, left top, left bottom, from(red), to(purple)), url(http://chuantu.xyz/t6/741/1611297271x1033348159.jpg) no-repeat;
-  background: linear-gradient(red, purple), url(http://chuantu.xyz/t6/741/1611297271x1033348159.jpg) no-repeat;
+  background: -webkit-gradient(linear, left top, left bottom, from(red), to(purple)), url(https://i.postimg.cc/sxP01mn5/05.jpg) no-repeat;
+  background: linear-gradient(red, purple), url(https://i.postimg.cc/sxP01mn5/05.jpg) no-repeat;
   background-size: cover;
 }
 
