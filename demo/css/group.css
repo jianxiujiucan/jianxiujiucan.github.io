@@ -199,7 +199,8 @@
 }
 
 @-webkit-keyframes scale {
-  0%, 100% {
+  0%,
+  100% {
     -webkit-transform: scale(1);
             transform: scale(1);
   }
@@ -210,7 +211,8 @@
 }
 
 @keyframes scale {
-  0%, 100% {
+  0%,
+  100% {
     -webkit-transform: scale(1);
             transform: scale(1);
   }
@@ -220,11 +222,21 @@
   }
 }
 
-.button {
+.button-wrapper {
   position: fixed;
+  right: 0;
   bottom: 60px;
-  left: 50%;
-  margin-left: -50px;
+  left: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.button-wrapper .button {
+  margin: 0 20px;
   width: 100px;
   height: 32px;
   color: #fff;
@@ -234,7 +246,7 @@
   cursor: pointer;
 }
 
-.button:focus {
+.button-wrapper .button:focus {
   outline: unset;
 }
 /*# sourceMappingURL=group.css.map */

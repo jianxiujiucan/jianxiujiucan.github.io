@@ -18,7 +18,7 @@
             alt=""
           />
         </span>
-        <div class="xly-ball-wrap is-rotate">
+        <div class="xly-ball-wrap">
           <div class="xly-ball-box">
             <div class="xly-gathor-ball xly-gathor-ball-1"></div>
             <div class="xly-gathor-ball xly-gathor-ball-2"></div>
@@ -30,10 +30,22 @@
         </div>
       </div>
     </div>
-    <button class="button">显示遮罩</button>
+    <div class="button-wrapper">
+      <button id="button1" class="button" style="background: #666ef4">应用遮罩</button>
+      <button id="button2" class="button">显示遮罩</button>
+    </div>
     <script>
-      let wrap = document.querySelector(".xly-ball-wrap")
-      document.querySelector(".button").addEventListener("click", function () {
+      let wrap = document.querySelector(".xly-ball-wrap");
+      document.getElementById("button1").addEventListener("click",function(){
+        if (wrap.classList.contains("is-rotate")) {
+          this.innerHTML = "应用遮罩";
+          wrap.classList.remove("is-rotate");
+        } else {
+          this.innerHTML = "取消遮罩";
+          wrap.classList.add("is-rotate");
+        }
+      })
+      document.getElementById("button2").addEventListener("click", function () {
         if (wrap.classList.contains("show-mask")) {
           this.innerHTML = "显示遮罩";
           wrap.classList.remove("show-mask");
