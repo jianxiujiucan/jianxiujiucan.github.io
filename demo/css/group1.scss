@@ -1,0 +1,59 @@
+
+.box {
+  position: relative;
+  padding: 50px;
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  border: solid 2px #ccc;
+ animation: spin 12s infinite linear;
+}
+.box .ball {
+  display: inline-block;
+  background: blue;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  animation: anti-spin 12s infinite linear;
+  color: #fff;
+  position: absolute;
+  text-align: center;
+}
+
+@keyframes spin {
+  0% {
+    transform: scaleY(0.5) rotate(0deg);
+  }
+  100% {
+    transform: scaleY(0.5) rotate(360deg);
+  }
+}
+@keyframes anti-spin {
+  0% {
+    transform: rotate(0deg) scaleY(2) scale(1);
+  }
+  100% {
+    transform: rotate(-360deg) scaleY(2) scale(1);
+  }
+}
+.box .ball.ball1 {
+  left: 45px;
+  top: 45px;
+}
+.box .ball.ball2 {
+  right: 45px;
+  top: 45px;
+}
+.box .ball.ball3 {
+  right: 45px;
+  bottom: 45px;
+}
+.box .ball.ball4 {
+  left: 45px;
+  bottom: 45px;
+}
+.box:hover,
+.box:hover .ball,
+.box .ball:hover {
+  animation-play-state: paused;
+}

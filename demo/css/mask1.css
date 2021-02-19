@@ -1,0 +1,103 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 20px;
+  padding: 20px 0 0;
+  width: 400px;
+  border: dashed 1px #ccc;
+}
+
+li p {
+  line-height: 50px;
+}
+
+.box {
+  --colorMain: rgb(254.0021988933981, 33.76156824314053, 87.72255701336616);
+  --colorSub: rgb(104.54622078034879, 58.621301784230624, 52.88786354307544);
+  position: relative;
+  width: 190px;
+  height: 190px;
+  background: var(--colorMain);
+  border-radius: 50%;
+  border: 2px solid #666;
+  overflow: hidden;
+}
+
+.box:after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(221.97462deg, var(--colorMain), var(--colorSub), var(--colorMain));
+  border-radius: 50%;
+  --angle: calc(360deg / 3);
+  --start: 29.67111620381973px;
+  --end: 77.3941163016452px;
+  -webkit-mask-image: repeating-linear-gradient(calc(var(--angle) * 1), #fff 0, #fff var(--start), transparent var(--start), transparent var(--end)), repeating-linear-gradient(calc(var(--angle) * 2), #fff 0, #fff var(--start), transparent var(--start), transparent var(--end)), repeating-linear-gradient(calc(var(--angle) * 3), #fff 0, #fff var(--start), transparent var(--start), transparent var(--end));
+          mask-image: repeating-linear-gradient(calc(var(--angle) * 1), #fff 0, #fff var(--start), transparent var(--start), transparent var(--end)), repeating-linear-gradient(calc(var(--angle) * 2), #fff 0, #fff var(--start), transparent var(--start), transparent var(--end)), repeating-linear-gradient(calc(var(--angle) * 3), #fff 0, #fff var(--start), transparent var(--start), transparent var(--end));
+  -webkit-mask-composite: source-over;
+  content: "";
+}
+
+.box0:after {
+  -webkit-mask-composite: source-out;
+}
+
+.box1:after {
+  -webkit-mask-composite: source-in;
+}
+
+.box2:after {
+  -webkit-mask-composite: source-atop;
+}
+
+.box3:after {
+  -webkit-mask-composite: destination-over;
+}
+
+.box4:after {
+  -webkit-mask-composite: destination-in;
+}
+
+.box5:after {
+  -webkit-mask-composite: destination-out;
+}
+
+.box6:after {
+  -webkit-mask-composite: destination-atop;
+}
+
+.box7:after {
+  -webkit-mask-composite: xor;
+}
+
+.box8:after {
+  -webkit-mask-composite: xor, source-in;
+}
+
+.box9:after {
+  -webkit-mask-composite: source-in, xor;
+}
+
+.box10:after {
+  -webkit-mask-composite: source-out, xor;
+}
+/*# sourceMappingURL=mask1.css.map */
