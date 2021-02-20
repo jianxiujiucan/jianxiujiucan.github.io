@@ -59,8 +59,8 @@ li p {
   --angle: calc(360deg / 6);
   --start: 29px;
   --end: 77px;
-  -webkit-mask-image: repeating-linear-gradient(calc(var(--angle) * 1), #fff 0, #fff var(--start), transparent var(--start), transparent var(--end)), repeating-linear-gradient(calc(var(--angle) * 2), #fff 0, #fff var(--start), transparent var(--start), transparent var(--end));
-          mask-image: repeating-linear-gradient(calc(var(--angle) * 1), #fff 0, #fff var(--start), transparent var(--start), transparent var(--end)), repeating-linear-gradient(calc(var(--angle) * 2), #fff 0, #fff var(--start), transparent var(--start), transparent var(--end));
+  -webkit-mask-image: repeating-linear-gradient(calc(var(--angle) * 1), rgba(255, 255, 255, 0.8) 0, rgba(255, 255, 255, 0.8) var(--start), transparent var(--start), transparent var(--end)), repeating-linear-gradient(calc(var(--angle) * 2), rgba(255, 255, 255, 0.8) 0, rgba(255, 255, 255, 0.8) var(--start), transparent var(--start), transparent var(--end)), repeating-linear-gradient(calc(var(--angle) * 3), rgba(255, 255, 255, 0.8) 0, rgba(255, 255, 255, 0.8) var(--start), transparent var(--start), transparent var(--end));
+          mask-image: repeating-linear-gradient(calc(var(--angle) * 1), rgba(255, 255, 255, 0.8) 0, rgba(255, 255, 255, 0.8) var(--start), transparent var(--start), transparent var(--end)), repeating-linear-gradient(calc(var(--angle) * 2), rgba(255, 255, 255, 0.8) 0, rgba(255, 255, 255, 0.8) var(--start), transparent var(--start), transparent var(--end)), repeating-linear-gradient(calc(var(--angle) * 3), rgba(255, 255, 255, 0.8) 0, rgba(255, 255, 255, 0.8) var(--start), transparent var(--start), transparent var(--end));
   -webkit-mask-composite: source-over;
   content: "";
 }
@@ -108,8 +108,4 @@ li p {
 .box10:after {
   -webkit-mask-composite: source-out, xor;
 }
-
-.box11:after {
-  -webkit-mask-composite: clear;
-}
-/*# sourceMappingURL=mask1.css.map */
+/*# sourceMappingURL=mask2.css.map */

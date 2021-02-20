@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/mask3.css">
+  <title>-webkit-mask-composite</title>
+</head>
+<body>
+  <ul>
+    <li>
+      <div class="box"></div>
+      <h2>source-over</h2>
+      <p>遮罩叠加，源遮罩图像在目标罩图像上渲染</p>
+    </li>
+    <li>
+      <div class="box"></div>
+      <h2>source-in</h2>
+      <p>遮罩重叠的位置显示，不重叠的位置不显示</p>
+    </li>
+    <li>
+      <div class="box"></div>
+      <h2>source-out</h2>
+      <p>清除源遮罩图像和目标遮罩图像中的重叠像素，源遮罩图像的所有剩余像素均被渲染</p>
+    </li>
+    <li>
+      <div class="box"></div>
+      <h2>source-atop</h2>
+      <p>仅目标遮罩生效（最后一个遮罩）</p>
+    </li>
+    <li>
+      <div class="box"></div>
+      <h2>destination-over</h2>
+      <p>遮罩叠加，目标遮罩图像在源遮罩图像上渲染</p>
+    </li>
+    <li>
+      <div class="box"></div>
+      <h2>destination-in</h2>
+      <p>遮罩重叠的位置显示，不重叠的位置不显示</p>
+    </li>
+    <li>
+      <div class="box"></div>
+      <h2>destination-out</h2>
+      <p>清除源遮罩图像和目标遮罩图像中的重叠像素；目标遮罩图像的所有剩余像素均被渲染</p>
+    </li>
+    <li>
+      <div class="box"></div>
+      <h2>destination-atop</h2>
+      <p>仅源遮罩生效（第一个遮罩）</p>
+    </li>
+    <li>
+      <div class="box"></div>
+      <h2>xor</h2>
+      <p>遮罩叠加处为透明，透明处与再与新的目标遮罩叠加为不透明，遵循乘法原理</p>
+    </li>
+    <li>
+      <div class="box"></div>
+      <h2>copy</h2>
+      <p>源遮罩图像替换目标遮罩</p>
+    </li>
+    <li>
+      <div class="box"></div>
+      <h2>clear</h2>
+      <p>清除遮罩</p>
+    </li>
+    <li>
+      <div class="box"></div>
+      <h2>plus-lighter</h2>
+      <p>相交的区域增亮，仅遮罩有透明度时生效</p>
+    </li>
+  </ul>
+</body>
+</html>
