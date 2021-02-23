@@ -1,0 +1,46 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.snow {
+  position: absolute;
+}
+
+@function boxShadow ($n) {
+  $value: '#{random(2000)}px #{random(2000)}px rgba(255,255,255,#{random(10)/10})';
+  @for $i from 1 through $n{
+    $value: '#{$value} , #{random(2000)}px #{random(2000)}px rgba(255,255,255,#{random(10)/10})'
+  }
+  @return unquote($value)
+}
+
+
+@for $i from 1 through 10 {
+  .snow:nth-child(#{$i}) {
+    left: random(30) + vw;
+    font-size: (random(15) + 12) + px;
+    color: rgba(255, 255, 255, random());
+    animation: falldown (random(5) + 85) + s $i * -3 + s infinite both;
+    &:after {
+      content: "❄";
+      text-shadow: boxShadow(random(150));
+    }
+  }
+}
+@keyframes falldown {
+  0% {
+    transform: translate3d(0, -2000px, 0);
+  }
+  50% {
+    transform: translate3d(10px, 0, 0);
+  }
+  100%{
+    transform: translate3d(0, 2000px, 0);
+  }
+}
