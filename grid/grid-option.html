@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Grid</title>
+    <link rel="stylesheet" href="css/grid-option.css" />
+  </head>
+  <body>
+    <div class="box">
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+    </div>
+    <ul class="option-list">
+      <li>
+        <label for="option"><span>justify-content</span>
+          <select name="option" id="justifyContentSelect">
+            <option value="start">start</option>
+            <option value="center">center</option>
+            <option value="end">end</option>
+            <option value="stretch">stretch</option>
+            <option value="space-between">space-between</option>
+            <option value="space-around">space-around</option>
+            <option value="space-evenly">space-evenly</option>
+          </select></label>
+      </li>
+      <li>
+        <label for="option"
+          ><span>align-content</span
+          >
+          <select name="option" id="alignContentSelect">
+            <option value="start">start</option>
+            <option value="center">center</option>
+            <option value="end">end</option>
+            <option value="stretch">stretch</option>
+            <option value="space-between">space-between</option>
+            <option value="space-around">space-around</option>
+            <option value="space-evenly">space-evenly</option>
+          </select></label
+        >
+      </li>
+      <li>
+        <label for="option">
+          <span>justify-items</span>
+          <select name="option" id="justifyItemSelect">
+            <option value="start">start</option>
+            <option value="center">center</option>
+            <option value="end">end</option>
+            <option value="stretch">stretch</option>
+          </select>
+        </label>
+      </li>
+      <li>
+        <label for="option">
+          <span>align-items</span>
+          <select name="option" id="alignItemSelect">
+            <option value="start">start</option>
+            <option value="center">center</option>
+            <option value="end">end</option>
+            <option value="stretch">stretch</option>
+          </select>
+        </label>
+      </li>
+      <li>
+        <label for="option"
+          ><span>justify-self</span>
+          <select name="option" id="justifySelfSelect">
+            <option value="start">start</option>
+            <option value="center">center</option>
+            <option value="end">end</option>
+            <option value="stretch">stretch</option>
+          </select></label
+        >
+      </li>
+      <li>
+        <label for="option">
+          <span>align-self</span>
+          <select name="option" id="alignSelfSelect">
+            <option value="start">start</option>
+            <option value="center">center</option>
+            <option value="end">end</option>
+            <option value="stretch">stretch</option>
+          </select></label
+        >
+      </li>
+    </ul>
+
+    <script>
+      let box = document.querySelector(".box");
+      let itemList = document.querySelectorAll(".item");
+      let justifyContent = document.getElementById("justifyContentSelect");
+      let alignContent = document.getElementById("alignContentSelect");
+      let justifyItem = document.getElementById('justifyItemSelect')
+      let alignItem = document.getElementById('alignItemSelect')
+      let justifySelf = document.getElementById("justifySelfSelect");
+      let alignSelf = document.getElementById("alignSelfSelect");
+
+      justifyContent.onchange = function () {
+        let index = this.selectedIndex;
+        let value = this.options[index].value;
+        box.style.justifyContent = value;
+      };
+
+      alignContent.onchange = function () {
+        let index = this.selectedIndex;
+        let value = this.options[index].value;
+        box.style.alignContent = value;
+      };
+
+
+      justifyItem.onchange = function (){
+        let index = this.selectedIndex
+        let value = this.options[index].value
+        console.log(value)
+        box.style.justifyItems = value
+      }
+
+      alignItem.onchange = function (){
+        let index = this.selectedIndex
+        let value = this.options[index].value
+        box.style.alignItems = value
+      }
+
+
+      justifySelf.onchange = function () {
+        let index = this.selectedIndex;
+        let value = this.options[index].value;
+        for (i = 0; i < itemList.length; i++) {
+          itemList[i].style.justifySelf = value;
+        }
+      };
+
+      alignSelf.onchange = function () {
+        let index = this.selectedIndex;
+        let value = this.options[index].value;
+        for (i = 0; i < itemList.length; i++) {
+          itemList[i].style.alignSelf = value;
+        }
+      };
+    </script>
+  </body>
+</html>

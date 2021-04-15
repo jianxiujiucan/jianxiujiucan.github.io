@@ -1,0 +1,112 @@
+body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.box {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (100px)[3];
+      grid-template-columns: repeat(3, 100px);
+  -ms-grid-rows: (100px)[3];
+      grid-template-rows: repeat(3, 100px);
+  width: 500px;
+  height: 500px;
+  border: solid 2px;
+  gap: 2px;
+  vertical-align: top;
+}
+
+.box .item {
+  background: #eee;
+}
+
+.item:nth-child(1) {
+  background: rgba(0, 150, 255, 0.05);
+}
+
+.item:nth-child(1):before {
+  content: "1";
+}
+
+.item:nth-child(2) {
+  background: rgba(0, 150, 255, 0.1);
+}
+
+.item:nth-child(2):before {
+  content: "2";
+}
+
+.item:nth-child(3) {
+  background: rgba(0, 150, 255, 0.15);
+}
+
+.item:nth-child(3):before {
+  content: "3";
+}
+
+.item:nth-child(4) {
+  background: rgba(0, 150, 255, 0.2);
+}
+
+.item:nth-child(4):before {
+  content: "4";
+}
+
+.item:nth-child(5) {
+  background: rgba(0, 150, 255, 0.25);
+}
+
+.item:nth-child(5):before {
+  content: "5";
+}
+
+.item:nth-child(6) {
+  background: rgba(0, 150, 255, 0.3);
+}
+
+.item:nth-child(6):before {
+  content: "6";
+}
+
+.item:nth-child(7) {
+  background: rgba(0, 150, 255, 0.35);
+}
+
+.item:nth-child(7):before {
+  content: "7";
+}
+
+.item:nth-child(8) {
+  background: rgba(0, 150, 255, 0.4);
+}
+
+.item:nth-child(8):before {
+  content: "8";
+}
+
+.item:nth-child(9) {
+  background: rgba(0, 150, 255, 0.45);
+}
+
+.item:nth-child(9):before {
+  content: "9";
+}
+
+.option-list {
+  margin-left: 30px;
+}
+
+select {
+  margin-left: 5px;
+}
+
+span {
+  display: inline-block;
+  width: 120px;
+}
+/*# sourceMappingURL=grid-option.css.map */

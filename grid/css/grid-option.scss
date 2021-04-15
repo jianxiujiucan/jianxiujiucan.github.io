@@ -1,0 +1,39 @@
+body{
+  display: flex;
+  justify-content: center;
+}
+.box {
+  display: grid;
+  grid-template-columns: repeat(3,100px);
+  grid-template-rows: repeat(3,100px);
+  width: 500px;
+  height: 500px;
+  border: solid 2px;
+  gap: 2px;
+  vertical-align: top;
+  .item {
+    background: #eee;
+  }
+}
+
+@for $i from 1 through 9 {
+  $opacity: $i*0.05;
+  .item:nth-child(#{$i}){
+    background: rgba(0,150,255,$opacity);
+    &:before {
+      content: "#{$i}";
+    }
+  }
+}
+
+.option-list{
+  margin-left: 30px;
+}
+
+select{
+  margin-left: 5px;
+}
+span{
+  display: inline-block;
+  width: 120px;
+}
