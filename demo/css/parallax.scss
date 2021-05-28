@@ -1,0 +1,51 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+.page{
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+  figure{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .content{
+    position: relative;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    font-size: 26px;
+    color: #fff;
+    font-family: 'Comic Sans MS';
+    p{
+      width: 500px;
+      padding: 50px 100px;
+      background: rgba($color: #000000, $alpha: .5);
+    }
+  }
+  .page-inner{
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    //clip: rect(0, auto, auto, 0);
+    clip-path: inset(0 0 0 0);
+    overflow: hidden;
+  
+  }
+}
+@for $i from 1 through 4{
+  .page:nth-child(#{$i}){
+    figure{
+      background: url(../img/#{$i}.jpg) no-repeat;
+      background-size: cover;
+    }
+  }
+}

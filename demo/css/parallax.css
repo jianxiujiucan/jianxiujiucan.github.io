@@ -1,0 +1,74 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.page {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.page figure {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.page .content {
+  position: relative;
+  top: 0;
+  left: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 100vh;
+  text-align: center;
+  font-size: 26px;
+  color: #fff;
+  font-family: 'Comic Sans MS';
+}
+
+.page .content p {
+  width: 500px;
+  padding: 50px 100px;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.page .page-inner {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  -webkit-clip-path: inset(0 0 0 0);
+          clip-path: inset(0 0 0 0);
+  overflow: hidden;
+}
+
+.page:nth-child(1) figure {
+  background: url(../img/1.jpg) no-repeat;
+  background-size: cover;
+}
+
+.page:nth-child(2) figure {
+  background: url(../img/2.jpg) no-repeat;
+  background-size: cover;
+}
+
+.page:nth-child(3) figure {
+  background: url(../img/3.jpg) no-repeat;
+  background-size: cover;
+}
+
+.page:nth-child(4) figure {
+  background: url(../img/4.jpg) no-repeat;
+  background-size: cover;
+}
+/*# sourceMappingURL=parallax.css.map */
