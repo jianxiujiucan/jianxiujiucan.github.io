@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>translate</title>
+    <style>
+      .range {
+        margin: 0 auto;
+        width: 200px;
+      }
+      .range__button {
+        position: relative;
+        -webkit-appearance: none;
+        width: 100%;
+        height: 10px;
+        background: #ccc;
+        margin-right: 10px;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      .range__button::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        margin-top: 10px;
+        width: 20px;
+        height: 20px;
+        border-radius: 10px;
+        border: solid 5px #666;
+        transform: translateY(-6px);
+        background: #eee;
+      }
+      .range__button:focus {
+        outline: none;
+        outline-offset: 0;
+      }
+      .range__inner {
+        height: 100%;
+        background: #69f;
+        border-radius: 5px;
+      }
+      .element {
+        margin: 100px auto;
+        width: 100px;
+        height: 100px;
+        background: #69f;
+        pointer-events: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="element" id="element"></div>
+    <div class="range">
+      <div class="range__inner"></div>
+      <input
+        type="range"
+        id="inputRange"
+        class="range__button"
+        min="0"
+        max="100"
+        value="50"
+        step="1"
+      />
+    </div>
+    <script>
+      const inputRange = document.getElementById("inputRange");
+      const element = document.getElementById("element");
+      const change = (e) => {
+        let value = (e.target.value - 50) * 4;
+        element.style.transform = `perspective(200px) translateZ(${value}px)`;
+      };
+      inputRange.addEventListener("input", change);
+      inputRange.addEventListener("change", change);
+    </script>
+  </body>
+</html>
