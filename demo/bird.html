@@ -6,12 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
-      .anin .index_box_1:after {
-        -webkit-animation: fadeIn 0.3s 3.5s both;
-        animation: fadeIn 1s 3.5s both;
-      }
-      .anin .bird.ani {
-        background: url(../img/spr_bird.png) no-repeat;
+      .bird {
+        margin: auto;
+        width: 120px;
+        height: 120px;
+        background: url(img/bird.png) no-repeat;
         animation: bird 0.72s 0s steps(12) both infinite;
       }
 
@@ -23,7 +22,19 @@
           background-position: 0 -1440px;
         }
       }
+      * {
+        margin: 0;
+        padding: 0;
+        
+      }
+      body{
+        display: flex;
+        height: 100vh;
+        background: #000;
+      }
     </style>
   </head>
-  <body></body>
+  <body>
+    <div class="bird"></div>
+  </body>
 </html>
