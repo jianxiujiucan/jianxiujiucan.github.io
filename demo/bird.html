@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .anin .index_box_1:after {
+        -webkit-animation: fadeIn 0.3s 3.5s both;
+        animation: fadeIn 1s 3.5s both;
+      }
+      .anin .bird.ani {
+        background: url(../img/spr_bird.png) no-repeat;
+        animation: bird 0.72s 0s steps(12) both infinite;
+      }
+
+      @keyframes bird {
+        0% {
+          background-position: 0 0;
+        }
+        100% {
+          background-position: 0 -1440px;
+        }
+      }
+    </style>
+  </head>
+  <body></body>
+</html>
