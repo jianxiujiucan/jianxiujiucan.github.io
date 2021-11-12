@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>吃吃吃</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        color: #eee;
+        background: #000;
+      }
+      #table {
+        display: grid;
+        grid-template-columns: repeat(2, 120px);
+        margin: 0 auto;
+      }
+      #table span {
+        margin: 0 -1px -1px 0;
+        display: block;
+        height: 40px;
+        line-height: 40px;
+        padding: 0 0 0 18px;
+
+        border: solid 1px #666;
+        box-sizing: border-box;
+      }
+      .wrap {
+        display: flex;
+        margin: 30px;
+      }
+      .week span {
+        margin: 0 -1px -1px 0;
+        display: block;
+        width: 80px;
+        height: 40px;
+        line-height: 40px;
+        padding: 0 0 0 10px;
+        color: #999;
+        background: rgba(255, 255, 255, 0.1);
+        border: solid 1px #666;
+        box-sizing: border-box;
+      }
+      .main {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+      .button {
+        display: block;
+        width: 80px;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        color: #fff;
+        font-size: 13px;
+        cursor: pointer;
+        background: #69f;
+        border-radius: 4px;
+      }
+      .new-restaurant input {
+        display: block;
+        margin: 10px auto 0;
+        padding: 0 0 0 10px;
+        width: 600px;
+        height: 30px;
+        color: #eee;
+        background: rgba(255, 255, 255, 0.1);
+        border: solid 1px rgba(255, 255, 255, 0.2);
+        border-radius: 3px;
+        outline: 0;
+      }
+      #textNote {
+        height: 30px;
+        line-height: 30px;
+        font-size: 12px;
+        color: salmon;
+      }
+      label {
+        font-size: 13px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main">
+      <div class="wrap">
+        <div class="week">
+          <span>星期一</span><span>星期二</span><span>星期三</span
+          ><span>星期四</span><span>星期五</span>
+        </div>
+        <div id="table"></div>
+      </div>
+      <div class="new-restaurant">
+        <label>请输入10家餐厅名称，用逗号隔开</label
+        ><input id="inputArray" type="text" />
+        <p id="textNote"></p>
+      </div>
+      <div id="buttonCreate" class="button">重新生成</div>
+    </div>
+    <script>
+      let normalArray = [
+        "彭海军",
+        "真功夫",
+        "老碗会",
+        "KFC",
+        "港福",
+        "全刀手",
+        "菊花米线",
+        "炒粉/手工粉",
+        "港岛记",
+        "佰福",
+      ];
+      const table = document.getElementById("table");
+
+      // 存储数据
+      let localArray = [];
+      function setData(data) {
+        window.localStorage.setItem("localData", JSON.stringify(data));
+        localArray = window.localStorage.getItem("localData");
+      }
+
+      if (localStorage.getItem("localData") != null) {
+        // 如果本地有数据，则取本地的数据
+        normalArray = JSON.parse(window.localStorage.getItem("localData"));
+      }
+
+      createMenu(normalArray);
+
+      function createMenu(arr) {
+        //生成表格
+        table.innerHTML = "";
+        arr.sort(function () {
+          return 0.5 - Math.random();
+        });
+        for (let i = 0; i < arr.length; i++) {
+          let item = document.createElement("span");
+          let textNode = document.createTextNode(arr[i]);
+          item.appendChild(textNode);
+          table.appendChild(item);
+        }
+      }
+
+      const buttonCreate = document.getElementById("buttonCreate");
+      const inputArray = document.getElementById("inputArray");
+      const textNote = document.getElementById("textNote");
+
+      inputArray.addEventListener("focus", function () {
+        textNote.innerText = "";
+      });
+      let newArray = [];
+      buttonCreate.addEventListener("click", function () {
+        // 重新生成
+        newArray = inputArray.value;
+        if (newArray != "") {
+          newArray = newArray.replace(/[\uff0c]/g, ",");
+          newArray = newArray.split(",");
+          newArray = newArray.filter(function(e){ return e.replace(/(\r\n|\n|\r)/gm,"")});
+          if (newArray.length < 10) {
+            textNote.innerText = "还不足10个餐厅哦~";
+            return;
+          } else if (newArray.length > 10) {
+            textNote.innerText = "超过10个餐厅啦~请删除多余的餐厅~";
+            return;
+          }
+          createMenu(newArray);
+          setData(newArray);
+        } else {
+          createMenu(normalArray);
+        }
+      });
+    </script>
+  </body>
+</html>
