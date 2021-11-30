@@ -1,0 +1,51 @@
+
+
+@keyframes move {
+  0% {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(20px, 0);
+    opacity: .5;
+  }
+}
+
+
+.items{
+  margin: 80px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.item,.line{
+  margin: 0 5px;
+  width: 10px;
+  height: 80px;
+  background: #69f;
+  border-radius: 5px;
+  list-style: none;
+}
+
+@for $i from 1 through 9{
+  .line:nth-child(#{$i}){
+    $time: #{$i*0.2+1}s;
+    animation: line .7s $time alternate infinite;
+  }
+}
+
+@for $i from 1 through 9{
+  .item:nth-child(#{$i}){
+    $time: -#{$i*0.2}s;
+    animation: line .7s $time alternate infinite;
+  }
+}
+
+@keyframes line {
+  0%{
+    transform: scaleY(.3);
+  }
+  100%{
+    transform: scaleY(1);
+  }
+}
