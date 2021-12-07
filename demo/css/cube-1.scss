@@ -15,7 +15,6 @@ body {
   height: var(--size);
   transform: rotateX(-33.5deg) rotateY(45deg);
   transform-style: preserve-3d;
-  perspective-origin: center;
 }
 .cube {
   margin: 0 auto;

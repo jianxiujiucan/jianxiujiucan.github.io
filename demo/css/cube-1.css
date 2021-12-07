@@ -20,8 +20,6 @@ body {
           transform: rotateX(-33.5deg) rotateY(45deg);
   -webkit-transform-style: preserve-3d;
           transform-style: preserve-3d;
-  -webkit-perspective-origin: center;
-          perspective-origin: center;
 }
 
 .cube {
