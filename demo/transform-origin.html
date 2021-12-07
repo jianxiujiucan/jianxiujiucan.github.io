@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>transform-origin</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      .wrapper {
+        margin: 200px 200px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px 0;
+      }
+      .item {
+        position: relative;
+        text-align: center;
+      }
+      p {
+        margin: 10px 0;
+      }
+      .box {
+        position: relative;
+        margin: 0 auto;
+        width: 100px;
+        height: 100px;
+      }
+      .box:before {
+        display: block;
+        height: 100%;
+        background: #69f;
+        transition: transform 0.2s;
+        content: "";
+      }
+      .box:after {
+        position: absolute;
+        width: 8px;
+        height: 8px;
+        background: #000;
+        border-radius: 50%;
+        content: "";
+      }
+      .item:hover .box:before {
+        transform: rotate(45deg);
+      }
+      .item:nth-child(1) .box:before {
+        transform-origin: left top;
+      }
+      .item:nth-child(1) .box:after {
+        top: 0;
+        left: 0;
+      }
+      .item:nth-child(2) .box:before  {
+        transform-origin: center top;
+      }
+      .item:nth-child(2) .box:after{
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      .item:nth-child(3) .box:before  {
+        transform-origin: right top;
+      }
+      .item:nth-child(3) .box:after{
+        top: 0;
+        right: 0;
+      }
+      .item:nth-child(4) .box:before  {
+        transform-origin: right bottom;
+      }
+      .item:nth-child(4) .box:after{
+        bottom: 0;
+        right: 0;
+      }
+      .item:nth-child(5) .box:before  {
+        transform-origin: 30px 30px;
+      }
+      .item:nth-child(5) .box:after{
+        top: 30px;
+        left: 30px;
+      }
+      .item:nth-child(6) .box:before  {
+        transform-origin: 80% 80%;
+      }
+      .item:nth-child(6) .box:after{
+        top: 80px;
+        left: 80px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="item">
+        <div class="box"></div>
+        <p>transform-origin: left top</p>
+      </div>
+      <div class="item">
+        <div class="box"></div>
+        <p>transform-origin: center top</p>
+      </div>
+      <div class="item">
+        <div class="box"></div>
+        <p>transform-origin: right top</p>
+      </div>
+      <div class="item">
+        <div class="box"></div>
+        <p>transform-origin: right bottom</p>
+      </div>
+      <div class="item">
+        <div class="box"></div>
+        <p>transform-origin: 30px 30px</p>
+      </div>
+      <div class="item">
+        <div class="box"></div>
+        <p>transform-origin: 80% 80%</p>
+      </div>
+      </div>
+    </div>
+  </body>
+</html>

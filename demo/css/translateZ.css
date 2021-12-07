@@ -1,0 +1,10 @@
+.box {
+  -webkit-perspective: 300px;
+          perspective: 300px;
+}
+
+.item {
+  -webkit-animation: move 1s both;
+          animation: move 1s both;
+}
+/*# sourceMappingURL=translateZ.css.map */
