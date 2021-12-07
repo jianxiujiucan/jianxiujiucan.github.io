@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>卡片</title>
+  <link rel="stylesheet" href="css/card.css">
+</head>
+<body>
+  <div class="wrapper">
+    <div class="box box--front is-expanded">
+      <div class="card">
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+      </div>
+      <div class="card">
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+      </div>
+      <div class="card">
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+      </div>
+    </div>
+    <div class="box box--back is-expanded">
+      <div class="card">
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+      </div>
+      <div class="card">
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+      </div>
+      <div class="card">
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+      </div>
+    </div>
+  </div>
+  <script>
+    const wrap = document.querySelector('.wrapper')
+    const cube = document.querySelector('.box--front')
+    const box = document.querySelector('.box--back')
+    const speedFactor = 1
+    let startX = 0
+    let curRotate = 0
+    wrap.addEventListener('mousedown', (e) => {
+      startX = e.screenX
+    })
+    wrap.addEventListener('mousemove', e => {
+      if (e.buttons === 1) {
+        const diff = (e.screenX - startX) 
+        startX = e.screenX
+        console.log(e.screenX, diff)
+        curRotate = curRotate + Math.floor(diff) * speedFactor
+        cube.style.transform = `rotateX(-10deg) rotateY(${curRotate}deg)`
+        box.style.transform = `rotateX(-10deg) rotateY(${curRotate + 180}deg)`
+      }
+    });
+  </script>
+</body>
+</html>
