@@ -1,0 +1,10 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.wrapper {
+  -webkit-perspective: 800px;
+          perspective: 800px;
+}
+/*# sourceMappingURL=perspective-1.css.map */

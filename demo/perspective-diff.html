@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Perspective</title>
+    <link rel="stylesheet" href="css/perspective-diff.css" />
+  </head>
+  <body>
+    <div class="wrapper wrapper--1">
+      <div class="card">
+        <div class="front">A</div>
+        <div class="back"></div>
+      </div>
+      <div class="card">
+        <div class="front">A</div>
+        <div class="back"></div>
+      </div>
+      <div class="card">
+        <div class="front">A</div>
+        <div class="back"></div>
+      </div>
+      <div class="card">
+        <div class="front">A</div>
+        <div class="back"></div>
+      </div>
+      <div class="card">
+        <div class="front">A</div>
+        <div class="back"></div>
+      </div>
+      <div class="card">
+        <div class="front">A</div>
+        <div class="back"></div>
+      </div>
+      <div class="card">
+        <div class="front">A</div>
+        <div class="back"></div>
+      </div>
+    </div>
+
+    <div class="wrapper wrapper--2">
+      <div class="card">
+        <div class="front">A</div>
+        <div class="back"></div>
+      </div>
+      <div class="card">
+        <div class="front">A</div>
+        <div class="back"></div>
+      </div>
+      <div class="card">
+        <div class="front">A</div>
+        <div class="back"></div>
+      </div>
+      <div class="card">
+        <div class="front">A</div>
+        <div class="back"></div>
+      </div>
+      <div class="card">
+        <div class="front">A</div>
+        <div class="back"></div>
+      </div>
+      <div class="card">
+        <div class="front">A</div>
+        <div class="back"></div>
+      </div>
+      <div class="card">
+        <div class="front">A</div>
+        <div class="back"></div>
+      </div>
+    </div>
+
+    <div class="range">
+      <div class="range__inner"></div>
+      <input
+        type="range"
+        id="inputRange"
+        class="range__button"
+        min="0"
+        max="100"
+        value="0"
+        step="1"
+      />
+    </div>
+    <script>
+      const inputRange = document.getElementById("inputRange");
+      const element = document.querySelector(".wrapper--1");
+      const list = document.querySelectorAll(".wrapper--2 .card");
+      console.log(list);
+      const change = (e) => {
+        let value = e.target.value;
+        element.style.perspective = `${200 + value * 20}px`;
+        console.log(value);
+        for (i = 0; i < list.length; i++) {
+          list[i].style.transform = `perspective(${
+            300 + value * 20
+          }px) rotateY(45deg)`;
+        }
+      };
+      inputRange.addEventListener("input", change);
+      inputRange.addEventListener("change", change);
+    </script>
+  </body>
+</html>
