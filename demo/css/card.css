@@ -25,69 +25,80 @@ body {
           transform-style: preserve-3d;
   -webkit-transform: rotateX(-10deg) rotateY(0deg);
           transform: rotateX(-10deg) rotateY(0deg);
+  pointer-events: none;
 }
 
-.box.is-expanded .card:nth-child(1) {
+.box .card:nth-child(1) {
   -webkit-transform: translateZ(200px);
           transform: translateZ(200px);
 }
 
-.box.is-expanded .card:nth-child(3) {
+.box .card:nth-child(3) {
   -webkit-transform: translateZ(-200px);
           transform: translateZ(-200px);
 }
 
+.box--front.is-animation {
+  -webkit-animation: rotate1 6s both;
+          animation: rotate1 6s both;
+}
+
+.box--back {
+  -webkit-transform: rotateX(-10deg) rotateY(-180deg);
+          transform: rotateX(-10deg) rotateY(-180deg);
+}
+
+.box--back.is-animation {
+  -webkit-animation: rotate2 6s both;
+          animation: rotate2 6s both;
+}
+
+.box--back .card .item {
+  background-image: url("../img/card/bg-card.png");
+}
+
 @-webkit-keyframes rotate1 {
   0% {
-    -webkit-transform: rotateY(-720deg);
-            transform: rotateY(-720deg);
+    -webkit-transform: rotateX(-10deg) rotateY(720deg);
+            transform: rotateX(-10deg) rotateY(720deg);
   }
   100% {
-    -webkit-transform: rotateY(0);
-            transform: rotateY(0);
+    -webkit-transform: rotateX(-10deg) rotateY(0);
+            transform: rotateX(-10deg) rotateY(0);
   }
 }
 
 @keyframes rotate1 {
   0% {
-    -webkit-transform: rotateY(-720deg);
-            transform: rotateY(-720deg);
+    -webkit-transform: rotateX(-10deg) rotateY(720deg);
+            transform: rotateX(-10deg) rotateY(720deg);
   }
   100% {
-    -webkit-transform: rotateY(0);
-            transform: rotateY(0);
+    -webkit-transform: rotateX(-10deg) rotateY(0);
+            transform: rotateX(-10deg) rotateY(0);
   }
 }
 
 @-webkit-keyframes rotate2 {
   0% {
-    -webkit-transform: rotateY(0deg);
-            transform: rotateY(0deg);
+    -webkit-transform: rotateX(-10deg) rotateY(540deg);
+            transform: rotateX(-10deg) rotateY(540deg);
   }
   100% {
-    -webkit-transform: rotateY(900deg);
-            transform: rotateY(900deg);
+    -webkit-transform: rotateX(-10deg) rotateY(-180deg);
+            transform: rotateX(-10deg) rotateY(-180deg);
   }
 }
 
 @keyframes rotate2 {
   0% {
-    -webkit-transform: rotateY(0deg);
-            transform: rotateY(0deg);
+    -webkit-transform: rotateX(-10deg) rotateY(540deg);
+            transform: rotateX(-10deg) rotateY(540deg);
   }
   100% {
-    -webkit-transform: rotateY(900deg);
-            transform: rotateY(900deg);
+    -webkit-transform: rotateX(-10deg) rotateY(-180deg);
+            transform: rotateX(-10deg) rotateY(-180deg);
   }
-}
-
-.box--back {
-  -webkit-transform: rotateY(180deg);
-          transform: rotateY(180deg);
-}
-
-.box--back .card .item {
-  background-image: url("../img/card/bg-card.png");
 }
 
 .card {
@@ -119,38 +130,38 @@ body {
 }
 
 .item:nth-child(1) {
-  background-image: url("../img/card/card5.png");
-}
-
-.item:nth-child(2) {
   background-image: url("../img/card/card4.png");
 }
 
+.item:nth-child(2) {
+  background-image: url("../img/card/card3.png");
+}
+
 .item:nth-child(3) {
-  background-image: url("../img/card/card3.png");
-}
-
-.item:nth-child(4) {
-  background-image: url("../img/card/card2.png");
-}
-
-.item:nth-child(5) {
-  background-image: url("../img/card/card3.png");
-}
-
-.item:nth-child(6) {
-  background-image: url("../img/card/card1.png");
-}
-
-.item:nth-child(7) {
-  background-image: url("../img/card/card2.png");
-}
-
-.item:nth-child(8) {
   background-image: url("../img/card/card5.png");
 }
 
-.item:nth-child(9) {
+.item:nth-child(4) {
   background-image: url("../img/card/card1.png");
+}
+
+.item:nth-child(5) {
+  background-image: url("../img/card/card1.png");
+}
+
+.item:nth-child(6) {
+  background-image: url("../img/card/card5.png");
+}
+
+.item:nth-child(7) {
+  background-image: url("../img/card/card4.png");
+}
+
+.item:nth-child(8) {
+  background-image: url("../img/card/card1.png");
+}
+
+.item:nth-child(9) {
+  background-image: url("../img/card/card3.png");
 }
 /*# sourceMappingURL=card.css.map */
