@@ -48,11 +48,7 @@ body {
     transform: rotateY(180deg);
     //animation: rotate2 10s both;
     .card .item{
-      @for $i from 1 through 9 {
-        &:nth-child(#{$i}) {
-          background-image: url("../img/card/card#{random(5)}.png");
-        }
-      }
+      background-image: url("../img/card/bg-card.png");
     }
   }
 }
@@ -70,17 +66,19 @@ body {
   transform-style: preserve-3d;
   transition-duration: .5s;
   pointer-events: none;
-  
+  backface-visibility: hidden;
 }
 .item {
   margin: 0 auto;
   width: 80px;
-  height: 110px;
+  height: 100px;
   background-size: 100% auto;
   background-repeat: no-repeat;
-  background-image: url("../img/card/bg-card.png");
-  backface-visibility: hidden;
   pointer-events: visible;
   cursor: pointer;
-  
+  @for $i from 1 through 9 {
+    &:nth-child(#{$i}) {
+      background-image: url("../img/card/card#{random(5)}.png");
+    }
+  }
 }

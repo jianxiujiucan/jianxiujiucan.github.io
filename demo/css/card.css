@@ -81,40 +81,8 @@ body {
           transform: rotateY(180deg);
 }
 
-.box--back .card .item:nth-child(1) {
-  background-image: url("../img/card/card4.png");
-}
-
-.box--back .card .item:nth-child(2) {
-  background-image: url("../img/card/card2.png");
-}
-
-.box--back .card .item:nth-child(3) {
-  background-image: url("../img/card/card4.png");
-}
-
-.box--back .card .item:nth-child(4) {
-  background-image: url("../img/card/card3.png");
-}
-
-.box--back .card .item:nth-child(5) {
-  background-image: url("../img/card/card3.png");
-}
-
-.box--back .card .item:nth-child(6) {
-  background-image: url("../img/card/card5.png");
-}
-
-.box--back .card .item:nth-child(7) {
-  background-image: url("../img/card/card4.png");
-}
-
-.box--back .card .item:nth-child(8) {
-  background-image: url("../img/card/card3.png");
-}
-
-.box--back .card .item:nth-child(9) {
-  background-image: url("../img/card/card3.png");
+.box--back .card .item {
+  background-image: url("../img/card/bg-card.png");
 }
 
 .card {
@@ -134,18 +102,53 @@ body {
   -webkit-transition-duration: .5s;
           transition-duration: .5s;
   pointer-events: none;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
 }
 
 .item {
   margin: 0 auto;
   width: 80px;
-  height: 110px;
+  height: 100px;
   background-size: 100% auto;
   background-repeat: no-repeat;
-  background-image: url("../img/card/bg-card.png");
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
   pointer-events: visible;
   cursor: pointer;
+}
+
+.item:nth-child(1) {
+  background-image: url("../img/card/card5.png");
+}
+
+.item:nth-child(2) {
+  background-image: url("../img/card/card5.png");
+}
+
+.item:nth-child(3) {
+  background-image: url("../img/card/card4.png");
+}
+
+.item:nth-child(4) {
+  background-image: url("../img/card/card3.png");
+}
+
+.item:nth-child(5) {
+  background-image: url("../img/card/card1.png");
+}
+
+.item:nth-child(6) {
+  background-image: url("../img/card/card5.png");
+}
+
+.item:nth-child(7) {
+  background-image: url("../img/card/card3.png");
+}
+
+.item:nth-child(8) {
+  background-image: url("../img/card/card4.png");
+}
+
+.item:nth-child(9) {
+  background-image: url("../img/card/card3.png");
 }
 /*# sourceMappingURL=card.css.map */
