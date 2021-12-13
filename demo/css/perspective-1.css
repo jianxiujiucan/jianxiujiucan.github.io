@@ -40,36 +40,36 @@
 .wrapper .left {
   -webkit-transform: rotateY(90deg) translateZ(calc(var(--size) / -2));
           transform: rotateY(90deg) translateZ(calc(var(--size) / -2));
-  background: #1d8732;
+  background: #92d13e;
 }
 
 .wrapper .back {
   -webkit-transform: translateZ(calc(var(--size) / -2));
           transform: translateZ(calc(var(--size) / -2));
-  background: #9f1a66;
+  background: #6c8fb6;
 }
 
 .wrapper .right {
   -webkit-transform: rotateY(90deg) translateZ(calc(var(--size) / 2));
           transform: rotateY(90deg) translateZ(calc(var(--size) / 2));
-  background: #0c51ce;
+  background: #9c39b2;
 }
 
 .wrapper .front {
   -webkit-transform: translateZ(calc(var(--size) / 2));
           transform: translateZ(calc(var(--size) / 2));
-  background: #5ef38a;
+  background: #7afcdf;
 }
 
 .wrapper .top {
   -webkit-transform: rotateX(90deg) translateZ(calc(var(--size) / 2));
           transform: rotateX(90deg) translateZ(calc(var(--size) / 2));
-  background: #b0339b;
+  background: #9d7d78;
 }
 
 .wrapper .bottom {
   -webkit-transform: rotateX(90deg) translateZ(calc(var(--size) / -2));
           transform: rotateX(90deg) translateZ(calc(var(--size) / -2));
-  background: #0c3296;
+  background: #a194e2;
 }
 /*# sourceMappingURL=perspective-1.css.map */
