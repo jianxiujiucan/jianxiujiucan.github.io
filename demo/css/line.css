@@ -7,7 +7,7 @@
   100% {
     -webkit-transform: translate(20px, 0);
             transform: translate(20px, 0);
-    opacity: .5;
+    opacity: 0.5;
   }
 }
 
@@ -20,7 +20,7 @@
   100% {
     -webkit-transform: translate(20px, 0);
             transform: translate(20px, 0);
-    opacity: .5;
+    opacity: 0.5;
   }
 }
 
@@ -37,7 +37,8 @@
           align-items: center;
 }
 
-.item, .line {
+.item,
+.line {
   margin: 0 5px;
   width: 10px;
   height: 80px;

@@ -1,0 +1,15 @@
+.box{
+  width: 100px;
+  &:before{
+    content: '0';
+    animation: number linear 5s both;
+  }
+}
+
+@keyframes bird {
+  @for $i from 1 through 12{
+    #{$i / 12 * 100%}{
+      background-image: url("#{$i}.png");
+    }
+  }
+}

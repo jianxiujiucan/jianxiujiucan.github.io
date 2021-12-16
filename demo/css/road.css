@@ -1,0 +1,83 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --size: 1000px;
+  --depth: calc(var(--size) * 6);
+  --bgPos: calc(var(--size) * 0.4);
+}
+
+body {
+  overflow: hidden;
+}
+
+.sky {
+  width: 100vw;
+  height: 53vh;
+  background: #9ce8ff;
+}
+
+.back {
+  width: 100vw;
+  height: 53vh;
+  background: #d6c090;
+}
+
+.wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  -webkit-perspective: 100px;
+          perspective: 100px;
+}
+
+.wrapper .road {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  margin-left: calc(var(--size)/-2);
+  width: var(--size);
+  height: var(--depth);
+  background: #666;
+  background-image: repeating-linear-gradient(to bottom, transparent 0 100px, #fff 101px 200px);
+  background-size: 30px 100%;
+  background-repeat: no-repeat;
+  background-position: 50% 0;
+  border-left: 30px solid #fff;
+  border-right: 30px solid #fff;
+  -webkit-transform: rotateX(100deg);
+          transform: rotateX(100deg);
+  -webkit-transform-origin: center bottom;
+          transform-origin: center bottom;
+  -webkit-animation: backgroundAni 1s both linear infinite;
+          animation: backgroundAni 1s both linear infinite;
+}
+
+@-webkit-keyframes backgroundAni {
+  0% {
+    -webkit-transform: rotateX(100deg) translateY(0);
+            transform: rotateX(100deg) translateY(0);
+  }
+  100% {
+    -webkit-transform: rotateX(100deg) translateY(var(--bgPos));
+            transform: rotateX(100deg) translateY(var(--bgPos));
+  }
+}
+
+@keyframes backgroundAni {
+  0% {
+    -webkit-transform: rotateX(100deg) translateY(0);
+            transform: rotateX(100deg) translateY(0);
+  }
+  100% {
+    -webkit-transform: rotateX(100deg) translateY(var(--bgPos));
+            transform: rotateX(100deg) translateY(var(--bgPos));
+  }
+}
+/*# sourceMappingURL=road.css.map */

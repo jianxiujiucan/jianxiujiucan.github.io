@@ -1,0 +1,58 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+:root{
+  --size: 1000px;
+  --depth: calc(var(--size) * 6);
+  --bgPos: calc(var(--size) * 0.4);
+}
+body{
+  overflow: hidden;
+}
+.sky{
+  width: 100vw;
+  height: 53vh;
+  background: rgb(156, 232, 255);
+}
+.back{
+  width: 100vw;
+  height: 53vh;
+  background: rgb(214, 192, 144);
+}
+.wrapper{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  transform-style: preserve-3d;
+  perspective: 100px;
+  .road{
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    margin-left: calc(var(--size)/-2);
+    width: var(--size);
+    height: var(--depth);
+    background: #666;
+    background-image: repeating-linear-gradient(to bottom, transparent 0 100px, #fff 101px 200px);
+    background-size: 30px 100%;
+    background-repeat: no-repeat;
+    background-position: 50% 0;
+    border-left: 30px solid #fff;
+    border-right: 30px solid #fff;
+    transform: rotateX(100deg);
+    transform-origin: center bottom;
+    animation: backgroundAni 1s both linear infinite;
+  }
+}
+
+@keyframes backgroundAni {
+  0%{
+    transform: rotateX(100deg) translateY(0);
+  }
+  100%{
+    transform: rotateX(100deg) translateY(var(--bgPos));
+  }
+}

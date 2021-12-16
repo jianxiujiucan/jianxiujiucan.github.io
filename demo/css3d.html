@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>box</title>
+    <link rel="stylesheet" href="css/css-3d.css" />
+  </head>
+  <style>
+    span {
+      vertical-align: -5px;
+    }
+  </style>
+  <body>
+    <div class="wrap">
+      <ul class="cube">
+        <li class="flat"></li>
+        <li class="flat"></li>
+        <li class="flat"></li>
+        <li class="flat"></li>
+        <li class="flat"></li>
+        <li class="flat"></li>
+      </ul>
+    </div>
+    <script>
+      const wrap = document.querySelector('.wrap')
+      const cube = document.querySelector('.cube')
+      const speedFactor = 1
+      let startX = 0
+      let startY = 0
+      let curRotateX = 0
+      let curRotateY = 0
+      wrap.addEventListener('mousedown', (e) => {
+        startX = e.screenX
+        startY = e.screenY
+      })
+      wrap.addEventListener('mousemove', e => {
+        if (e.buttons === 1) {
+          const diffX = (e.screenX - startX) 
+          const diffY = (e.screenY - startY) 
+          startX = e.screenX
+          startY = e.screenY
+          curRotateX = curRotateX + Math.floor(diffX) * speedFactor
+          curRotateY = curRotateY + Math.floor(diffY) * .1
+
+          console.log(curRotateX,curRotateY)
+          cube.style.transform = `rotateY(${curRotateX}deg) rotateX(${curRotateY}deg)`
+        }
+      });
+
+    
+    </script>
+  </body>
+</html>

@@ -1,0 +1,88 @@
+.box {
+  width: 100px;
+}
+
+.box:before {
+  content: '0';
+  -webkit-animation: number linear 5s both;
+          animation: number linear 5s both;
+}
+
+@-webkit-keyframes bird {
+  8.33333% {
+    background-image: url("1.png");
+  }
+  16.66667% {
+    background-image: url("2.png");
+  }
+  25% {
+    background-image: url("3.png");
+  }
+  33.33333% {
+    background-image: url("4.png");
+  }
+  41.66667% {
+    background-image: url("5.png");
+  }
+  50% {
+    background-image: url("6.png");
+  }
+  58.33333% {
+    background-image: url("7.png");
+  }
+  66.66667% {
+    background-image: url("8.png");
+  }
+  75% {
+    background-image: url("9.png");
+  }
+  83.33333% {
+    background-image: url("10.png");
+  }
+  91.66667% {
+    background-image: url("11.png");
+  }
+  100% {
+    background-image: url("12.png");
+  }
+}
+
+@keyframes bird {
+  8.33333% {
+    background-image: url("1.png");
+  }
+  16.66667% {
+    background-image: url("2.png");
+  }
+  25% {
+    background-image: url("3.png");
+  }
+  33.33333% {
+    background-image: url("4.png");
+  }
+  41.66667% {
+    background-image: url("5.png");
+  }
+  50% {
+    background-image: url("6.png");
+  }
+  58.33333% {
+    background-image: url("7.png");
+  }
+  66.66667% {
+    background-image: url("8.png");
+  }
+  75% {
+    background-image: url("9.png");
+  }
+  83.33333% {
+    background-image: url("10.png");
+  }
+  91.66667% {
+    background-image: url("11.png");
+  }
+  100% {
+    background-image: url("12.png");
+  }
+}
+/*# sourceMappingURL=1111.css.map */
