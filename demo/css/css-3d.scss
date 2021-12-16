@@ -2,6 +2,9 @@
   margin: 0;
   padding: 0;
 }
+body{
+  overflow: hidden;
+}
 li {
   margin: 0;
   padding: 0;
@@ -16,8 +19,10 @@ $size: 1024px;
   top: 50%;
   margin-top: -$size/2;
   margin-left: -$size/2;
-  perspective: 500px;
+  perspective: 50px;
   perspective-origin: center;
+  transform: scale(9);
+
 }
 .cube {
   margin: auto;
@@ -26,41 +31,49 @@ $size: 1024px;
   height: $size;
   transform-style: preserve-3d;
   pointer-events: none; 
+  transition: .2s;
   //animation: spin 5s both linear infinite;
 }
 .flat {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 101%;
+  height: 101%;
   background-size: 100% auto;
 
-  &:nth-child(6) {
+  &.back {
     transform: rotateY(90deg) translateZ(-$size/2);
-    background-image: url(../img/3d/bg1.jpg);
+    background-image: url(../img/3d/back.png);
   }
-  &:nth-child(5) {
+  &.front{
     transform: rotateY(-90deg) translateZ(-$size/2);
-    background-image: url(../img/3d/bg3.jpg);
+    background-image: url(../img/3d/front.png);
   }
-  &:nth-child(4) {
-   
-    transform: rotateX(-90deg) translateZ(-$size/2);
-    background-image: url(../img/3d/bg6.jpg);
+  &.up {
+    transform: rotateX(-90deg) rotateZ(270deg) translateZ(-$size/2);
+    background-image: url(../img/3d/up.png);
   }
-  &:nth-child(3) {
+  &.down {
     transform: rotateX(90deg) translateZ(-$size/2);
-    background-image: url(../img/3d/bg5.jpg);
+    background-image: url(../img/3d/down.png);
   }
-  &:nth-child(2) {
+  &.left {
     transform: translateZ(-$size/2);
-    background-image: url(../img/3d/bg2.jpg);
+    background-image: url(../img/3d/left.png);
   }
-  &:nth-child(1) {
-    transform: rotateY(180deg) translateZ(-$size/2);
-    background-image: url(../img/3d/bg4.jpg);
+  &.down{
+    transform: rotateX(90deg) rotateZ(90deg) translateZ(-$size/2);
+    background-image: url(../img/3d/bottom.png);
   }
+  &.right{
+    transform: translateZ($size/2) rotateY(180deg);
+    background-image: url(../img/3d/right.png);
+  }
+  // &:nth-child(1) {
+  //   transform: rotateY(180deg) translateZ(-$size/2);
+  //   background-image: url(../img/3d/bg4.jpg);
+  // }
 }
 
 @keyframes spin1 {
