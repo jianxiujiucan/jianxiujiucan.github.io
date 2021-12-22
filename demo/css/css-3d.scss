@@ -22,7 +22,7 @@ $size: 1024px;
   perspective: 50px;
   perspective-origin: center;
   transform: scale(9);
-
+  cursor: move;
 }
 .cube {
   margin: auto;
@@ -36,10 +36,10 @@ $size: 1024px;
 }
 .flat {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 101%;
-  height: 101%;
+  top: -1px;
+  left: -1px;
+  width: calc(100% + 2px);
+  height: calc(100% + 2px);
   background-size: 100% auto;
 
   &.back {

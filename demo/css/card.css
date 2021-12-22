@@ -134,15 +134,15 @@ body {
 }
 
 .item:nth-child(2) {
-  background-image: url("../img/card/card2.png");
+  background-image: url("../img/card/card3.png");
 }
 
 .item:nth-child(3) {
-  background-image: url("../img/card/card1.png");
+  background-image: url("../img/card/card2.png");
 }
 
 .item:nth-child(4) {
-  background-image: url("../img/card/card1.png");
+  background-image: url("../img/card/card4.png");
 }
 
 .item:nth-child(5) {
@@ -150,11 +150,11 @@ body {
 }
 
 .item:nth-child(6) {
-  background-image: url("../img/card/card4.png");
+  background-image: url("../img/card/card3.png");
 }
 
 .item:nth-child(7) {
-  background-image: url("../img/card/card1.png");
+  background-image: url("../img/card/card2.png");
 }
 
 .item:nth-child(8) {
@@ -162,6 +162,6 @@ body {
 }
 
 .item:nth-child(9) {
-  background-image: url("../img/card/card5.png");
+  background-image: url("../img/card/card1.png");
 }
 /*# sourceMappingURL=card.css.map */

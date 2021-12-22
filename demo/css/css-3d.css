@@ -25,6 +25,7 @@ li {
           perspective-origin: center;
   -webkit-transform: scale(9);
           transform: scale(9);
+  cursor: move;
 }
 
 .cube {
@@ -41,10 +42,10 @@ li {
 
 .flat {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 101%;
-  height: 101%;
+  top: -1px;
+  left: -1px;
+  width: calc(100% + 2px);
+  height: calc(100% + 2px);
   background-size: 100% auto;
 }
 
