@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .data-list {
+      display: flex;
+      flex-wrap: wrap;
+      width: 280px;
+    }
+
+    .data-list span {}
+
+    .week-list {
+      display: flex;
+    }
+
+    .calendar {
+      width: 280px;
+    }
+
+    .calendar span {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 40px;
+      height: 40px;
+    }
+
+    .current {
+      color: #69d;
+      font-weight: bold;
+    }
+    .disabled-month{
+      color: #ccc;
+    }
+  </style>
+</head>
+
+<body>
+  <button id="lastMonth">上个月</button>
+  <button id="nextMonth">下个月</button>
+  <div class="calendar">
+    <div class="week-list">
+      <span>日</span>
+      <span>一</span>
+      <span>二</span>
+      <span>三</span>
+      <span>四</span>
+      <span>五</span>
+      <span>六</span>
+    </div>
+    <div class="data-list" id="dateList"></div>
+  </div>
+  <script>
+    let $dataList = document.getElementById('dateList')
+    let $buttonLast = document.getElementById('lastMonth')
+    let $buttonNext = document.getElementById('nextMonth')
+
+    let date = new Date()
+    let yearCurrent = date.getFullYear() // 年
+    let monthCurrent = date.getMonth()
+    let week = date.getDay() // 星期几
+    let dayCurrent = date.getDate() //日
+    
+    // 判断是否是闰年
+    function isLeapYear(year) {
+      if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0) {
+        return 29
+      } else {
+        return 28
+      }
+    }
+    // 月份的天数数组
+    let days = [31, isLeapYear(yearCurrent), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+
+    
+    function calendar(current) {
+      let contentList = ``
+      let firstDay = new Date(yearCurrent, monthCurrent, 1)
+      // 上个月日期生成
+      for (let i = firstDay.getDay() - 1; i > -1; i--) {
+        contentList += `<span class="disabled-month">${days[monthCurrent - 1] - i}</span>`
+      }
+      // 当前月份日期生成
+      for (let i = 1; i <= days[monthCurrent] ; i++) {
+        if (i === dayCurrent) {
+          contentList += `<span class="current">${i}</span>`
+        } else {
+          contentList += `<span>${i}</span>`
+        }
+      }
+      // 下个月日期生成
+      let lastDay = new Date(yearCurrent, monthCurrent, days[monthCurrent])
+      for(let i = 1; i < 7 - lastDay.getDay(); i++){
+        contentList += `<span class="disabled-month">${i}</span>`
+      }
+      
+      console.log(contentList,lastDay.getDay())
+      
+      $dataList.innerHTML = contentList
+      
+    }
+    calendar()
+    $buttonLast.addEventListener('click',function(){
+
+    })
+    $buttonNext.addEventListener('click',function(){
+      
+    })
+  </script>
+</body>
+
+</html>
