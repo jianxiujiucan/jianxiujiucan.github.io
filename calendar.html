@@ -195,7 +195,6 @@
     let $buttonNext = document.getElementById('nextMonth')
     let $currentYear = document.getElementById('currentYear')
     let $currentMonth = document.getElementById('currentMonth')
-
     let date = new Date()
     let yearCurrent = date.getFullYear() // 年
     let monthCurrent = date.getMonth()
@@ -210,19 +209,20 @@
       }
     }
 
-    let currentYear = date.getFullYear()
-    let currentMonth = date.getMonth()
+    let currentYear = date.getFullYear() //当前年份
+    let currentMonth = date.getMonth() // 当前月份
     calendar(currentYear, currentMonth)
 
     function calendar(yearCurrent, monthCurrent) {
       $currentYear.innerHTML = yearCurrent
       $currentMonth.innerHTML = monthCurrent + 1
       let contentList = ``
-      // 月份的天数数组
-      let days = [31, isLeapYear(yearCurrent), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
-      //当前月份第一天信息
-      let firstDay = new Date(yearCurrent, monthCurrent, 1)
-      let items = 0
+      
+      let days = [31, isLeapYear(yearCurrent), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31] // 月份的天数数组
+      
+      let firstDay = new Date(yearCurrent, monthCurrent, 1) //当前月份第一天信息
+      let items = 0 // 元素计数
+
       // 上个月日期生成
       for (let i = firstDay.getDay() - 1; i >= 0; i--) {
         let over = monthCurrent === 0 ? 31 : days[monthCurrent - 1]
@@ -265,7 +265,7 @@
       }
       calendar(currentYear, currentMonth)
     })
-    
+
     $buttonNext.addEventListener('click', function () {
       currentMonth++
       if (currentMonth > 11) {
