@@ -7,13 +7,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>日历</title>
   <style>
-    .wrapper {
+    body {
+      text-align: center;
+    }
+
+    .calendar {
       display: inline-block;
       padding: 10px;
       color: #fff;
       background: #3b3b3b;
     }
-
 
     .week-list {
       margin: 0 0 2px;
@@ -26,8 +29,6 @@
       text-align: center;
       line-height: 36px;
     }
-
-    .calendar {}
 
     .data-list {
       position: relative;
@@ -76,9 +77,9 @@
       width: 100%;
       height: 100%;
       background-color: #3b3b3b;
-      content: '';
       pointer-events: none;
       transition: .2s;
+      content: '';
     }
 
     .data-list:hover .item:before {
@@ -97,13 +98,27 @@
       margin: -500px 0 0 -500px;
       width: 1000px;
       height: 1000px;
-      background-image: radial-gradient(transparent 0 10px, #3b3b3b 80px 100%);
+      background-image: radial-gradient(transparent 0 10px, #3b3b3b 65px 100%);
       opacity: 1;
       content: '';
       pointer-events: none;
     }
+    .data-list .item:active span{
+      height: 32px; 
+      color: #fff;
+      line-height: 32px;
+      outline: solid 2px rgba(255, 255, 255, .6);
+      
+    }
+    .data-list .item.is-active span {
+      height: 32px; 
+      color: #fff;
+      line-height: 32px;
+      outline: solid 2px #0078d7;
+      box-sizing: border-box;
+    }
 
-    .calendar .item.current span {
+    .body .item.current span {
       width: 46px;
       height: 32px;
       color: #fff;
@@ -115,10 +130,9 @@
       outline: solid 2px #0078d7;
     }
 
-    .calendar .item.current:hover span {
+    .body .item.current:hover span {
       outline: solid 2px rgb(128, 169, 250);
     }
-
 
     .disabled-month {
       color: rgba(255, 255, 255, .3);
@@ -141,7 +155,7 @@
       border: 0;
       outline: 0;
       height: 20px;
-      margin: 0 0 0 20px;
+      margin: 0 14px 0 20px;
     }
 
     .arrow {
@@ -168,7 +182,7 @@
 </head>
 
 <body>
-  <div class="wrapper">
+  <div class="calendar">
     <div class="header">
       <p><span id="currentYear"></span>年<span id="currentMonth"></span>月</p>
       <div class="button">
@@ -176,7 +190,7 @@
         <button id="nextMonth"><i class="arrow arrow--down"></i></button>
       </div>
     </div>
-    <div class="calendar">
+    <div class="body">
       <div class="week-list">
         <span>日</span>
         <span>一</span>
@@ -196,9 +210,10 @@
     let $currentYear = document.getElementById('currentYear')
     let $currentMonth = document.getElementById('currentMonth')
     let date = new Date()
-    let yearCurrent = date.getFullYear() // 年
-    let monthCurrent = date.getMonth()
-    let dayCurrent = date.getDate() //日
+    let currentYear = date.getFullYear() //当前年份
+    let currentMonth = date.getMonth() // 当前月份
+    let currentDay = date.getDate() //当前几号
+    calendar(currentYear, currentMonth)
 
     // 判断是否是闰年
     function isLeapYear(year) {
@@ -209,29 +224,23 @@
       }
     }
 
-    let currentYear = date.getFullYear() //当前年份
-    let currentMonth = date.getMonth() // 当前月份
-    calendar(currentYear, currentMonth)
-
-    function calendar(yearCurrent, monthCurrent) {
-      $currentYear.innerHTML = yearCurrent
-      $currentMonth.innerHTML = monthCurrent + 1
+    function calendar(year, month) {
+      $currentYear.innerHTML = year
+      $currentMonth.innerHTML = month + 1
       let contentList = ``
-      
-      let days = [31, isLeapYear(yearCurrent), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31] // 月份的天数数组
-      
-      let firstDay = new Date(yearCurrent, monthCurrent, 1) //当前月份第一天信息
+      let days = [31, isLeapYear(year), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31] // 月份的天数数组
+      let firstDay = new Date(year, month, 1) //当前月份第一天信息
       let items = 0 // 元素计数
 
       // 上个月日期生成
       for (let i = firstDay.getDay() - 1; i >= 0; i--) {
-        let over = monthCurrent === 0 ? 31 : days[monthCurrent - 1]
+        let over = month === 0 ? 31 : days[month - 1]
         contentList += `<div class="item disabled-month"><span>${over - i}</span></div>`
         items++
       }
       // 当前月份日期生成
-      for (let i = 1; i <= days[monthCurrent]; i++) {
-        if (i === dayCurrent && monthCurrent === date.getMonth() && yearCurrent === date.getFullYear()) { //当天选中态
+      for (let i = 1; i <= days[month]; i++) {
+        if (i === currentDay && month === date.getMonth() && year === date.getFullYear()) { //当天选中态
           contentList += `<div class="item current"><span>${i}</span></div>`
         } else {
           contentList += `<div class="item"><span>${i}</span></div>`
@@ -240,7 +249,7 @@
       }
 
       // 下个月日期生成
-      let lastDay = new Date(yearCurrent, monthCurrent, days[monthCurrent])
+      let lastDay = new Date(year, month, days[month])
 
       for (let i = 1; i < 7 - lastDay.getDay(); i++) {
         contentList += `<div class="item disabled-month"><span>${i}</span></div>`
@@ -253,7 +262,7 @@
           contentList += `<div class="item disabled-month"><span>${i}</span></div>`
         }
       }
-      $dataList.innerHTML = contentList //生成到页面里
+      $dataList.innerHTML = contentList //don结构生成到页面里
     }
 
 
@@ -274,6 +283,22 @@
       }
       calendar(currentYear, currentMonth)
     })
+
+    document.addEventListener('DOMContentLoaded', function () {
+      let items = document.querySelectorAll('.item')
+      for (let item of items) {
+        item.addEventListener('click', function () {
+          
+          for(let i=0; i<items.length; i++){
+            items[i].classList.remove('is-active')
+          }
+          this.classList.add('is-active')
+        });
+      }
+    });
+
+
+
   </script>
 </body>
 
