@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>日历</title>
+  <link rel="stylesheet" href="css/calendar.css">
+</head>
+
+<body>
+  <div id="app" class="wrapper">
+    <div class="header">
+      <p click="handleShowMonth"><span>{{dateData.year}}</span>年<span>{{dateData.month+1}}</span>月</p>
+      <div class="button">
+        <button @click="handlePrev"><i class="arrow arrow--up"></i></button>
+        <button @click="handleNext"><i class="arrow arrow--down"></i></button>
+      </div>
+    </div>
+    <div class="calendar">
+      <div class="week-list">
+        <span v-for="(item, index) in weekList" :key="index">{{item}}</span>
+      </div>
+      <div class="data-list">
+        <div class="item"
+          :class="{ 'is-active' : activeClass === index, 'is-current': item.current===true, 'is-disabled': item.disabled===true}"
+          @click="handleActive(index)" v-for="(item, index) in dateList">
+          <span>{{item.day}}</span></div>
+      </div>
+    </div>
+  </div>
+  <script src="js/vue.js"></script>
+  <script>
+    new Vue({
+      el: "#app",
+      data: {
+        activeClass: '',
+        weekList: ['日', '一', '二', '三', '四', '五', '六'],
+        days: [],
+        dateList: [],
+        date: '',
+        dateData: {},
+        year: '',
+        month: '',
+        day: '',
+        firstDay: '',
+        lastDay: '',
+        activeDay: true,
+      },
+
+      mounted() {
+        this.getDate()
+        this.calendar(this.dateData)
+
+      },
+      methods: {
+        getDate() {
+          let date = new Date()
+          this.dateData = {
+            year: date.getFullYear(),
+            month: date.getMonth(),
+            today: date.getDate(),
+          }
+        },
+        calendar(dateData) {
+          this.date = new Date()
+          let {
+            year,
+            month,
+            today
+          } = dateData
+
+          let days = [31, this.isLeapYear(year), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+          let firstDay = new Date(year, month, 1)
+          this.dateList = []
+          
+          for (let i = firstDay.getDay() - 1; i >= 0; i--) {
+            let over = month === 0 ? 31 : days[month - 1]
+            let lastMonthObject = {
+              day: over - i,
+              disabled: true,
+            }
+            this.dateList.push(lastMonthObject)
+          }
+
+          for (let i = 1; i <= days[month]; i++) {
+            let currentMonthObject = {
+              day: i,
+            }
+            if (i === today && month === this.date.getMonth() && year === this
+              .date.getFullYear()) {
+              currentMonthObject.current = true
+            }
+            this.dateList.push(currentMonthObject)
+          }
+
+          let lastDay = new Date(year, month, days[month])
+          for (let i = 1; i < 7 - lastDay.getDay(); i++) {
+            let nextMonthObject = {
+              day: i,
+              disabled: true,
+            }
+            this.dateList.push(nextMonthObject)
+          }
+          console.log(this.dateList)
+        },
+        //是否闰年
+        isLeapYear(year) {
+          if (year % 4 === 0 && year % 100 != 0 || year % 400 === 0) {
+            return 29
+          } else {
+            return 28
+          }
+        },
+        //上个月
+        handlePrev() {
+          this.dateData.month--
+          if (this.dateData.month < 0) {
+            this.dateData.year -= 1
+            this.dateData.month = 11
+          }
+          this.calendar(this.dateData)
+        },
+        //下个月
+        handleNext() {
+          this.dateData.month++
+          if (this.dateData.month > 11) {
+            this.dateData.year += 1
+            this.dateData.month = 0
+          }
+          this.calendar(this.dateData)
+        },
+        handleActive(index) {
+          this.activeClass = index;
+        },
+        handleShowMonth() {
+
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>
