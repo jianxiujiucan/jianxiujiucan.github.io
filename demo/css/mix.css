@@ -46,7 +46,6 @@ body {
   width: 1080px;
   height: 700px;
   overflow: hidden;
-  background: -webkit-gradient(linear, left top, left bottom, from(red), to(purple)), url(../img/05.jpg) no-repeat;
   background: linear-gradient(red, purple), url(../img/05.jpg) no-repeat;
   background-size: cover;
 }
@@ -57,7 +56,6 @@ body {
   left: 0;
   width: var(--width);
   height: 100%;
-  background: -webkit-gradient(linear, left top, left bottom, from(red), to(purple));
   background: linear-gradient(red, purple);
 }
 
@@ -69,8 +67,7 @@ body {
   position: fixed;
   top: 0;
   left: 50%;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
+  transform: translateX(-50%);
   padding: 10px 0;
   display: inline-block;
   z-index: 1;
@@ -90,8 +87,7 @@ body {
   content: "";
   position: absolute;
   left: 138px;
-  -webkit-transform: rotate(-135deg);
-          transform: rotate(-135deg);
+  transform: rotate(-135deg);
   top: 10px;
 }
 
@@ -123,5 +119,4 @@ body {
   position: absolute;
   left: 70px;
   pointer-events: none;
-}
-/*# sourceMappingURL=mix.css.map */
+}/*# sourceMappingURL=mix.css.map */

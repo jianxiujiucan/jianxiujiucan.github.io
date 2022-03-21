@@ -1,0 +1,27 @@
+%value{
+  --color: red;
+  --text: 12px
+}
+
+@mixin value {
+  --color: red;
+  --text: 12px
+}
+
+
+
+// @media only screen and (min-width: 1994px) {
+  
+// }
+
+@media (prefers-color-scheme: dark) {
+  body {
+    @include value()
+  }
+}
+
+
+
+.is-dark{
+  @extend %value
+}

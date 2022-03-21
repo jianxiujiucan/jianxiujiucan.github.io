@@ -16,20 +16,16 @@ body {
   margin: 200px auto;
   width: var(--size);
   height: var(--size);
-  -webkit-transform: rotateX(-33.5deg) rotateY(45deg);
-          transform: rotateX(-33.5deg) rotateY(45deg);
-  -webkit-transform-style: preserve-3d;
-          transform-style: preserve-3d;
+  transform: rotateX(-33.5deg) rotateY(45deg);
+  transform-style: preserve-3d;
 }
 
 .cube {
   margin: 0 auto;
   width: var(--size);
   height: var(--size);
-  -webkit-transform-style: preserve-3d;
-          transform-style: preserve-3d;
+  transform-style: preserve-3d;
 }
-
 .cube .item {
   position: absolute;
   top: 0;
@@ -38,97 +34,68 @@ body {
   height: 100%;
   background: var(--background);
   border: solid 2px #fff;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
-
 .cube .item--left {
-  -webkit-transform: rotateY(90deg) translateZ(calc(var(--size) / -2));
-          transform: rotateY(90deg) translateZ(calc(var(--size) / -2));
+  transform: rotateY(90deg) translateZ(calc(var(--size) / -2));
 }
-
 .cube .item--back {
-  -webkit-transform: translateZ(calc(var(--size) / -2));
-          transform: translateZ(calc(var(--size) / -2));
+  transform: translateZ(calc(var(--size) / -2));
 }
-
 .cube .item--right {
-  -webkit-transform: rotateY(90deg) translateZ(calc(var(--size) / 2));
-          transform: rotateY(90deg) translateZ(calc(var(--size) / 2));
+  transform: rotateY(90deg) translateZ(calc(var(--size) / 2));
 }
-
 .cube .item--front {
-  -webkit-transform: translateZ(calc(var(--size) / 2));
-          transform: translateZ(calc(var(--size) / 2));
+  transform: translateZ(calc(var(--size) / 2));
 }
-
 .cube .item--top {
-  -webkit-transform: rotateX(90deg) translateZ(calc(var(--size) / 2));
-          transform: rotateX(90deg) translateZ(calc(var(--size) / 2));
+  transform: rotateX(90deg) translateZ(calc(var(--size) / 2));
 }
-
 .cube .item--bottom {
-  -webkit-transform: rotateX(90deg) translateZ(calc(var(--size) / -2));
-          transform: rotateX(90deg) translateZ(calc(var(--size) / -2));
+  transform: rotateX(90deg) translateZ(calc(var(--size) / -2));
 }
-
 .cube--outer {
   -webkit-animation: out 5s infinite;
           animation: out 5s infinite;
 }
-
 @-webkit-keyframes out {
   0% {
-    -webkit-transform: rotateY(0deg);
-            transform: rotateY(0deg);
+    transform: rotateY(0deg);
   }
   20%, 100% {
-    -webkit-transform: rotateY(90deg);
-            transform: rotateY(90deg);
+    transform: rotateY(90deg);
   }
 }
-
 @keyframes out {
   0% {
-    -webkit-transform: rotateY(0deg);
-            transform: rotateY(0deg);
+    transform: rotateY(0deg);
   }
   20%, 100% {
-    -webkit-transform: rotateY(90deg);
-            transform: rotateY(90deg);
+    transform: rotateY(90deg);
   }
 }
-
 .cube--inner {
   position: absolute;
   top: 0;
   left: 0;
-  -webkit-transform: scale3d(0.5, 0.5, 0.5);
-          transform: scale3d(0.5, 0.5, 0.5);
+  transform: scale3d(0.5, 0.5, 0.5);
   --background: #69f;
   -webkit-animation: in 5s infinite;
           animation: in 5s infinite;
 }
-
 @-webkit-keyframes in {
   0% {
-    -webkit-transform: scale3d(0.5, 0.5, 0.5) rotateY(0deg);
-            transform: scale3d(0.5, 0.5, 0.5) rotateY(0deg);
+    transform: scale3d(0.5, 0.5, 0.5) rotateY(0deg);
   }
   20%, 100% {
-    -webkit-transform: scale3d(0.5, 0.5, 0.5) rotateY(-90deg);
-            transform: scale3d(0.5, 0.5, 0.5) rotateY(-90deg);
+    transform: scale3d(0.5, 0.5, 0.5) rotateY(-90deg);
   }
 }
-
 @keyframes in {
   0% {
-    -webkit-transform: scale3d(0.5, 0.5, 0.5) rotateY(0deg);
-            transform: scale3d(0.5, 0.5, 0.5) rotateY(0deg);
+    transform: scale3d(0.5, 0.5, 0.5) rotateY(0deg);
   }
   20%, 100% {
-    -webkit-transform: scale3d(0.5, 0.5, 0.5) rotateY(-90deg);
-            transform: scale3d(0.5, 0.5, 0.5) rotateY(-90deg);
+    transform: scale3d(0.5, 0.5, 0.5) rotateY(-90deg);
   }
-}
-/*# sourceMappingURL=cube-1.css.map */
+}/*# sourceMappingURL=cube-1.css.map */

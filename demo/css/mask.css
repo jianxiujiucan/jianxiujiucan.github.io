@@ -5,8 +5,6 @@
 
 .box {
   margin: 20px auto;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
 }
 
@@ -45,7 +43,6 @@
 .is-vip .item {
   background-image: conic-gradient(from 40deg, #fcdf9d, #fad48d 50%, #fcdf9d 50%, #fad48d 100%);
 }
-
 .is-vip .icon {
   background: linear-gradient(145deg, #e7a568, #9d5a1a);
 }
@@ -53,8 +50,6 @@
 .is-super .item {
   background-image: conic-gradient(from 40deg, #474747, #0e0d0d 50%, #474747 50%, #0e0d0d 100%);
 }
-
 .is-super .icon {
   background: linear-gradient(145deg, #ffeccb, #ffcb76);
-}
-/*# sourceMappingURL=mask.css.map */
+}/*# sourceMappingURL=mask.css.map */

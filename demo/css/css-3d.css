@@ -19,12 +19,9 @@ li {
   top: 50%;
   margin-top: -512px;
   margin-left: -512px;
-  -webkit-perspective: 50px;
-          perspective: 50px;
-  -webkit-perspective-origin: center;
-          perspective-origin: center;
-  -webkit-transform: scale(9);
-          transform: scale(9);
+  perspective: 50px;
+  perspective-origin: center;
+  transform: scale(9);
   cursor: move;
 }
 
@@ -33,11 +30,9 @@ li {
   position: relative;
   width: 1024px;
   height: 1024px;
-  -webkit-transform-style: preserve-3d;
-          transform-style: preserve-3d;
+  transform-style: preserve-3d;
   pointer-events: none;
-  -webkit-transition: .2s;
-  transition: .2s;
+  transition: 0.2s;
 }
 
 .flat {
@@ -48,90 +43,65 @@ li {
   height: calc(100% + 2px);
   background-size: 100% auto;
 }
-
 .flat.back {
-  -webkit-transform: rotateY(90deg) translateZ(-512px);
-          transform: rotateY(90deg) translateZ(-512px);
+  transform: rotateY(90deg) translateZ(-512px);
   background-image: url(../img/3d/back.png);
 }
-
 .flat.front {
-  -webkit-transform: rotateY(-90deg) translateZ(-512px);
-          transform: rotateY(-90deg) translateZ(-512px);
+  transform: rotateY(-90deg) translateZ(-512px);
   background-image: url(../img/3d/front.png);
 }
-
 .flat.up {
-  -webkit-transform: rotateX(-90deg) rotateZ(270deg) translateZ(-512px);
-          transform: rotateX(-90deg) rotateZ(270deg) translateZ(-512px);
+  transform: rotateX(-90deg) rotateZ(270deg) translateZ(-512px);
   background-image: url(../img/3d/up.png);
 }
-
 .flat.down {
-  -webkit-transform: rotateX(90deg) translateZ(-512px);
-          transform: rotateX(90deg) translateZ(-512px);
+  transform: rotateX(90deg) translateZ(-512px);
   background-image: url(../img/3d/down.png);
 }
-
 .flat.left {
-  -webkit-transform: translateZ(-512px);
-          transform: translateZ(-512px);
+  transform: translateZ(-512px);
   background-image: url(../img/3d/left.png);
 }
-
 .flat.down {
-  -webkit-transform: rotateX(90deg) rotateZ(90deg) translateZ(-512px);
-          transform: rotateX(90deg) rotateZ(90deg) translateZ(-512px);
+  transform: rotateX(90deg) rotateZ(90deg) translateZ(-512px);
   background-image: url(../img/3d/bottom.png);
 }
-
 .flat.right {
-  -webkit-transform: translateZ(512px) rotateY(180deg);
-          transform: translateZ(512px) rotateY(180deg);
+  transform: translateZ(512px) rotateY(180deg);
   background-image: url(../img/3d/right.png);
 }
 
 @-webkit-keyframes spin1 {
   from {
-    -webkit-transform: rotate3d(0);
-            transform: rotate3d(0);
+    transform: rotate3d(0);
   }
   to {
-    -webkit-transform: rotate3d(1, 1, 1, 360deg);
-            transform: rotate3d(1, 1, 1, 360deg);
+    transform: rotate3d(1, 1, 1, 360deg);
   }
 }
 
 @keyframes spin1 {
   from {
-    -webkit-transform: rotate3d(0);
-            transform: rotate3d(0);
+    transform: rotate3d(0);
   }
   to {
-    -webkit-transform: rotate3d(1, 1, 1, 360deg);
-            transform: rotate3d(1, 1, 1, 360deg);
+    transform: rotate3d(1, 1, 1, 360deg);
   }
 }
-
 @-webkit-keyframes spin {
   from {
-    -webkit-transform: rotateY(0);
-            transform: rotateY(0);
+    transform: rotateY(0);
   }
   to {
-    -webkit-transform: rotateY(360deg);
-            transform: rotateY(360deg);
+    transform: rotateY(360deg);
   }
 }
-
 @keyframes spin {
   from {
-    -webkit-transform: rotateY(0);
-            transform: rotateY(0);
+    transform: rotateY(0);
   }
   to {
-    -webkit-transform: rotateY(360deg);
-            transform: rotateY(360deg);
+    transform: rotateY(360deg);
   }
-}
-/*# sourceMappingURL=css-3d.css.map */
+}/*# sourceMappingURL=css-3d.css.map */

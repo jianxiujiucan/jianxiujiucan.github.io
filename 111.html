@@ -1,12 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
+
 <body>
-  ???
+  <div id="box"></div>
+  <script>
+    let box = document.getElementById('box')
+    let content = ''
+    for (let i = 0; i < 10; i++) {
+      content += `<div class='item' data-number='${i}'>${i}</div>`
+    }
+    box.innerHTML = content
+
+    document.addEventListener('DOMContentLoaded', function () {
+      let items = document.querySelectorAll('.item')
+      for (let item of items) {
+        item.addEventListener('click', function () {
+
+          for (let i = 0; i < items.length; i++) {
+            items[i].classList.remove('is-active')
+          }
+          console.log(this.dataset.number)
+        });
+      }
+    })
+  </script>
 </body>
+
 </html>

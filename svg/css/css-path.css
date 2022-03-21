@@ -16,7 +16,6 @@
     d: path("M400.2,52c0,0,0,0,218,378c0,0,0,0,0,0c0,0,0,0-437,0c0,0,0,0,0,0C182,430,400.2,52,400.2,52");
   }
 }
-
 #animate1 {
   -webkit-animation: deform 4s ease infinite;
           animation: deform 4s ease infinite;
@@ -29,5 +28,4 @@ path {
   stroke-miterlimit: 10;
   stroke-width: 10;
   fill: none;
-}
-/*# sourceMappingURL=css-path.css.map */
+}/*# sourceMappingURL=css-path.css.map */

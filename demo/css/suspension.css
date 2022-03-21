@@ -9,7 +9,6 @@
   font-family: "dincond";
   src: url("../fonts/dincond.woff") format("woff");
 }
-
 :root {
   --suspension-progress: #d4e1ff;
   --suspension-status: #0862ff;
@@ -24,11 +23,9 @@ button {
   border-radius: 4px;
   cursor: pointer;
 }
-
 button:focus {
   outline: none;
 }
-
 button:hover {
   background: #0862ff;
 }
@@ -43,70 +40,54 @@ button:hover {
   --ball-height: 50px;
   height: 112px;
 }
-
 .xly-suspension p {
   cursor: default;
 }
-
 .xly-suspension.is-vip-login {
   -webkit-clip-path: polygon(100% 0, 100% 106px, 50% 100%, 0 106px, 0 0);
           clip-path: polygon(100% 0, 100% 106px, 50% 100%, 0 106px, 0 0);
   overflow: hidden;
-  -webkit-animation: maskAni 1s .2s both;
-          animation: maskAni 1s .2s both;
+  -webkit-animation: maskAni 1s 0.2s both;
+          animation: maskAni 1s 0.2s both;
 }
-
 .xly-suspension.is-vip-login .xly-suspension-panel {
   -webkit-animation: changeBox 1.6s 0.9s both, changePanel 0.4s 1.3s both;
           animation: changeBox 1.6s 0.9s both, changePanel 0.4s 1.3s both;
 }
-
 @-webkit-keyframes changeBox {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) scale(1) rotate(0);
-            transform: translate3d(0, 0, 0) scale(1) rotate(0);
+    transform: translate3d(0, 0, 0) scale(1) rotate(0);
   }
   50% {
-    -webkit-transform: translate3d(0, 95px, 0) scale(0.5) rotate(-90deg);
-            transform: translate3d(0, 95px, 0) scale(0.5) rotate(-90deg);
+    transform: translate3d(0, 95px, 0) scale(0.5) rotate(-90deg);
   }
   80% {
-    -webkit-transform: translate3d(0, -8px, 0) scale(1) rotate(0);
-            transform: translate3d(0, -8px, 0) scale(1) rotate(0);
+    transform: translate3d(0, -8px, 0) scale(1) rotate(0);
   }
   95% {
-    -webkit-transform: translate3d(0, 3px, 0) scale(1) rotate(0);
-            transform: translate3d(0, 3px, 0) scale(1) rotate(0);
+    transform: translate3d(0, 3px, 0) scale(1) rotate(0);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 0) scale(1) rotate(0);
-            transform: translate3d(0, 0, 0) scale(1) rotate(0);
+    transform: translate3d(0, 0, 0) scale(1) rotate(0);
   }
 }
-
 @keyframes changeBox {
   0% {
-    -webkit-transform: translate3d(0, 0, 0) scale(1) rotate(0);
-            transform: translate3d(0, 0, 0) scale(1) rotate(0);
+    transform: translate3d(0, 0, 0) scale(1) rotate(0);
   }
   50% {
-    -webkit-transform: translate3d(0, 95px, 0) scale(0.5) rotate(-90deg);
-            transform: translate3d(0, 95px, 0) scale(0.5) rotate(-90deg);
+    transform: translate3d(0, 95px, 0) scale(0.5) rotate(-90deg);
   }
   80% {
-    -webkit-transform: translate3d(0, -8px, 0) scale(1) rotate(0);
-            transform: translate3d(0, -8px, 0) scale(1) rotate(0);
+    transform: translate3d(0, -8px, 0) scale(1) rotate(0);
   }
   95% {
-    -webkit-transform: translate3d(0, 3px, 0) scale(1) rotate(0);
-            transform: translate3d(0, 3px, 0) scale(1) rotate(0);
+    transform: translate3d(0, 3px, 0) scale(1) rotate(0);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 0) scale(1) rotate(0);
-            transform: translate3d(0, 0, 0) scale(1) rotate(0);
+    transform: translate3d(0, 0, 0) scale(1) rotate(0);
   }
 }
-
 @-webkit-keyframes changePanel {
   0%, 50% {
     background-image: url(../img/normal.png);
@@ -115,7 +96,6 @@ button:hover {
     background-image: url(../img/vip.png);
   }
 }
-
 @keyframes changePanel {
   0%, 50% {
     background-image: url(../img/normal.png);
@@ -124,76 +104,57 @@ button:hover {
     background-image: url(../img/vip.png);
   }
 }
-
 .xly-suspension.is-vip-login .xly-suspension-hole {
   display: block;
   -webkit-animation: lightShow1 2.5s 0.5s both;
           animation: lightShow1 2.5s 0.5s both;
 }
-
 .xly-suspension.is-vip-login .xly-suspension-hole:before {
-  -webkit-animation: lightShow1 2.2s 0.5s both,filterAni 2.2s 0.5s both;
-          animation: lightShow1 2.2s 0.5s both,filterAni 2.2s 0.5s both;
+  -webkit-animation: lightShow1 2.2s 0.5s both, filterAni 2.2s 0.5s both;
+          animation: lightShow1 2.2s 0.5s both, filterAni 2.2s 0.5s both;
 }
-
 @-webkit-keyframes filterAni {
   0%, 55% {
-    -webkit-filter: hue-rotate(0deg);
-            filter: hue-rotate(0deg);
+    filter: hue-rotate(0deg);
   }
   60%, 100% {
-    -webkit-filter: hue-rotate(-132deg);
-            filter: hue-rotate(-132deg);
+    filter: hue-rotate(-132deg);
   }
 }
-
 @keyframes filterAni {
   0%, 55% {
-    -webkit-filter: hue-rotate(0deg);
-            filter: hue-rotate(0deg);
+    filter: hue-rotate(0deg);
   }
   60%, 100% {
-    -webkit-filter: hue-rotate(-132deg);
-            filter: hue-rotate(-132deg);
+    filter: hue-rotate(-132deg);
   }
 }
-
 @-webkit-keyframes lightShow1 {
   0% {
-    -webkit-transform: scale(0);
-            transform: scale(0);
+    transform: scale(0);
   }
-  10%,
-  90% {
-    -webkit-transform: scale(1);
-            transform: scale(1);
+  10%, 90% {
+    transform: scale(1);
     opacity: 1;
   }
   100% {
     opacity: 0;
-    -webkit-transform: scale(0);
-            transform: scale(0);
+    transform: scale(0);
   }
 }
-
 @keyframes lightShow1 {
   0% {
-    -webkit-transform: scale(0);
-            transform: scale(0);
+    transform: scale(0);
   }
-  10%,
-  90% {
-    -webkit-transform: scale(1);
-            transform: scale(1);
+  10%, 90% {
+    transform: scale(1);
     opacity: 1;
   }
   100% {
     opacity: 0;
-    -webkit-transform: scale(0);
-            transform: scale(0);
+    transform: scale(0);
   }
 }
-
 .xly-suspension.is-vip-login .xly-suspension-hole__svg {
   -webkit-animation: lightShow1 2.2s 0.5s both;
           animation: lightShow1 2.2s 0.5s both;
@@ -202,15 +163,9 @@ button:hover {
 .xly-suspension-panel {
   position: relative;
   top: 10px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
   width: 52px;
   height: 56px;
   -webkit-mask: url(../img/normal.png) no-repeat;
@@ -220,18 +175,14 @@ button:hover {
   overflow: hidden;
   z-index: 1;
 }
-
 .xly-suspension-panel:before {
   position: absolute;
   width: 70px;
   height: 12px;
-  background: -webkit-gradient(linear, right top, left top, from(rgba(156, 220, 245, 0.5)), to(transparent));
   background: linear-gradient(to left, rgba(156, 220, 245, 0.5), transparent);
-  -webkit-transform: rotate(-45deg) translate3d(-50px, -50px, 0);
-          transform: rotate(-45deg) translate3d(-50px, -50px, 0);
+  transform: rotate(-45deg) translate3d(-50px, -50px, 0);
   content: "";
 }
-
 .xly-suspension-panel .xly-icon-logo {
   font-size: 38px;
   color: #fff;
@@ -246,7 +197,6 @@ button:hover {
   fill: none;
   display: none;
 }
-
 .xly-suspension-light__path-0 {
   fill: none;
   stroke: #b4f4f7;
@@ -257,8 +207,7 @@ button:hover {
   50% {
     opacity: 1;
   }
-  0%,
-  100% {
+  0%, 100% {
     opacity: 0;
   }
 }
@@ -267,31 +216,25 @@ button:hover {
   50% {
     opacity: 1;
   }
-  0%,
-  100% {
+  0%, 100% {
     opacity: 0;
   }
 }
-
-.xly-suspension-light .xly-suspension-light__path-1, .xly-suspension-light .xly-suspension-light__path-2 {
+.xly-suspension-light .xly-suspension-light__path-2, .xly-suspension-light .xly-suspension-light__path-1 {
   stroke-width: 2px;
   fill: none;
   stroke: #b4f4f7;
   stroke-dasharray: 49, 166;
   stroke-dashoffset: -98;
-  -webkit-transform-origin: 50% 50%;
-          transform-origin: 50% 50%;
+  transform-origin: 50% 50%;
   opacity: 0;
 }
-
 .xly-suspension-light__path-1 {
-  -webkit-transform: scaleY(-1);
-          transform: scaleY(-1);
+  transform: scaleY(-1);
 }
 
 .xly-suspension-light__path-2 {
-  -webkit-transform: rotate(-180deg) scaleY(-1);
-          transform: rotate(-180deg) scaleY(-1);
+  transform: rotate(-180deg) scaleY(-1);
 }
 
 @-webkit-keyframes pathOut {
@@ -300,8 +243,7 @@ button:hover {
     stroke-dasharray: 49, 166;
     stroke-dashoffset: -98;
   }
-  60%,
-  100% {
+  60%, 100% {
     opacity: 0.5;
     stroke-dasharray: 0, 166;
     stroke-dashoffset: 0;
@@ -314,8 +256,7 @@ button:hover {
     stroke-dasharray: 49, 166;
     stroke-dashoffset: -98;
   }
-  60%,
-  100% {
+  60%, 100% {
     opacity: 0.5;
     stroke-dasharray: 0, 166;
     stroke-dashoffset: 0;
@@ -329,7 +270,6 @@ button:hover {
   overflow: hidden;
   display: none;
 }
-
 .xly-suspension-status__inner {
   width: 76px;
   height: 30px;
@@ -337,33 +277,25 @@ button:hover {
   color: var(--suspension-status);
   background: #e3edfe;
   border: 1px solid var(--color-primary);
-  -webkit-box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.2);
-          box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.2);
   border-radius: 0 4px 4px 0;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   overflow: hidden;
 }
-
 @-webkit-keyframes showRight {
   0% {
-    -webkit-transform: translate3d(-76px, 0, 0);
-            transform: translate3d(-76px, 0, 0);
+    transform: translate3d(-76px, 0, 0);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 0);
-            transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
   }
 }
-
 @keyframes showRight {
   0% {
-    -webkit-transform: translate3d(-76px, 0, 0);
-            transform: translate3d(-76px, 0, 0);
+    transform: translate3d(-76px, 0, 0);
   }
   100% {
-    -webkit-transform: translate3d(0, 0, 0);
-            transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
   }
 }
 
@@ -381,8 +313,7 @@ button:hover {
   stroke-width: 1px;
   stroke: #3881ff;
   fill: #a2c4ff;
-  -webkit-filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.2));
-          filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.2));
+  filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.2));
   width: 55px;
   height: 58px;
 }
@@ -393,27 +324,22 @@ button:hover {
   left: 2px;
   display: none;
 }
-
 .xly-suspension-hole:before {
   position: absolute;
   left: 0;
   bottom: 8px;
   width: 49px;
   height: 60px;
-  background: -webkit-gradient(linear, left bottom, left top, from(rgba(0, 216, 255, 0.2)), to(rgba(0, 216, 255, 0)));
   background: linear-gradient(to top, rgba(0, 216, 255, 0.2), rgba(0, 216, 255, 0));
   content: "";
-  -webkit-transform-origin: center bottom;
-          transform-origin: center bottom;
+  transform-origin: center bottom;
 }
-
 .xly-suspension-hole__svg {
   position: relative;
   width: 49px;
   z-index: 1;
   fill: #383e42;
-  -webkit-transform-origin: center bottom;
-          transform-origin: center bottom;
+  transform-origin: center bottom;
 }
 
 .xly-suspension-hole__line-1 {
@@ -441,102 +367,74 @@ button:hover {
   padding: 12px 25px 20px 20px;
   background: #fff;
   border-radius: 4px;
-  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-          box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  box-sizing: border-box;
 }
-
 .xly-suspension-list .td-tabs__item {
   margin-right: 16px;
   width: auto;
   font-size: 13px;
 }
-
 .xly-suspension-list .td-tabs__extra a {
   color: var(--color-primary);
 }
-
 .xly-suspension-list .td-tabs__extra a:hover {
   color: var(--color-hover);
 }
-
 .xly-suspension-list .td-tabs__extra a.xly-suspension-list__link--vip {
   color: #cc8542;
 }
-
 .xly-suspension-list .td-tabs__title {
   border-bottom: 0;
 }
-
 .xly-suspension-list .td-tabs__pane {
   height: 149px;
   overflow: auto;
 }
-
 .xly-suspension-list .td-tabs__pane::-webkit-scrollbar {
   width: 8px;
   background: transparent;
 }
-
 .xly-suspension-list .td-tabs__pane::-webkit-scrollbar:horizontal {
   height: 8px;
 }
-
 .xly-suspension-list .td-tabs__pane::-webkit-scrollbar-thumb {
   border-radius: 2px;
   width: 6px;
   background: #e6e6e6;
 }
-
 .xly-suspension-list .td-tabs__pane::-webkit-scrollbar-thumb:hover {
   background: #ccc;
 }
-
 .xly-suspension-list .td-tabs__pane > div {
   height: 100%;
 }
-
 .xly-suspension-list .td-tabs__content {
   padding-top: 12px;
 }
-
 .xly-suspension-list__empty {
   text-align: center;
   line-height: 25px;
   height: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: column;
-          flex-flow: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  flex-flow: column;
+  justify-content: center;
 }
 
 .xly-suspension-list__item {
   position: relative;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
   height: 30px;
   padding: 0 6px;
   margin-bottom: 1px;
   border-radius: 2px;
   cursor: pointer;
 }
-
 .xly-suspension-list__item .xly-icon-type {
   position: relative;
   z-index: 1;
 }
-
 .xly-suspension-list__item:hover {
   background: #f6f9fe;
 }
@@ -572,5 +470,4 @@ button:hover {
   width: 100%;
   margin-top: 12px;
   font-size: 12px;
-}
-/*# sourceMappingURL=suspension.css.map */
+}/*# sourceMappingURL=suspension.css.map */

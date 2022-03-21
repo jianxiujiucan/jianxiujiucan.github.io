@@ -5,13 +5,10 @@
 }
 
 .main {
-  display: -ms-grid;
   display: grid;
-      grid-template-areas: "cgheader cgheader cgheader" "cgnav cgnav cgnav" "cgaside cgmain cgmain" "cgft cgft cgft";
-  -ms-grid-rows: 100px 30px 1fr 50px;
-      grid-template-rows: 100px 30px 1fr 50px;
-  -ms-grid-columns: 200px 1fr;
-      grid-template-columns: 200px 1fr;
+  grid-template-areas: "cgheader cgheader cgheader" "cgnav cgnav cgnav" "cgaside cgmain cgmain" "cgft cgft cgft";
+  grid-template-rows: 100px 30px 1fr 50px;
+  grid-template-columns: 200px 1fr;
   grid-gap: 2px;
 }
 
@@ -19,53 +16,32 @@ header, nav, section, aside, footer {
   font-size: 18px;
   text-align: center;
   font-weight: bold;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  align-items: center;
+  justify-content: center;
 }
 
 header {
-  -ms-grid-row: 1;
-  -ms-grid-column: 1;
-  -ms-grid-column-span: 3;
   grid-area: cgheader;
   background-color: rgba(0, 0, 0, 0.3);
 }
 
 nav {
-  -ms-grid-row: 2;
-  -ms-grid-column: 1;
-  -ms-grid-column-span: 3;
   grid-area: cgnav;
   background-color: rgba(0, 0, 0, 0.4);
 }
 
 section {
-  -ms-grid-row: 3;
-  -ms-grid-column: 2;
-  -ms-grid-column-span: 2;
   grid-area: cgmain;
   background-color: rgba(0, 0, 0, 0.5);
 }
 
 aside {
-  -ms-grid-row: 3;
-  -ms-grid-column: 1;
   grid-area: cgaside;
   background-color: rgba(0, 0, 0, 0.1);
 }
 
 footer {
-  -ms-grid-row: 4;
-  -ms-grid-column: 1;
-  -ms-grid-column-span: 3;
   grid-area: cgft;
   background-color: rgba(0, 0, 0, 0.2);
-}
-/*# sourceMappingURL=grid-bak.css.map */
+}/*# sourceMappingURL=grid-bak.css.map */

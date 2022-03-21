@@ -8,19 +8,15 @@
 }
 
 .wrapper {
-  -webkit-perspective: 1px;
-          perspective: 1px;
+  perspective: 1px;
 }
-
 .wrapper .inner {
   position: relative;
   margin: 0 auto;
   width: var(--size);
   height: var(--size);
-  -webkit-transform-style: preserve-3d;
-          transform-style: preserve-3d;
+  transform-style: preserve-3d;
 }
-
 .wrapper .inner div {
   position: absolute;
   top: 0;
@@ -28,48 +24,34 @@
   width: 100%;
   height: 100%;
 }
-
 .wrapper .inner div:after {
   position: absolute;
   width: 200px;
   height: 5px;
   background: #fff;
-  content: '';
+  content: "";
 }
-
 .wrapper .left {
-  -webkit-transform: rotateY(90deg) translateZ(calc(var(--size) / -2));
-          transform: rotateY(90deg) translateZ(calc(var(--size) / -2));
-  background: #cfd576;
+  transform: rotateY(90deg) translateZ(calc(var(--size) / -2));
+  background: #76b402;
 }
-
 .wrapper .back {
-  -webkit-transform: translateZ(calc(var(--size) / -2));
-          transform: translateZ(calc(var(--size) / -2));
-  background: #664906;
+  transform: translateZ(calc(var(--size) / -2));
+  background: #a6bcd4;
 }
-
 .wrapper .right {
-  -webkit-transform: rotateY(90deg) translateZ(calc(var(--size) / 2));
-          transform: rotateY(90deg) translateZ(calc(var(--size) / 2));
-  background: #f53443;
+  transform: rotateY(90deg) translateZ(calc(var(--size) / 2));
+  background: #7c5931;
 }
-
 .wrapper .front {
-  -webkit-transform: translateZ(calc(var(--size) / 2));
-          transform: translateZ(calc(var(--size) / 2));
-  background: #bf16ca;
+  transform: translateZ(calc(var(--size) / 2));
+  background: #f89786;
 }
-
 .wrapper .top {
-  -webkit-transform: rotateX(90deg) translateZ(calc(var(--size) / 2));
-          transform: rotateX(90deg) translateZ(calc(var(--size) / 2));
-  background: #08b195;
+  transform: rotateX(90deg) translateZ(calc(var(--size) / 2));
+  background: #11143a;
 }
-
 .wrapper .bottom {
-  -webkit-transform: rotateX(90deg) translateZ(calc(var(--size) / -2));
-          transform: rotateX(90deg) translateZ(calc(var(--size) / -2));
-  background: #d134a2;
-}
-/*# sourceMappingURL=perspective-1.css.map */
+  transform: rotateX(90deg) translateZ(calc(var(--size) / -2));
+  background: #0eb74e;
+}/*# sourceMappingURL=perspective-1.css.map */

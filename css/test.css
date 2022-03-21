@@ -1,0 +1,11 @@
+.is-dark {
+  --color: red;
+  --text: 12px ;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    --color: red;
+    --text: 12px ;
+  }
+}/*# sourceMappingURL=test.css.map */

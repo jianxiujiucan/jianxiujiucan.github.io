@@ -24,48 +24,37 @@
 
 @-webkit-keyframes spin {
   0% {
-    -webkit-transform: scaleY(0.5) rotate(0deg);
-            transform: scaleY(0.5) rotate(0deg);
+    transform: scaleY(0.5) rotate(0deg);
   }
   100% {
-    -webkit-transform: scaleY(0.5) rotate(360deg);
-            transform: scaleY(0.5) rotate(360deg);
+    transform: scaleY(0.5) rotate(360deg);
   }
 }
 
 @keyframes spin {
   0% {
-    -webkit-transform: scaleY(0.5) rotate(0deg);
-            transform: scaleY(0.5) rotate(0deg);
+    transform: scaleY(0.5) rotate(0deg);
   }
   100% {
-    -webkit-transform: scaleY(0.5) rotate(360deg);
-            transform: scaleY(0.5) rotate(360deg);
+    transform: scaleY(0.5) rotate(360deg);
   }
 }
-
 @-webkit-keyframes anti-spin {
   0% {
-    -webkit-transform: rotate(0deg) scaleY(2) scale(1);
-            transform: rotate(0deg) scaleY(2) scale(1);
+    transform: rotate(0deg) scaleY(2) scale(1);
   }
   100% {
-    -webkit-transform: rotate(-360deg) scaleY(2) scale(1);
-            transform: rotate(-360deg) scaleY(2) scale(1);
+    transform: rotate(-360deg) scaleY(2) scale(1);
   }
 }
-
 @keyframes anti-spin {
   0% {
-    -webkit-transform: rotate(0deg) scaleY(2) scale(1);
-            transform: rotate(0deg) scaleY(2) scale(1);
+    transform: rotate(0deg) scaleY(2) scale(1);
   }
   100% {
-    -webkit-transform: rotate(-360deg) scaleY(2) scale(1);
-            transform: rotate(-360deg) scaleY(2) scale(1);
+    transform: rotate(-360deg) scaleY(2) scale(1);
   }
 }
-
 .box .ball.ball1 {
   left: 45px;
   top: 45px;
@@ -91,5 +80,4 @@
 .box .ball:hover {
   -webkit-animation-play-state: paused;
           animation-play-state: paused;
-}
-/*# sourceMappingURL=group1.css.map */
+}/*# sourceMappingURL=group1.css.map */
