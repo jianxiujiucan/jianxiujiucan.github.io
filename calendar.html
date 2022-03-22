@@ -17,14 +17,12 @@
 <body>
   <div class="wrapper">
     <div class="time">
-      <p class="time__text">
-        <span id="hour">00</span>:<span id="minute">00</span>:<span id="second">00</span>
-      </p>
+      <p id="timeText" class="time__text">00:00:00</p>
       <p id="timeDate" class="time__date"></p>
     </div>
     <div class="calendar">
       <div class="header">
-        <p id="changeType"><span id="currentYear"></span>年<span id="currentMonth"></span>月</p>
+        <p id="changeDate" class="change-date"></p>
         <div class="button">
           <button id="lastMonth"><i class="arrow arrow--up"></i></button>
           <button id="nextMonth"><i class="arrow arrow--down"></i></button>
@@ -42,29 +40,35 @@
         </div>
         <div class="date-list" id="dateList"></div>
       </div>
-      <div id="monthList" class="month-list">
-
-      </div>
+      <div id="monthList" class="month-list"></div>
     </div>
   </div>
   <script>
-    let $dataList = document.getElementById('dateList')
+    let $dateList = document.getElementById('dateList')
     let $buttonLast = document.getElementById('lastMonth')
     let $buttonNext = document.getElementById('nextMonth')
-    let $currentYear = document.getElementById('currentYear')
-    let $currentMonth = document.getElementById('currentMonth')
-    let $hour = document.getElementById('hour')
-    let $minute = document.getElementById('minute')
-    let $second = document.getElementById('second')
+    let $timeText = document.getElementById('timeText')
     let $timeDate = document.getElementById('timeDate')
-    let $changeType = document.getElementById('changeType')
+    let $changeDate = document.getElementById('changeDate')
     let $monthList = document.getElementById('monthList')
     let $dayList = document.getElementById('dayList')
     let date = new Date()
     let currentYear = date.getFullYear() //当前年份
     let currentMonth = date.getMonth() // 当前月份
     let currentDay = date.getDate() //当前几号
-    calendar(currentYear, currentMonth)
+
+    $timeDate.innerHTML = `${currentYear}年${currentMonth + 1}月${currentDay}日`
+    renderDays(currentYear, currentMonth)
+    renderMonths()
+    // 顶部时分秒
+    setInterval(() => {
+      let date = new Date()
+      let hour = date.getHours().toString().padStart(2, '0')
+      let minute = date.getMinutes().toString().padStart(2, '0')
+      let second = date.getSeconds().toString().padStart(2, '0')
+      $timeText.innerHTML = `${hour}:${minute}:${second}`
+    }, 1000)
+
 
     // 判断是否是闰年
     function isLeapYear(year) {
@@ -75,40 +79,10 @@
       }
     }
 
-    $timeDate.innerHTML = `${currentYear}年${currentMonth + 1}月${currentDay}日`
-    $changeType.addEventListener('click', function () {
-      $dayList.style.display = 'none'
-      $monthList.style.display = 'grid'
-    })
-    monthList()
-    function monthList() {
-      let monthDom = ''
-      for (let i = 1; i <= 12; i++) {
-        if (i === currentMonth + 1) {
-          monthDom += `<div class="month-item is-current">${i}月</div>`
-        } else {
-          monthDom += `<div class="month-item">${i}月</div>`
-        }
-      }
-      for (let i = 1; i <= 4; i++) {
-        monthDom += `<div class="month-item is-disabled">${i}月</div>`
-      }
-      $monthList.innerHTML = monthDom
-    }
 
-    setInterval(() => {
-      let date = new Date()
-      let hour = date.getHours().toString()
-      let minute = date.getMinutes().toString()
-      let second = date.getSeconds().toString()
-      $hour.innerHTML = hour.padStart(2, '0')
-      $minute.innerHTML = minute.padStart(2, '0')
-      $second.innerHTML = second.padStart(2, '0')
-    }, 1000)
-
-    function calendar(year, month) {
-      $currentYear.innerHTML = year
-      $currentMonth.innerHTML = month + 1
+    // 日历日期列表
+    function renderDays(year, month) {
+      $changeDate.innerHTML = `${year}年${parseInt(month) + 1}月`
       let contentList = ``
       let days = [31, isLeapYear(year), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31] // 当年月份的天数数组
       let firstDay = new Date(year, month, 1) //当前月份第一天信息
@@ -138,49 +112,92 @@
         items++
       }
 
-      // 如果当前月份不足6列，则填充1列，保证每次生成6列才不会跳。
+      // 如果当前月份不足6行，则填充1行，保证每次生成6行。
       if (items < 42) {
         for (let i = 1; i <= 7; i++) {
           contentList += `<div class="item disabled-month"><span>${i}</span></div>`
         }
       }
-      $dataList.innerHTML = contentList //将生成的dom结构填充到页面里
+      $dateList.innerHTML = contentList //将生成的dom结构填充到页面里
+
+      // let itemList = document.querySelectorAll('.item')
+      // for (let item of itemList) {
+      //   item.addEventListener('click', function () {
+      //     for (let i = 0; i < itemList.length; i++) {
+      //       itemList[i].classList.remove('is-active')
+      //     }
+      //     this.classList.add('is-active')
+      //   });
+      // }
+
+     $dateList.addEventListener('click',function(e){
+      if(document.querySelector('.is-active') != null){
+        document.querySelector('.is-active').classList.remove('is-active')
+      } 
+      e.target.parentNode.classList.add('is-active')
+    })
     }
 
 
-    $buttonLast.addEventListener('click', function () {
-      currentMonth--
-      if (currentMonth < 0) {
-        currentYear -= 1
-        currentMonth = 11
-      }
-      calendar(currentYear, currentMonth)
+
+    // 切换到月份
+    $changeDate.addEventListener('click', function () {
+      $dayList.style.display = 'none'
+      $monthList.style.display = 'grid'
     })
 
-    $buttonNext.addEventListener('click', function () {
-      currentMonth++
-      if (currentMonth > 11) {
-        currentYear += 1
-        currentMonth = 0
+    //生成月份
+    
+    function renderMonths() {
+      let monthDom = ''
+      for (let i = 1; i <= 12; i++) {
+        if (i === currentMonth + 1) {
+          monthDom += `<div class="month-item is-current" data-year=${currentYear} data-month=${i}>${i}月</div>`
+        } else {
+          monthDom += `<div class="month-item" data-year=${currentYear} data-month=${i}>${i}月</div>`
+        }
       }
-      calendar(currentYear, currentMonth)
-    })
+      for (let i = 1; i <= 4; i++) {
+        monthDom += `<div class="month-item is-disabled" data-year=${currentYear
+          + 1} data-month=${i}>${i}月</div>`
+      }
+      $monthList.innerHTML = monthDom
+    }
 
-    document.addEventListener('DOMContentLoaded', function () {
-      let items = document.querySelectorAll('.item')
-      for (let item of items) {
-        item.addEventListener('click', function () {
 
-          for (let i = 0; i < items.length; i++) {
-            items[i].classList.remove('is-active')
+
+    document.addEventListener('DOMContentLoaded', () => {
+      $buttonLast.addEventListener('click', () => {
+        currentMonth--
+        if (currentMonth < 0) {
+          currentYear -= 1
+          currentMonth = 11
+        }
+        renderDays(currentYear, currentMonth)
+      })
+
+      $buttonNext.addEventListener('click', () => {
+        currentMonth++
+        if (currentMonth > 11) {
+          currentYear += 1
+          currentMonth = 0
+        }
+        renderDays(currentYear, currentMonth)
+      })
+
+      
+
+      let itemsMonth = document.querySelectorAll('.month-item')
+      for (let itemMonth of itemsMonth) {
+        itemMonth.addEventListener('click', function () {
+          for (let i = 0; i < itemsMonth.length; i++) {
+            renderDays(this.dataset.year, this.dataset.month - 1)
+            $dayList.style.display = 'block'
+            $monthList.style.display = 'none'
           }
-          this.classList.add('is-active')
         });
       }
     });
-
-
-
   </script>
 </body>
 
