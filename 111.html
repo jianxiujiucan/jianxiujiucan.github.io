@@ -6,9 +6,21 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <style>
+    .is-active{
+      color: red;
+    }
+  </style>
 </head>
 
 <body>
+  <div id="box">
+    <div class="item">1</div>
+    <div class="item">2</div>
+    <div class="item">3</div>
+    <div class="item">4</div>
+    <div class="item">5</div>
+  </div>
   <script>
     var list = []; //大的集合
      //集合对象
@@ -24,6 +36,33 @@
     
     //对象放入集合
     console.log(list)
+  
+
+    let box = document.getElementById('box')
+    box.addEventListener('click',function(e){
+      if(document.querySelector('.is-active') != null){
+        document.querySelector('.is-active').classList.remove('is-active')
+      } 
+      e.target.classList.add('is-active')
+    })
+    // let content = ''
+    // for (let i = 0; i < 10; i++) {
+    //   content += `<div class='item' data-number='${i}'>${i}</div>`
+    // }
+    // box.innerHTML = content
+
+    // document.addEventListener('DOMContentLoaded', function () {
+    //   let items = document.querySelectorAll('.item')
+    //   for (let item of items) {
+    //     item.addEventListener('click', function () {
+
+    //       for (let i = 0; i < items.length; i++) {
+    //         items[i].classList.remove('is-active')
+    //       }
+    //       console.log(this.dataset.number)
+    //     });
+    //   }
+    // })
   </script>
 </body>
 
