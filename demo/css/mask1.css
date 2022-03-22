@@ -4,34 +4,22 @@
 }
 
 ul {
-  display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (20%)[4];
-      grid-template-columns: repeat(4, 20%);
+  grid-template-columns: repeat(4, 20%);
   gap: 30px;
 }
 
 li {
   list-style: none;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   margin: 20px;
   padding: 20px 0 0;
   width: 400px;
   border: dashed 1px #ccc;
 }
-
 li p {
   line-height: 50px;
 }
@@ -47,14 +35,13 @@ li p {
   border: 2px solid #666;
   overflow: hidden;
 }
-
 .box:after {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(221.97462deg, var(--colorMain), var(--colorSub), var(--colorMain));
+  background: linear-gradient(221.9746153208deg, var(--colorMain), var(--colorSub), var(--colorMain));
   border-radius: 50%;
   --angle: calc(360deg / 6);
   --start: 29px;
@@ -111,5 +98,4 @@ li p {
 
 .box11:after {
   -webkit-mask-composite: clear;
-}
-/*# sourceMappingURL=mask1.css.map */
+}/*# sourceMappingURL=mask1.css.map */

@@ -12,40 +12,26 @@ body {
   height: 246px;
   cursor: pointer;
 }
-
 .card:hover .back {
-  -webkit-transform: perspective(1000px) rotateY(0deg);
-          transform: perspective(1000px) rotateY(0deg);
+  transform: perspective(1000px) rotateY(0deg);
 }
-
 .card:hover .front {
-  -webkit-transform: perspective(1000px) rotateY(-180deg);
-          transform: perspective(1000px) rotateY(-180deg);
+  transform: perspective(1000px) rotateY(-180deg);
 }
 
 .card div {
   position: absolute;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   height: 100%;
   font-family: Georgia;
   font-size: 80px;
-  -webkit-transition: -webkit-transform 0.5s ease;
-  transition: -webkit-transform 0.5s ease;
   transition: transform 0.5s ease;
-  transition: transform 0.5s ease, -webkit-transform 0.5s ease;
   border: 8px solid #fff;
   border-radius: 5px;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
 }
@@ -55,10 +41,8 @@ body {
   --angle: calc(360deg / 3);
   --start: 9.150337764753004px;
   --end: 27.32131548958196px;
-  -webkit-transform: perspective(1000px) rotateY(180deg);
-          transform: perspective(1000px) rotateY(180deg);
+  transform: perspective(1000px) rotateY(180deg);
 }
-
 .back:before {
   position: absolute;
   top: 0;
@@ -77,10 +61,8 @@ body {
   color: #000;
   text-align: center;
   background: #fff;
-  -webkit-transform: perspective(1000px) rotateY(0deg);
-          transform: perspective(1000px) rotateY(0deg);
+  transform: perspective(1000px) rotateY(0deg);
 }
-
 .front:before, .front:after {
   position: absolute;
   color: #ff0000;
@@ -88,14 +70,11 @@ body {
   line-height: 50px;
   content: "♦";
 }
-
 .front:before {
   top: 0;
   left: 5px;
 }
-
 .front:after {
   bottom: 0;
   right: 0;
-}
-/*# sourceMappingURL=perspective.css.map */
+}/*# sourceMappingURL=perspective.css.map */

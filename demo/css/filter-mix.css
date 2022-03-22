@@ -4,12 +4,8 @@
 }
 
 body {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  justify-content: center;
   background: #000;
 }
 
@@ -17,8 +13,7 @@ body {
   position: relative;
   width: 400px;
   height: 100vh;
-  -webkit-filter: contrast(10);
-          filter: contrast(10);
+  filter: contrast(10);
   background: #000;
 }
 
@@ -30,8 +25,7 @@ body {
   width: 150px;
   height: 150px;
   background: #fff;
-  -webkit-filter: blur(5px);
-          filter: blur(5px);
+  filter: blur(5px);
   -webkit-animation: move1 5s ease-out infinite;
           animation: move1 5s ease-out infinite;
   border-radius: 50%;
@@ -47,8 +41,7 @@ body {
   text-align: center;
   line-height: 100px;
   background: red;
-  -webkit-filter: blur(5px);
-          filter: blur(5px);
+  filter: blur(5px);
   -webkit-animation: move2 5s ease-out infinite;
           animation: move2 5s ease-out infinite;
   border-radius: 50%;
@@ -56,29 +49,22 @@ body {
 
 @-webkit-keyframes move1 {
   50% {
-    -webkit-transform: translateX(100px);
-            transform: translateX(100px);
+    transform: translateX(100px);
   }
 }
 
 @keyframes move1 {
   50% {
-    -webkit-transform: translateX(100px);
-            transform: translateX(100px);
+    transform: translateX(100px);
   }
 }
-
 @-webkit-keyframes move2 {
   50% {
-    -webkit-transform: translateX(-200px);
-            transform: translateX(-200px);
+    transform: translateX(-200px);
   }
 }
-
 @keyframes move2 {
   50% {
-    -webkit-transform: translateX(-200px);
-            transform: translateX(-200px);
+    transform: translateX(-200px);
   }
-}
-/*# sourceMappingURL=filter-mix.css.map */
+}/*# sourceMappingURL=filter-mix.css.map */

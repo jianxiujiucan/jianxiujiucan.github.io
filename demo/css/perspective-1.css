@@ -8,19 +8,15 @@
 }
 
 .wrapper {
-  -webkit-perspective: 1px;
-          perspective: 1px;
+  perspective: 1px;
 }
-
 .wrapper .inner {
   position: relative;
   margin: 0 auto;
   width: var(--size);
   height: var(--size);
-  -webkit-transform-style: preserve-3d;
-          transform-style: preserve-3d;
+  transform-style: preserve-3d;
 }
-
 .wrapper .inner div {
   position: absolute;
   top: 0;
@@ -28,48 +24,72 @@
   width: 100%;
   height: 100%;
 }
-
 .wrapper .inner div:after {
   position: absolute;
   width: 200px;
   height: 5px;
   background: #fff;
-  content: '';
+  content: "";
 }
-
 .wrapper .left {
+<<<<<<< HEAD
   -webkit-transform: rotateY(90deg) translateZ(calc(var(--size) / -2));
           transform: rotateY(90deg) translateZ(calc(var(--size) / -2));
   background: #64fa69;
+=======
+  transform: rotateY(90deg) translateZ(calc(var(--size) / -2));
+  background: #79ccef;
+>>>>>>> calendar
 }
-
 .wrapper .back {
+<<<<<<< HEAD
   -webkit-transform: translateZ(calc(var(--size) / -2));
           transform: translateZ(calc(var(--size) / -2));
   background: #8ae682;
+=======
+  transform: translateZ(calc(var(--size) / -2));
+  background: #ad90ff;
+>>>>>>> calendar
 }
-
 .wrapper .right {
+<<<<<<< HEAD
   -webkit-transform: rotateY(90deg) translateZ(calc(var(--size) / 2));
           transform: rotateY(90deg) translateZ(calc(var(--size) / 2));
   background: #7c5045;
+=======
+  transform: rotateY(90deg) translateZ(calc(var(--size) / 2));
+  background: #336c83;
+>>>>>>> calendar
 }
-
 .wrapper .front {
+<<<<<<< HEAD
   -webkit-transform: translateZ(calc(var(--size) / 2));
           transform: translateZ(calc(var(--size) / 2));
   background: #35bc9f;
+=======
+  transform: translateZ(calc(var(--size) / 2));
+  background: #146b64;
+>>>>>>> calendar
 }
-
 .wrapper .top {
+<<<<<<< HEAD
   -webkit-transform: rotateX(90deg) translateZ(calc(var(--size) / 2));
           transform: rotateX(90deg) translateZ(calc(var(--size) / 2));
   background: #80bd9f;
+=======
+  transform: rotateX(90deg) translateZ(calc(var(--size) / 2));
+  background: #d6b6d4;
+>>>>>>> calendar
 }
-
 .wrapper .bottom {
+<<<<<<< HEAD
   -webkit-transform: rotateX(90deg) translateZ(calc(var(--size) / -2));
           transform: rotateX(90deg) translateZ(calc(var(--size) / -2));
   background: #dd80c3;
 }
 /*# sourceMappingURL=perspective-1.css.map */
+=======
+  transform: rotateX(90deg) translateZ(calc(var(--size) / -2));
+  background: #28708e;
+}/*# sourceMappingURL=perspective-1.css.map */
+>>>>>>> calendar

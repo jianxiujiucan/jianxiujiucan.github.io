@@ -31,17 +31,14 @@ body {
   left: 0;
   width: 100vw;
   height: 100vh;
-  -webkit-transform-style: preserve-3d;
-          transform-style: preserve-3d;
-  -webkit-perspective: 100px;
-          perspective: 100px;
+  transform-style: preserve-3d;
+  perspective: 100px;
 }
-
 .wrapper .road {
   position: absolute;
   bottom: 0;
   left: 50%;
-  margin-left: calc(var(--size)/-2);
+  margin-left: calc(var(--size) / -2);
   width: var(--size);
   height: var(--depth);
   background: #666;
@@ -51,33 +48,26 @@ body {
   background-position: 50% 0;
   border-left: 30px solid #fff;
   border-right: 30px solid #fff;
-  -webkit-transform: rotateX(100deg);
-          transform: rotateX(100deg);
-  -webkit-transform-origin: center bottom;
-          transform-origin: center bottom;
+  transform: rotateX(100deg);
+  transform-origin: center bottom;
   -webkit-animation: backgroundAni 1s both linear infinite;
           animation: backgroundAni 1s both linear infinite;
 }
 
 @-webkit-keyframes backgroundAni {
   0% {
-    -webkit-transform: rotateX(100deg) translateY(0);
-            transform: rotateX(100deg) translateY(0);
+    transform: rotateX(100deg) translateY(0);
   }
   100% {
-    -webkit-transform: rotateX(100deg) translateY(var(--bgPos));
-            transform: rotateX(100deg) translateY(var(--bgPos));
+    transform: rotateX(100deg) translateY(var(--bgPos));
   }
 }
 
 @keyframes backgroundAni {
   0% {
-    -webkit-transform: rotateX(100deg) translateY(0);
-            transform: rotateX(100deg) translateY(0);
+    transform: rotateX(100deg) translateY(0);
   }
   100% {
-    -webkit-transform: rotateX(100deg) translateY(var(--bgPos));
-            transform: rotateX(100deg) translateY(var(--bgPos));
+    transform: rotateX(100deg) translateY(var(--bgPos));
   }
-}
-/*# sourceMappingURL=road.css.map */
+}/*# sourceMappingURL=road.css.map */

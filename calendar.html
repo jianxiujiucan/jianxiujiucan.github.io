@@ -5,202 +5,46 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>日历</title>
+  <title>仿 windows 10 日历</title>
+  <link rel="stylesheet" href="css/calendar.css">
   <style>
-    body {
-      text-align: center;
-    }
-
-    .calendar {
-      display: inline-block;
-      padding: 10px;
-      color: #fff;
-      background: #3b3b3b;
-    }
-
-    .week-list {
-      margin: 0 0 2px;
-      display: grid;
-      grid-template-columns: repeat(7, 50px);
-      gap: 2px;
-    }
-
-    .week-list span {
-      text-align: center;
-      line-height: 36px;
-    }
-
-    .data-list {
-      position: relative;
-      display: grid;
-      grid-template-columns: repeat(7, 50px);
-      gap: 2px;
-      overflow: hidden;
-    }
 
 
-    .data-list .item {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 50px;
-      height: 36px;
-      border: solid 2px rgba(255, 255, 255, .3);
-      box-sizing: border-box;
-      cursor: default;
-      transition: .2s;
-    }
 
-
-    .data-list .item span {
-      position: relative;
-      z-index: 4;
-      width: 100%;
-      height: 36px;
-      text-align: center;
-      line-height: 36px;
-    }
-
-    .data-list .item span:after {
-      position: absolute;
-      top: -2px;
-      left: -2px;
-      width: 54px;
-      height: 40px;
-      content: '';
-    }
-
-    .data-list .item:before {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: #3b3b3b;
-      pointer-events: none;
-      transition: .2s;
-      content: '';
-    }
-
-    .data-list:hover .item:before {
-      display: none;
-    }
-
-    .data-list:hover .item:hover {
-      position: relative;
-      border-color: rgba(255, 255, 255, .6);
-    }
-
-    .data-list .item:hover:after {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      margin: -500px 0 0 -500px;
-      width: 1000px;
-      height: 1000px;
-      background-image: radial-gradient(transparent 0 10px, #3b3b3b 65px 100%);
-      opacity: 1;
-      content: '';
-      pointer-events: none;
-    }
-    .data-list .item:active span{
-      height: 32px; 
-      color: #fff;
-      line-height: 32px;
-      outline: solid 2px rgba(255, 255, 255, .6);
-      
-    }
-    .data-list .item.is-active span {
-      height: 32px; 
-      color: #fff;
-      line-height: 32px;
-      outline: solid 2px #0078d7;
-      box-sizing: border-box;
-    }
-
-    .body .item.current span {
-      width: 46px;
-      height: 32px;
-      color: #fff;
-      font-weight: bold;
-      line-height: 32px;
-      background: #0078d7;
-      border: solid 2px #3b3b3b;
-      box-sizing: border-box;
-      outline: solid 2px #0078d7;
-    }
-
-    .body .item.current:hover span {
-      outline: solid 2px rgb(128, 169, 250);
-    }
-
-    .disabled-month {
-      color: rgba(255, 255, 255, .3);
-    }
-
-    .header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .button {
-      display: flex;
-    }
-
-    button {
-      display: flex;
-      align-items: center;
-      background: transparent;
-      border: 0;
-      outline: 0;
-      height: 20px;
-      margin: 0 14px 0 20px;
-    }
-
-    .arrow {
-      width: 10px;
-      height: 10px;
-      border-left: solid 1px rgba(255, 255, 255, .6);
-      border-top: solid 1px rgba(255, 255, 255, .6);
-    }
-
-    button:hover .arrow {
-      border-color: rgba(255, 255, 255, .9);
-    }
-
-    .arrow--up {
-      transform: rotate(45deg);
-      transform-origin: left bottom;
-    }
-
-    .arrow--down {
-      transform: rotate(-135deg);
-
-    }
   </style>
 </head>
 
 <body>
-  <div class="calendar">
-    <div class="header">
-      <p><span id="currentYear"></span>年<span id="currentMonth"></span>月</p>
-      <div class="button">
-        <button id="lastMonth"><i class="arrow arrow--up"></i></button>
-        <button id="nextMonth"><i class="arrow arrow--down"></i></button>
-      </div>
+  <div class="wrapper">
+    <div class="time">
+      <p class="time__text">
+        <span id="hour">00</span>:<span id="minute">00</span>:<span id="second">00</span>
+      </p>
+      <p id="timeDate" class="time__date"></p>
     </div>
-    <div class="body">
-      <div class="week-list">
-        <span>日</span>
-        <span>一</span>
-        <span>二</span>
-        <span>三</span>
-        <span>四</span>
-        <span>五</span>
-        <span>六</span>
+    <div class="calendar">
+      <div class="header">
+        <p id="changeType"><span id="currentYear"></span>年<span id="currentMonth"></span>月</p>
+        <div class="button">
+          <button id="lastMonth"><i class="arrow arrow--up"></i></button>
+          <button id="nextMonth"><i class="arrow arrow--down"></i></button>
+        </div>
       </div>
-      <div class="data-list" id="dateList"></div>
+      <div id="dayList" class="date-wrapper">
+        <div class="week-list">
+          <span>日</span>
+          <span>一</span>
+          <span>二</span>
+          <span>三</span>
+          <span>四</span>
+          <span>五</span>
+          <span>六</span>
+        </div>
+        <div class="date-list" id="dateList"></div>
+      </div>
+      <div id="monthList" class="month-list">
+
+      </div>
     </div>
   </div>
   <script>
@@ -209,6 +53,13 @@
     let $buttonNext = document.getElementById('nextMonth')
     let $currentYear = document.getElementById('currentYear')
     let $currentMonth = document.getElementById('currentMonth')
+    let $hour = document.getElementById('hour')
+    let $minute = document.getElementById('minute')
+    let $second = document.getElementById('second')
+    let $timeDate = document.getElementById('timeDate')
+    let $changeType = document.getElementById('changeType')
+    let $monthList = document.getElementById('monthList')
+    let $dayList = document.getElementById('dayList')
     let date = new Date()
     let currentYear = date.getFullYear() //当前年份
     let currentMonth = date.getMonth() // 当前月份
@@ -224,11 +75,42 @@
       }
     }
 
+    $timeDate.innerHTML = `${currentYear}年${currentMonth + 1}月${currentDay}日`
+    $changeType.addEventListener('click', function () {
+      $dayList.style.display = 'none'
+      $monthList.style.display = 'grid'
+    })
+    monthList()
+    function monthList() {
+      let monthDom = ''
+      for (let i = 1; i <= 12; i++) {
+        if (i === currentMonth + 1) {
+          monthDom += `<div class="month-item is-current">${i}月</div>`
+        } else {
+          monthDom += `<div class="month-item">${i}月</div>`
+        }
+      }
+      for (let i = 1; i <= 4; i++) {
+        monthDom += `<div class="month-item is-disabled">${i}月</div>`
+      }
+      $monthList.innerHTML = monthDom
+    }
+
+    setInterval(() => {
+      let date = new Date()
+      let hour = date.getHours().toString()
+      let minute = date.getMinutes().toString()
+      let second = date.getSeconds().toString()
+      $hour.innerHTML = hour.padStart(2, '0')
+      $minute.innerHTML = minute.padStart(2, '0')
+      $second.innerHTML = second.padStart(2, '0')
+    }, 1000)
+
     function calendar(year, month) {
       $currentYear.innerHTML = year
       $currentMonth.innerHTML = month + 1
       let contentList = ``
-      let days = [31, isLeapYear(year), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31] // 月份的天数数组
+      let days = [31, isLeapYear(year), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31] // 当年月份的天数数组
       let firstDay = new Date(year, month, 1) //当前月份第一天信息
       let items = 0 // 元素计数
 
@@ -262,7 +144,7 @@
           contentList += `<div class="item disabled-month"><span>${i}</span></div>`
         }
       }
-      $dataList.innerHTML = contentList //don结构生成到页面里
+      $dataList.innerHTML = contentList //将生成的dom结构填充到页面里
     }
 
 
@@ -288,8 +170,8 @@
       let items = document.querySelectorAll('.item')
       for (let item of items) {
         item.addEventListener('click', function () {
-          
-          for(let i=0; i<items.length; i++){
+
+          for (let i = 0; i < items.length; i++) {
             items[i].classList.remove('is-active')
           }
           this.classList.add('is-active')

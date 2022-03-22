@@ -1,40 +1,28 @@
 @-webkit-keyframes move {
   0% {
-    -webkit-transform: translate(0, 0);
-            transform: translate(0, 0);
+    transform: translate(0, 0);
     opacity: 1;
   }
   100% {
-    -webkit-transform: translate(20px, 0);
-            transform: translate(20px, 0);
+    transform: translate(20px, 0);
     opacity: 0.5;
   }
 }
-
 @keyframes move {
   0% {
-    -webkit-transform: translate(0, 0);
-            transform: translate(0, 0);
+    transform: translate(0, 0);
     opacity: 1;
   }
   100% {
-    -webkit-transform: translate(20px, 0);
-            transform: translate(20px, 0);
+    transform: translate(20px, 0);
     opacity: 0.5;
   }
 }
-
 .items {
   margin: 80px 0;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
 }
 
 .item,
@@ -139,23 +127,18 @@
 
 @-webkit-keyframes line {
   0% {
-    -webkit-transform: scaleY(0.3);
-            transform: scaleY(0.3);
+    transform: scaleY(0.3);
   }
   100% {
-    -webkit-transform: scaleY(1);
-            transform: scaleY(1);
+    transform: scaleY(1);
   }
 }
 
 @keyframes line {
   0% {
-    -webkit-transform: scaleY(0.3);
-            transform: scaleY(0.3);
+    transform: scaleY(0.3);
   }
   100% {
-    -webkit-transform: scaleY(1);
-            transform: scaleY(1);
+    transform: scaleY(1);
   }
-}
-/*# sourceMappingURL=line.css.map */
+}/*# sourceMappingURL=line.css.map */

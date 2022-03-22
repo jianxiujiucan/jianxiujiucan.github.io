@@ -2,14 +2,172 @@
 <html lang="zh-CN">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>test</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>test</title>
 </head>
 
 <body>
-    <h1>这是一个测试页面1111</h1>
-    <p>这是测试页面的内容</p>
+  <script>
+    // function findLongestWordLength(str) {
+    //   let news = str.split(' ')
+    //   let l = ''
+    //   for (let i = 0; i < news.length; i++) {
+    //     if(l.length < news[i].length){
+    //       l = news[i]
+    //     }
+    //   }
+    //   return l;
+    // }
+
+    // console.log(findLongestWordLength("The quick brown fox jumped overddddd the lazy dog"));
+
+    // function largestOfFour(arr) {
+    //   let newArr = [] 
+    //   for (let i = 0; i < arr.length; i++) {
+    //     let mark = arr[i][0] 
+    //     for(let j = 0; j< arr[i].length; j++){
+    //       if(arr[i][j] > mark){
+    //         mark = arr[i][j]
+    //       }
+    //     }
+    //     newArr.push(mark)
+    //   }
+    //   console.log(newArr)
+    //   return newArr;
+    // }
+
+    // largestOfFour([[4, 5, 1, 3], [13, 27, 18, 26], [32, 35, 37, 39], [1000, 1001, 857, 1]]);
+    // largestOfFour([[13, 27, 18, 26], [4, 5, 1, 3], [32, 35, 37, 39], [1000, 1001, 857, 1]])
+    // largestOfFour([[17, 23, 25, 12], [25, 7, 34, 48], [4, -10, 18, 21], [-72, -3, -17, -10]])
+
+    // function confirmEnding(str, target) {
+    //   let position  = str.length - target.length
+    //   return str.slice(position, str.length) === target
+    // }
+
+    // console.log(confirmEnding("Connor dsnd", "dd"))
+
+    // function repeatStringNumTimes(str, num) {
+    //   let news = ''
+    //   if (num > 0) {
+    //     for (let i = 0; i < num; i++) {
+    //       news += str
+    //     }
+    //   }
+
+    //   console.log(news)
+    //   return news;
+    // }
+
+    // repeatStringNumTimes("*", 8);
+
+    // function truncateString(str, num) {
+    //   return str.length > num? str.slice(0, num) + '...' : str;
+    // }
+
+    // truncateString("A-tisket a-tasket A green and yellow basket", 8);
+    // truncateString("A-tisket a-tasket A green and yellow basket", "A-tisket a-tasket A green and yellow basket".length) //应返回 A-tisket a-tasket A green and yellow basket。
+
+    // function findElement(arr, func) {
+    //   for (let i = 0; i < arr.length; i++) {
+    //     if (func(arr[i])) {
+    //       return arr[i]
+    //     }
+    //   }
+    //   return 'undefined';
+    // }
+
+    // //findElement([1, 2, 3, 4], num => num % 2 === 0);
+
+    // console.log(findElement([1, 3, 5, 8, 9, 10], function (num) { return num % 2 === 0; })) //应返回 8。
+    // console.log(findElement([1, 3, 5, 9], function (num) { return num % 2 === 0; })) //应返回 undefined。
+
+    // function titleCase(str) {
+    //   let news = str.split(" ").filter(e => e!="")
+    //   let arr = []
+    //   for (let item in news) {
+    //     arr.push(news[item][0].toLocaleUpperCase() + news[item].slice(1).toLowerCase())
+    //   }
+
+    //   return arr.join(" ") ;
+    // }
+
+    // console.log(titleCase("I'm a little   tea pot"))
+
+    // function frankenSplice(arr1, arr2, n) {
+    //   let newArr = arr2
+    //   let newPara = arr1
+    //   newArr.splice(n, 0, ...newPara)
+    //   return newArr;
+    // }
+
+    // console.log(frankenSplice([1, 2, 3], [4, 5], 1));
+    // function getIndexToIns(arr, num) {
+    //   return arr
+    //     .concat(num)
+    //     .sort((a, b) => a - b)
+    //     .indexOf(num);
+    // }
+
+    // getIndexToIns([40, 45, 55, 60], 50)
+    // getIndexToIns([2, 20, 10], 19)
+    // getIndexToIns([5, 3, 20, 3], 5)
+
+    // function mutation(arr) {
+    //   let arr1 = arr[0].toLocaleLowerCase()
+    //   let arr2 = arr[1].toLocaleLowerCase()
+    //   for (let i = 0; i < arr2.length; i++) {
+    //     if (arr1.indexOf(arr2[i]) < 0) {
+    //       return false
+    //     } 
+    //   }
+    //   return true
+    // }
+
+
+    // console.log(mutation(["hello", "he0"]));
+    // function chunkArrayInGroups(arr, size) {
+    //   let newArr = []
+    //   for (let i = 0; i < arr.length; i++) {
+    //     newArr.push(arr.slice(i,i+size))
+    //     //newArr.push(arr.splice(0, size))
+
+    //   }
+    //   console.log(newArr)
+    //   return newArr;
+    // }
+
+    // chunkArrayInGroups(["a", "b", "c", "d"], 2);
+    // chunkArrayInGroups([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 3) 
+    getData()
+
+    function getData() {
+      let url = 'https://api-shoulei-ssl.xunlei.com/pss/static/config_json_1879/mobile_and_m_xunlei_com_config.json'
+      let xhr = new XMLHttpRequest()
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+          if (xhr.status === 200) {
+            return createFunction(xhr.responseText);
+          } else {
+            alert("失败！");
+          }
+        }
+      };
+      xhr.open("GET", url)
+      xhr.send()
+    }
+
+    function createFunction(data) {
+      let obj = JSON.parse(data)
+      console.log(obj.Android)
+      for (let [name, p] of Object.entries(obj.iOS)) {
+        console.log(name)
+      }
+    }
+
+
+  </script>
 </body>
 
 </html>
