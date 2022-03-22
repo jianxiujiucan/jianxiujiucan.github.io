@@ -8,32 +8,43 @@
   <title>仿 windows 10 日历</title>
   <link rel="stylesheet" href="css/calendar.css">
   <style>
-    
 
-    
+
+
   </style>
 </head>
 
 <body>
-  <div class="calendar">
-    <div class="header">
-      <p><span id="currentYear"></span>年<span id="currentMonth"></span>月</p>
-      <div class="button">
-        <button id="lastMonth"><i class="arrow arrow--up"></i></button>
-        <button id="nextMonth"><i class="arrow arrow--down"></i></button>
-      </div>
+  <div class="wrapper">
+    <div class="time">
+      <p class="time__text">
+        <span id="hour">00</span>:<span id="minute">00</span>:<span id="second">00</span>
+      </p>
+      <p id="timeDate" class="time__date"></p>
     </div>
-    <div class="body">
-      <div class="week-list">
-        <span>日</span>
-        <span>一</span>
-        <span>二</span>
-        <span>三</span>
-        <span>四</span>
-        <span>五</span>
-        <span>六</span>
+    <div class="calendar">
+      <div class="header">
+        <p id="changeType"><span id="currentYear"></span>年<span id="currentMonth"></span>月</p>
+        <div class="button">
+          <button id="lastMonth"><i class="arrow arrow--up"></i></button>
+          <button id="nextMonth"><i class="arrow arrow--down"></i></button>
+        </div>
       </div>
-      <div class="data-list" id="dateList"></div>
+      <div id="dayList" class="date-wrapper">
+        <div class="week-list">
+          <span>日</span>
+          <span>一</span>
+          <span>二</span>
+          <span>三</span>
+          <span>四</span>
+          <span>五</span>
+          <span>六</span>
+        </div>
+        <div class="date-list" id="dateList"></div>
+      </div>
+      <div id="monthList" class="month-list">
+
+      </div>
     </div>
   </div>
   <script>
@@ -42,6 +53,13 @@
     let $buttonNext = document.getElementById('nextMonth')
     let $currentYear = document.getElementById('currentYear')
     let $currentMonth = document.getElementById('currentMonth')
+    let $hour = document.getElementById('hour')
+    let $minute = document.getElementById('minute')
+    let $second = document.getElementById('second')
+    let $timeDate = document.getElementById('timeDate')
+    let $changeType = document.getElementById('changeType')
+    let $monthList = document.getElementById('monthList')
+    let $dayList = document.getElementById('dayList')
     let date = new Date()
     let currentYear = date.getFullYear() //当前年份
     let currentMonth = date.getMonth() // 当前月份
@@ -56,6 +74,37 @@
         return 28
       }
     }
+
+    $timeDate.innerHTML = `${currentYear}年${currentMonth + 1}月${currentDay}日`
+    $changeType.addEventListener('click', function () {
+      $dayList.style.display = 'none'
+      $monthList.style.display = 'grid'
+    })
+    monthList()
+    function monthList() {
+      let monthDom = ''
+      for (let i = 1; i <= 12; i++) {
+        if (i === currentMonth + 1) {
+          monthDom += `<div class="month-item is-current">${i}月</div>`
+        } else {
+          monthDom += `<div class="month-item">${i}月</div>`
+        }
+      }
+      for (let i = 1; i <= 4; i++) {
+        monthDom += `<div class="month-item is-disabled">${i}月</div>`
+      }
+      $monthList.innerHTML = monthDom
+    }
+
+    setInterval(() => {
+      let date = new Date()
+      let hour = date.getHours().toString()
+      let minute = date.getMinutes().toString()
+      let second = date.getSeconds().toString()
+      $hour.innerHTML = hour.padStart(2, '0')
+      $minute.innerHTML = minute.padStart(2, '0')
+      $second.innerHTML = second.padStart(2, '0')
+    }, 1000)
 
     function calendar(year, month) {
       $currentYear.innerHTML = year
@@ -121,8 +170,8 @@
       let items = document.querySelectorAll('.item')
       for (let item of items) {
         item.addEventListener('click', function () {
-          
-          for(let i=0; i<items.length; i++){
+
+          for (let i = 0; i < items.length; i++) {
             items[i].classList.remove('is-active')
           }
           this.classList.add('is-active')

@@ -1,12 +1,40 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
 body {
   text-align: center;
 }
 
-.calendar {
+.wrapper {
   display: inline-block;
+  width: 382px;
+  background: #3b3b3b;
+}
+
+.calendar {
   padding: 10px;
   color: #fff;
   background: #3b3b3b;
+}
+
+.time {
+  padding: 20px;
+  height: 110px;
+  color: #fff;
+  text-align: left;
+  border-bottom: solid 1px rgba(255, 255, 255, 0.3);
+  box-sizing: border-box;
+}
+.time__text {
+  font-size: 40px;
+  font-weight: lighter;
+}
+.time__date {
+  color: #a6d8ff;
+  font-size: 14px;
+  cursor: pointer;
 }
 
 .week-list {
@@ -20,21 +48,21 @@ body {
   line-height: 36px;
 }
 
-.data-list {
+.date-list {
   position: relative;
   display: grid;
   grid-template-columns: repeat(7, 50px);
   gap: 2px;
   overflow: hidden;
 }
-.data-list:hover .item:before {
+.date-list:hover .item:before {
   display: none;
 }
-.data-list:hover .item:hover {
+.date-list:hover .item:hover {
   position: relative;
   border-color: rgba(255, 255, 255, 0.6);
 }
-.data-list .item:hover:after {
+.date-list .item:hover:after {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -47,7 +75,7 @@ body {
   pointer-events: none;
 }
 
-.data-list .item.is-active span {
+.date-list .item.is-active span {
   height: 32px;
   color: #fff;
   line-height: 32px;
@@ -107,7 +135,7 @@ body {
   content: "";
 }
 
-.body .item.current span {
+.date-wrapper .item.current span {
   width: 46px;
   height: 32px;
   color: #fff;
@@ -119,7 +147,7 @@ body {
   outline: solid 2px #0078d7;
 }
 
-.body .item.current:hover span {
+.date-wrapper .item.current:hover span {
   outline: solid 2px #80a9fa;
 }
 
@@ -131,6 +159,15 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 10px 0;
+}
+
+#changeType {
+  color: rgba(255, 255, 255, 0.9);
+  cursor: default;
+}
+#changeType:hover {
+  color: #fff;
 }
 
 .button {
@@ -165,4 +202,50 @@ button:hover .arrow {
 
 .arrow--down {
   transform: rotate(-135deg);
+}
+
+.month-list {
+  display: none;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  gap: 2px;
+  height: 264px;
+  -webkit-animation: show 0.2s both;
+          animation: show 0.2s both;
+}
+
+@-webkit-keyframes show {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes show {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.month-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: solid 2px transparent;
+  box-sizing: border-box;
+  cursor: default;
+}
+.month-item:hover {
+  border-color: rgba(255, 255, 255, 0.3);
+}
+.month-item.is-current {
+  color: #fff;
+  background: #0078d7;
+}
+.month-item.is-disabled {
+  color: rgba(255, 255, 255, 0.3);
 }/*# sourceMappingURL=calendar.css.map */
