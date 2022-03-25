@@ -249,11 +249,7 @@ section {
 
 .box1-item:nth-child(1) {
   text-align: center;
-<<<<<<< HEAD
-  background: rgba(85, 252, 47, 0.5);
-=======
-  background: rgba(73, 104, 236, 0.5);
->>>>>>> calendar
+  background: rgba(32, 78, 21, 0.5);
 }
 .box1-item:nth-child(1):after {
   content: "1";
@@ -261,11 +257,7 @@ section {
 
 .box1-item:nth-child(2) {
   text-align: center;
-<<<<<<< HEAD
-  background: rgba(134, 203, 20, 0.5);
-=======
-  background: rgba(188, 125, 72, 0.5);
->>>>>>> calendar
+  background: rgba(13, 137, 240, 0.5);
 }
 .box1-item:nth-child(2):after {
   content: "2";
@@ -273,11 +265,7 @@ section {
 
 .box1-item:nth-child(3) {
   text-align: center;
-<<<<<<< HEAD
-  background: rgba(214, 67, 195, 0.5);
-=======
-  background: rgba(4, 180, 154, 0.5);
->>>>>>> calendar
+  background: rgba(149, 68, 105, 0.5);
 }
 .box1-item:nth-child(3):after {
   content: "3";
@@ -285,11 +273,7 @@ section {
 
 .box1-item:nth-child(4) {
   text-align: center;
-<<<<<<< HEAD
-  background: rgba(255, 55, 66, 0.5);
-=======
-  background: rgba(199, 82, 86, 0.5);
->>>>>>> calendar
+  background: rgba(110, 56, 106, 0.5);
 }
 .box1-item:nth-child(4):after {
   content: "4";
@@ -297,11 +281,7 @@ section {
 
 .box1-item:nth-child(5) {
   text-align: center;
-<<<<<<< HEAD
-  background: rgba(130, 29, 245, 0.5);
-=======
-  background: rgba(241, 144, 181, 0.5);
->>>>>>> calendar
+  background: rgba(242, 104, 84, 0.5);
 }
 .box1-item:nth-child(5):after {
   content: "5";
@@ -309,11 +289,7 @@ section {
 
 .box1-item:nth-child(6) {
   text-align: center;
-<<<<<<< HEAD
-  background: rgba(65, 69, 87, 0.5);
-=======
-  background: rgba(61, 123, 191, 0.5);
->>>>>>> calendar
+  background: rgba(214, 7, 222, 0.5);
 }
 .box1-item:nth-child(6):after {
   content: "6";
@@ -329,11 +305,7 @@ section {
 
 .box2-item:nth-child(1) {
   text-align: center;
-<<<<<<< HEAD
-  background: rgba(167, 110, 199, 0.5);
-=======
-  background: rgba(109, 173, 248, 0.5);
->>>>>>> calendar
+  background: rgba(12, 73, 155, 0.5);
 }
 .box2-item:nth-child(1):after {
   content: "1";
@@ -341,11 +313,7 @@ section {
 
 .box2-item:nth-child(2) {
   text-align: center;
-<<<<<<< HEAD
-  background: rgba(215, 125, 245, 0.5);
-=======
-  background: rgba(236, 146, 210, 0.5);
->>>>>>> calendar
+  background: rgba(75, 36, 63, 0.5);
 }
 .box2-item:nth-child(2):after {
   content: "2";
@@ -353,11 +321,7 @@ section {
 
 .box2-item:nth-child(3) {
   text-align: center;
-<<<<<<< HEAD
-  background: rgba(170, 24, 20, 0.5);
-=======
-  background: rgba(70, 118, 67, 0.5);
->>>>>>> calendar
+  background: rgba(59, 90, 52, 0.5);
 }
 .box2-item:nth-child(3):after {
   content: "3";
@@ -365,11 +329,7 @@ section {
 
 .box2-item:nth-child(4) {
   text-align: center;
-<<<<<<< HEAD
-  background: rgba(48, 146, 137, 0.5);
-=======
-  background: rgba(50, 213, 251, 0.5);
->>>>>>> calendar
+  background: rgba(168, 194, 62, 0.5);
 }
 .box2-item:nth-child(4):after {
   content: "4";
@@ -377,11 +337,7 @@ section {
 
 .box2-item:nth-child(5) {
   text-align: center;
-<<<<<<< HEAD
-  background: rgba(103, 74, 169, 0.5);
-=======
-  background: rgba(201, 60, 26, 0.5);
->>>>>>> calendar
+  background: rgba(191, 124, 212, 0.5);
 }
 .box2-item:nth-child(5):after {
   content: "5";
@@ -389,11 +345,7 @@ section {
 
 .box2-item:nth-child(6) {
   text-align: center;
-<<<<<<< HEAD
-  background: rgba(84, 63, 187, 0.5);
-=======
-  background: rgba(49, 62, 210, 0.5);
->>>>>>> calendar
+  background: rgba(49, 152, 68, 0.5);
 }
 .box2-item:nth-child(6):after {
   content: "6";
@@ -401,11 +353,7 @@ section {
 
 .box2-item:nth-child(7) {
   text-align: center;
-<<<<<<< HEAD
-  background: rgba(213, 40, 114, 0.5);
-=======
-  background: rgba(185, 62, 143, 0.5);
->>>>>>> calendar
+  background: rgba(191, 113, 34, 0.5);
 }
 .box2-item:nth-child(7):after {
   content: "7";
@@ -413,11 +361,7 @@ section {
 
 .box2-item:nth-child(8) {
   text-align: center;
-<<<<<<< HEAD
-  background: rgba(7, 22, 130, 0.5);
-=======
-  background: rgba(229, 229, 162, 0.5);
->>>>>>> calendar
+  background: rgba(181, 42, 199, 0.5);
 }
 .box2-item:nth-child(8):after {
   content: "8";
@@ -425,11 +369,7 @@ section {
 
 .box2-item:nth-child(9) {
   text-align: center;
-<<<<<<< HEAD
-  background: rgba(129, 84, 106, 0.5);
-=======
-  background: rgba(5, 114, 201, 0.5);
->>>>>>> calendar
+  background: rgba(81, 44, 223, 0.5);
 }
 .box2-item:nth-child(9):after {
   content: "9";
@@ -437,11 +377,7 @@ section {
 
 .box2-item:nth-child(10) {
   text-align: center;
-<<<<<<< HEAD
-  background: rgba(89, 124, 9, 0.5);
-=======
-  background: rgba(189, 89, 253, 0.5);
->>>>>>> calendar
+  background: rgba(78, 221, 136, 0.5);
 }
 .box2-item:nth-child(10):after {
   content: "10";
@@ -449,11 +385,7 @@ section {
 
 .box2-item:nth-child(11) {
   text-align: center;
-<<<<<<< HEAD
-  background: rgba(57, 134, 154, 0.5);
-=======
-  background: rgba(87, 166, 3, 0.5);
->>>>>>> calendar
+  background: rgba(195, 249, 98, 0.5);
 }
 .box2-item:nth-child(11):after {
   content: "11";
@@ -461,11 +393,7 @@ section {
 
 .box2-item:nth-child(12) {
   text-align: center;
-<<<<<<< HEAD
-  background: rgba(105, 236, 132, 0.5);
-=======
-  background: rgba(36, 14, 221, 0.5);
->>>>>>> calendar
+  background: rgba(121, 156, 127, 0.5);
 }
 .box2-item:nth-child(12):after {
   content: "12";

@@ -55,6 +55,10 @@ body {
   gap: 2px;
   overflow: hidden;
 }
+.date-list.is-show {
+  -webkit-animation: show 0.2s both;
+          animation: show 0.2s both;
+}
 .date-list:hover .item:before {
   display: none;
 }
@@ -74,7 +78,6 @@ body {
   content: "";
   pointer-events: none;
 }
-
 .date-list .item.is-active span {
   height: 32px;
   color: #fff;
@@ -118,6 +121,20 @@ body {
   outline: solid 2px #0078d7;
   box-sizing: border-box;
 }
+.item.is-current span {
+  width: 46px;
+  height: 32px;
+  color: #fff;
+  font-weight: bold;
+  line-height: 32px;
+  background: #0078d7;
+  border: solid 2px #3b3b3b;
+  box-sizing: border-box;
+  outline: solid 2px #0078d7;
+}
+.item.is-current:hover span {
+  outline: solid 2px #80a9fa;
+}
 .item span {
   position: relative;
   z-index: 4;
@@ -133,22 +150,6 @@ body {
   width: 54px;
   height: 40px;
   content: "";
-}
-
-.date-wrapper .item.current span {
-  width: 46px;
-  height: 32px;
-  color: #fff;
-  font-weight: bold;
-  line-height: 32px;
-  background: #0078d7;
-  border: solid 2px #3b3b3b;
-  box-sizing: border-box;
-  outline: solid 2px #0078d7;
-}
-
-.date-wrapper .item.current:hover span {
-  outline: solid 2px #80a9fa;
 }
 
 .disabled-month {
@@ -205,7 +206,7 @@ button:hover .arrow {
 }
 
 .month-list {
-  display: grid;
+  display: none;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(4, 1fr);
   gap: 2px;

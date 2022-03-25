@@ -30,3904 +30,1654 @@ body {
           animation: move 3000ms linear infinite;
 }
 .line:nth-child(1) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -345ms;
-          animation-delay: -345ms;
-=======
-  -webkit-animation-delay: -2107ms;
-          animation-delay: -2107ms;
->>>>>>> calendar
+  -webkit-animation-delay: -6275ms;
+          animation-delay: -6275ms;
 }
 .line:nth-child(1) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -345ms;
-          animation-delay: -345ms;
-=======
-  -webkit-animation-delay: -2107ms;
-          animation-delay: -2107ms;
->>>>>>> calendar
+  -webkit-animation-delay: -6275ms;
+          animation-delay: -6275ms;
 }
 .line:nth-child(1) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(191deg) translateX(154px);
-          transform: rotateZ(191deg) translateX(154px);
-=======
-  transform: rotateZ(206deg) translateX(87px);
->>>>>>> calendar
+  transform: rotateZ(231deg) translateX(267px);
 }
 .line:nth-child(2) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -2266ms;
-          animation-delay: -2266ms;
-=======
-  -webkit-animation-delay: -2697ms;
-          animation-delay: -2697ms;
->>>>>>> calendar
+  -webkit-animation-delay: -1773ms;
+          animation-delay: -1773ms;
 }
 .line:nth-child(2) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -2266ms;
-          animation-delay: -2266ms;
-=======
-  -webkit-animation-delay: -2697ms;
-          animation-delay: -2697ms;
->>>>>>> calendar
+  -webkit-animation-delay: -1773ms;
+          animation-delay: -1773ms;
 }
 .line:nth-child(2) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(224deg) translateX(178px);
-          transform: rotateZ(224deg) translateX(178px);
-=======
-  transform: rotateZ(95deg) translateX(223px);
->>>>>>> calendar
+  transform: rotateZ(106deg) translateX(93px);
 }
 .line:nth-child(3) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -9386ms;
-          animation-delay: -9386ms;
-=======
-  -webkit-animation-delay: -3648ms;
-          animation-delay: -3648ms;
->>>>>>> calendar
+  -webkit-animation-delay: -6223ms;
+          animation-delay: -6223ms;
 }
 .line:nth-child(3) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -9386ms;
-          animation-delay: -9386ms;
-=======
-  -webkit-animation-delay: -3648ms;
-          animation-delay: -3648ms;
->>>>>>> calendar
+  -webkit-animation-delay: -6223ms;
+          animation-delay: -6223ms;
 }
 .line:nth-child(3) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(24deg) translateX(273px);
-          transform: rotateZ(24deg) translateX(273px);
-=======
-  transform: rotateZ(198deg) translateX(95px);
->>>>>>> calendar
+  transform: rotateZ(308deg) translateX(152px);
 }
 .line:nth-child(4) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -4069ms;
-          animation-delay: -4069ms;
-=======
-  -webkit-animation-delay: -2571ms;
-          animation-delay: -2571ms;
->>>>>>> calendar
+  -webkit-animation-delay: -9204ms;
+          animation-delay: -9204ms;
 }
 .line:nth-child(4) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -4069ms;
-          animation-delay: -4069ms;
-=======
-  -webkit-animation-delay: -2571ms;
-          animation-delay: -2571ms;
->>>>>>> calendar
+  -webkit-animation-delay: -9204ms;
+          animation-delay: -9204ms;
 }
 .line:nth-child(4) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(15deg) translateX(116px);
-          transform: rotateZ(15deg) translateX(116px);
-=======
-  transform: rotateZ(346deg) translateX(183px);
->>>>>>> calendar
+  transform: rotateZ(211deg) translateX(207px);
 }
 .line:nth-child(5) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -5990ms;
-          animation-delay: -5990ms;
-=======
-  -webkit-animation-delay: -8554ms;
-          animation-delay: -8554ms;
->>>>>>> calendar
+  -webkit-animation-delay: -9393ms;
+          animation-delay: -9393ms;
 }
 .line:nth-child(5) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -5990ms;
-          animation-delay: -5990ms;
-=======
-  -webkit-animation-delay: -8554ms;
-          animation-delay: -8554ms;
->>>>>>> calendar
+  -webkit-animation-delay: -9393ms;
+          animation-delay: -9393ms;
 }
 .line:nth-child(5) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(310deg) translateX(117px);
-          transform: rotateZ(310deg) translateX(117px);
-=======
-  transform: rotateZ(346deg) translateX(164px);
->>>>>>> calendar
+  transform: rotateZ(256deg) translateX(219px);
 }
 .line:nth-child(6) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -3715ms;
-          animation-delay: -3715ms;
-=======
-  -webkit-animation-delay: -2335ms;
-          animation-delay: -2335ms;
->>>>>>> calendar
+  -webkit-animation-delay: -9834ms;
+          animation-delay: -9834ms;
 }
 .line:nth-child(6) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -3715ms;
-          animation-delay: -3715ms;
-=======
-  -webkit-animation-delay: -2335ms;
-          animation-delay: -2335ms;
->>>>>>> calendar
+  -webkit-animation-delay: -9834ms;
+          animation-delay: -9834ms;
 }
 .line:nth-child(6) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(206deg) translateX(306px);
-          transform: rotateZ(206deg) translateX(306px);
-=======
-  transform: rotateZ(188deg) translateX(285px);
->>>>>>> calendar
+  transform: rotateZ(351deg) translateX(173px);
 }
 .line:nth-child(7) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -9271ms;
-          animation-delay: -9271ms;
-=======
-  -webkit-animation-delay: -7509ms;
-          animation-delay: -7509ms;
->>>>>>> calendar
+  -webkit-animation-delay: -874ms;
+          animation-delay: -874ms;
 }
 .line:nth-child(7) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -9271ms;
-          animation-delay: -9271ms;
-=======
-  -webkit-animation-delay: -7509ms;
-          animation-delay: -7509ms;
->>>>>>> calendar
+  -webkit-animation-delay: -874ms;
+          animation-delay: -874ms;
 }
 .line:nth-child(7) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(347deg) translateX(272px);
-          transform: rotateZ(347deg) translateX(272px);
-=======
-  transform: rotateZ(158deg) translateX(310px);
->>>>>>> calendar
+  transform: rotateZ(248deg) translateX(144px);
 }
 .line:nth-child(8) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -5826ms;
-          animation-delay: -5826ms;
-=======
-  -webkit-animation-delay: -8000ms;
-          animation-delay: -8000ms;
->>>>>>> calendar
+  -webkit-animation-delay: -3885ms;
+          animation-delay: -3885ms;
 }
 .line:nth-child(8) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -5826ms;
-          animation-delay: -5826ms;
-=======
-  -webkit-animation-delay: -8000ms;
-          animation-delay: -8000ms;
->>>>>>> calendar
+  -webkit-animation-delay: -3885ms;
+          animation-delay: -3885ms;
 }
 .line:nth-child(8) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(141deg) translateX(160px);
-          transform: rotateZ(141deg) translateX(160px);
-=======
-  transform: rotateZ(329deg) translateX(152px);
->>>>>>> calendar
+  transform: rotateZ(127deg) translateX(201px);
 }
 .line:nth-child(9) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -4282ms;
-          animation-delay: -4282ms;
-=======
-  -webkit-animation-delay: -1365ms;
-          animation-delay: -1365ms;
->>>>>>> calendar
+  -webkit-animation-delay: -9717ms;
+          animation-delay: -9717ms;
 }
 .line:nth-child(9) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -4282ms;
-          animation-delay: -4282ms;
-=======
-  -webkit-animation-delay: -1365ms;
-          animation-delay: -1365ms;
->>>>>>> calendar
+  -webkit-animation-delay: -9717ms;
+          animation-delay: -9717ms;
 }
 .line:nth-child(9) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(284deg) translateX(89px);
-          transform: rotateZ(284deg) translateX(89px);
-=======
-  transform: rotateZ(181deg) translateX(251px);
->>>>>>> calendar
+  transform: rotateZ(20deg) translateX(266px);
 }
 .line:nth-child(10) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -2410ms;
-          animation-delay: -2410ms;
-=======
-  -webkit-animation-delay: -955ms;
-          animation-delay: -955ms;
->>>>>>> calendar
+  -webkit-animation-delay: -6718ms;
+          animation-delay: -6718ms;
 }
 .line:nth-child(10) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -2410ms;
-          animation-delay: -2410ms;
-=======
-  -webkit-animation-delay: -955ms;
-          animation-delay: -955ms;
->>>>>>> calendar
+  -webkit-animation-delay: -6718ms;
+          animation-delay: -6718ms;
 }
 .line:nth-child(10) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(343deg) translateX(105px);
-          transform: rotateZ(343deg) translateX(105px);
-=======
-  transform: rotateZ(119deg) translateX(154px);
->>>>>>> calendar
+  transform: rotateZ(270deg) translateX(176px);
 }
 .line:nth-child(11) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -1714ms;
-          animation-delay: -1714ms;
-=======
-  -webkit-animation-delay: -9072ms;
-          animation-delay: -9072ms;
->>>>>>> calendar
+  -webkit-animation-delay: -5482ms;
+          animation-delay: -5482ms;
 }
 .line:nth-child(11) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -1714ms;
-          animation-delay: -1714ms;
-=======
-  -webkit-animation-delay: -9072ms;
-          animation-delay: -9072ms;
->>>>>>> calendar
+  -webkit-animation-delay: -5482ms;
+          animation-delay: -5482ms;
 }
 .line:nth-child(11) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(24deg) translateX(58px);
-          transform: rotateZ(24deg) translateX(58px);
-=======
-  transform: rotateZ(144deg) translateX(230px);
->>>>>>> calendar
+  transform: rotateZ(341deg) translateX(225px);
 }
 .line:nth-child(12) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -2750ms;
-          animation-delay: -2750ms;
-=======
-  -webkit-animation-delay: -6777ms;
-          animation-delay: -6777ms;
->>>>>>> calendar
+  -webkit-animation-delay: -4406ms;
+          animation-delay: -4406ms;
 }
 .line:nth-child(12) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -2750ms;
-          animation-delay: -2750ms;
-=======
-  -webkit-animation-delay: -6777ms;
-          animation-delay: -6777ms;
->>>>>>> calendar
+  -webkit-animation-delay: -4406ms;
+          animation-delay: -4406ms;
 }
 .line:nth-child(12) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(272deg) translateX(306px);
-          transform: rotateZ(272deg) translateX(306px);
-=======
-  transform: rotateZ(57deg) translateX(66px);
->>>>>>> calendar
+  transform: rotateZ(353deg) translateX(253px);
 }
 .line:nth-child(13) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -8380ms;
-          animation-delay: -8380ms;
-=======
-  -webkit-animation-delay: -9157ms;
-          animation-delay: -9157ms;
->>>>>>> calendar
+  -webkit-animation-delay: -5447ms;
+          animation-delay: -5447ms;
 }
 .line:nth-child(13) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -8380ms;
-          animation-delay: -8380ms;
-=======
-  -webkit-animation-delay: -9157ms;
-          animation-delay: -9157ms;
->>>>>>> calendar
+  -webkit-animation-delay: -5447ms;
+          animation-delay: -5447ms;
 }
 .line:nth-child(13) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(193deg) translateX(310px);
-          transform: rotateZ(193deg) translateX(310px);
-=======
-  transform: rotateZ(337deg) translateX(116px);
->>>>>>> calendar
+  transform: rotateZ(36deg) translateX(60px);
 }
 .line:nth-child(14) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -8340ms;
-          animation-delay: -8340ms;
-=======
-  -webkit-animation-delay: -2584ms;
-          animation-delay: -2584ms;
->>>>>>> calendar
+  -webkit-animation-delay: -1813ms;
+          animation-delay: -1813ms;
 }
 .line:nth-child(14) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -8340ms;
-          animation-delay: -8340ms;
-=======
-  -webkit-animation-delay: -2584ms;
-          animation-delay: -2584ms;
->>>>>>> calendar
+  -webkit-animation-delay: -1813ms;
+          animation-delay: -1813ms;
 }
 .line:nth-child(14) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(314deg) translateX(222px);
-          transform: rotateZ(314deg) translateX(222px);
-=======
-  transform: rotateZ(232deg) translateX(59px);
->>>>>>> calendar
+  transform: rotateZ(208deg) translateX(110px);
 }
 .line:nth-child(15) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -7325ms;
-          animation-delay: -7325ms;
-=======
-  -webkit-animation-delay: -3961ms;
-          animation-delay: -3961ms;
->>>>>>> calendar
+  -webkit-animation-delay: -9194ms;
+          animation-delay: -9194ms;
 }
 .line:nth-child(15) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -7325ms;
-          animation-delay: -7325ms;
-=======
-  -webkit-animation-delay: -3961ms;
-          animation-delay: -3961ms;
->>>>>>> calendar
+  -webkit-animation-delay: -9194ms;
+          animation-delay: -9194ms;
 }
 .line:nth-child(15) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(13deg) translateX(201px);
-          transform: rotateZ(13deg) translateX(201px);
-=======
-  transform: rotateZ(15deg) translateX(200px);
->>>>>>> calendar
+  transform: rotateZ(296deg) translateX(47px);
 }
 .line:nth-child(16) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -6368ms;
-          animation-delay: -6368ms;
-=======
-  -webkit-animation-delay: -709ms;
-          animation-delay: -709ms;
->>>>>>> calendar
+  -webkit-animation-delay: -949ms;
+          animation-delay: -949ms;
 }
 .line:nth-child(16) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -6368ms;
-          animation-delay: -6368ms;
-=======
-  -webkit-animation-delay: -709ms;
-          animation-delay: -709ms;
->>>>>>> calendar
+  -webkit-animation-delay: -949ms;
+          animation-delay: -949ms;
 }
 .line:nth-child(16) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(242deg) translateX(150px);
-          transform: rotateZ(242deg) translateX(150px);
-=======
-  transform: rotateZ(138deg) translateX(35px);
->>>>>>> calendar
+  transform: rotateZ(127deg) translateX(96px);
 }
 .line:nth-child(17) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -6199ms;
-          animation-delay: -6199ms;
-=======
-  -webkit-animation-delay: -4484ms;
-          animation-delay: -4484ms;
->>>>>>> calendar
+  -webkit-animation-delay: -6582ms;
+          animation-delay: -6582ms;
 }
 .line:nth-child(17) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -6199ms;
-          animation-delay: -6199ms;
-=======
-  -webkit-animation-delay: -4484ms;
-          animation-delay: -4484ms;
->>>>>>> calendar
+  -webkit-animation-delay: -6582ms;
+          animation-delay: -6582ms;
 }
 .line:nth-child(17) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(225deg) translateX(26px);
-          transform: rotateZ(225deg) translateX(26px);
-=======
-  transform: rotateZ(204deg) translateX(26px);
->>>>>>> calendar
+  transform: rotateZ(333deg) translateX(63px);
 }
 .line:nth-child(18) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -7049ms;
-          animation-delay: -7049ms;
-=======
-  -webkit-animation-delay: -1138ms;
-          animation-delay: -1138ms;
->>>>>>> calendar
+  -webkit-animation-delay: -6650ms;
+          animation-delay: -6650ms;
 }
 .line:nth-child(18) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -7049ms;
-          animation-delay: -7049ms;
-=======
-  -webkit-animation-delay: -1138ms;
-          animation-delay: -1138ms;
->>>>>>> calendar
+  -webkit-animation-delay: -6650ms;
+          animation-delay: -6650ms;
 }
 .line:nth-child(18) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(89deg) translateX(193px);
-          transform: rotateZ(89deg) translateX(193px);
-=======
-  transform: rotateZ(1deg) translateX(48px);
->>>>>>> calendar
+  transform: rotateZ(131deg) translateX(122px);
 }
 .line:nth-child(19) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -6974ms;
-          animation-delay: -6974ms;
-=======
-  -webkit-animation-delay: -4631ms;
-          animation-delay: -4631ms;
->>>>>>> calendar
+  -webkit-animation-delay: -3315ms;
+          animation-delay: -3315ms;
 }
 .line:nth-child(19) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -6974ms;
-          animation-delay: -6974ms;
-=======
-  -webkit-animation-delay: -4631ms;
-          animation-delay: -4631ms;
->>>>>>> calendar
+  -webkit-animation-delay: -3315ms;
+          animation-delay: -3315ms;
 }
 .line:nth-child(19) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(348deg) translateX(152px);
-          transform: rotateZ(348deg) translateX(152px);
-=======
-  transform: rotateZ(226deg) translateX(320px);
->>>>>>> calendar
+  transform: rotateZ(129deg) translateX(234px);
 }
 .line:nth-child(20) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -256ms;
-          animation-delay: -256ms;
-=======
-  -webkit-animation-delay: -4294ms;
-          animation-delay: -4294ms;
->>>>>>> calendar
+  -webkit-animation-delay: -8845ms;
+          animation-delay: -8845ms;
 }
 .line:nth-child(20) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -256ms;
-          animation-delay: -256ms;
-=======
-  -webkit-animation-delay: -4294ms;
-          animation-delay: -4294ms;
->>>>>>> calendar
+  -webkit-animation-delay: -8845ms;
+          animation-delay: -8845ms;
 }
 .line:nth-child(20) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(27deg) translateX(46px);
-          transform: rotateZ(27deg) translateX(46px);
-=======
-  transform: rotateZ(242deg) translateX(153px);
->>>>>>> calendar
+  transform: rotateZ(338deg) translateX(186px);
 }
 .line:nth-child(21) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -8197ms;
-          animation-delay: -8197ms;
-=======
-  -webkit-animation-delay: -7325ms;
-          animation-delay: -7325ms;
->>>>>>> calendar
+  -webkit-animation-delay: -4680ms;
+          animation-delay: -4680ms;
 }
 .line:nth-child(21) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -8197ms;
-          animation-delay: -8197ms;
-=======
-  -webkit-animation-delay: -7325ms;
-          animation-delay: -7325ms;
->>>>>>> calendar
+  -webkit-animation-delay: -4680ms;
+          animation-delay: -4680ms;
 }
 .line:nth-child(21) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(310deg) translateX(38px);
-          transform: rotateZ(310deg) translateX(38px);
-=======
-  transform: rotateZ(299deg) translateX(29px);
->>>>>>> calendar
+  transform: rotateZ(242deg) translateX(21px);
 }
 .line:nth-child(22) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -8418ms;
-          animation-delay: -8418ms;
-=======
-  -webkit-animation-delay: -6399ms;
-          animation-delay: -6399ms;
->>>>>>> calendar
+  -webkit-animation-delay: -3594ms;
+          animation-delay: -3594ms;
 }
 .line:nth-child(22) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -8418ms;
-          animation-delay: -8418ms;
-=======
-  -webkit-animation-delay: -6399ms;
-          animation-delay: -6399ms;
->>>>>>> calendar
+  -webkit-animation-delay: -3594ms;
+          animation-delay: -3594ms;
 }
 .line:nth-child(22) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(51deg) translateX(310px);
-          transform: rotateZ(51deg) translateX(310px);
-=======
-  transform: rotateZ(274deg) translateX(40px);
->>>>>>> calendar
+  transform: rotateZ(91deg) translateX(182px);
 }
 .line:nth-child(23) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -678ms;
-          animation-delay: -678ms;
-=======
-  -webkit-animation-delay: -4429ms;
-          animation-delay: -4429ms;
->>>>>>> calendar
+  -webkit-animation-delay: -930ms;
+          animation-delay: -930ms;
 }
 .line:nth-child(23) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -678ms;
-          animation-delay: -678ms;
-=======
-  -webkit-animation-delay: -4429ms;
-          animation-delay: -4429ms;
->>>>>>> calendar
+  -webkit-animation-delay: -930ms;
+          animation-delay: -930ms;
 }
 .line:nth-child(23) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(12deg) translateX(72px);
-          transform: rotateZ(12deg) translateX(72px);
-=======
-  transform: rotateZ(89deg) translateX(222px);
->>>>>>> calendar
+  transform: rotateZ(20deg) translateX(41px);
 }
 .line:nth-child(24) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -667ms;
-          animation-delay: -667ms;
-=======
-  -webkit-animation-delay: -2024ms;
-          animation-delay: -2024ms;
->>>>>>> calendar
+  -webkit-animation-delay: -9234ms;
+          animation-delay: -9234ms;
 }
 .line:nth-child(24) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -667ms;
-          animation-delay: -667ms;
-=======
-  -webkit-animation-delay: -2024ms;
-          animation-delay: -2024ms;
->>>>>>> calendar
+  -webkit-animation-delay: -9234ms;
+          animation-delay: -9234ms;
 }
 .line:nth-child(24) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(257deg) translateX(43px);
-          transform: rotateZ(257deg) translateX(43px);
-=======
-  transform: rotateZ(119deg) translateX(165px);
->>>>>>> calendar
+  transform: rotateZ(215deg) translateX(97px);
 }
 .line:nth-child(25) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -3967ms;
-          animation-delay: -3967ms;
-=======
-  -webkit-animation-delay: -7890ms;
-          animation-delay: -7890ms;
->>>>>>> calendar
+  -webkit-animation-delay: -3434ms;
+          animation-delay: -3434ms;
 }
 .line:nth-child(25) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -3967ms;
-          animation-delay: -3967ms;
-=======
-  -webkit-animation-delay: -7890ms;
-          animation-delay: -7890ms;
->>>>>>> calendar
+  -webkit-animation-delay: -3434ms;
+          animation-delay: -3434ms;
 }
 .line:nth-child(25) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(332deg) translateX(231px);
-          transform: rotateZ(332deg) translateX(231px);
-=======
-  transform: rotateZ(215deg) translateX(98px);
->>>>>>> calendar
+  transform: rotateZ(337deg) translateX(249px);
 }
 .line:nth-child(26) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -2363ms;
-          animation-delay: -2363ms;
-=======
-  -webkit-animation-delay: -4493ms;
-          animation-delay: -4493ms;
->>>>>>> calendar
+  -webkit-animation-delay: -2297ms;
+          animation-delay: -2297ms;
 }
 .line:nth-child(26) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -2363ms;
-          animation-delay: -2363ms;
-=======
-  -webkit-animation-delay: -4493ms;
-          animation-delay: -4493ms;
->>>>>>> calendar
+  -webkit-animation-delay: -2297ms;
+          animation-delay: -2297ms;
 }
 .line:nth-child(26) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(109deg) translateX(273px);
-          transform: rotateZ(109deg) translateX(273px);
-=======
-  transform: rotateZ(49deg) translateX(258px);
->>>>>>> calendar
+  transform: rotateZ(43deg) translateX(240px);
 }
 .line:nth-child(27) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -3101ms;
-          animation-delay: -3101ms;
-=======
-  -webkit-animation-delay: -8748ms;
-          animation-delay: -8748ms;
->>>>>>> calendar
+  -webkit-animation-delay: -9641ms;
+          animation-delay: -9641ms;
 }
 .line:nth-child(27) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -3101ms;
-          animation-delay: -3101ms;
-=======
-  -webkit-animation-delay: -8748ms;
-          animation-delay: -8748ms;
->>>>>>> calendar
+  -webkit-animation-delay: -9641ms;
+          animation-delay: -9641ms;
 }
 .line:nth-child(27) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(149deg) translateX(104px);
-          transform: rotateZ(149deg) translateX(104px);
-=======
-  transform: rotateZ(42deg) translateX(129px);
->>>>>>> calendar
+  transform: rotateZ(63deg) translateX(299px);
 }
 .line:nth-child(28) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -7932ms;
-          animation-delay: -7932ms;
-=======
-  -webkit-animation-delay: -471ms;
-          animation-delay: -471ms;
->>>>>>> calendar
+  -webkit-animation-delay: -7039ms;
+          animation-delay: -7039ms;
 }
 .line:nth-child(28) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -7932ms;
-          animation-delay: -7932ms;
-=======
-  -webkit-animation-delay: -471ms;
-          animation-delay: -471ms;
->>>>>>> calendar
+  -webkit-animation-delay: -7039ms;
+          animation-delay: -7039ms;
 }
 .line:nth-child(28) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(259deg) translateX(268px);
-          transform: rotateZ(259deg) translateX(268px);
-=======
-  transform: rotateZ(325deg) translateX(194px);
->>>>>>> calendar
+  transform: rotateZ(192deg) translateX(281px);
 }
 .line:nth-child(29) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -1861ms;
-          animation-delay: -1861ms;
-=======
-  -webkit-animation-delay: -9158ms;
-          animation-delay: -9158ms;
->>>>>>> calendar
+  -webkit-animation-delay: -914ms;
+          animation-delay: -914ms;
 }
 .line:nth-child(29) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -1861ms;
-          animation-delay: -1861ms;
-=======
-  -webkit-animation-delay: -9158ms;
-          animation-delay: -9158ms;
->>>>>>> calendar
+  -webkit-animation-delay: -914ms;
+          animation-delay: -914ms;
 }
 .line:nth-child(29) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(155deg) translateX(220px);
-          transform: rotateZ(155deg) translateX(220px);
-=======
-  transform: rotateZ(14deg) translateX(310px);
->>>>>>> calendar
+  transform: rotateZ(349deg) translateX(161px);
 }
 .line:nth-child(30) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -4730ms;
-          animation-delay: -4730ms;
-=======
-  -webkit-animation-delay: -2578ms;
-          animation-delay: -2578ms;
->>>>>>> calendar
+  -webkit-animation-delay: -8262ms;
+          animation-delay: -8262ms;
 }
 .line:nth-child(30) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -4730ms;
-          animation-delay: -4730ms;
-=======
-  -webkit-animation-delay: -2578ms;
-          animation-delay: -2578ms;
->>>>>>> calendar
+  -webkit-animation-delay: -8262ms;
+          animation-delay: -8262ms;
 }
 .line:nth-child(30) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(321deg) translateX(232px);
-          transform: rotateZ(321deg) translateX(232px);
-=======
-  transform: rotateZ(87deg) translateX(186px);
->>>>>>> calendar
+  transform: rotateZ(297deg) translateX(28px);
 }
 .line:nth-child(31) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -3052ms;
-          animation-delay: -3052ms;
-=======
-  -webkit-animation-delay: -1357ms;
-          animation-delay: -1357ms;
->>>>>>> calendar
+  -webkit-animation-delay: -2700ms;
+          animation-delay: -2700ms;
 }
 .line:nth-child(31) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -3052ms;
-          animation-delay: -3052ms;
-=======
-  -webkit-animation-delay: -1357ms;
-          animation-delay: -1357ms;
->>>>>>> calendar
+  -webkit-animation-delay: -2700ms;
+          animation-delay: -2700ms;
 }
 .line:nth-child(31) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(132deg) translateX(177px);
-          transform: rotateZ(132deg) translateX(177px);
-=======
-  transform: rotateZ(350deg) translateX(104px);
->>>>>>> calendar
+  transform: rotateZ(322deg) translateX(70px);
 }
 .line:nth-child(32) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -8250ms;
-          animation-delay: -8250ms;
-=======
-  -webkit-animation-delay: -5865ms;
-          animation-delay: -5865ms;
->>>>>>> calendar
+  -webkit-animation-delay: -9695ms;
+          animation-delay: -9695ms;
 }
 .line:nth-child(32) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -8250ms;
-          animation-delay: -8250ms;
-=======
-  -webkit-animation-delay: -5865ms;
-          animation-delay: -5865ms;
->>>>>>> calendar
+  -webkit-animation-delay: -9695ms;
+          animation-delay: -9695ms;
 }
 .line:nth-child(32) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(45deg) translateX(202px);
-          transform: rotateZ(45deg) translateX(202px);
-=======
-  transform: rotateZ(20deg) translateX(231px);
->>>>>>> calendar
+  transform: rotateZ(208deg) translateX(238px);
 }
 .line:nth-child(33) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -5631ms;
-          animation-delay: -5631ms;
-=======
-  -webkit-animation-delay: -5679ms;
-          animation-delay: -5679ms;
->>>>>>> calendar
+  -webkit-animation-delay: -5761ms;
+          animation-delay: -5761ms;
 }
 .line:nth-child(33) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -5631ms;
-          animation-delay: -5631ms;
-=======
-  -webkit-animation-delay: -5679ms;
-          animation-delay: -5679ms;
->>>>>>> calendar
+  -webkit-animation-delay: -5761ms;
+          animation-delay: -5761ms;
 }
 .line:nth-child(33) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(104deg) translateX(28px);
-          transform: rotateZ(104deg) translateX(28px);
-=======
-  transform: rotateZ(355deg) translateX(267px);
->>>>>>> calendar
+  transform: rotateZ(328deg) translateX(93px);
 }
 .line:nth-child(34) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -2060ms;
-          animation-delay: -2060ms;
-=======
-  -webkit-animation-delay: -2027ms;
-          animation-delay: -2027ms;
->>>>>>> calendar
+  -webkit-animation-delay: -4950ms;
+          animation-delay: -4950ms;
 }
 .line:nth-child(34) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -2060ms;
-          animation-delay: -2060ms;
-=======
-  -webkit-animation-delay: -2027ms;
-          animation-delay: -2027ms;
->>>>>>> calendar
+  -webkit-animation-delay: -4950ms;
+          animation-delay: -4950ms;
 }
 .line:nth-child(34) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(121deg) translateX(23px);
-          transform: rotateZ(121deg) translateX(23px);
-=======
-  transform: rotateZ(15deg) translateX(239px);
->>>>>>> calendar
+  transform: rotateZ(286deg) translateX(302px);
 }
 .line:nth-child(35) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -5905ms;
-          animation-delay: -5905ms;
-=======
-  -webkit-animation-delay: -2110ms;
-          animation-delay: -2110ms;
->>>>>>> calendar
+  -webkit-animation-delay: -2969ms;
+          animation-delay: -2969ms;
 }
 .line:nth-child(35) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -5905ms;
-          animation-delay: -5905ms;
-=======
-  -webkit-animation-delay: -2110ms;
-          animation-delay: -2110ms;
->>>>>>> calendar
+  -webkit-animation-delay: -2969ms;
+          animation-delay: -2969ms;
 }
 .line:nth-child(35) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(144deg) translateX(94px);
-          transform: rotateZ(144deg) translateX(94px);
-=======
-  transform: rotateZ(1deg) translateX(174px);
->>>>>>> calendar
+  transform: rotateZ(265deg) translateX(218px);
 }
 .line:nth-child(36) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -3025ms;
-          animation-delay: -3025ms;
-=======
-  -webkit-animation-delay: -4841ms;
-          animation-delay: -4841ms;
->>>>>>> calendar
+  -webkit-animation-delay: -8257ms;
+          animation-delay: -8257ms;
 }
 .line:nth-child(36) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -3025ms;
-          animation-delay: -3025ms;
-=======
-  -webkit-animation-delay: -4841ms;
-          animation-delay: -4841ms;
->>>>>>> calendar
+  -webkit-animation-delay: -8257ms;
+          animation-delay: -8257ms;
 }
 .line:nth-child(36) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(146deg) translateX(296px);
-          transform: rotateZ(146deg) translateX(296px);
-=======
-  transform: rotateZ(9deg) translateX(89px);
->>>>>>> calendar
+  transform: rotateZ(147deg) translateX(64px);
 }
 .line:nth-child(37) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -6702ms;
-          animation-delay: -6702ms;
-=======
-  -webkit-animation-delay: -109ms;
-          animation-delay: -109ms;
->>>>>>> calendar
+  -webkit-animation-delay: -2398ms;
+          animation-delay: -2398ms;
 }
 .line:nth-child(37) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -6702ms;
-          animation-delay: -6702ms;
-=======
-  -webkit-animation-delay: -109ms;
-          animation-delay: -109ms;
->>>>>>> calendar
+  -webkit-animation-delay: -2398ms;
+          animation-delay: -2398ms;
 }
 .line:nth-child(37) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(358deg) translateX(52px);
-          transform: rotateZ(358deg) translateX(52px);
-=======
-  transform: rotateZ(102deg) translateX(234px);
->>>>>>> calendar
+  transform: rotateZ(40deg) translateX(315px);
 }
 .line:nth-child(38) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -1985ms;
-          animation-delay: -1985ms;
-=======
-  -webkit-animation-delay: -916ms;
-          animation-delay: -916ms;
->>>>>>> calendar
+  -webkit-animation-delay: -6208ms;
+          animation-delay: -6208ms;
 }
 .line:nth-child(38) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -1985ms;
-          animation-delay: -1985ms;
-=======
-  -webkit-animation-delay: -916ms;
-          animation-delay: -916ms;
->>>>>>> calendar
+  -webkit-animation-delay: -6208ms;
+          animation-delay: -6208ms;
 }
 .line:nth-child(38) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(45deg) translateX(123px);
-          transform: rotateZ(45deg) translateX(123px);
-=======
-  transform: rotateZ(121deg) translateX(283px);
->>>>>>> calendar
+  transform: rotateZ(161deg) translateX(153px);
 }
 .line:nth-child(39) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -302ms;
-          animation-delay: -302ms;
-=======
-  -webkit-animation-delay: -9056ms;
-          animation-delay: -9056ms;
->>>>>>> calendar
+  -webkit-animation-delay: -996ms;
+          animation-delay: -996ms;
 }
 .line:nth-child(39) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -302ms;
-          animation-delay: -302ms;
-=======
-  -webkit-animation-delay: -9056ms;
-          animation-delay: -9056ms;
->>>>>>> calendar
+  -webkit-animation-delay: -996ms;
+          animation-delay: -996ms;
 }
 .line:nth-child(39) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(6deg) translateX(220px);
-          transform: rotateZ(6deg) translateX(220px);
-=======
-  transform: rotateZ(206deg) translateX(203px);
->>>>>>> calendar
+  transform: rotateZ(354deg) translateX(82px);
 }
 .line:nth-child(40) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -9676ms;
-          animation-delay: -9676ms;
-=======
-  -webkit-animation-delay: -1791ms;
-          animation-delay: -1791ms;
->>>>>>> calendar
+  -webkit-animation-delay: -6605ms;
+          animation-delay: -6605ms;
 }
 .line:nth-child(40) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -9676ms;
-          animation-delay: -9676ms;
-=======
-  -webkit-animation-delay: -1791ms;
-          animation-delay: -1791ms;
->>>>>>> calendar
+  -webkit-animation-delay: -6605ms;
+          animation-delay: -6605ms;
 }
 .line:nth-child(40) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(269deg) translateX(129px);
-          transform: rotateZ(269deg) translateX(129px);
-=======
-  transform: rotateZ(27deg) translateX(121px);
->>>>>>> calendar
+  transform: rotateZ(229deg) translateX(128px);
 }
 .line:nth-child(41) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -2917ms;
-          animation-delay: -2917ms;
-=======
-  -webkit-animation-delay: -6273ms;
-          animation-delay: -6273ms;
->>>>>>> calendar
+  -webkit-animation-delay: -3074ms;
+          animation-delay: -3074ms;
 }
 .line:nth-child(41) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -2917ms;
-          animation-delay: -2917ms;
-=======
-  -webkit-animation-delay: -6273ms;
-          animation-delay: -6273ms;
->>>>>>> calendar
+  -webkit-animation-delay: -3074ms;
+          animation-delay: -3074ms;
 }
 .line:nth-child(41) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(292deg) translateX(160px);
-          transform: rotateZ(292deg) translateX(160px);
-=======
-  transform: rotateZ(112deg) translateX(207px);
->>>>>>> calendar
+  transform: rotateZ(16deg) translateX(316px);
 }
 .line:nth-child(42) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -8991ms;
-          animation-delay: -8991ms;
-=======
-  -webkit-animation-delay: -5400ms;
-          animation-delay: -5400ms;
->>>>>>> calendar
+  -webkit-animation-delay: -3098ms;
+          animation-delay: -3098ms;
 }
 .line:nth-child(42) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -8991ms;
-          animation-delay: -8991ms;
-=======
-  -webkit-animation-delay: -5400ms;
-          animation-delay: -5400ms;
->>>>>>> calendar
+  -webkit-animation-delay: -3098ms;
+          animation-delay: -3098ms;
 }
 .line:nth-child(42) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(76deg) translateX(22px);
-          transform: rotateZ(76deg) translateX(22px);
-=======
-  transform: rotateZ(248deg) translateX(305px);
->>>>>>> calendar
+  transform: rotateZ(270deg) translateX(146px);
 }
 .line:nth-child(43) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -7270ms;
-          animation-delay: -7270ms;
-=======
-  -webkit-animation-delay: -9508ms;
-          animation-delay: -9508ms;
->>>>>>> calendar
+  -webkit-animation-delay: -3280ms;
+          animation-delay: -3280ms;
 }
 .line:nth-child(43) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -7270ms;
-          animation-delay: -7270ms;
-=======
-  -webkit-animation-delay: -9508ms;
-          animation-delay: -9508ms;
->>>>>>> calendar
+  -webkit-animation-delay: -3280ms;
+          animation-delay: -3280ms;
 }
 .line:nth-child(43) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(103deg) translateX(190px);
-          transform: rotateZ(103deg) translateX(190px);
-=======
-  transform: rotateZ(271deg) translateX(295px);
->>>>>>> calendar
+  transform: rotateZ(311deg) translateX(213px);
 }
 .line:nth-child(44) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -2009ms;
-          animation-delay: -2009ms;
-=======
-  -webkit-animation-delay: -1673ms;
-          animation-delay: -1673ms;
->>>>>>> calendar
+  -webkit-animation-delay: -606ms;
+          animation-delay: -606ms;
 }
 .line:nth-child(44) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -2009ms;
-          animation-delay: -2009ms;
-=======
-  -webkit-animation-delay: -1673ms;
-          animation-delay: -1673ms;
->>>>>>> calendar
+  -webkit-animation-delay: -606ms;
+          animation-delay: -606ms;
 }
 .line:nth-child(44) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(164deg) translateX(291px);
-          transform: rotateZ(164deg) translateX(291px);
-=======
-  transform: rotateZ(249deg) translateX(262px);
->>>>>>> calendar
+  transform: rotateZ(284deg) translateX(297px);
 }
 .line:nth-child(45) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -5035ms;
-          animation-delay: -5035ms;
-=======
-  -webkit-animation-delay: -3230ms;
-          animation-delay: -3230ms;
->>>>>>> calendar
+  -webkit-animation-delay: -136ms;
+          animation-delay: -136ms;
 }
 .line:nth-child(45) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -5035ms;
-          animation-delay: -5035ms;
-=======
-  -webkit-animation-delay: -3230ms;
-          animation-delay: -3230ms;
->>>>>>> calendar
+  -webkit-animation-delay: -136ms;
+          animation-delay: -136ms;
 }
 .line:nth-child(45) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(174deg) translateX(221px);
-          transform: rotateZ(174deg) translateX(221px);
-=======
-  transform: rotateZ(123deg) translateX(233px);
->>>>>>> calendar
+  transform: rotateZ(219deg) translateX(287px);
 }
 .line:nth-child(46) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -159ms;
-          animation-delay: -159ms;
-=======
-  -webkit-animation-delay: -608ms;
-          animation-delay: -608ms;
->>>>>>> calendar
+  -webkit-animation-delay: -4031ms;
+          animation-delay: -4031ms;
 }
 .line:nth-child(46) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -159ms;
-          animation-delay: -159ms;
-=======
-  -webkit-animation-delay: -608ms;
-          animation-delay: -608ms;
->>>>>>> calendar
+  -webkit-animation-delay: -4031ms;
+          animation-delay: -4031ms;
 }
 .line:nth-child(46) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(185deg) translateX(239px);
-          transform: rotateZ(185deg) translateX(239px);
-=======
-  transform: rotateZ(230deg) translateX(24px);
->>>>>>> calendar
+  transform: rotateZ(71deg) translateX(162px);
 }
 .line:nth-child(47) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -1566ms;
-          animation-delay: -1566ms;
-=======
-  -webkit-animation-delay: -9137ms;
-          animation-delay: -9137ms;
->>>>>>> calendar
+  -webkit-animation-delay: -7989ms;
+          animation-delay: -7989ms;
 }
 .line:nth-child(47) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -1566ms;
-          animation-delay: -1566ms;
-=======
-  -webkit-animation-delay: -9137ms;
-          animation-delay: -9137ms;
->>>>>>> calendar
+  -webkit-animation-delay: -7989ms;
+          animation-delay: -7989ms;
 }
 .line:nth-child(47) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(290deg) translateX(102px);
-          transform: rotateZ(290deg) translateX(102px);
-=======
-  transform: rotateZ(97deg) translateX(140px);
->>>>>>> calendar
+  transform: rotateZ(281deg) translateX(145px);
 }
 .line:nth-child(48) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -6791ms;
-          animation-delay: -6791ms;
-=======
-  -webkit-animation-delay: -8811ms;
-          animation-delay: -8811ms;
->>>>>>> calendar
+  -webkit-animation-delay: -8616ms;
+          animation-delay: -8616ms;
 }
 .line:nth-child(48) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -6791ms;
-          animation-delay: -6791ms;
-=======
-  -webkit-animation-delay: -8811ms;
-          animation-delay: -8811ms;
->>>>>>> calendar
+  -webkit-animation-delay: -8616ms;
+          animation-delay: -8616ms;
 }
 .line:nth-child(48) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(217deg) translateX(102px);
-          transform: rotateZ(217deg) translateX(102px);
-=======
-  transform: rotateZ(107deg) translateX(110px);
->>>>>>> calendar
+  transform: rotateZ(29deg) translateX(66px);
 }
 .line:nth-child(49) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -1742ms;
-          animation-delay: -1742ms;
-=======
-  -webkit-animation-delay: -737ms;
-          animation-delay: -737ms;
->>>>>>> calendar
+  -webkit-animation-delay: -9504ms;
+          animation-delay: -9504ms;
 }
 .line:nth-child(49) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -1742ms;
-          animation-delay: -1742ms;
-=======
-  -webkit-animation-delay: -737ms;
-          animation-delay: -737ms;
->>>>>>> calendar
+  -webkit-animation-delay: -9504ms;
+          animation-delay: -9504ms;
 }
 .line:nth-child(49) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(27deg) translateX(303px);
-          transform: rotateZ(27deg) translateX(303px);
-=======
-  transform: rotateZ(296deg) translateX(122px);
->>>>>>> calendar
+  transform: rotateZ(49deg) translateX(293px);
 }
 .line:nth-child(50) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -2371ms;
-          animation-delay: -2371ms;
-=======
-  -webkit-animation-delay: -7997ms;
-          animation-delay: -7997ms;
->>>>>>> calendar
+  -webkit-animation-delay: -9385ms;
+          animation-delay: -9385ms;
 }
 .line:nth-child(50) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -2371ms;
-          animation-delay: -2371ms;
-=======
-  -webkit-animation-delay: -7997ms;
-          animation-delay: -7997ms;
->>>>>>> calendar
+  -webkit-animation-delay: -9385ms;
+          animation-delay: -9385ms;
 }
 .line:nth-child(50) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(141deg) translateX(60px);
-          transform: rotateZ(141deg) translateX(60px);
-=======
-  transform: rotateZ(232deg) translateX(201px);
->>>>>>> calendar
+  transform: rotateZ(140deg) translateX(301px);
 }
 .line:nth-child(51) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -9589ms;
-          animation-delay: -9589ms;
-=======
-  -webkit-animation-delay: -1531ms;
-          animation-delay: -1531ms;
->>>>>>> calendar
+  -webkit-animation-delay: -7027ms;
+          animation-delay: -7027ms;
 }
 .line:nth-child(51) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -9589ms;
-          animation-delay: -9589ms;
-=======
-  -webkit-animation-delay: -1531ms;
-          animation-delay: -1531ms;
->>>>>>> calendar
+  -webkit-animation-delay: -7027ms;
+          animation-delay: -7027ms;
 }
 .line:nth-child(51) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(236deg) translateX(46px);
-          transform: rotateZ(236deg) translateX(46px);
-=======
-  transform: rotateZ(172deg) translateX(183px);
->>>>>>> calendar
+  transform: rotateZ(210deg) translateX(295px);
 }
 .line:nth-child(52) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -5014ms;
-          animation-delay: -5014ms;
-=======
-  -webkit-animation-delay: -7767ms;
-          animation-delay: -7767ms;
->>>>>>> calendar
+  -webkit-animation-delay: -1572ms;
+          animation-delay: -1572ms;
 }
 .line:nth-child(52) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -5014ms;
-          animation-delay: -5014ms;
-=======
-  -webkit-animation-delay: -7767ms;
-          animation-delay: -7767ms;
->>>>>>> calendar
+  -webkit-animation-delay: -1572ms;
+          animation-delay: -1572ms;
 }
 .line:nth-child(52) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(149deg) translateX(142px);
-          transform: rotateZ(149deg) translateX(142px);
-=======
-  transform: rotateZ(136deg) translateX(79px);
->>>>>>> calendar
+  transform: rotateZ(214deg) translateX(89px);
 }
 .line:nth-child(53) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -6139ms;
-          animation-delay: -6139ms;
-=======
-  -webkit-animation-delay: -419ms;
-          animation-delay: -419ms;
->>>>>>> calendar
+  -webkit-animation-delay: -5455ms;
+          animation-delay: -5455ms;
 }
 .line:nth-child(53) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -6139ms;
-          animation-delay: -6139ms;
-=======
-  -webkit-animation-delay: -419ms;
-          animation-delay: -419ms;
->>>>>>> calendar
+  -webkit-animation-delay: -5455ms;
+          animation-delay: -5455ms;
 }
 .line:nth-child(53) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(312deg) translateX(222px);
-          transform: rotateZ(312deg) translateX(222px);
-=======
-  transform: rotateZ(2deg) translateX(126px);
->>>>>>> calendar
+  transform: rotateZ(141deg) translateX(201px);
 }
 .line:nth-child(54) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -2011ms;
-          animation-delay: -2011ms;
-=======
-  -webkit-animation-delay: -3149ms;
-          animation-delay: -3149ms;
->>>>>>> calendar
+  -webkit-animation-delay: -5519ms;
+          animation-delay: -5519ms;
 }
 .line:nth-child(54) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -2011ms;
-          animation-delay: -2011ms;
-=======
-  -webkit-animation-delay: -3149ms;
-          animation-delay: -3149ms;
->>>>>>> calendar
+  -webkit-animation-delay: -5519ms;
+          animation-delay: -5519ms;
 }
 .line:nth-child(54) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(47deg) translateX(168px);
-          transform: rotateZ(47deg) translateX(168px);
-=======
-  transform: rotateZ(7deg) translateX(223px);
->>>>>>> calendar
+  transform: rotateZ(62deg) translateX(65px);
 }
 .line:nth-child(55) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -7862ms;
-          animation-delay: -7862ms;
-=======
-  -webkit-animation-delay: -281ms;
-          animation-delay: -281ms;
->>>>>>> calendar
+  -webkit-animation-delay: -312ms;
+          animation-delay: -312ms;
 }
 .line:nth-child(55) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -7862ms;
-          animation-delay: -7862ms;
-=======
-  -webkit-animation-delay: -281ms;
-          animation-delay: -281ms;
->>>>>>> calendar
+  -webkit-animation-delay: -312ms;
+          animation-delay: -312ms;
 }
 .line:nth-child(55) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(250deg) translateX(175px);
-          transform: rotateZ(250deg) translateX(175px);
-=======
-  transform: rotateZ(273deg) translateX(281px);
->>>>>>> calendar
+  transform: rotateZ(357deg) translateX(282px);
 }
 .line:nth-child(56) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -5433ms;
-          animation-delay: -5433ms;
-=======
-  -webkit-animation-delay: -7520ms;
-          animation-delay: -7520ms;
->>>>>>> calendar
+  -webkit-animation-delay: -1063ms;
+          animation-delay: -1063ms;
 }
 .line:nth-child(56) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -5433ms;
-          animation-delay: -5433ms;
-=======
-  -webkit-animation-delay: -7520ms;
-          animation-delay: -7520ms;
->>>>>>> calendar
+  -webkit-animation-delay: -1063ms;
+          animation-delay: -1063ms;
 }
 .line:nth-child(56) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(311deg) translateX(133px);
-          transform: rotateZ(311deg) translateX(133px);
-=======
-  transform: rotateZ(182deg) translateX(301px);
->>>>>>> calendar
+  transform: rotateZ(251deg) translateX(287px);
 }
 .line:nth-child(57) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -5386ms;
-          animation-delay: -5386ms;
-=======
-  -webkit-animation-delay: -492ms;
-          animation-delay: -492ms;
->>>>>>> calendar
+  -webkit-animation-delay: -2634ms;
+          animation-delay: -2634ms;
 }
 .line:nth-child(57) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -5386ms;
-          animation-delay: -5386ms;
-=======
-  -webkit-animation-delay: -492ms;
-          animation-delay: -492ms;
->>>>>>> calendar
+  -webkit-animation-delay: -2634ms;
+          animation-delay: -2634ms;
 }
 .line:nth-child(57) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(61deg) translateX(151px);
-          transform: rotateZ(61deg) translateX(151px);
-=======
-  transform: rotateZ(24deg) translateX(182px);
->>>>>>> calendar
+  transform: rotateZ(304deg) translateX(249px);
 }
 .line:nth-child(58) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -2136ms;
-          animation-delay: -2136ms;
-=======
-  -webkit-animation-delay: -9323ms;
-          animation-delay: -9323ms;
->>>>>>> calendar
+  -webkit-animation-delay: -7867ms;
+          animation-delay: -7867ms;
 }
 .line:nth-child(58) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -2136ms;
-          animation-delay: -2136ms;
-=======
-  -webkit-animation-delay: -9323ms;
-          animation-delay: -9323ms;
->>>>>>> calendar
+  -webkit-animation-delay: -7867ms;
+          animation-delay: -7867ms;
 }
 .line:nth-child(58) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(236deg) translateX(110px);
-          transform: rotateZ(236deg) translateX(110px);
-=======
-  transform: rotateZ(247deg) translateX(178px);
->>>>>>> calendar
+  transform: rotateZ(101deg) translateX(279px);
 }
 .line:nth-child(59) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -3043ms;
-          animation-delay: -3043ms;
-=======
-  -webkit-animation-delay: -8367ms;
-          animation-delay: -8367ms;
->>>>>>> calendar
+  -webkit-animation-delay: -199ms;
+          animation-delay: -199ms;
 }
 .line:nth-child(59) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -3043ms;
-          animation-delay: -3043ms;
-=======
-  -webkit-animation-delay: -8367ms;
-          animation-delay: -8367ms;
->>>>>>> calendar
+  -webkit-animation-delay: -199ms;
+          animation-delay: -199ms;
 }
 .line:nth-child(59) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(114deg) translateX(121px);
-          transform: rotateZ(114deg) translateX(121px);
-=======
-  transform: rotateZ(30deg) translateX(309px);
->>>>>>> calendar
+  transform: rotateZ(296deg) translateX(93px);
 }
 .line:nth-child(60) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -5762ms;
-          animation-delay: -5762ms;
-=======
-  -webkit-animation-delay: -5159ms;
-          animation-delay: -5159ms;
->>>>>>> calendar
+  -webkit-animation-delay: -8252ms;
+          animation-delay: -8252ms;
 }
 .line:nth-child(60) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -5762ms;
-          animation-delay: -5762ms;
-=======
-  -webkit-animation-delay: -5159ms;
-          animation-delay: -5159ms;
->>>>>>> calendar
+  -webkit-animation-delay: -8252ms;
+          animation-delay: -8252ms;
 }
 .line:nth-child(60) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(54deg) translateX(127px);
-          transform: rotateZ(54deg) translateX(127px);
-=======
-  transform: rotateZ(184deg) translateX(266px);
->>>>>>> calendar
+  transform: rotateZ(285deg) translateX(58px);
 }
 .line:nth-child(61) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -5461ms;
-          animation-delay: -5461ms;
-=======
-  -webkit-animation-delay: -6294ms;
-          animation-delay: -6294ms;
->>>>>>> calendar
+  -webkit-animation-delay: -3510ms;
+          animation-delay: -3510ms;
 }
 .line:nth-child(61) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -5461ms;
-          animation-delay: -5461ms;
-=======
-  -webkit-animation-delay: -6294ms;
-          animation-delay: -6294ms;
->>>>>>> calendar
+  -webkit-animation-delay: -3510ms;
+          animation-delay: -3510ms;
 }
 .line:nth-child(61) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(56deg) translateX(114px);
-          transform: rotateZ(56deg) translateX(114px);
-=======
-  transform: rotateZ(35deg) translateX(123px);
->>>>>>> calendar
+  transform: rotateZ(8deg) translateX(234px);
 }
 .line:nth-child(62) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -5932ms;
-          animation-delay: -5932ms;
-=======
-  -webkit-animation-delay: -2491ms;
-          animation-delay: -2491ms;
->>>>>>> calendar
+  -webkit-animation-delay: -516ms;
+          animation-delay: -516ms;
 }
 .line:nth-child(62) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -5932ms;
-          animation-delay: -5932ms;
-=======
-  -webkit-animation-delay: -2491ms;
-          animation-delay: -2491ms;
->>>>>>> calendar
+  -webkit-animation-delay: -516ms;
+          animation-delay: -516ms;
 }
 .line:nth-child(62) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(191deg) translateX(116px);
-          transform: rotateZ(191deg) translateX(116px);
-=======
-  transform: rotateZ(261deg) translateX(72px);
->>>>>>> calendar
+  transform: rotateZ(205deg) translateX(127px);
 }
 .line:nth-child(63) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -5625ms;
-          animation-delay: -5625ms;
-=======
-  -webkit-animation-delay: -694ms;
-          animation-delay: -694ms;
->>>>>>> calendar
+  -webkit-animation-delay: -6721ms;
+          animation-delay: -6721ms;
 }
 .line:nth-child(63) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -5625ms;
-          animation-delay: -5625ms;
-=======
-  -webkit-animation-delay: -694ms;
-          animation-delay: -694ms;
->>>>>>> calendar
+  -webkit-animation-delay: -6721ms;
+          animation-delay: -6721ms;
 }
 .line:nth-child(63) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(93deg) translateX(126px);
-          transform: rotateZ(93deg) translateX(126px);
-=======
-  transform: rotateZ(210deg) translateX(288px);
->>>>>>> calendar
+  transform: rotateZ(25deg) translateX(82px);
 }
 .line:nth-child(64) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -5528ms;
-          animation-delay: -5528ms;
-=======
-  -webkit-animation-delay: -8902ms;
-          animation-delay: -8902ms;
->>>>>>> calendar
+  -webkit-animation-delay: -3319ms;
+          animation-delay: -3319ms;
 }
 .line:nth-child(64) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -5528ms;
-          animation-delay: -5528ms;
-=======
-  -webkit-animation-delay: -8902ms;
-          animation-delay: -8902ms;
->>>>>>> calendar
+  -webkit-animation-delay: -3319ms;
+          animation-delay: -3319ms;
 }
 .line:nth-child(64) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(244deg) translateX(64px);
-          transform: rotateZ(244deg) translateX(64px);
-=======
-  transform: rotateZ(31deg) translateX(290px);
->>>>>>> calendar
+  transform: rotateZ(47deg) translateX(236px);
 }
 .line:nth-child(65) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -7797ms;
-          animation-delay: -7797ms;
-=======
-  -webkit-animation-delay: -9850ms;
-          animation-delay: -9850ms;
->>>>>>> calendar
+  -webkit-animation-delay: -4161ms;
+          animation-delay: -4161ms;
 }
 .line:nth-child(65) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -7797ms;
-          animation-delay: -7797ms;
-=======
-  -webkit-animation-delay: -9850ms;
-          animation-delay: -9850ms;
->>>>>>> calendar
+  -webkit-animation-delay: -4161ms;
+          animation-delay: -4161ms;
 }
 .line:nth-child(65) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(297deg) translateX(80px);
-          transform: rotateZ(297deg) translateX(80px);
-=======
-  transform: rotateZ(352deg) translateX(306px);
->>>>>>> calendar
+  transform: rotateZ(222deg) translateX(301px);
 }
 .line:nth-child(66) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -7245ms;
-          animation-delay: -7245ms;
-=======
-  -webkit-animation-delay: -8822ms;
-          animation-delay: -8822ms;
->>>>>>> calendar
+  -webkit-animation-delay: -6004ms;
+          animation-delay: -6004ms;
 }
 .line:nth-child(66) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -7245ms;
-          animation-delay: -7245ms;
-=======
-  -webkit-animation-delay: -8822ms;
-          animation-delay: -8822ms;
->>>>>>> calendar
+  -webkit-animation-delay: -6004ms;
+          animation-delay: -6004ms;
 }
 .line:nth-child(66) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(130deg) translateX(268px);
-          transform: rotateZ(130deg) translateX(268px);
-=======
-  transform: rotateZ(346deg) translateX(210px);
->>>>>>> calendar
+  transform: rotateZ(242deg) translateX(278px);
 }
 .line:nth-child(67) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -5926ms;
-          animation-delay: -5926ms;
-=======
-  -webkit-animation-delay: -9757ms;
-          animation-delay: -9757ms;
->>>>>>> calendar
+  -webkit-animation-delay: -6327ms;
+          animation-delay: -6327ms;
 }
 .line:nth-child(67) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -5926ms;
-          animation-delay: -5926ms;
-=======
-  -webkit-animation-delay: -9757ms;
-          animation-delay: -9757ms;
->>>>>>> calendar
+  -webkit-animation-delay: -6327ms;
+          animation-delay: -6327ms;
 }
 .line:nth-child(67) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(334deg) translateX(229px);
-          transform: rotateZ(334deg) translateX(229px);
-=======
-  transform: rotateZ(311deg) translateX(43px);
->>>>>>> calendar
+  transform: rotateZ(130deg) translateX(196px);
 }
 .line:nth-child(68) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -333ms;
-          animation-delay: -333ms;
-=======
-  -webkit-animation-delay: -3250ms;
-          animation-delay: -3250ms;
->>>>>>> calendar
+  -webkit-animation-delay: -8239ms;
+          animation-delay: -8239ms;
 }
 .line:nth-child(68) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -333ms;
-          animation-delay: -333ms;
-=======
-  -webkit-animation-delay: -3250ms;
-          animation-delay: -3250ms;
->>>>>>> calendar
+  -webkit-animation-delay: -8239ms;
+          animation-delay: -8239ms;
 }
 .line:nth-child(68) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(140deg) translateX(260px);
-          transform: rotateZ(140deg) translateX(260px);
-=======
-  transform: rotateZ(303deg) translateX(21px);
->>>>>>> calendar
+  transform: rotateZ(118deg) translateX(115px);
 }
 .line:nth-child(69) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -1111ms;
-          animation-delay: -1111ms;
-=======
-  -webkit-animation-delay: -2613ms;
-          animation-delay: -2613ms;
->>>>>>> calendar
+  -webkit-animation-delay: -9996ms;
+          animation-delay: -9996ms;
 }
 .line:nth-child(69) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -1111ms;
-          animation-delay: -1111ms;
-=======
-  -webkit-animation-delay: -2613ms;
-          animation-delay: -2613ms;
->>>>>>> calendar
+  -webkit-animation-delay: -9996ms;
+          animation-delay: -9996ms;
 }
 .line:nth-child(69) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(56deg) translateX(226px);
-          transform: rotateZ(56deg) translateX(226px);
-=======
-  transform: rotateZ(194deg) translateX(210px);
->>>>>>> calendar
+  transform: rotateZ(66deg) translateX(248px);
 }
 .line:nth-child(70) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -4090ms;
-          animation-delay: -4090ms;
-=======
-  -webkit-animation-delay: -2869ms;
-          animation-delay: -2869ms;
->>>>>>> calendar
+  -webkit-animation-delay: -7898ms;
+          animation-delay: -7898ms;
 }
 .line:nth-child(70) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -4090ms;
-          animation-delay: -4090ms;
-=======
-  -webkit-animation-delay: -2869ms;
-          animation-delay: -2869ms;
->>>>>>> calendar
+  -webkit-animation-delay: -7898ms;
+          animation-delay: -7898ms;
 }
 .line:nth-child(70) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(158deg) translateX(180px);
-          transform: rotateZ(158deg) translateX(180px);
-=======
-  transform: rotateZ(260deg) translateX(36px);
->>>>>>> calendar
+  transform: rotateZ(267deg) translateX(148px);
 }
 .line:nth-child(71) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -7253ms;
-          animation-delay: -7253ms;
-=======
-  -webkit-animation-delay: -7923ms;
-          animation-delay: -7923ms;
->>>>>>> calendar
+  -webkit-animation-delay: -7891ms;
+          animation-delay: -7891ms;
 }
 .line:nth-child(71) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -7253ms;
-          animation-delay: -7253ms;
-=======
-  -webkit-animation-delay: -7923ms;
-          animation-delay: -7923ms;
->>>>>>> calendar
+  -webkit-animation-delay: -7891ms;
+          animation-delay: -7891ms;
 }
 .line:nth-child(71) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(269deg) translateX(291px);
-          transform: rotateZ(269deg) translateX(291px);
-=======
-  transform: rotateZ(91deg) translateX(285px);
->>>>>>> calendar
+  transform: rotateZ(270deg) translateX(245px);
 }
 .line:nth-child(72) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -8562ms;
-          animation-delay: -8562ms;
-=======
-  -webkit-animation-delay: -5108ms;
-          animation-delay: -5108ms;
->>>>>>> calendar
+  -webkit-animation-delay: -2789ms;
+          animation-delay: -2789ms;
 }
 .line:nth-child(72) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -8562ms;
-          animation-delay: -8562ms;
-=======
-  -webkit-animation-delay: -5108ms;
-          animation-delay: -5108ms;
->>>>>>> calendar
+  -webkit-animation-delay: -2789ms;
+          animation-delay: -2789ms;
 }
 .line:nth-child(72) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(308deg) translateX(192px);
-          transform: rotateZ(308deg) translateX(192px);
-=======
-  transform: rotateZ(17deg) translateX(85px);
->>>>>>> calendar
+  transform: rotateZ(275deg) translateX(235px);
 }
 .line:nth-child(73) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -8651ms;
-          animation-delay: -8651ms;
-=======
-  -webkit-animation-delay: -4724ms;
-          animation-delay: -4724ms;
->>>>>>> calendar
+  -webkit-animation-delay: -5159ms;
+          animation-delay: -5159ms;
 }
 .line:nth-child(73) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -8651ms;
-          animation-delay: -8651ms;
-=======
-  -webkit-animation-delay: -4724ms;
-          animation-delay: -4724ms;
->>>>>>> calendar
+  -webkit-animation-delay: -5159ms;
+          animation-delay: -5159ms;
 }
 .line:nth-child(73) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(330deg) translateX(302px);
-          transform: rotateZ(330deg) translateX(302px);
-=======
-  transform: rotateZ(62deg) translateX(279px);
->>>>>>> calendar
+  transform: rotateZ(39deg) translateX(162px);
 }
 .line:nth-child(74) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -5597ms;
-          animation-delay: -5597ms;
-=======
-  -webkit-animation-delay: -4203ms;
-          animation-delay: -4203ms;
->>>>>>> calendar
+  -webkit-animation-delay: -3796ms;
+          animation-delay: -3796ms;
 }
 .line:nth-child(74) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -5597ms;
-          animation-delay: -5597ms;
-=======
-  -webkit-animation-delay: -4203ms;
-          animation-delay: -4203ms;
->>>>>>> calendar
+  -webkit-animation-delay: -3796ms;
+          animation-delay: -3796ms;
 }
 .line:nth-child(74) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(39deg) translateX(190px);
-          transform: rotateZ(39deg) translateX(190px);
-=======
-  transform: rotateZ(317deg) translateX(253px);
->>>>>>> calendar
+  transform: rotateZ(199deg) translateX(131px);
 }
 .line:nth-child(75) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -674ms;
-          animation-delay: -674ms;
-=======
-  -webkit-animation-delay: -4733ms;
-          animation-delay: -4733ms;
->>>>>>> calendar
+  -webkit-animation-delay: -892ms;
+          animation-delay: -892ms;
 }
 .line:nth-child(75) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -674ms;
-          animation-delay: -674ms;
-=======
-  -webkit-animation-delay: -4733ms;
-          animation-delay: -4733ms;
->>>>>>> calendar
+  -webkit-animation-delay: -892ms;
+          animation-delay: -892ms;
 }
 .line:nth-child(75) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(234deg) translateX(132px);
-          transform: rotateZ(234deg) translateX(132px);
-=======
-  transform: rotateZ(304deg) translateX(308px);
->>>>>>> calendar
+  transform: rotateZ(292deg) translateX(295px);
 }
 .line:nth-child(76) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -9769ms;
-          animation-delay: -9769ms;
-=======
-  -webkit-animation-delay: -9160ms;
-          animation-delay: -9160ms;
->>>>>>> calendar
+  -webkit-animation-delay: -108ms;
+          animation-delay: -108ms;
 }
 .line:nth-child(76) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -9769ms;
-          animation-delay: -9769ms;
-=======
-  -webkit-animation-delay: -9160ms;
-          animation-delay: -9160ms;
->>>>>>> calendar
+  -webkit-animation-delay: -108ms;
+          animation-delay: -108ms;
 }
 .line:nth-child(76) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(65deg) translateX(142px);
-          transform: rotateZ(65deg) translateX(142px);
-=======
-  transform: rotateZ(319deg) translateX(188px);
->>>>>>> calendar
+  transform: rotateZ(348deg) translateX(55px);
 }
 .line:nth-child(77) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -6992ms;
-          animation-delay: -6992ms;
-=======
-  -webkit-animation-delay: -4089ms;
-          animation-delay: -4089ms;
->>>>>>> calendar
+  -webkit-animation-delay: -5867ms;
+          animation-delay: -5867ms;
 }
 .line:nth-child(77) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -6992ms;
-          animation-delay: -6992ms;
-=======
-  -webkit-animation-delay: -4089ms;
-          animation-delay: -4089ms;
->>>>>>> calendar
+  -webkit-animation-delay: -5867ms;
+          animation-delay: -5867ms;
 }
 .line:nth-child(77) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(227deg) translateX(56px);
-          transform: rotateZ(227deg) translateX(56px);
-=======
-  transform: rotateZ(36deg) translateX(269px);
->>>>>>> calendar
+  transform: rotateZ(216deg) translateX(194px);
 }
 .line:nth-child(78) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -9115ms;
-          animation-delay: -9115ms;
-=======
-  -webkit-animation-delay: -2937ms;
-          animation-delay: -2937ms;
->>>>>>> calendar
+  -webkit-animation-delay: -5170ms;
+          animation-delay: -5170ms;
 }
 .line:nth-child(78) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -9115ms;
-          animation-delay: -9115ms;
-=======
-  -webkit-animation-delay: -2937ms;
-          animation-delay: -2937ms;
->>>>>>> calendar
+  -webkit-animation-delay: -5170ms;
+          animation-delay: -5170ms;
 }
 .line:nth-child(78) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(147deg) translateX(109px);
-          transform: rotateZ(147deg) translateX(109px);
-=======
-  transform: rotateZ(145deg) translateX(52px);
->>>>>>> calendar
+  transform: rotateZ(340deg) translateX(70px);
 }
 .line:nth-child(79) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -7938ms;
-          animation-delay: -7938ms;
-=======
-  -webkit-animation-delay: -9296ms;
-          animation-delay: -9296ms;
->>>>>>> calendar
+  -webkit-animation-delay: -6422ms;
+          animation-delay: -6422ms;
 }
 .line:nth-child(79) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -7938ms;
-          animation-delay: -7938ms;
-=======
-  -webkit-animation-delay: -9296ms;
-          animation-delay: -9296ms;
->>>>>>> calendar
+  -webkit-animation-delay: -6422ms;
+          animation-delay: -6422ms;
 }
 .line:nth-child(79) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(229deg) translateX(101px);
-          transform: rotateZ(229deg) translateX(101px);
-=======
-  transform: rotateZ(357deg) translateX(218px);
->>>>>>> calendar
+  transform: rotateZ(289deg) translateX(175px);
 }
 .line:nth-child(80) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -990ms;
-          animation-delay: -990ms;
-=======
-  -webkit-animation-delay: -8074ms;
-          animation-delay: -8074ms;
->>>>>>> calendar
+  -webkit-animation-delay: -2264ms;
+          animation-delay: -2264ms;
 }
 .line:nth-child(80) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -990ms;
-          animation-delay: -990ms;
-=======
-  -webkit-animation-delay: -8074ms;
-          animation-delay: -8074ms;
->>>>>>> calendar
+  -webkit-animation-delay: -2264ms;
+          animation-delay: -2264ms;
 }
 .line:nth-child(80) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(80deg) translateX(164px);
-          transform: rotateZ(80deg) translateX(164px);
-=======
-  transform: rotateZ(161deg) translateX(116px);
->>>>>>> calendar
+  transform: rotateZ(331deg) translateX(45px);
 }
 .line:nth-child(81) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -9087ms;
-          animation-delay: -9087ms;
-=======
-  -webkit-animation-delay: -3913ms;
-          animation-delay: -3913ms;
->>>>>>> calendar
+  -webkit-animation-delay: -4937ms;
+          animation-delay: -4937ms;
 }
 .line:nth-child(81) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -9087ms;
-          animation-delay: -9087ms;
-=======
-  -webkit-animation-delay: -3913ms;
-          animation-delay: -3913ms;
->>>>>>> calendar
+  -webkit-animation-delay: -4937ms;
+          animation-delay: -4937ms;
 }
 .line:nth-child(81) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(250deg) translateX(59px);
-          transform: rotateZ(250deg) translateX(59px);
-=======
-  transform: rotateZ(52deg) translateX(86px);
->>>>>>> calendar
+  transform: rotateZ(65deg) translateX(219px);
 }
 .line:nth-child(82) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -597ms;
-          animation-delay: -597ms;
-=======
-  -webkit-animation-delay: -7918ms;
-          animation-delay: -7918ms;
->>>>>>> calendar
+  -webkit-animation-delay: -2311ms;
+          animation-delay: -2311ms;
 }
 .line:nth-child(82) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -597ms;
-          animation-delay: -597ms;
-=======
-  -webkit-animation-delay: -7918ms;
-          animation-delay: -7918ms;
->>>>>>> calendar
+  -webkit-animation-delay: -2311ms;
+          animation-delay: -2311ms;
 }
 .line:nth-child(82) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(330deg) translateX(245px);
-          transform: rotateZ(330deg) translateX(245px);
-=======
-  transform: rotateZ(314deg) translateX(307px);
->>>>>>> calendar
+  transform: rotateZ(59deg) translateX(118px);
 }
 .line:nth-child(83) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -9127ms;
-          animation-delay: -9127ms;
-=======
-  -webkit-animation-delay: -4228ms;
-          animation-delay: -4228ms;
->>>>>>> calendar
+  -webkit-animation-delay: -7800ms;
+          animation-delay: -7800ms;
 }
 .line:nth-child(83) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -9127ms;
-          animation-delay: -9127ms;
-=======
-  -webkit-animation-delay: -4228ms;
-          animation-delay: -4228ms;
->>>>>>> calendar
+  -webkit-animation-delay: -7800ms;
+          animation-delay: -7800ms;
 }
 .line:nth-child(83) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(252deg) translateX(94px);
-          transform: rotateZ(252deg) translateX(94px);
-=======
-  transform: rotateZ(267deg) translateX(228px);
->>>>>>> calendar
+  transform: rotateZ(296deg) translateX(225px);
 }
 .line:nth-child(84) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -5298ms;
-          animation-delay: -5298ms;
-=======
-  -webkit-animation-delay: -6770ms;
-          animation-delay: -6770ms;
->>>>>>> calendar
+  -webkit-animation-delay: -6116ms;
+          animation-delay: -6116ms;
 }
 .line:nth-child(84) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -5298ms;
-          animation-delay: -5298ms;
-=======
-  -webkit-animation-delay: -6770ms;
-          animation-delay: -6770ms;
->>>>>>> calendar
+  -webkit-animation-delay: -6116ms;
+          animation-delay: -6116ms;
 }
 .line:nth-child(84) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(307deg) translateX(226px);
-          transform: rotateZ(307deg) translateX(226px);
-=======
-  transform: rotateZ(51deg) translateX(217px);
->>>>>>> calendar
+  transform: rotateZ(46deg) translateX(73px);
 }
 .line:nth-child(85) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -4008ms;
-          animation-delay: -4008ms;
-=======
-  -webkit-animation-delay: -3858ms;
-          animation-delay: -3858ms;
->>>>>>> calendar
+  -webkit-animation-delay: -4233ms;
+          animation-delay: -4233ms;
 }
 .line:nth-child(85) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -4008ms;
-          animation-delay: -4008ms;
-=======
-  -webkit-animation-delay: -3858ms;
-          animation-delay: -3858ms;
->>>>>>> calendar
+  -webkit-animation-delay: -4233ms;
+          animation-delay: -4233ms;
 }
 .line:nth-child(85) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(299deg) translateX(212px);
-          transform: rotateZ(299deg) translateX(212px);
-=======
-  transform: rotateZ(15deg) translateX(214px);
->>>>>>> calendar
+  transform: rotateZ(244deg) translateX(214px);
 }
 .line:nth-child(86) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -5218ms;
-          animation-delay: -5218ms;
-=======
-  -webkit-animation-delay: -7341ms;
-          animation-delay: -7341ms;
->>>>>>> calendar
+  -webkit-animation-delay: -655ms;
+          animation-delay: -655ms;
 }
 .line:nth-child(86) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -5218ms;
-          animation-delay: -5218ms;
-=======
-  -webkit-animation-delay: -7341ms;
-          animation-delay: -7341ms;
->>>>>>> calendar
+  -webkit-animation-delay: -655ms;
+          animation-delay: -655ms;
 }
 .line:nth-child(86) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(311deg) translateX(41px);
-          transform: rotateZ(311deg) translateX(41px);
-=======
-  transform: rotateZ(188deg) translateX(286px);
->>>>>>> calendar
+  transform: rotateZ(227deg) translateX(208px);
 }
 .line:nth-child(87) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -1903ms;
-          animation-delay: -1903ms;
-=======
-  -webkit-animation-delay: -2618ms;
-          animation-delay: -2618ms;
->>>>>>> calendar
+  -webkit-animation-delay: -23ms;
+          animation-delay: -23ms;
 }
 .line:nth-child(87) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -1903ms;
-          animation-delay: -1903ms;
-=======
-  -webkit-animation-delay: -2618ms;
-          animation-delay: -2618ms;
->>>>>>> calendar
+  -webkit-animation-delay: -23ms;
+          animation-delay: -23ms;
 }
 .line:nth-child(87) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(289deg) translateX(48px);
-          transform: rotateZ(289deg) translateX(48px);
-=======
-  transform: rotateZ(213deg) translateX(311px);
->>>>>>> calendar
+  transform: rotateZ(85deg) translateX(223px);
 }
 .line:nth-child(88) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -9515ms;
-          animation-delay: -9515ms;
-=======
-  -webkit-animation-delay: -566ms;
-          animation-delay: -566ms;
->>>>>>> calendar
+  -webkit-animation-delay: -569ms;
+          animation-delay: -569ms;
 }
 .line:nth-child(88) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -9515ms;
-          animation-delay: -9515ms;
-=======
-  -webkit-animation-delay: -566ms;
-          animation-delay: -566ms;
->>>>>>> calendar
+  -webkit-animation-delay: -569ms;
+          animation-delay: -569ms;
 }
 .line:nth-child(88) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(332deg) translateX(29px);
-          transform: rotateZ(332deg) translateX(29px);
-=======
-  transform: rotateZ(73deg) translateX(229px);
->>>>>>> calendar
+  transform: rotateZ(348deg) translateX(43px);
 }
 .line:nth-child(89) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -922ms;
-          animation-delay: -922ms;
-=======
-  -webkit-animation-delay: -2816ms;
-          animation-delay: -2816ms;
->>>>>>> calendar
+  -webkit-animation-delay: -3800ms;
+          animation-delay: -3800ms;
 }
 .line:nth-child(89) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -922ms;
-          animation-delay: -922ms;
-=======
-  -webkit-animation-delay: -2816ms;
-          animation-delay: -2816ms;
->>>>>>> calendar
+  -webkit-animation-delay: -3800ms;
+          animation-delay: -3800ms;
 }
 .line:nth-child(89) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(102deg) translateX(161px);
-          transform: rotateZ(102deg) translateX(161px);
-=======
-  transform: rotateZ(73deg) translateX(196px);
->>>>>>> calendar
+  transform: rotateZ(47deg) translateX(276px);
 }
 .line:nth-child(90) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -673ms;
-          animation-delay: -673ms;
-=======
-  -webkit-animation-delay: -1967ms;
-          animation-delay: -1967ms;
->>>>>>> calendar
+  -webkit-animation-delay: -3171ms;
+          animation-delay: -3171ms;
 }
 .line:nth-child(90) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -673ms;
-          animation-delay: -673ms;
-=======
-  -webkit-animation-delay: -1967ms;
-          animation-delay: -1967ms;
->>>>>>> calendar
+  -webkit-animation-delay: -3171ms;
+          animation-delay: -3171ms;
 }
 .line:nth-child(90) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(52deg) translateX(291px);
-          transform: rotateZ(52deg) translateX(291px);
-=======
-  transform: rotateZ(162deg) translateX(119px);
->>>>>>> calendar
+  transform: rotateZ(237deg) translateX(195px);
 }
 .line:nth-child(91) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -8817ms;
-          animation-delay: -8817ms;
-=======
-  -webkit-animation-delay: -4075ms;
-          animation-delay: -4075ms;
->>>>>>> calendar
+  -webkit-animation-delay: -5451ms;
+          animation-delay: -5451ms;
 }
 .line:nth-child(91) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -8817ms;
-          animation-delay: -8817ms;
-=======
-  -webkit-animation-delay: -4075ms;
-          animation-delay: -4075ms;
->>>>>>> calendar
+  -webkit-animation-delay: -5451ms;
+          animation-delay: -5451ms;
 }
 .line:nth-child(91) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(272deg) translateX(218px);
-          transform: rotateZ(272deg) translateX(218px);
-=======
-  transform: rotateZ(67deg) translateX(34px);
->>>>>>> calendar
+  transform: rotateZ(161deg) translateX(161px);
 }
 .line:nth-child(92) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -3399ms;
-          animation-delay: -3399ms;
-=======
-  -webkit-animation-delay: -467ms;
-          animation-delay: -467ms;
->>>>>>> calendar
+  -webkit-animation-delay: -60ms;
+          animation-delay: -60ms;
 }
 .line:nth-child(92) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -3399ms;
-          animation-delay: -3399ms;
-=======
-  -webkit-animation-delay: -467ms;
-          animation-delay: -467ms;
->>>>>>> calendar
+  -webkit-animation-delay: -60ms;
+          animation-delay: -60ms;
 }
 .line:nth-child(92) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(265deg) translateX(262px);
-          transform: rotateZ(265deg) translateX(262px);
-=======
-  transform: rotateZ(340deg) translateX(253px);
->>>>>>> calendar
+  transform: rotateZ(35deg) translateX(29px);
 }
 .line:nth-child(93) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -4131ms;
-          animation-delay: -4131ms;
-=======
-  -webkit-animation-delay: -4717ms;
-          animation-delay: -4717ms;
->>>>>>> calendar
+  -webkit-animation-delay: -8494ms;
+          animation-delay: -8494ms;
 }
 .line:nth-child(93) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -4131ms;
-          animation-delay: -4131ms;
-=======
-  -webkit-animation-delay: -4717ms;
-          animation-delay: -4717ms;
->>>>>>> calendar
+  -webkit-animation-delay: -8494ms;
+          animation-delay: -8494ms;
 }
 .line:nth-child(93) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(171deg) translateX(302px);
-          transform: rotateZ(171deg) translateX(302px);
-=======
-  transform: rotateZ(70deg) translateX(267px);
->>>>>>> calendar
+  transform: rotateZ(310deg) translateX(140px);
 }
 .line:nth-child(94) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -4880ms;
-          animation-delay: -4880ms;
-=======
-  -webkit-animation-delay: -6697ms;
-          animation-delay: -6697ms;
->>>>>>> calendar
+  -webkit-animation-delay: -3453ms;
+          animation-delay: -3453ms;
 }
 .line:nth-child(94) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -4880ms;
-          animation-delay: -4880ms;
-=======
-  -webkit-animation-delay: -6697ms;
-          animation-delay: -6697ms;
->>>>>>> calendar
+  -webkit-animation-delay: -3453ms;
+          animation-delay: -3453ms;
 }
 .line:nth-child(94) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(284deg) translateX(271px);
-          transform: rotateZ(284deg) translateX(271px);
-=======
-  transform: rotateZ(185deg) translateX(47px);
->>>>>>> calendar
+  transform: rotateZ(319deg) translateX(176px);
 }
 .line:nth-child(95) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -5699ms;
-          animation-delay: -5699ms;
-=======
-  -webkit-animation-delay: -7152ms;
-          animation-delay: -7152ms;
->>>>>>> calendar
+  -webkit-animation-delay: -6119ms;
+          animation-delay: -6119ms;
 }
 .line:nth-child(95) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -5699ms;
-          animation-delay: -5699ms;
-=======
-  -webkit-animation-delay: -7152ms;
-          animation-delay: -7152ms;
->>>>>>> calendar
+  -webkit-animation-delay: -6119ms;
+          animation-delay: -6119ms;
 }
 .line:nth-child(95) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(159deg) translateX(239px);
-          transform: rotateZ(159deg) translateX(239px);
-=======
-  transform: rotateZ(353deg) translateX(158px);
->>>>>>> calendar
+  transform: rotateZ(199deg) translateX(312px);
 }
 .line:nth-child(96) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -6141ms;
-          animation-delay: -6141ms;
-=======
-  -webkit-animation-delay: -8236ms;
-          animation-delay: -8236ms;
->>>>>>> calendar
+  -webkit-animation-delay: -140ms;
+          animation-delay: -140ms;
 }
 .line:nth-child(96) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -6141ms;
-          animation-delay: -6141ms;
-=======
-  -webkit-animation-delay: -8236ms;
-          animation-delay: -8236ms;
->>>>>>> calendar
+  -webkit-animation-delay: -140ms;
+          animation-delay: -140ms;
 }
 .line:nth-child(96) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(37deg) translateX(127px);
-          transform: rotateZ(37deg) translateX(127px);
-=======
-  transform: rotateZ(323deg) translateX(67px);
->>>>>>> calendar
+  transform: rotateZ(57deg) translateX(303px);
 }
 .line:nth-child(97) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -4143ms;
-          animation-delay: -4143ms;
-=======
-  -webkit-animation-delay: -2617ms;
-          animation-delay: -2617ms;
->>>>>>> calendar
+  -webkit-animation-delay: -9710ms;
+          animation-delay: -9710ms;
 }
 .line:nth-child(97) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -4143ms;
-          animation-delay: -4143ms;
-=======
-  -webkit-animation-delay: -2617ms;
-          animation-delay: -2617ms;
->>>>>>> calendar
+  -webkit-animation-delay: -9710ms;
+          animation-delay: -9710ms;
 }
 .line:nth-child(97) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(96deg) translateX(80px);
-          transform: rotateZ(96deg) translateX(80px);
-=======
-  transform: rotateZ(130deg) translateX(262px);
->>>>>>> calendar
+  transform: rotateZ(92deg) translateX(33px);
 }
 .line:nth-child(98) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -7514ms;
-          animation-delay: -7514ms;
-=======
-  -webkit-animation-delay: -5267ms;
-          animation-delay: -5267ms;
->>>>>>> calendar
+  -webkit-animation-delay: -6465ms;
+          animation-delay: -6465ms;
 }
 .line:nth-child(98) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -7514ms;
-          animation-delay: -7514ms;
-=======
-  -webkit-animation-delay: -5267ms;
-          animation-delay: -5267ms;
->>>>>>> calendar
+  -webkit-animation-delay: -6465ms;
+          animation-delay: -6465ms;
 }
 .line:nth-child(98) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(82deg) translateX(284px);
-          transform: rotateZ(82deg) translateX(284px);
-=======
-  transform: rotateZ(160deg) translateX(60px);
->>>>>>> calendar
+  transform: rotateZ(236deg) translateX(297px);
 }
 .line:nth-child(99) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -7690ms;
-          animation-delay: -7690ms;
-=======
-  -webkit-animation-delay: -2743ms;
-          animation-delay: -2743ms;
->>>>>>> calendar
+  -webkit-animation-delay: -9898ms;
+          animation-delay: -9898ms;
 }
 .line:nth-child(99) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -7690ms;
-          animation-delay: -7690ms;
-=======
-  -webkit-animation-delay: -2743ms;
-          animation-delay: -2743ms;
->>>>>>> calendar
+  -webkit-animation-delay: -9898ms;
+          animation-delay: -9898ms;
 }
 .line:nth-child(99) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(141deg) translateX(278px);
-          transform: rotateZ(141deg) translateX(278px);
-=======
-  transform: rotateZ(90deg) translateX(30px);
->>>>>>> calendar
+  transform: rotateZ(355deg) translateX(292px);
 }
 .line:nth-child(100) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -6253ms;
-          animation-delay: -6253ms;
-=======
-  -webkit-animation-delay: -2625ms;
-          animation-delay: -2625ms;
->>>>>>> calendar
+  -webkit-animation-delay: -8208ms;
+          animation-delay: -8208ms;
 }
 .line:nth-child(100) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -6253ms;
-          animation-delay: -6253ms;
-=======
-  -webkit-animation-delay: -2625ms;
-          animation-delay: -2625ms;
->>>>>>> calendar
+  -webkit-animation-delay: -8208ms;
+          animation-delay: -8208ms;
 }
 .line:nth-child(100) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(93deg) translateX(59px);
-          transform: rotateZ(93deg) translateX(59px);
-=======
-  transform: rotateZ(296deg) translateX(207px);
->>>>>>> calendar
+  transform: rotateZ(107deg) translateX(195px);
 }
 .line:nth-child(101) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -9156ms;
-          animation-delay: -9156ms;
-=======
-  -webkit-animation-delay: -3906ms;
-          animation-delay: -3906ms;
->>>>>>> calendar
+  -webkit-animation-delay: -4562ms;
+          animation-delay: -4562ms;
 }
 .line:nth-child(101) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -9156ms;
-          animation-delay: -9156ms;
-=======
-  -webkit-animation-delay: -3906ms;
-          animation-delay: -3906ms;
->>>>>>> calendar
+  -webkit-animation-delay: -4562ms;
+          animation-delay: -4562ms;
 }
 .line:nth-child(101) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(340deg) translateX(215px);
-          transform: rotateZ(340deg) translateX(215px);
-=======
-  transform: rotateZ(331deg) translateX(31px);
->>>>>>> calendar
+  transform: rotateZ(103deg) translateX(169px);
 }
 .line:nth-child(102) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -1070ms;
-          animation-delay: -1070ms;
-=======
-  -webkit-animation-delay: -2638ms;
-          animation-delay: -2638ms;
->>>>>>> calendar
+  -webkit-animation-delay: -4080ms;
+          animation-delay: -4080ms;
 }
 .line:nth-child(102) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -1070ms;
-          animation-delay: -1070ms;
-=======
-  -webkit-animation-delay: -2638ms;
-          animation-delay: -2638ms;
->>>>>>> calendar
+  -webkit-animation-delay: -4080ms;
+          animation-delay: -4080ms;
 }
 .line:nth-child(102) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(190deg) translateX(207px);
-          transform: rotateZ(190deg) translateX(207px);
-=======
-  transform: rotateZ(223deg) translateX(135px);
->>>>>>> calendar
+  transform: rotateZ(159deg) translateX(41px);
 }
 .line:nth-child(103) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -7805ms;
-          animation-delay: -7805ms;
-=======
-  -webkit-animation-delay: -5647ms;
-          animation-delay: -5647ms;
->>>>>>> calendar
+  -webkit-animation-delay: -3133ms;
+          animation-delay: -3133ms;
 }
 .line:nth-child(103) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -7805ms;
-          animation-delay: -7805ms;
-=======
-  -webkit-animation-delay: -5647ms;
-          animation-delay: -5647ms;
->>>>>>> calendar
+  -webkit-animation-delay: -3133ms;
+          animation-delay: -3133ms;
 }
 .line:nth-child(103) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(141deg) translateX(214px);
-          transform: rotateZ(141deg) translateX(214px);
-=======
-  transform: rotateZ(290deg) translateX(52px);
->>>>>>> calendar
+  transform: rotateZ(357deg) translateX(183px);
 }
 .line:nth-child(104) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -6012ms;
-          animation-delay: -6012ms;
-=======
-  -webkit-animation-delay: -8771ms;
-          animation-delay: -8771ms;
->>>>>>> calendar
+  -webkit-animation-delay: -8426ms;
+          animation-delay: -8426ms;
 }
 .line:nth-child(104) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -6012ms;
-          animation-delay: -6012ms;
-=======
-  -webkit-animation-delay: -8771ms;
-          animation-delay: -8771ms;
->>>>>>> calendar
+  -webkit-animation-delay: -8426ms;
+          animation-delay: -8426ms;
 }
 .line:nth-child(104) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(116deg) translateX(234px);
-          transform: rotateZ(116deg) translateX(234px);
-=======
-  transform: rotateZ(303deg) translateX(23px);
->>>>>>> calendar
+  transform: rotateZ(176deg) translateX(224px);
 }
 .line:nth-child(105) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -5179ms;
-          animation-delay: -5179ms;
-=======
-  -webkit-animation-delay: -1989ms;
-          animation-delay: -1989ms;
->>>>>>> calendar
+  -webkit-animation-delay: -5905ms;
+          animation-delay: -5905ms;
 }
 .line:nth-child(105) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -5179ms;
-          animation-delay: -5179ms;
-=======
-  -webkit-animation-delay: -1989ms;
-          animation-delay: -1989ms;
->>>>>>> calendar
+  -webkit-animation-delay: -5905ms;
+          animation-delay: -5905ms;
 }
 .line:nth-child(105) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(103deg) translateX(127px);
-          transform: rotateZ(103deg) translateX(127px);
-=======
-  transform: rotateZ(168deg) translateX(108px);
->>>>>>> calendar
+  transform: rotateZ(202deg) translateX(57px);
 }
 .line:nth-child(106) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -701ms;
-          animation-delay: -701ms;
-=======
-  -webkit-animation-delay: -1756ms;
-          animation-delay: -1756ms;
->>>>>>> calendar
+  -webkit-animation-delay: -7063ms;
+          animation-delay: -7063ms;
 }
 .line:nth-child(106) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -701ms;
-          animation-delay: -701ms;
-=======
-  -webkit-animation-delay: -1756ms;
-          animation-delay: -1756ms;
->>>>>>> calendar
+  -webkit-animation-delay: -7063ms;
+          animation-delay: -7063ms;
 }
 .line:nth-child(106) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(300deg) translateX(121px);
-          transform: rotateZ(300deg) translateX(121px);
-=======
-  transform: rotateZ(150deg) translateX(209px);
->>>>>>> calendar
+  transform: rotateZ(359deg) translateX(43px);
 }
 .line:nth-child(107) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -7593ms;
-          animation-delay: -7593ms;
-=======
-  -webkit-animation-delay: -1267ms;
-          animation-delay: -1267ms;
->>>>>>> calendar
+  -webkit-animation-delay: -4107ms;
+          animation-delay: -4107ms;
 }
 .line:nth-child(107) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -7593ms;
-          animation-delay: -7593ms;
-=======
-  -webkit-animation-delay: -1267ms;
-          animation-delay: -1267ms;
->>>>>>> calendar
+  -webkit-animation-delay: -4107ms;
+          animation-delay: -4107ms;
 }
 .line:nth-child(107) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(305deg) translateX(86px);
-          transform: rotateZ(305deg) translateX(86px);
-=======
-  transform: rotateZ(224deg) translateX(49px);
->>>>>>> calendar
+  transform: rotateZ(285deg) translateX(197px);
 }
 .line:nth-child(108) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -6879ms;
-          animation-delay: -6879ms;
-=======
-  -webkit-animation-delay: -4297ms;
-          animation-delay: -4297ms;
->>>>>>> calendar
+  -webkit-animation-delay: -8765ms;
+          animation-delay: -8765ms;
 }
 .line:nth-child(108) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -6879ms;
-          animation-delay: -6879ms;
-=======
-  -webkit-animation-delay: -4297ms;
-          animation-delay: -4297ms;
->>>>>>> calendar
+  -webkit-animation-delay: -8765ms;
+          animation-delay: -8765ms;
 }
 .line:nth-child(108) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(65deg) translateX(46px);
-          transform: rotateZ(65deg) translateX(46px);
-=======
-  transform: rotateZ(186deg) translateX(294px);
->>>>>>> calendar
+  transform: rotateZ(6deg) translateX(71px);
 }
 .line:nth-child(109) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -2941ms;
-          animation-delay: -2941ms;
-=======
-  -webkit-animation-delay: -8718ms;
-          animation-delay: -8718ms;
->>>>>>> calendar
+  -webkit-animation-delay: -6570ms;
+          animation-delay: -6570ms;
 }
 .line:nth-child(109) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -2941ms;
-          animation-delay: -2941ms;
-=======
-  -webkit-animation-delay: -8718ms;
-          animation-delay: -8718ms;
->>>>>>> calendar
+  -webkit-animation-delay: -6570ms;
+          animation-delay: -6570ms;
 }
 .line:nth-child(109) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(137deg) translateX(273px);
-          transform: rotateZ(137deg) translateX(273px);
-=======
-  transform: rotateZ(207deg) translateX(202px);
->>>>>>> calendar
+  transform: rotateZ(122deg) translateX(287px);
 }
 .line:nth-child(110) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -6273ms;
-          animation-delay: -6273ms;
-=======
-  -webkit-animation-delay: -5121ms;
-          animation-delay: -5121ms;
->>>>>>> calendar
+  -webkit-animation-delay: -7454ms;
+          animation-delay: -7454ms;
 }
 .line:nth-child(110) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -6273ms;
-          animation-delay: -6273ms;
-=======
-  -webkit-animation-delay: -5121ms;
-          animation-delay: -5121ms;
->>>>>>> calendar
+  -webkit-animation-delay: -7454ms;
+          animation-delay: -7454ms;
 }
 .line:nth-child(110) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(30deg) translateX(292px);
-          transform: rotateZ(30deg) translateX(292px);
-=======
-  transform: rotateZ(294deg) translateX(22px);
->>>>>>> calendar
+  transform: rotateZ(197deg) translateX(313px);
 }
 .line:nth-child(111) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -340ms;
-          animation-delay: -340ms;
-=======
-  -webkit-animation-delay: -8342ms;
-          animation-delay: -8342ms;
->>>>>>> calendar
+  -webkit-animation-delay: -8444ms;
+          animation-delay: -8444ms;
 }
 .line:nth-child(111) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -340ms;
-          animation-delay: -340ms;
-=======
-  -webkit-animation-delay: -8342ms;
-          animation-delay: -8342ms;
->>>>>>> calendar
+  -webkit-animation-delay: -8444ms;
+          animation-delay: -8444ms;
 }
 .line:nth-child(111) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(290deg) translateX(210px);
-          transform: rotateZ(290deg) translateX(210px);
-=======
-  transform: rotateZ(228deg) translateX(47px);
->>>>>>> calendar
+  transform: rotateZ(23deg) translateX(34px);
 }
 .line:nth-child(112) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -1377ms;
-          animation-delay: -1377ms;
-=======
-  -webkit-animation-delay: -3259ms;
-          animation-delay: -3259ms;
->>>>>>> calendar
+  -webkit-animation-delay: -1986ms;
+          animation-delay: -1986ms;
 }
 .line:nth-child(112) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -1377ms;
-          animation-delay: -1377ms;
-=======
-  -webkit-animation-delay: -3259ms;
-          animation-delay: -3259ms;
->>>>>>> calendar
+  -webkit-animation-delay: -1986ms;
+          animation-delay: -1986ms;
 }
 .line:nth-child(112) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(167deg) translateX(198px);
-          transform: rotateZ(167deg) translateX(198px);
-=======
-  transform: rotateZ(289deg) translateX(157px);
->>>>>>> calendar
+  transform: rotateZ(25deg) translateX(102px);
 }
 .line:nth-child(113) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -1395ms;
-          animation-delay: -1395ms;
-=======
-  -webkit-animation-delay: -7345ms;
-          animation-delay: -7345ms;
->>>>>>> calendar
+  -webkit-animation-delay: -5448ms;
+          animation-delay: -5448ms;
 }
 .line:nth-child(113) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -1395ms;
-          animation-delay: -1395ms;
-=======
-  -webkit-animation-delay: -7345ms;
-          animation-delay: -7345ms;
->>>>>>> calendar
+  -webkit-animation-delay: -5448ms;
+          animation-delay: -5448ms;
 }
 .line:nth-child(113) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(311deg) translateX(44px);
-          transform: rotateZ(311deg) translateX(44px);
-=======
-  transform: rotateZ(277deg) translateX(292px);
->>>>>>> calendar
+  transform: rotateZ(283deg) translateX(217px);
 }
 .line:nth-child(114) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -1761ms;
-          animation-delay: -1761ms;
-=======
-  -webkit-animation-delay: -8831ms;
-          animation-delay: -8831ms;
->>>>>>> calendar
+  -webkit-animation-delay: -7619ms;
+          animation-delay: -7619ms;
 }
 .line:nth-child(114) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -1761ms;
-          animation-delay: -1761ms;
-=======
-  -webkit-animation-delay: -8831ms;
-          animation-delay: -8831ms;
->>>>>>> calendar
+  -webkit-animation-delay: -7619ms;
+          animation-delay: -7619ms;
 }
 .line:nth-child(114) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(309deg) translateX(307px);
-          transform: rotateZ(309deg) translateX(307px);
-=======
-  transform: rotateZ(328deg) translateX(255px);
->>>>>>> calendar
+  transform: rotateZ(200deg) translateX(244px);
 }
 .line:nth-child(115) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -232ms;
-          animation-delay: -232ms;
-=======
-  -webkit-animation-delay: -4960ms;
-          animation-delay: -4960ms;
->>>>>>> calendar
+  -webkit-animation-delay: -9078ms;
+          animation-delay: -9078ms;
 }
 .line:nth-child(115) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -232ms;
-          animation-delay: -232ms;
-=======
-  -webkit-animation-delay: -4960ms;
-          animation-delay: -4960ms;
->>>>>>> calendar
+  -webkit-animation-delay: -9078ms;
+          animation-delay: -9078ms;
 }
 .line:nth-child(115) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(215deg) translateX(142px);
-          transform: rotateZ(215deg) translateX(142px);
-=======
-  transform: rotateZ(313deg) translateX(239px);
->>>>>>> calendar
+  transform: rotateZ(16deg) translateX(95px);
 }
 .line:nth-child(116) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -5557ms;
-          animation-delay: -5557ms;
-=======
-  -webkit-animation-delay: -4839ms;
-          animation-delay: -4839ms;
->>>>>>> calendar
+  -webkit-animation-delay: -5161ms;
+          animation-delay: -5161ms;
 }
 .line:nth-child(116) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -5557ms;
-          animation-delay: -5557ms;
-=======
-  -webkit-animation-delay: -4839ms;
-          animation-delay: -4839ms;
->>>>>>> calendar
+  -webkit-animation-delay: -5161ms;
+          animation-delay: -5161ms;
 }
 .line:nth-child(116) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(70deg) translateX(181px);
-          transform: rotateZ(70deg) translateX(181px);
-=======
-  transform: rotateZ(45deg) translateX(45px);
->>>>>>> calendar
+  transform: rotateZ(38deg) translateX(309px);
 }
 .line:nth-child(117) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -2637ms;
-          animation-delay: -2637ms;
-=======
-  -webkit-animation-delay: -1114ms;
-          animation-delay: -1114ms;
->>>>>>> calendar
+  -webkit-animation-delay: -3967ms;
+          animation-delay: -3967ms;
 }
 .line:nth-child(117) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -2637ms;
-          animation-delay: -2637ms;
-=======
-  -webkit-animation-delay: -1114ms;
-          animation-delay: -1114ms;
->>>>>>> calendar
+  -webkit-animation-delay: -3967ms;
+          animation-delay: -3967ms;
 }
 .line:nth-child(117) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(6deg) translateX(309px);
-          transform: rotateZ(6deg) translateX(309px);
-=======
-  transform: rotateZ(167deg) translateX(57px);
->>>>>>> calendar
+  transform: rotateZ(316deg) translateX(67px);
 }
 .line:nth-child(118) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -1663ms;
-          animation-delay: -1663ms;
-=======
-  -webkit-animation-delay: -8058ms;
-          animation-delay: -8058ms;
->>>>>>> calendar
+  -webkit-animation-delay: -9299ms;
+          animation-delay: -9299ms;
 }
 .line:nth-child(118) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -1663ms;
-          animation-delay: -1663ms;
-=======
-  -webkit-animation-delay: -8058ms;
-          animation-delay: -8058ms;
->>>>>>> calendar
+  -webkit-animation-delay: -9299ms;
+          animation-delay: -9299ms;
 }
 .line:nth-child(118) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(181deg) translateX(128px);
-          transform: rotateZ(181deg) translateX(128px);
-=======
-  transform: rotateZ(129deg) translateX(87px);
->>>>>>> calendar
+  transform: rotateZ(90deg) translateX(213px);
 }
 .line:nth-child(119) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -2005ms;
-          animation-delay: -2005ms;
-=======
-  -webkit-animation-delay: -432ms;
-          animation-delay: -432ms;
->>>>>>> calendar
+  -webkit-animation-delay: -9251ms;
+          animation-delay: -9251ms;
 }
 .line:nth-child(119) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -2005ms;
-          animation-delay: -2005ms;
-=======
-  -webkit-animation-delay: -432ms;
-          animation-delay: -432ms;
->>>>>>> calendar
+  -webkit-animation-delay: -9251ms;
+          animation-delay: -9251ms;
 }
 .line:nth-child(119) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(232deg) translateX(280px);
-          transform: rotateZ(232deg) translateX(280px);
-=======
-  transform: rotateZ(305deg) translateX(277px);
->>>>>>> calendar
+  transform: rotateZ(75deg) translateX(175px);
 }
 .line:nth-child(120) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -227ms;
-          animation-delay: -227ms;
-=======
-  -webkit-animation-delay: -9127ms;
-          animation-delay: -9127ms;
->>>>>>> calendar
+  -webkit-animation-delay: -9377ms;
+          animation-delay: -9377ms;
 }
 .line:nth-child(120) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -227ms;
-          animation-delay: -227ms;
-=======
-  -webkit-animation-delay: -9127ms;
-          animation-delay: -9127ms;
->>>>>>> calendar
+  -webkit-animation-delay: -9377ms;
+          animation-delay: -9377ms;
 }
 .line:nth-child(120) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(32deg) translateX(216px);
-          transform: rotateZ(32deg) translateX(216px);
-=======
-  transform: rotateZ(6deg) translateX(165px);
->>>>>>> calendar
+  transform: rotateZ(174deg) translateX(302px);
 }
 .line:nth-child(121) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -783ms;
-          animation-delay: -783ms;
-=======
-  -webkit-animation-delay: -5259ms;
-          animation-delay: -5259ms;
->>>>>>> calendar
+  -webkit-animation-delay: -6454ms;
+          animation-delay: -6454ms;
 }
 .line:nth-child(121) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -783ms;
-          animation-delay: -783ms;
-=======
-  -webkit-animation-delay: -5259ms;
-          animation-delay: -5259ms;
->>>>>>> calendar
+  -webkit-animation-delay: -6454ms;
+          animation-delay: -6454ms;
 }
 .line:nth-child(121) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(210deg) translateX(173px);
-          transform: rotateZ(210deg) translateX(173px);
-=======
-  transform: rotateZ(159deg) translateX(39px);
->>>>>>> calendar
+  transform: rotateZ(358deg) translateX(25px);
 }
 .line:nth-child(122) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -8568ms;
-          animation-delay: -8568ms;
-=======
-  -webkit-animation-delay: -2161ms;
-          animation-delay: -2161ms;
->>>>>>> calendar
+  -webkit-animation-delay: -4158ms;
+          animation-delay: -4158ms;
 }
 .line:nth-child(122) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -8568ms;
-          animation-delay: -8568ms;
-=======
-  -webkit-animation-delay: -2161ms;
-          animation-delay: -2161ms;
->>>>>>> calendar
+  -webkit-animation-delay: -4158ms;
+          animation-delay: -4158ms;
 }
 .line:nth-child(122) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(18deg) translateX(133px);
-          transform: rotateZ(18deg) translateX(133px);
-=======
-  transform: rotateZ(99deg) translateX(316px);
->>>>>>> calendar
+  transform: rotateZ(325deg) translateX(250px);
 }
 .line:nth-child(123) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -1612ms;
-          animation-delay: -1612ms;
-=======
-  -webkit-animation-delay: -1605ms;
-          animation-delay: -1605ms;
->>>>>>> calendar
+  -webkit-animation-delay: -5443ms;
+          animation-delay: -5443ms;
 }
 .line:nth-child(123) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -1612ms;
-          animation-delay: -1612ms;
-=======
-  -webkit-animation-delay: -1605ms;
-          animation-delay: -1605ms;
->>>>>>> calendar
+  -webkit-animation-delay: -5443ms;
+          animation-delay: -5443ms;
 }
 .line:nth-child(123) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(318deg) translateX(270px);
-          transform: rotateZ(318deg) translateX(270px);
-=======
-  transform: rotateZ(18deg) translateX(227px);
->>>>>>> calendar
+  transform: rotateZ(101deg) translateX(257px);
 }
 .line:nth-child(124) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -3867ms;
-          animation-delay: -3867ms;
-=======
-  -webkit-animation-delay: -5998ms;
-          animation-delay: -5998ms;
->>>>>>> calendar
+  -webkit-animation-delay: -876ms;
+          animation-delay: -876ms;
 }
 .line:nth-child(124) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -3867ms;
-          animation-delay: -3867ms;
-=======
-  -webkit-animation-delay: -5998ms;
-          animation-delay: -5998ms;
->>>>>>> calendar
+  -webkit-animation-delay: -876ms;
+          animation-delay: -876ms;
 }
 .line:nth-child(124) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(172deg) translateX(123px);
-          transform: rotateZ(172deg) translateX(123px);
-=======
-  transform: rotateZ(47deg) translateX(223px);
->>>>>>> calendar
+  transform: rotateZ(181deg) translateX(282px);
 }
 .line:nth-child(125) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -4684ms;
-          animation-delay: -4684ms;
-=======
-  -webkit-animation-delay: -2101ms;
-          animation-delay: -2101ms;
->>>>>>> calendar
+  -webkit-animation-delay: -7863ms;
+          animation-delay: -7863ms;
 }
 .line:nth-child(125) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -4684ms;
-          animation-delay: -4684ms;
-=======
-  -webkit-animation-delay: -2101ms;
-          animation-delay: -2101ms;
->>>>>>> calendar
+  -webkit-animation-delay: -7863ms;
+          animation-delay: -7863ms;
 }
 .line:nth-child(125) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(103deg) translateX(300px);
-          transform: rotateZ(103deg) translateX(300px);
-=======
-  transform: rotateZ(41deg) translateX(185px);
->>>>>>> calendar
+  transform: rotateZ(130deg) translateX(66px);
 }
 .line:nth-child(126) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -6741ms;
-          animation-delay: -6741ms;
-=======
-  -webkit-animation-delay: -6797ms;
-          animation-delay: -6797ms;
->>>>>>> calendar
+  -webkit-animation-delay: -8ms;
+          animation-delay: -8ms;
 }
 .line:nth-child(126) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -6741ms;
-          animation-delay: -6741ms;
-=======
-  -webkit-animation-delay: -6797ms;
-          animation-delay: -6797ms;
->>>>>>> calendar
+  -webkit-animation-delay: -8ms;
+          animation-delay: -8ms;
 }
 .line:nth-child(126) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(272deg) translateX(175px);
-          transform: rotateZ(272deg) translateX(175px);
-=======
-  transform: rotateZ(44deg) translateX(84px);
->>>>>>> calendar
+  transform: rotateZ(23deg) translateX(140px);
 }
 .line:nth-child(127) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -7324ms;
-          animation-delay: -7324ms;
-=======
-  -webkit-animation-delay: -9509ms;
-          animation-delay: -9509ms;
->>>>>>> calendar
+  -webkit-animation-delay: -7437ms;
+          animation-delay: -7437ms;
 }
 .line:nth-child(127) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -7324ms;
-          animation-delay: -7324ms;
-=======
-  -webkit-animation-delay: -9509ms;
-          animation-delay: -9509ms;
->>>>>>> calendar
+  -webkit-animation-delay: -7437ms;
+          animation-delay: -7437ms;
 }
 .line:nth-child(127) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(350deg) translateX(192px);
-          transform: rotateZ(350deg) translateX(192px);
-=======
-  transform: rotateZ(87deg) translateX(218px);
->>>>>>> calendar
+  transform: rotateZ(43deg) translateX(222px);
 }
 .line:nth-child(128) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -8746ms;
-          animation-delay: -8746ms;
-=======
-  -webkit-animation-delay: -9321ms;
-          animation-delay: -9321ms;
->>>>>>> calendar
+  -webkit-animation-delay: -7239ms;
+          animation-delay: -7239ms;
 }
 .line:nth-child(128) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -8746ms;
-          animation-delay: -8746ms;
-=======
-  -webkit-animation-delay: -9321ms;
-          animation-delay: -9321ms;
->>>>>>> calendar
+  -webkit-animation-delay: -7239ms;
+          animation-delay: -7239ms;
 }
 .line:nth-child(128) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(229deg) translateX(221px);
-          transform: rotateZ(229deg) translateX(221px);
-=======
-  transform: rotateZ(207deg) translateX(156px);
->>>>>>> calendar
+  transform: rotateZ(272deg) translateX(183px);
 }
 .line:nth-child(129) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -2605ms;
-          animation-delay: -2605ms;
-=======
-  -webkit-animation-delay: -4785ms;
-          animation-delay: -4785ms;
->>>>>>> calendar
+  -webkit-animation-delay: -9518ms;
+          animation-delay: -9518ms;
 }
 .line:nth-child(129) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -2605ms;
-          animation-delay: -2605ms;
-=======
-  -webkit-animation-delay: -4785ms;
-          animation-delay: -4785ms;
->>>>>>> calendar
+  -webkit-animation-delay: -9518ms;
+          animation-delay: -9518ms;
 }
 .line:nth-child(129) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(273deg) translateX(251px);
-          transform: rotateZ(273deg) translateX(251px);
-=======
-  transform: rotateZ(22deg) translateX(66px);
->>>>>>> calendar
+  transform: rotateZ(179deg) translateX(115px);
 }
 .line:nth-child(130) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -2352ms;
-          animation-delay: -2352ms;
-=======
-  -webkit-animation-delay: -9892ms;
-          animation-delay: -9892ms;
->>>>>>> calendar
+  -webkit-animation-delay: -9540ms;
+          animation-delay: -9540ms;
 }
 .line:nth-child(130) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -2352ms;
-          animation-delay: -2352ms;
-=======
-  -webkit-animation-delay: -9892ms;
-          animation-delay: -9892ms;
->>>>>>> calendar
+  -webkit-animation-delay: -9540ms;
+          animation-delay: -9540ms;
 }
 .line:nth-child(130) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(13deg) translateX(233px);
-          transform: rotateZ(13deg) translateX(233px);
-=======
-  transform: rotateZ(186deg) translateX(149px);
->>>>>>> calendar
+  transform: rotateZ(279deg) translateX(316px);
 }
 .line:nth-child(131) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -552ms;
-          animation-delay: -552ms;
-=======
-  -webkit-animation-delay: -4806ms;
-          animation-delay: -4806ms;
->>>>>>> calendar
+  -webkit-animation-delay: -9659ms;
+          animation-delay: -9659ms;
 }
 .line:nth-child(131) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -552ms;
-          animation-delay: -552ms;
-=======
-  -webkit-animation-delay: -4806ms;
-          animation-delay: -4806ms;
->>>>>>> calendar
+  -webkit-animation-delay: -9659ms;
+          animation-delay: -9659ms;
 }
 .line:nth-child(131) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(119deg) translateX(89px);
-          transform: rotateZ(119deg) translateX(89px);
-=======
-  transform: rotateZ(303deg) translateX(109px);
->>>>>>> calendar
+  transform: rotateZ(333deg) translateX(33px);
 }
 .line:nth-child(132) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -2667ms;
-          animation-delay: -2667ms;
-=======
-  -webkit-animation-delay: -6225ms;
-          animation-delay: -6225ms;
->>>>>>> calendar
+  -webkit-animation-delay: -683ms;
+          animation-delay: -683ms;
 }
 .line:nth-child(132) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -2667ms;
-          animation-delay: -2667ms;
-=======
-  -webkit-animation-delay: -6225ms;
-          animation-delay: -6225ms;
->>>>>>> calendar
+  -webkit-animation-delay: -683ms;
+          animation-delay: -683ms;
 }
 .line:nth-child(132) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(227deg) translateX(303px);
-          transform: rotateZ(227deg) translateX(303px);
-=======
-  transform: rotateZ(232deg) translateX(32px);
->>>>>>> calendar
+  transform: rotateZ(65deg) translateX(261px);
 }
 .line:nth-child(133) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -6450ms;
-          animation-delay: -6450ms;
-=======
-  -webkit-animation-delay: -8644ms;
-          animation-delay: -8644ms;
->>>>>>> calendar
+  -webkit-animation-delay: -8932ms;
+          animation-delay: -8932ms;
 }
 .line:nth-child(133) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -6450ms;
-          animation-delay: -6450ms;
-=======
-  -webkit-animation-delay: -8644ms;
-          animation-delay: -8644ms;
->>>>>>> calendar
+  -webkit-animation-delay: -8932ms;
+          animation-delay: -8932ms;
 }
 .line:nth-child(133) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(271deg) translateX(35px);
-          transform: rotateZ(271deg) translateX(35px);
-=======
-  transform: rotateZ(245deg) translateX(74px);
->>>>>>> calendar
+  transform: rotateZ(39deg) translateX(272px);
 }
 .line:nth-child(134) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -3519ms;
-          animation-delay: -3519ms;
-=======
-  -webkit-animation-delay: -6576ms;
-          animation-delay: -6576ms;
->>>>>>> calendar
+  -webkit-animation-delay: -9678ms;
+          animation-delay: -9678ms;
 }
 .line:nth-child(134) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -3519ms;
-          animation-delay: -3519ms;
-=======
-  -webkit-animation-delay: -6576ms;
-          animation-delay: -6576ms;
->>>>>>> calendar
+  -webkit-animation-delay: -9678ms;
+          animation-delay: -9678ms;
 }
 .line:nth-child(134) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(343deg) translateX(92px);
-          transform: rotateZ(343deg) translateX(92px);
-=======
-  transform: rotateZ(311deg) translateX(196px);
->>>>>>> calendar
+  transform: rotateZ(325deg) translateX(305px);
 }
 .line:nth-child(135) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -1002ms;
-          animation-delay: -1002ms;
-=======
-  -webkit-animation-delay: -2517ms;
-          animation-delay: -2517ms;
->>>>>>> calendar
+  -webkit-animation-delay: -9704ms;
+          animation-delay: -9704ms;
 }
 .line:nth-child(135) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -1002ms;
-          animation-delay: -1002ms;
-=======
-  -webkit-animation-delay: -2517ms;
-          animation-delay: -2517ms;
->>>>>>> calendar
+  -webkit-animation-delay: -9704ms;
+          animation-delay: -9704ms;
 }
 .line:nth-child(135) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(60deg) translateX(284px);
-          transform: rotateZ(60deg) translateX(284px);
-=======
-  transform: rotateZ(153deg) translateX(45px);
->>>>>>> calendar
+  transform: rotateZ(228deg) translateX(113px);
 }
 .line:nth-child(136) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -8641ms;
-          animation-delay: -8641ms;
-=======
-  -webkit-animation-delay: -3557ms;
-          animation-delay: -3557ms;
->>>>>>> calendar
+  -webkit-animation-delay: -8705ms;
+          animation-delay: -8705ms;
 }
 .line:nth-child(136) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -8641ms;
-          animation-delay: -8641ms;
-=======
-  -webkit-animation-delay: -3557ms;
-          animation-delay: -3557ms;
->>>>>>> calendar
+  -webkit-animation-delay: -8705ms;
+          animation-delay: -8705ms;
 }
 .line:nth-child(136) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(158deg) translateX(270px);
-          transform: rotateZ(158deg) translateX(270px);
-=======
-  transform: rotateZ(282deg) translateX(228px);
->>>>>>> calendar
+  transform: rotateZ(63deg) translateX(113px);
 }
 .line:nth-child(137) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -5792ms;
-          animation-delay: -5792ms;
-=======
-  -webkit-animation-delay: -584ms;
-          animation-delay: -584ms;
->>>>>>> calendar
+  -webkit-animation-delay: -227ms;
+          animation-delay: -227ms;
 }
 .line:nth-child(137) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -5792ms;
-          animation-delay: -5792ms;
-=======
-  -webkit-animation-delay: -584ms;
-          animation-delay: -584ms;
->>>>>>> calendar
+  -webkit-animation-delay: -227ms;
+          animation-delay: -227ms;
 }
 .line:nth-child(137) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(15deg) translateX(264px);
-          transform: rotateZ(15deg) translateX(264px);
-=======
-  transform: rotateZ(194deg) translateX(223px);
->>>>>>> calendar
+  transform: rotateZ(163deg) translateX(243px);
 }
 .line:nth-child(138) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -6661ms;
-          animation-delay: -6661ms;
-=======
-  -webkit-animation-delay: -7437ms;
-          animation-delay: -7437ms;
->>>>>>> calendar
+  -webkit-animation-delay: -4257ms;
+          animation-delay: -4257ms;
 }
 .line:nth-child(138) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -6661ms;
-          animation-delay: -6661ms;
-=======
-  -webkit-animation-delay: -7437ms;
-          animation-delay: -7437ms;
->>>>>>> calendar
+  -webkit-animation-delay: -4257ms;
+          animation-delay: -4257ms;
 }
 .line:nth-child(138) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(73deg) translateX(170px);
-          transform: rotateZ(73deg) translateX(170px);
-=======
-  transform: rotateZ(249deg) translateX(257px);
->>>>>>> calendar
+  transform: rotateZ(356deg) translateX(154px);
 }
 .line:nth-child(139) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -7399ms;
-          animation-delay: -7399ms;
-=======
-  -webkit-animation-delay: -2380ms;
-          animation-delay: -2380ms;
->>>>>>> calendar
+  -webkit-animation-delay: -2612ms;
+          animation-delay: -2612ms;
 }
 .line:nth-child(139) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -7399ms;
-          animation-delay: -7399ms;
-=======
-  -webkit-animation-delay: -2380ms;
-          animation-delay: -2380ms;
->>>>>>> calendar
+  -webkit-animation-delay: -2612ms;
+          animation-delay: -2612ms;
 }
 .line:nth-child(139) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(82deg) translateX(124px);
-          transform: rotateZ(82deg) translateX(124px);
-=======
-  transform: rotateZ(156deg) translateX(186px);
->>>>>>> calendar
+  transform: rotateZ(277deg) translateX(221px);
 }
 .line:nth-child(140) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -8478ms;
-          animation-delay: -8478ms;
-=======
-  -webkit-animation-delay: -5024ms;
-          animation-delay: -5024ms;
->>>>>>> calendar
+  -webkit-animation-delay: -2433ms;
+          animation-delay: -2433ms;
 }
 .line:nth-child(140) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -8478ms;
-          animation-delay: -8478ms;
-=======
-  -webkit-animation-delay: -5024ms;
-          animation-delay: -5024ms;
->>>>>>> calendar
+  -webkit-animation-delay: -2433ms;
+          animation-delay: -2433ms;
 }
 .line:nth-child(140) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(3deg) translateX(38px);
-          transform: rotateZ(3deg) translateX(38px);
-=======
-  transform: rotateZ(189deg) translateX(218px);
->>>>>>> calendar
+  transform: rotateZ(253deg) translateX(137px);
 }
 .line:nth-child(141) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -1127ms;
-          animation-delay: -1127ms;
-=======
-  -webkit-animation-delay: -3100ms;
-          animation-delay: -3100ms;
->>>>>>> calendar
+  -webkit-animation-delay: -4941ms;
+          animation-delay: -4941ms;
 }
 .line:nth-child(141) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -1127ms;
-          animation-delay: -1127ms;
-=======
-  -webkit-animation-delay: -3100ms;
-          animation-delay: -3100ms;
->>>>>>> calendar
+  -webkit-animation-delay: -4941ms;
+          animation-delay: -4941ms;
 }
 .line:nth-child(141) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(91deg) translateX(238px);
-          transform: rotateZ(91deg) translateX(238px);
-=======
-  transform: rotateZ(290deg) translateX(208px);
->>>>>>> calendar
+  transform: rotateZ(284deg) translateX(59px);
 }
 .line:nth-child(142) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -1221ms;
-          animation-delay: -1221ms;
-=======
-  -webkit-animation-delay: -6986ms;
-          animation-delay: -6986ms;
->>>>>>> calendar
+  -webkit-animation-delay: -699ms;
+          animation-delay: -699ms;
 }
 .line:nth-child(142) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -1221ms;
-          animation-delay: -1221ms;
-=======
-  -webkit-animation-delay: -6986ms;
-          animation-delay: -6986ms;
->>>>>>> calendar
+  -webkit-animation-delay: -699ms;
+          animation-delay: -699ms;
 }
 .line:nth-child(142) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(37deg) translateX(25px);
-          transform: rotateZ(37deg) translateX(25px);
-=======
-  transform: rotateZ(241deg) translateX(209px);
->>>>>>> calendar
+  transform: rotateZ(156deg) translateX(214px);
 }
 .line:nth-child(143) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -4459ms;
-          animation-delay: -4459ms;
-=======
-  -webkit-animation-delay: -6583ms;
-          animation-delay: -6583ms;
->>>>>>> calendar
+  -webkit-animation-delay: -8777ms;
+          animation-delay: -8777ms;
 }
 .line:nth-child(143) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -4459ms;
-          animation-delay: -4459ms;
-=======
-  -webkit-animation-delay: -6583ms;
-          animation-delay: -6583ms;
->>>>>>> calendar
+  -webkit-animation-delay: -8777ms;
+          animation-delay: -8777ms;
 }
 .line:nth-child(143) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(131deg) translateX(135px);
-          transform: rotateZ(131deg) translateX(135px);
-=======
-  transform: rotateZ(309deg) translateX(319px);
->>>>>>> calendar
+  transform: rotateZ(53deg) translateX(68px);
 }
 .line:nth-child(144) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -832ms;
-          animation-delay: -832ms;
-=======
-  -webkit-animation-delay: -2236ms;
-          animation-delay: -2236ms;
->>>>>>> calendar
+  -webkit-animation-delay: -6870ms;
+          animation-delay: -6870ms;
 }
 .line:nth-child(144) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -832ms;
-          animation-delay: -832ms;
-=======
-  -webkit-animation-delay: -2236ms;
-          animation-delay: -2236ms;
->>>>>>> calendar
+  -webkit-animation-delay: -6870ms;
+          animation-delay: -6870ms;
 }
 .line:nth-child(144) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(293deg) translateX(280px);
-          transform: rotateZ(293deg) translateX(280px);
-=======
-  transform: rotateZ(9deg) translateX(30px);
->>>>>>> calendar
+  transform: rotateZ(174deg) translateX(197px);
 }
 .line:nth-child(145) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -7297ms;
-          animation-delay: -7297ms;
-=======
-  -webkit-animation-delay: -7891ms;
-          animation-delay: -7891ms;
->>>>>>> calendar
+  -webkit-animation-delay: -9912ms;
+          animation-delay: -9912ms;
 }
 .line:nth-child(145) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -7297ms;
-          animation-delay: -7297ms;
-=======
-  -webkit-animation-delay: -7891ms;
-          animation-delay: -7891ms;
->>>>>>> calendar
+  -webkit-animation-delay: -9912ms;
+          animation-delay: -9912ms;
 }
 .line:nth-child(145) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(184deg) translateX(280px);
-          transform: rotateZ(184deg) translateX(280px);
-=======
-  transform: rotateZ(65deg) translateX(203px);
->>>>>>> calendar
+  transform: rotateZ(230deg) translateX(36px);
 }
 .line:nth-child(146) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -1486ms;
-          animation-delay: -1486ms;
-=======
-  -webkit-animation-delay: -337ms;
-          animation-delay: -337ms;
->>>>>>> calendar
+  -webkit-animation-delay: -8602ms;
+          animation-delay: -8602ms;
 }
 .line:nth-child(146) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -1486ms;
-          animation-delay: -1486ms;
-=======
-  -webkit-animation-delay: -337ms;
-          animation-delay: -337ms;
->>>>>>> calendar
+  -webkit-animation-delay: -8602ms;
+          animation-delay: -8602ms;
 }
 .line:nth-child(146) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(310deg) translateX(165px);
-          transform: rotateZ(310deg) translateX(165px);
-=======
-  transform: rotateZ(199deg) translateX(67px);
->>>>>>> calendar
+  transform: rotateZ(320deg) translateX(292px);
 }
 .line:nth-child(147) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -592ms;
-          animation-delay: -592ms;
-=======
-  -webkit-animation-delay: -3591ms;
-          animation-delay: -3591ms;
->>>>>>> calendar
+  -webkit-animation-delay: -4843ms;
+          animation-delay: -4843ms;
 }
 .line:nth-child(147) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -592ms;
-          animation-delay: -592ms;
-=======
-  -webkit-animation-delay: -3591ms;
-          animation-delay: -3591ms;
->>>>>>> calendar
+  -webkit-animation-delay: -4843ms;
+          animation-delay: -4843ms;
 }
 .line:nth-child(147) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(51deg) translateX(158px);
-          transform: rotateZ(51deg) translateX(158px);
-=======
-  transform: rotateZ(4deg) translateX(40px);
->>>>>>> calendar
+  transform: rotateZ(345deg) translateX(132px);
 }
 .line:nth-child(148) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -9127ms;
-          animation-delay: -9127ms;
-=======
-  -webkit-animation-delay: -218ms;
-          animation-delay: -218ms;
->>>>>>> calendar
+  -webkit-animation-delay: -5024ms;
+          animation-delay: -5024ms;
 }
 .line:nth-child(148) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -9127ms;
-          animation-delay: -9127ms;
-=======
-  -webkit-animation-delay: -218ms;
-          animation-delay: -218ms;
->>>>>>> calendar
+  -webkit-animation-delay: -5024ms;
+          animation-delay: -5024ms;
 }
 .line:nth-child(148) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(187deg) translateX(210px);
-          transform: rotateZ(187deg) translateX(210px);
-=======
-  transform: rotateZ(190deg) translateX(50px);
->>>>>>> calendar
+  transform: rotateZ(24deg) translateX(115px);
 }
 .line:nth-child(149) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -3691ms;
-          animation-delay: -3691ms;
-=======
-  -webkit-animation-delay: -6524ms;
-          animation-delay: -6524ms;
->>>>>>> calendar
+  -webkit-animation-delay: -4101ms;
+          animation-delay: -4101ms;
 }
 .line:nth-child(149) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -3691ms;
-          animation-delay: -3691ms;
-=======
-  -webkit-animation-delay: -6524ms;
-          animation-delay: -6524ms;
->>>>>>> calendar
+  -webkit-animation-delay: -4101ms;
+          animation-delay: -4101ms;
 }
 .line:nth-child(149) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(338deg) translateX(180px);
-          transform: rotateZ(338deg) translateX(180px);
-=======
-  transform: rotateZ(331deg) translateX(47px);
->>>>>>> calendar
+  transform: rotateZ(36deg) translateX(97px);
 }
 .line:nth-child(150) {
-<<<<<<< HEAD
-  -webkit-animation-delay: -9081ms;
-          animation-delay: -9081ms;
-=======
-  -webkit-animation-delay: -727ms;
-          animation-delay: -727ms;
->>>>>>> calendar
+  -webkit-animation-delay: -2835ms;
+          animation-delay: -2835ms;
 }
 .line:nth-child(150) .graphic {
-<<<<<<< HEAD
-  -webkit-animation-delay: -9081ms;
-          animation-delay: -9081ms;
-=======
-  -webkit-animation-delay: -727ms;
-          animation-delay: -727ms;
->>>>>>> calendar
+  -webkit-animation-delay: -2835ms;
+          animation-delay: -2835ms;
 }
 .line:nth-child(150) .star {
-<<<<<<< HEAD
-  -webkit-transform: rotateZ(43deg) translateX(185px);
-          transform: rotateZ(43deg) translateX(185px);
-=======
-  transform: rotateZ(251deg) translateX(211px);
->>>>>>> calendar
+  transform: rotateZ(213deg) translateX(169px);
 }
 
 .star {
