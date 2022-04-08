@@ -101,6 +101,7 @@ body {
   align-items: center;
   width: 50px;
   height: 36px;
+  font-size: 14px;
   border: solid 2px rgba(255, 255, 255, 0.3);
   box-sizing: border-box;
   cursor: default;
@@ -138,8 +139,7 @@ body {
       width: 46px;
       height: 32px;
       color: #fff;
-      font-weight: bold;
-      line-height: 32px;
+      line-height: 30px;
       background: #0078d7;
       border: solid 2px #3b3b3b;
       box-sizing: border-box;
@@ -151,6 +151,9 @@ body {
       }
     }
   }
+  &.is-disabled {
+    color: rgba(255, 255, 255, 0.3);
+  }
   span {
     position: relative;
     z-index: 4;
@@ -160,8 +163,8 @@ body {
     line-height: 36px;
     &:after {
       position: absolute;
-      top: -2px;
-      left: -2px;
+      top: -6px;
+      left: -6px;
       width: 54px;
       height: 40px;
       content: "";
@@ -170,9 +173,7 @@ body {
 }
 
 
-.disabled-month {
-  color: rgba(255, 255, 255, 0.3);
-}
+
 
 .header {
   display: flex;

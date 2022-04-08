@@ -11,22 +11,31 @@
 
 <body>
   <div id="app" class="wrapper">
-    <div class="header">
-      <p click="handleShowMonth"><span>{{dateData.year}}</span>年<span>{{dateData.month+1}}</span>月</p>
-      <div class="button">
-        <button @click="handlePrev"><i class="arrow arrow--up"></i></button>
-        <button @click="handleNext"><i class="arrow arrow--down"></i></button>
-      </div>
+    <div class="time">
+      <p id="timeText" class="time__text">{{time}}</p>
+      <p id="timeDate" class="time__date">{{timeDate}}</p>
     </div>
+    oo
     <div class="calendar">
-      <div class="week-list">
-        <span v-for="(item, index) in weekList" :key="index">{{item}}</span>
+      <div class="header">
+        <p class="change-date" click="handleShowMonth"><span>{{dateData.year}}</span>年<span>{{dateData.month+1}}</span>月
+        </p>
+        <div class="button">
+          <button @click="handlePrev"><i class="arrow arrow--up"></i></button>
+          <button @click="handleNext"><i class="arrow arrow--down"></i></button>
+        </div>
       </div>
-      <div class="data-list">
-        <div class="item"
-          :class="{ 'is-active' : activeClass === index, 'is-current': item.current===true, 'is-disabled': item.disabled===true}"
-          @click="handleActive(index)" v-for="(item, index) in dateList">
-          <span>{{item.day}}</span></div>
+      <div class="date-wrapper">
+        <div class="week-list">
+          <span v-for="(item, index) in weekList" :key="index">{{item}}</span>
+        </div>
+        <div class="date-list">
+          <div class="item"
+            :class="{ 'is-active' : activeClass === index, 'is-current': item.current===true, 'is-disabled': item.disabled===true}"
+            @click="handleActive(index)" v-for="(item, index) in dateList">
+            <span>{{item.day}}</span>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -40,21 +49,28 @@
         days: [],
         dateList: [],
         date: '',
+        timeDate: '',
         dateData: {},
         year: '',
         month: '',
         day: '',
         firstDay: '',
         lastDay: '',
+        time: '',
         activeDay: true,
       },
 
       mounted() {
-        this.getDate()
-        this.calendar(this.dateData)
-
+        this.renderAll()
       },
+
       methods: {
+        renderAll() {
+          this.getDate()
+          this.renderTime()
+          this.renderDays(this.dateData)
+        },
+
         getDate() {
           let date = new Date()
           this.dateData = {
@@ -63,7 +79,21 @@
             today: date.getDate(),
           }
         },
-        calendar(dateData) {
+        timer() {
+          let date = new Date()
+          let hour = date.getHours().toString().padStart(2, '0')
+          let minute = date.getMinutes().toString().padStart(2, '0')
+          let second = date.getSeconds().toString().padStart(2, '0')
+          this.time = `${hour}:${minute}:${second}`
+        },
+        renderTime() {
+          this.timer()
+          this.timeDate = `${this.dateData.year}年${this.dateData.month + 1}月${this.dateData.today}日`
+          setInterval(() => {
+            this.timer()
+          }, 1000)
+        },
+        renderDays(dateData) {
           this.date = new Date()
           let {
             year,
@@ -73,8 +103,9 @@
 
           let days = [31, this.isLeapYear(year), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
           let firstDay = new Date(year, month, 1)
+          let items = 0 // 元素计数
           this.dateList = []
-          
+
           for (let i = firstDay.getDay() - 1; i >= 0; i--) {
             let over = month === 0 ? 31 : days[month - 1]
             let lastMonthObject = {
@@ -82,17 +113,18 @@
               disabled: true,
             }
             this.dateList.push(lastMonthObject)
+            items++
           }
 
           for (let i = 1; i <= days[month]; i++) {
             let currentMonthObject = {
               day: i,
             }
-            if (i === today && month === this.date.getMonth() && year === this
-              .date.getFullYear()) {
+            if (i === today && month === this.date.getMonth() && year === this.date.getFullYear()) {
               currentMonthObject.current = true
             }
             this.dateList.push(currentMonthObject)
+            items++
           }
 
           let lastDay = new Date(year, month, days[month])
@@ -102,9 +134,21 @@
               disabled: true,
             }
             this.dateList.push(nextMonthObject)
+            items++
           }
-          console.log(this.dateList)
+
+          // 如果当前月份不足6行，则填充1行，保证每次生成6行。
+          if (items < 42) {
+            for (let i = 1; i <= 7; i++) {
+              let stuffObject = {
+                day: i,
+                disabled: true,
+              }
+              this.dateList.push(stuffObject)
+            }
+          }
         },
+
         //是否闰年
         isLeapYear(year) {
           if (year % 4 === 0 && year % 100 != 0 || year % 400 === 0) {
@@ -120,7 +164,7 @@
             this.dateData.year -= 1
             this.dateData.month = 11
           }
-          this.calendar(this.dateData)
+          this.renderDays(this.dateData)
         },
         //下个月
         handleNext() {
@@ -129,7 +173,7 @@
             this.dateData.year += 1
             this.dateData.month = 0
           }
-          this.calendar(this.dateData)
+          this.renderDays(this.dateData)
         },
         handleActive(index) {
           this.activeClass = index;

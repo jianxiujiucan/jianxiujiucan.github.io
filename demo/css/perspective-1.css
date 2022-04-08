@@ -33,25 +33,25 @@
 }
 .wrapper .left {
   transform: rotateY(90deg) translateZ(calc(var(--size) / -2));
-  background: #5cfbfa;
+  background: #ba4207;
 }
 .wrapper .back {
   transform: translateZ(calc(var(--size) / -2));
-  background: #9d4482;
+  background: #8cd742;
 }
 .wrapper .right {
   transform: rotateY(90deg) translateZ(calc(var(--size) / 2));
-  background: #fe06b8;
+  background: #51e565;
 }
 .wrapper .front {
   transform: translateZ(calc(var(--size) / 2));
-  background: #c9a81f;
+  background: #f458e3;
 }
 .wrapper .top {
   transform: rotateX(90deg) translateZ(calc(var(--size) / 2));
-  background: #6b77bb;
+  background: #95b2b3;
 }
 .wrapper .bottom {
   transform: rotateX(90deg) translateZ(calc(var(--size) / -2));
-  background: #3e1ffe;
+  background: #c8eda3;
 }/*# sourceMappingURL=perspective-1.css.map */
