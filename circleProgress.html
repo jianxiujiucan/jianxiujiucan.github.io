@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Circle</title>
+  <style>
+    .progress {
+      position: relative;
+      width: 400px;
+      height: 400px;
+    }
+
+    span {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 50px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="progress">
+    <span id="text"></span>
+  </div>
+  <button id="button">+</button>
+  <script>
+    class Circle {
+      constructor(params) {
+        this.element = document.querySelector(params.element)
+        this.type = params.type || 'circle'
+        this.strokeWidth = params.strokeWidth || 10
+        this.value = params.value || 0
+        this.color = params.color || '#69f'
+        this.trackColor = params.trackColor || '#eee'
+        this.linecap = params.linecap || 'square'
+        this.size = this.element.clientWidth  // 圆环的直径
+        this.radius = this.size / 2 - this.strokeWidth / 2 // 半径
+        this.circleDistance = this.radius + this.strokeWidth / 2  // 圆心距
+        this.perimeter = 2 * Math.PI * this.radius // 周长，用来算进度条的长度
+        this.degree = params.degree || 90 // 仪表盘缺口的角度，默认90度
+        this.scale = this.type === 'circle' ? 1 : 1 - 1 / (360 / this.degree) // 圆环显示比例
+        this.angle = `${(this.degree / 2) + 90}deg` // 使圆环旋转后水平对称的角度
+        this.rotate = this.type === 'circle' ? '-90deg' : this.angle   // 圆环的旋转角度
+        this.render()
+      }
+
+      render() {
+        const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg')
+        let stroke = '', gradients = ''
+        this.element.appendChild(svg)
+        svg.setAttribute('viewBox', `0 0 ${this.size} ${this.size}`)
+
+        // 传入纯色和渐变色判断
+        if (typeof this.color === 'string') {
+          stroke = this.color
+        } else {
+          gradients = this.renderGradients(this.color) // 渲染渐变色
+          stroke = `url(#gradient)`
+        }
+
+        // 创建轨道
+        const track = `<circle 
+          r=${this.radius}
+          cx=${this.size / 2} 
+          cy=${this.size / 2} 
+          stroke-width=${this.strokeWidth} 
+          fill='none' 
+          stroke=${this.trackColor} 
+          style='transform: rotate(${this.rotate}); stroke-dasharray: ${this.perimeter * this.scale}px, ${this.perimeter}px; transform-origin: ${this.circleDistance}px ${this.circleDistance}px; stroke-linecap: ${this.linecap}'></circle>`
+
+        // 创建进度条
+        const path = `<circle
+          class="path" 
+          r=${this.radius} 
+          cx=${this.size / 2} 
+          cy=${this.size / 2} 
+          stroke-width=${this.strokeWidth} 
+          fill='none' 
+          stroke='${stroke}'
+          style='transform: rotate(${this.rotate}); stroke-dasharray: ${this.perimeter * this.scale / 100 * this.value * this.scale}px, ${this.perimeter}px; transform-origin: ${this.circleDistance}px ${this.circleDistance}px; stroke-linecap: ${this.linecap}; transition: stroke-dasharray 0.6s ease 0s, stroke 0.6s ease 0s;'></circle>`
+
+        svg.innerHTML = gradients + track + path
+
+      }
+      renderGradients(color) {
+        let str = ''
+        for (const [key, value] of Object.entries(color)) {
+          str += `<stop 
+                offset="${key}" 
+                stop-color="${value}">
+              </stop>`
+        }
+        const gradients = `<defs>
+            <linearGradient 
+              id="gradient" 
+              x1="100%" 
+              y1="0%" 
+              x2="0%" 
+              y2="0%">
+              ${str}
+            </linearGradient>
+          </defs>`
+
+        return gradients
+      }
+
+      setValue(updateValue) {
+        if (isNaN(updateValue) || updateValue < 0 || updateValue > 100) {
+          return
+        }
+        let path = this.element.querySelector('.path')
+        path.style.strokeDasharray = `${this.perimeter * this.scale / 100 * updateValue}px, ${this.perimeter}px`
+      }
+    }
+
+    let circle = new Circle({
+      element: '.progress',
+      value: 10, // 进度百分比的值
+      strokeWidth: 20, // 圆环的宽度
+      color: {
+        '0%': '#69f',
+        '50%': '#d5b7ff',
+        '100%': '#7ce1db',
+      }, // 颜色为渐变色时传入对象，纯色为字符串
+      trackColor: '#eee', // 轨道的颜色
+      type: 'dashboard', // 仪表盘
+      linecap: 'round',
+      degree: 60 //  仪表盘缺口的角度度数
+    })
+    function text(value) {
+      if (value >= 0 && value <= 100) {
+        document.getElementById('text').innerHTML = circle.value + '%';
+      }
+    }
+    text(circle.value)
+    document.querySelector('#button').addEventListener('click', () => {
+      circle.value += 10
+      circle.setValue(circle.value)
+      text(circle.value)
+    })
+
+  </script>
+</body>
+
+</html>
