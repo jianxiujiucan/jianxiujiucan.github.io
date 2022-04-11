@@ -82,7 +82,7 @@
           stroke-width=${this.strokeWidth} 
           fill='none' 
           stroke='${stroke}'
-          style='transform: rotate(${this.rotate}); stroke-dasharray: ${this.perimeter * this.scale / 100 * this.value * this.scale}px, ${this.perimeter}px; transform-origin: ${this.circleDistance}px ${this.circleDistance}px; stroke-linecap: ${this.linecap}; transition: stroke-dasharray 0.6s ease 0s, stroke 0.6s ease 0s;'></circle>`
+          style='transform: rotate(${this.rotate}); stroke-dasharray: ${this.perimeter * this.scale / 100 * this.value * this.scale}px, ${this.perimeter}px; transform-origin: ${this.circleDistance}px ${this.circleDistance}px; stroke-linecap: ${this.linecap}; transition: stroke-dasharray 0.6s, stroke 0.6s;'></circle>`
 
         svg.innerHTML = gradients + track + path
 
@@ -132,6 +132,8 @@
       linecap: 'round',
       degree: 60 //  仪表盘缺口的角度度数
     })
+
+
     function text(value) {
       if (value >= 0 && value <= 100) {
         document.getElementById('text').innerHTML = circle.value + '%';
