@@ -133,7 +133,7 @@ body {
   outline: solid 2px #0078d7;
 }
 .item.is-current:hover span {
-  outline: solid 2px #80a9fa;
+  outline: solid 2px rgb(128, 169, 250);
 }
 .item.is-disabled {
   color: rgba(255, 255, 255, 0.3);
@@ -163,6 +163,7 @@ body {
 }
 
 .change-date {
+  margin: 0 0 0 10px;
   color: rgba(255, 255, 255, 0.9);
   cursor: default;
 }

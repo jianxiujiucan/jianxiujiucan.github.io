@@ -199,7 +199,7 @@ button:hover {
 }
 .xly-suspension-light__path-0 {
   fill: none;
-  stroke: #b4f4f7;
+  stroke: rgb(180, 244, 247);
   stroke-width: 2px;
 }
 
@@ -223,7 +223,7 @@ button:hover {
 .xly-suspension-light .xly-suspension-light__path-2, .xly-suspension-light .xly-suspension-light__path-1 {
   stroke-width: 2px;
   fill: none;
-  stroke: #b4f4f7;
+  stroke: rgb(180, 244, 247);
   stroke-dasharray: 49, 166;
   stroke-dashoffset: -98;
   transform-origin: 50% 50%;

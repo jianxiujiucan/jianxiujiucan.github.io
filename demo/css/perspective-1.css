@@ -33,25 +33,25 @@
 }
 .wrapper .left {
   transform: rotateY(90deg) translateZ(calc(var(--size) / -2));
-  background: #ba4207;
+  background: rgb(29, 160, 34);
 }
 .wrapper .back {
   transform: translateZ(calc(var(--size) / -2));
-  background: #8cd742;
+  background: rgb(84, 67, 89);
 }
 .wrapper .right {
   transform: rotateY(90deg) translateZ(calc(var(--size) / 2));
-  background: #51e565;
+  background: rgb(84, 170, 74);
 }
 .wrapper .front {
   transform: translateZ(calc(var(--size) / 2));
-  background: #f458e3;
+  background: rgb(179, 85, 58);
 }
 .wrapper .top {
   transform: rotateX(90deg) translateZ(calc(var(--size) / 2));
-  background: #95b2b3;
+  background: rgb(91, 164, 22);
 }
 .wrapper .bottom {
   transform: rotateX(90deg) translateZ(calc(var(--size) / -2));
-  background: #c8eda3;
+  background: rgb(68, 190, 159);
 }/*# sourceMappingURL=perspective-1.css.map */

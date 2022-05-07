@@ -16,13 +16,13 @@ body {
 .sky {
   width: 100vw;
   height: 53vh;
-  background: #9ce8ff;
+  background: rgb(156, 232, 255);
 }
 
 .back {
   width: 100vw;
   height: 53vh;
-  background: #d6c090;
+  background: rgb(214, 192, 144);
 }
 
 .wrapper {

@@ -56,7 +56,7 @@ body {
   right: 0;
   bottom: 0;
   left: 0;
-  background-image: linear-gradient(333deg, #002dcf, #0c5dff, #002dcf);
+  background-image: linear-gradient(333deg, #002dcf, rgb(12, 93, 255), #002dcf);
   -webkit-mask: repeating-linear-gradient(calc(var(--angle) * 1), #fff 0, #fff var(--start), transparent var(--start), transparent var(--end)), repeating-linear-gradient(calc(var(--angle) * 2), #fff 0, #fff var(--start), transparent var(--start), transparent var(--end)), repeating-linear-gradient(calc(var(--angle) * 3), #fff 0, #fff var(--start), transparent var(--start), transparent var(--end));
           mask: repeating-linear-gradient(calc(var(--angle) * 1), #fff 0, #fff var(--start), transparent var(--start), transparent var(--end)), repeating-linear-gradient(calc(var(--angle) * 2), #fff 0, #fff var(--start), transparent var(--start), transparent var(--end)), repeating-linear-gradient(calc(var(--angle) * 3), #fff 0, #fff var(--start), transparent var(--start), transparent var(--end));
   -webkit-mask-composite: xor;

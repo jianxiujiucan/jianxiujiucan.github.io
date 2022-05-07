@@ -98,7 +98,7 @@ body::-webkit-scrollbar:horizontal {
   margin-top: 42px;
   width: 190px;
   height: 218px;
-  background-color: #f8f8f8;
+  background-color: rgb(248, 248, 248);
   box-shadow: 0px 0px 8px 0px rgba(99, 120, 171, 0.16);
   border-radius: 4px;
 }
@@ -212,7 +212,7 @@ body::-webkit-scrollbar:horizontal {
 }
 .ani-tips--vip {
   color: #fff;
-  background-color: #336fff;
+  background-color: rgb(51, 111, 255);
   border-radius: 4px;
   offset-path: path("M3,207c1.371-5.683,19.811-30.553,65-51,89.1-40.317,247.781-44.943,326.029-152.613");
   -webkit-animation: fadeIn 0.2s 1s both, move 3s 1s ease-out forwards;
@@ -230,7 +230,7 @@ body::-webkit-scrollbar:horizontal {
   border-style: dashed;
   border-color: transparent;
   border-width: 7px 6px;
-  border-top-color: #336fff;
+  border-top-color: rgb(51, 111, 255);
   content: "";
 }
 .ani-tips--normal {

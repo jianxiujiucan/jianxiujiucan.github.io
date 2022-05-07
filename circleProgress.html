@@ -13,12 +13,42 @@
       height: 400px;
     }
 
+    li {
+      display: flex;
+      align-items: center;
+      list-style: none;
+    }
+
     span {
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
       font-size: 50px;
+    }
+
+    .button-wrapper {
+      display: flex;
+      justify-content: center;
+      width: 400px;
+    }
+
+    button {
+      margin: 0 10px;
+      min-width: 30px;
+    }
+
+    label {
+      margin: 0 10px 0 0;
+    }
+
+    input {
+      margin: 0 5px 0 0;
+    }
+
+    input[type=text] {
+      width: 50px;
+      padding: 3px;
     }
   </style>
 </head>
@@ -27,10 +57,44 @@
   <div class="progress">
     <span id="text"></span>
   </div>
-  <button id="button">+</button>
+  <div class="button-wrapper">
+    <button id="button-decrease">-</button>
+    <button id="button-increase">+</button>
+  </div>
+
   <script>
+    // 设计容易使用,容易理解,的 API
+    // 
+
+    new circle = new Circle('.my-process', {
+      text: false
+    });
+
+    circle.render('.my-precess');
+
+    circle.setRenderText('#my-process-text1');
+    circle.setRenderText('#my-process-text2');
+    circle.setRenderText('#my-process-text3');
+
+    circle.setValue(30);
+    circle.inc(); // 不传,默认加10
+    circle.del(10);
+  </script>
+
+  <div class="progress">
+    <span id="text"></span>
+  </div>
+  <div class="button-wrapper">
+    <button id="button-decrease">-</button>
+    <button id="button-increase">+</button>
+  </div>
+
+  <script>
+    // API 设计
     class Circle {
       constructor(params) {
+        this.wraps = '';
+
         this.element = document.querySelector(params.element)
         this.type = params.type || 'circle'
         this.strokeWidth = params.strokeWidth || 10
@@ -46,25 +110,11 @@
         this.scale = this.type === 'circle' ? 1 : 1 - 1 / (360 / this.degree) // 圆环显示比例
         this.angle = `${(this.degree / 2) + 90}deg` // 使圆环旋转后水平对称的角度
         this.rotate = this.type === 'circle' ? '-90deg' : this.angle   // 圆环的旋转角度
-        this.render()
       }
 
-      render() {
-        const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg')
-        let stroke = '', gradients = ''
-        this.element.appendChild(svg)
-        svg.setAttribute('viewBox', `0 0 ${this.size} ${this.size}`)
-
-        // 传入纯色和渐变色判断
-        if (typeof this.color === 'string') {
-          stroke = this.color
-        } else {
-          gradients = this.renderGradients(this.color) // 渲染渐变色
-          stroke = `url(#gradient)`
-        }
-
-        // 创建轨道
-        const track = `<circle 
+      __createTrack() {
+      // 创建轨道
+      return `<circle 
           r=${this.radius}
           cx=${this.size / 2} 
           cy=${this.size / 2} 
@@ -73,9 +123,44 @@
           stroke=${this.trackColor} 
           style='transform: rotate(${this.rotate}); stroke-dasharray: ${this.perimeter * this.scale}px, ${this.perimeter}px; transform-origin: ${this.circleDistance}px ${this.circleDistance}px; stroke-linecap: ${this.linecap}'></circle>`
 
+        return  track;
+      }
+
+      createSVG(){
+
+      }
+
+      render(wrapStr) {
+        // TODO: 判断这个 wrapStr 是不是一个 dom; 
+
+        if(this.wraps !== '') {
+          return;
+        } 
+
+        this.wraps = wrapStr;
+        
+        const svg = this.createSVG();
+
+        const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg')
+        let stroke = '', gradients = ''
+        this.element.appendChild(svg)
+        svg.setAttribute('viewBox', `0 0 ${this.size} ${this.size}`)
+        svg.innerHTML = ''
+
+        // 传入纯色和渐变色判断
+        if (typeof this.color === 'string') {
+          stroke = this.color
+
+        } else {
+          gradients = this.renderGradients(this.color) // 渲染渐变色
+          stroke = `url(#gradient)`
+        }
+
+        const track = this.createTrack();
+
         // 创建进度条
         const path = `<circle
-          class="path" 
+          id="path" 
           r=${this.radius} 
           cx=${this.size / 2} 
           cy=${this.size / 2} 
@@ -87,39 +172,59 @@
         svg.innerHTML = gradients + track + path
 
       }
+
+      setRenderText(str) {
+        // ....
+      }
+
       renderGradients(color) {
-        let str = ''
+        let gradients = ''
         for (const [key, value] of Object.entries(color)) {
-          str += `<stop 
+          gradients += `<stop 
                 offset="${key}" 
                 stop-color="${value}">
               </stop>`
         }
-        const gradients = `<defs>
+        const definitions = `<defs>
             <linearGradient 
               id="gradient" 
               x1="100%" 
               y1="0%" 
               x2="0%" 
               y2="0%">
-              ${str}
+              ${gradients}
             </linearGradient>
           </defs>`
 
-        return gradients
+        return definitions
       }
 
       setValue(updateValue) {
         if (isNaN(updateValue) || updateValue < 0 || updateValue > 100) {
           return
         }
-        let path = this.element.querySelector('.path')
+        let path = this.element.querySelector('#path')
         path.style.strokeDasharray = `${this.perimeter * this.scale / 100 * updateValue}px, ${this.perimeter}px`
+      }
+
+      getValue() {
+        return this.value;
+      }
+
+      setColor(color){
+
+      }
+
+      inc(v) {
+        this.setValue(this.value - v);
+      }
+
+      dec(v) {
+        this.setValue(this.value - v);
       }
     }
 
-    let circle = new Circle({
-      element: '.progress',
+    let circle1 = new Circle({
       value: 10, // 进度百分比的值
       strokeWidth: 20, // 圆环的宽度
       color: {
@@ -131,20 +236,17 @@
       type: 'dashboard', // 仪表盘
       linecap: 'round',
       degree: 60 //  仪表盘缺口的角度度数
-    })
+    });
 
 
-    function text(value) {
-      if (value >= 0 && value <= 100) {
-        document.getElementById('text').innerHTML = circle.value + '%';
-      }
-    }
-    text(circle.value)
-    document.querySelector('#button').addEventListener('click', () => {
-      circle.value += 10
-      circle.setValue(circle.value)
-      text(circle.value)
+    
+    document.querySelector('#button-increase').addEventListener('click', () => {
+      circle1.inc(10);
     })
+    document.querySelector('#button-decrease').addEventListener('click', () => {
+      circle1.dec(10)
+    })
+
 
   </script>
 </body>

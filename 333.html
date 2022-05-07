@@ -7,13 +7,40 @@
   <title>Document</title>
   <style>
     .box{
-      width: 100px;
-      height: 100px;
-      background: conic-gradient(red 10% 20%, blue 35% 50%, black 60% 70%);
+     
+    }
+    ul{
+      display: grid;
+      grid-template-columns: repeat(3,100px);
+      grid-template-rows: repeat(3,100px);
+    }
+    li{
+      list-style: none;
+    }
+    li.is-active{
+      background: rgba(255, 148, 225, 0.663);
     }
   </style>
 </head>
 <body>
-  <div class="box"></div>
+  <div class="box">
+    <ul>
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+      <li>4</li>
+      <li>5</li>
+      <li>6</li>
+    </ul>
+  </div>
+  <script>
+    let box = document.querySelector('.box')
+    box.addEventListener('click',function(e){
+      if(document.querySelector('.is-active') != null){
+        document.querySelector('.is-active').classList.remove('is-active')
+      } 
+      e.target.classList.add('is-active')
+    })
+  </script>
 </body>
 </html>
