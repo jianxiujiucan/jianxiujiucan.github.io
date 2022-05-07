@@ -55,7 +55,7 @@
 
 <body>
   <div class="progress">
-    <span id="text"></span>
+
   </div>
   <div class="button-wrapper">
     <button id="button-decrease">-</button>
@@ -68,8 +68,9 @@
         this.element = document.querySelector(params.element)
         this.type = params.type || 'circle'
         this.strokeWidth = params.strokeWidth || 10
-        this.value = params.value || 0
+        this._value = params.value || 0
         this.color = params.color || '#69f'
+        this.gradients = ''
         this.trackColor = params.trackColor || '#eee'
         this.linecap = params.linecap || 'square'
         this.size = this.element.clientWidth  // 圆环的直径
@@ -80,26 +81,25 @@
         this.scale = this.type === 'circle' ? 1 : 1 - 1 / (360 / this.degree) // 圆环显示比例
         this.angle = `${(this.degree / 2) + 90}deg` // 使圆环旋转后水平对称的角度
         this.rotate = this.type === 'circle' ? '-90deg' : this.angle   // 圆环的旋转角度
-        this.render()
+
       }
 
       render() {
+        const svg = this._renderSVG()
+        const track = this._renderTrack()
+        const path = this._renderPath()
+        svg.innerHTML = this.gradients + track + path
+      }
+
+      _renderSVG() {
         const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg')
-        let stroke = '', gradients = ''
         this.element.appendChild(svg)
-        svg.setAttribute('viewBox', `0 0 ${this.size} ${this.size}`)
-        svg.innerHTML = ''
-        // 传入纯色和渐变色判断
-        if (typeof this.color === 'string') {
-          stroke = this.color
+        svg.setAttribute('viewBox', `0 0 ${this.size} ${this.size}`)   // 设置svg的viewBox
+        return svg
+      }
 
-        } else {
-          gradients = this.renderGradients(this.color) // 渲染渐变色
-          stroke = `url(#gradient)`
-        }
-
-        // 创建轨道
-        const track = `<circle 
+      _renderTrack() {
+        return `<circle 
           r=${this.radius}
           cx=${this.size / 2} 
           cy=${this.size / 2} 
@@ -107,9 +107,18 @@
           fill='none' 
           stroke=${this.trackColor} 
           style='transform: rotate(${this.rotate}); stroke-dasharray: ${this.perimeter * this.scale}px, ${this.perimeter}px; transform-origin: ${this.circleDistance}px ${this.circleDistance}px; stroke-linecap: ${this.linecap}'></circle>`
+      }
 
-        // 创建进度条
-        const path = `<circle
+      _renderPath() {
+        let stroke = ''
+        // 传入纯色和渐变色判断
+        if (typeof this.color === 'string') {
+          stroke = this.color
+        } else {
+          this.gradients = this._renderGradients(this.color) // 渲染渐变色
+          stroke = `url(#gradient)`
+        }
+        return `<circle
           id="path" 
           r=${this.radius} 
           cx=${this.size / 2} 
@@ -117,12 +126,10 @@
           stroke-width=${this.strokeWidth} 
           fill='none' 
           stroke='${stroke}'
-          style='transform: rotate(${this.rotate}); stroke-dasharray: ${this.perimeter * this.scale / 100 * this.value * this.scale}px, ${this.perimeter}px; transform-origin: ${this.circleDistance}px ${this.circleDistance}px; stroke-linecap: ${this.linecap}; transition: stroke-dasharray 0.6s, stroke 0.6s;'></circle>`
-
-        svg.innerHTML = gradients + track + path
-
+          style='transform: rotate(${this.rotate}); stroke-dasharray: ${this.perimeter * this.scale / 100 * this._value * this.scale}px, ${this.perimeter}px; transform-origin: ${this.circleDistance}px ${this.circleDistance}px; stroke-linecap: ${this.linecap}; transition: stroke-dasharray 0.6s, stroke 0.6s;'></circle>`
       }
-      renderGradients(color) {
+
+      _renderGradients(color) {
         let gradients = ''
         for (const [key, value] of Object.entries(color)) {
           gradients += `<stop 
@@ -150,6 +157,42 @@
         }
         let path = this.element.querySelector('#path')
         path.style.strokeDasharray = `${this.perimeter * this.scale / 100 * updateValue}px, ${this.perimeter}px`
+        this.setRenderText(updateValue)
+      }
+
+      getValue() {
+        return this._value
+      }
+
+      setRenderText(element) {
+        if (this.element.getElementsByTagName('span').length === 0) {
+          const dom = document.createElement('span')
+          dom.innerHTML = this._value + '%'
+          if (element[0] === '.') {
+            dom.className = element.slice(1)
+          } else {
+            dom.id = element.slice(1)
+          }
+          this.element.appendChild(dom)
+        } else {
+          this.element.getElementsByTagName('span')[0].innerHTML = this._value + '%'
+        }
+      }
+
+      increase(value) {
+        if (this._value >= 100) {
+          return
+        }
+        this._value += value
+        this.setValue(this._value)
+      }
+
+      decrease(value) {
+        if (this._value <= 0) {
+          return
+        }
+        this._value -= value
+        this.setValue(this._value)
       }
     }
 
@@ -167,27 +210,15 @@
       linecap: 'round',
       degree: 60 //  仪表盘缺口的角度度数
     })
+    circle.render()
+    circle.setRenderText('#text')
 
-
-    function text(value) {
-      if (value >= 0 && value <= 100) {
-        document.getElementById('text').innerHTML = circle.value + '%';
-      }
-    }
-    text(circle.value)
     document.querySelector('#button-increase').addEventListener('click', () => {
-      if (circle.value < 100) {
-        circle.value += 10
-      }
-      circle.setValue(circle.value)
-      text(circle.value)
+      circle.increase(10)
+
     })
     document.querySelector('#button-decrease').addEventListener('click', () => {
-      if (circle.value >= 10) {
-        circle.value -= 10
-      }
-      circle.setValue(circle.value)
-      text(circle.value)
+      circle.decrease(10)
     })
 
 
