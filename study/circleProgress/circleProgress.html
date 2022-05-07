@@ -90,14 +90,14 @@
         const path = this._renderPath()
         svg.innerHTML = this.gradients + track + path
       }
-
+      // 渲染SVG
       _renderSVG() {
         const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg')
         this.element.appendChild(svg)
         svg.setAttribute('viewBox', `0 0 ${this.size} ${this.size}`)   // 设置svg的viewBox
         return svg
       }
-
+      // 渲染轨道
       _renderTrack() {
         return `<circle 
           r=${this.radius}
@@ -108,7 +108,7 @@
           stroke=${this.trackColor} 
           style='transform: rotate(${this.rotate}); stroke-dasharray: ${this.perimeter * this.scale}px, ${this.perimeter}px; transform-origin: ${this.circleDistance}px ${this.circleDistance}px; stroke-linecap: ${this.linecap}'></circle>`
       }
-
+      // 渲染进度条
       _renderPath() {
         let stroke = ''
         // 传入纯色和渐变色判断
@@ -128,7 +128,7 @@
           stroke='${stroke}'
           style='transform: rotate(${this.rotate}); stroke-dasharray: ${this.perimeter * this.scale / 100 * this._value * this.scale}px, ${this.perimeter}px; transform-origin: ${this.circleDistance}px ${this.circleDistance}px; stroke-linecap: ${this.linecap}; transition: stroke-dasharray 0.6s, stroke 0.6s;'></circle>`
       }
-
+      // 渲染渐变色
       _renderGradients(color) {
         let gradients = ''
         for (const [key, value] of Object.entries(color)) {
@@ -150,7 +150,7 @@
 
         return definitions
       }
-
+      // 设置进度值
       setValue(updateValue) {
         if (isNaN(updateValue) || updateValue < 0 || updateValue > 100) {
           return
@@ -159,26 +159,26 @@
         path.style.strokeDasharray = `${this.perimeter * this.scale / 100 * updateValue}px, ${this.perimeter}px`
         this.setRenderText(updateValue)
       }
-
+      // 取值
       getValue() {
         return this._value
       }
-
+      // 设置文本
       setRenderText(element) {
         if (this.element.getElementsByTagName('span').length === 0) {
-          const dom = document.createElement('span')
-          dom.innerHTML = this._value + '%'
+          const node = document.createElement('span')
+          node.innerHTML = this._value + '%'
           if (element[0] === '.') {
-            dom.className = element.slice(1)
+            node.className = element.slice(1)
           } else {
-            dom.id = element.slice(1)
+            node.id = element.slice(1)
           }
-          this.element.appendChild(dom)
+          this.element.appendChild(node)
         } else {
           this.element.getElementsByTagName('span')[0].innerHTML = this._value + '%'
         }
       }
-
+      // 增加进度
       increase(value) {
         if (this._value >= 100) {
           return
@@ -186,7 +186,7 @@
         this._value += value
         this.setValue(this._value)
       }
-
+      // 减少进度
       decrease(value) {
         if (this._value <= 0) {
           return
@@ -210,8 +210,9 @@
       linecap: 'round',
       degree: 60 //  仪表盘缺口的角度度数
     })
-    circle.render()
-    circle.setRenderText('#text')
+
+    circle.render() // 开始渲染
+    circle.setRenderText('#text') // 设置文本，传入id或class
 
     document.querySelector('#button-increase').addEventListener('click', () => {
       circle.increase(10)
