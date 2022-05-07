@@ -57,6 +57,7 @@
   <div class="progress">
 
   </div>
+  <p id="text"></p>
   <div class="button-wrapper">
     <button id="button-decrease">-</button>
     <button id="button-increase">+</button>
@@ -65,6 +66,7 @@
   <script>
     class Circle {
       constructor(params) {
+        this.textNode = '';
         this.element = document.querySelector(params.element)
         this.type = params.type || 'circle'
         this.strokeWidth = params.strokeWidth || 10
@@ -81,14 +83,20 @@
         this.scale = this.type === 'circle' ? 1 : 1 - 1 / (360 / this.degree) // 圆环显示比例
         this.angle = `${(this.degree / 2) + 90}deg` // 使圆环旋转后水平对称的角度
         this.rotate = this.type === 'circle' ? '-90deg' : this.angle   // 圆环的旋转角度
-
+        this.textShow = params.textShow !== undefined ? params.textShow : true
       }
 
       render() {
+  
         const svg = this._renderSVG()
         const track = this._renderTrack()
         const path = this._renderPath()
-        svg.innerHTML = this.gradients + track + path
+        let text = ''
+       
+        if (this.textShow) {
+          text = this._renderText()
+        }
+        svg.innerHTML = this.gradients + track + path + text
       }
       // 渲染SVG
       _renderSVG() {
@@ -150,6 +158,14 @@
 
         return definitions
       }
+
+      _renderText() {
+        const text = document.createElement('span')
+        text.id = 'circleText'
+        this.element.appendChild(text)
+        text.innerHTML = this._value
+        this.setRenderText(`#${text.id}`)
+      }
       // 设置进度值
       setValue(updateValue) {
         if (isNaN(updateValue) || updateValue < 0 || updateValue > 100) {
@@ -157,7 +173,11 @@
         }
         let path = this.element.querySelector('#path')
         path.style.strokeDasharray = `${this.perimeter * this.scale / 100 * updateValue}px, ${this.perimeter}px`
-        this.setRenderText(updateValue)
+
+        if (this.textNode !== "") {
+          document.querySelector(this.textNode).innerHTML = `${updateValue}%`
+        }
+
       }
       // 取值
       getValue() {
@@ -165,18 +185,8 @@
       }
       // 设置文本
       setRenderText(element) {
-        if (this.element.getElementsByTagName('span').length === 0) {
-          const node = document.createElement('span')
-          node.innerHTML = this._value + '%'
-          if (element[0] === '.') {
-            node.className = element.slice(1)
-          } else {
-            node.id = element.slice(1)
-          }
-          this.element.appendChild(node)
-        } else {
-          this.element.getElementsByTagName('span')[0].innerHTML = this._value + '%'
-        }
+        document.querySelector(element).innerHTML = this._value + '%'
+        this.textNode = element
       }
       // 增加进度
       increase(value) {
@@ -208,6 +218,7 @@
       trackColor: '#eee', // 轨道的颜色
       type: 'dashboard', // 仪表盘
       linecap: 'round',
+      textShow: false, // 是否显示文本
       degree: 60 //  仪表盘缺口的角度度数
     })
 
