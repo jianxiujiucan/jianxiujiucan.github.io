@@ -1,0 +1,101 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+:root {
+  --size: 400px;
+  --item: 8;
+  --itemWidth: 153px;
+}
+
+.lottery {
+  position: relative;
+  margin: 0 auto;
+  width: var(--size);
+  height: var(--size);
+  border: solid 20px #f6524f;
+  border-radius: 50%;
+  .prize {
+    height: 100%;
+    border-radius: 50%;
+  }
+  .items {
+    position: relative;
+    height: 100%;
+    border-radius: 50%;
+    background-image: repeating-conic-gradient(
+      #ff8586 0 calc(360deg / var(--item)),
+      #ff9e9d calc(360deg / var(--item)) calc(720deg / var(--item)))
+  }
+  li {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    margin-left: calc(var(--itemWidth) / 2 * -1);
+    width: var(--itemWidth);
+    height: calc(var(--size) / 2);
+    line-height: 100px;
+    color: #fff;
+    text-align: center;
+    transform-origin: center 100%;
+    list-style: none;
+  }
+  $lotteryItems: 4 6 8 12;
+  @for $i from 1 through 4 {
+    $item: nth($lotteryItems, $i);
+    &--#{$item} {
+      @for $j from 1 through $item {
+        $deg: 360 / $item;
+        $n: $j - 1;
+        li:nth-child(#{$j}) {
+          transform: rotate(($deg * $n) * 1deg + 180deg / $item);
+        }
+      }
+    }
+  }
+}
+
+.button-lottery {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin: -60px 0 0 -60px;
+  padding: 12px;
+  width: 120px;
+  height: 120px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #f6524f;
+  background: #ffde43;
+  border-radius: 50%;
+  border: solid 15px #fcf087;
+  box-sizing: border-box;
+  outline: none;
+  cursor: pointer;
+
+  &:before {
+    position: absolute;
+    bottom: 99%;
+    width: 20px;
+    height: 50px;
+    background: #ffde43;
+    clip-path: polygon(50% 0, 100% 100%, 0 100%);
+    content: "";
+  }
+
+  &:hover {
+    background: #ffd621;
+
+    &:before {
+      background: #ffd621;
+    }
+  }
+  &.is-disabled{
+    cursor: not-allowed;
+    filter: grayscale(100%);
+  }
+}

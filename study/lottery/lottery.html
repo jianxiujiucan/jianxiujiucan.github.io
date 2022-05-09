@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="css/lottery.css">
+  <style>
+    body {
+      text-align: center;
+    }
+
+    .operate li {
+      display: flex;
+      margin: 8px 0;
+    }
+
+    .operate li p {
+      width: 100px;
+    }
+
+    label {
+      margin: 0 10px 0 0;
+    }
+
+    input {
+      margin: 0 5px 0 0;
+    }
+
+    input[type=text] {
+      width: 50px;
+      padding: 3px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="lottery">
+    <div class="prize">
+      <ul class="items"></ul>
+    </div>
+    <button class="button-lottery">立即抽奖</button>
+  </div>
+  <ul class="operate">
+    <li>
+      <p>奖品个数:</p><label><input type="radio" name="item" value="4">4</label>
+      <label><input type="radio" name="item" value="6">6</label>
+      <label><input type="radio" name="item" checked value="8">8</label>
+      <label><input type="radio" name="item" value="12">12</label>
+    </li>
+    <li>
+      <p>转动用时: </p><input id="time" type="text" placeholder="5000" value="5000"> 毫秒
+    </li>
+    <li>
+      <p>转动圈数: </p><input id="loop" type="text" placeholder="4" value="4"> 圈
+    </li>
+    <li>
+      <p>选中奖品:</p> <input id="current" type="text" placeholder="3" value="3">
+    </li>
+  </ul>
+
+  <script>
+    class Lottery {
+      constructor(params) {
+        this.element = document.querySelector('.lottery');
+        this.prize = document.querySelector('.prize');
+        this.items = document.querySelector('.items');
+        this.button = document.querySelector('.button-lottery');
+        this.item = params.item;
+        this.rotate = 0;
+        this.angle = 0;
+        this.time = params.time || 3000;
+        this.loop = params.loop || 4;
+        this.current = params.current || 0;
+        this.direction = params.direction || 1;
+        this.currentAngle = 0
+        this.render();
+      }
+
+      // 渲染圆盘
+      render() {
+        if (this.element.classList.length > 1) {
+          this.element.classList.remove(this.element.classList[1]); // 每次切换移除第二个class
+        }
+        this.element.classList.add(`lottery--${this.item}`); // 添加不同奖品个数的class
+        let size = this.prize.offsetWidth // 圆盘宽度
+        let acuteAngle = 360 / this.item / 2; // 每个奖品的角度的一半,用来求奖品宽度
+        let itemWidth = size / 2 * Math.sin(acuteAngle * Math.PI / 180) * 2; // 每个奖品item的宽度,三角函数已知斜边和角度,正弦函数求对边
+        document.querySelector('body').style.setProperty('--itemWidth', itemWidth + 'px'); // 设置css奖品item的宽度
+        document.querySelector('body').style.setProperty('--item', this.item); // 设置css奖品个数
+
+        // 初始化奖品item DOM
+        let list = '';
+        for (let i = 0; i < this.item; i++) {
+          list += `<li>奖品${i + 1}</li>`;
+        }
+        this.items.innerHTML = list; // 生成奖品item DOM
+      }
+
+      // 开始抽奖
+      start() {
+        this.rotate = 360 / this.item; // 每个奖品的角度    
+        this.angle = this.rotate * (this.item - this.current) + 180 / this.item + this.currentAngle + 360*this.loop; 
+
+        // 圆盘转动度数
+        this.button.removeEventListener('click', this.start.bind(this));
+        this.button.classList.add('is-disabled');
+        this.prize.style.transition = `transform ${this.time}ms`;
+        this.prize.style.transform = `rotate(${this.angle}deg)`;
+        setTimeout(() => {
+          alert(`抽中第${this.current}个奖品`);
+          this.button.classList.remove('is-disabled');
+          this.currentAngle = this.angle - 180 / this.item - (this.item - this.current) * this.rotate;
+        }, this.time);
+      }
+    }
+
+    let lottery = new Lottery({
+      item: 8, //奖品个数 （4，6，8，12）
+      time: 5000, //转圈时长，单位毫秒
+      loop: 1, //转圈次数
+      current: 6, // 选中的奖品
+    });
+
+
+
+    document.querySelectorAll('[name=item]').forEach(input => input.addEventListener('change', () => {
+      let checked = document.querySelector('[name=item]:checked')
+      lottery.item = +checked.value;
+      lottery.render()
+    }))
+
+    let button = document.querySelector('.button-lottery');
+    button.addEventListener('click', () => {
+      lottery.time = document.querySelector('#time').value;
+      lottery.current = document.querySelector('#current').value;
+      lottery.loop = document.querySelector('#loop').value;
+      lottery.start()
+    })
+  </script>
+</body>
+
+</html>
