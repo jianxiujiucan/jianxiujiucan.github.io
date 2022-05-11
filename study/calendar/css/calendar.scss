@@ -34,6 +34,8 @@ body {
   }
 }
 
+
+
 .week-list {
   margin: 0 0 2px;
   display: grid;
@@ -47,8 +49,11 @@ body {
 
 .date-list {
   position: relative;
-
-  overflow: hidden;
+  height: 228px;
+  overflow-y: hidden;
+  &::-webkit-scrollbar{
+    display: none;
+  }
   &.is-show {
     animation: show 0.2s both;
   }
@@ -68,6 +73,8 @@ body {
     grid-template-columns: repeat(7, 50px);
     gap: 2px;
     overflow: hidden;
+    transition: transform .3s;
+    transform: translateY(-150px);
   }
 
   &__item {

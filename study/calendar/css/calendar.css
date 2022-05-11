@@ -50,7 +50,11 @@ body {
 
 .date-list {
   position: relative;
-  overflow: hidden;
+  height: 228px;
+  overflow-y: hidden;
+}
+.date-list::-webkit-scrollbar {
+  display: none;
 }
 .date-list.is-show {
   -webkit-animation: show 0.2s both;
@@ -68,6 +72,8 @@ body {
   grid-template-columns: repeat(7, 50px);
   gap: 2px;
   overflow: hidden;
+  transition: transform 0.3s;
+  transform: translateY(-150px);
 }
 .date-list__item {
   display: flex;

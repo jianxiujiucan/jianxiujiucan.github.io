@@ -1,10 +1,10 @@
 class Calendar {
   constructor() {
     this.date = new Date();
-    this.year = this.date.getFullYear();
-    this.month = this.date.getMonth();
+    // this.year = this.date.getFullYear();
+    // this.month = this.date.getMonth();
     this.day = this.date.getDate();
-    this.firstDay = new Date(this.year, this.month, 1);
+    //this.firstDay = new Date(this.year, this.month, 1);
     this.showDays = true;
     this.showMonth = false;
     this.showYear = false;
@@ -35,11 +35,14 @@ class Calendar {
     this.$lastMonth.addEventListener("click", () => {
       if (!this.showMonth) {
         this.currentMonth--;
-        if (this.currentMonth === 0) {
+        if (this.currentMonth < 0) {
           this.currentYear -= 1;
           this.currentMonth = 11;
         }
-        this.renderDayList(this.currentYear, this.currentMonth);
+        document.querySelector('.date-list__items').style.transform = 'translateY(0)';
+        setTimeout(() => {
+          this.renderDayList(this.currentYear, this.currentMonth);
+        },300)
       } else {
         this.currentYear--;
         this.$changeDate.innerHTML = `${currentYear}年`;
@@ -53,11 +56,14 @@ class Calendar {
     this.$nextMonth.addEventListener("click", () => {
       if (this.showDays) {
         this.currentMonth++;
-        if (this.currentMonth === 12) {
+        if (this.currentMonth > 11) {
           this.currentYear += 1;
           this.currentMonth = 0;
         }
-        this.renderDayList(this.currentYear, this.currentMonth);
+        document.querySelector('.date-list__items').style.transform = 'translateY(-340px)';
+        setTimeout(() => {
+          this.renderDayList(this.currentYear, this.currentMonth);
+        }, 300);
       }
       if (this.showMonth) {
         this.currentYear += 1;
@@ -84,7 +90,6 @@ class Calendar {
         this.showMonth = false;
         this.renderYearList(this.currentYear);
       }
-      console.log(this.showMonth, this.showYear);
     });
   }
   renderTime() {
@@ -92,7 +97,9 @@ class Calendar {
     let hour = date.getHours().toString().padStart(2, "0");
     let minute = date.getMinutes().toString().padStart(2, "0");
     let second = date.getSeconds().toString().padStart(2, "0");
-    document.getElementById("timeText").innerHTML = `${hour}:${minute}:${second}`;
+    document.getElementById(
+      "timeText"
+    ).innerHTML = `${hour}:${minute}:${second}`;
   }
 
   renderWeekList() {
@@ -106,54 +113,30 @@ class Calendar {
 
   renderDayList(year, month) {
     this.$changeDate.innerHTML = `${year}年${parseInt(month) + 1}月`;
+    const DAY_MILLISECONDS = 24 * 60 * 60 * 1000;
+    let todayDate = new Date(this.currentYear, this.currentMonth);
+    let deltaDay = (todayDate.getDay() + 6) % 7;
+    let firstDayTime =
+      todayDate.getTime() - deltaDay * DAY_MILLISECONDS - 28 * DAY_MILLISECONDS;
     let contentList = `<ul class="date-list__items">`;
-    let days = this.getDays(year); // 当年月份的天数数组
-    let firstDay = new Date(year, month, 1); //当前月份第一天信息
-    let items = 0; // 元素计数
 
-    // 上个月日期生成
-    for (
-      let i = firstDay.getDay() !== 0 ? firstDay.getDay() - 1 : 6;
-      i > 0;
-      i--
-    ) {
-      let over = month === 0 ? 31 : days[month - 1];
-      contentList += `<li class="date-list__item is-disabled"><span>${
-        over - i
-      }</span></li>`;
-      items++;
-    }
-    // 当前月份日期生成
-    for (let i = 1; i <= days[month]; i++) {
-      if (
-        i === this.currentDay &&
-        month === this.date.getMonth() &&
-        year === this.date.getFullYear()
+    for (let i = 0; i < 105; i++) {
+      let currentDate = new Date(firstDayTime + DAY_MILLISECONDS * i);
+      if (currentDate.getMonth() !== month) {
+        contentList += `<li class="date-list__item is-disabled"><span>${currentDate.getDate()}</span></li>`;
+      } else if (
+        currentDate.getDate() === this.currentDay &&
+        this.date.getMonth() === currentDate.getMonth()
       ) {
-        //当天选中态
-        contentList += `<li class="date-list__item is-current"><span>${i}</span></li>`;
+        contentList += `<li class="date-list__item is-current"><span>${currentDate.getDate()}</span></li>`;
       } else {
-        contentList += `<li class="date-list__item"><span>${i}</span></li>`;
-      }
-      items++;
-    }
-
-    // 下个月日期生成
-    let lastDay = new Date(year, month, days[month]);
-
-    for (let i = 1; i < 7 - lastDay.getDay() + 1; i++) {
-      contentList += `<li class="date-list__item is-disabled"><span>${i}</span></li>`;
-      items++;
-    }
-
-    // 如果当前月份不足6行，则填充1行，保证每次生成6行。
-    if (items < 42) {
-      for (let i = 1; i <= 7; i++) {
-        contentList += `<li class="date-list__item is-disabled"><span>${i}</span></li>`;
+        contentList += `<li class="date-list__item"><span>${currentDate.getDate()}</span></li>`;
       }
     }
     contentList += `</ul>`;
-    this.$dateList.innerHTML = contentList; //将生成的dom结构填充到页面里
+    this.$dateList.innerHTML = contentList;
+
+
   }
 
   renderMonthList(year) {
