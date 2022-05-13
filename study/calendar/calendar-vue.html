@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>仿 windows 10 日历</title>
+  <link rel="stylesheet" href="css/calendar.css">
+</head>
+
+<body>
+  <div id="app">
+    <div class="wrapper">
+      <div class="time">
+        <p id="timeText" class="time__text">00:00:00</p>
+        <p id="timeDate" class="time__date"></p>
+      </div>
+      <div class="calendar">
+        <div class="header">
+          <p id="changeDate" class="change-date"></p>
+          <div class="button">
+            <button id="lastMonth"><i class="arrow arrow--up"></i></button>
+            <button id="nextMonth"><i class="arrow arrow--down"></i></button>
+          </div>
+        </div>
+        <!-- 日期 -->
+        <div id="dayWrapper" class="date-wrapper" style="display: none;">
+          <div id="weekList" class="week-list"></div>
+          <div id="dateList" class="date-list"></div>
+        </div>
+        <!-- 月份 -->
+        <div id="monthList" class="grid-list"></div>
+        <!-- 年份 -->
+        <div id="yearList" class="grid-list" style="display: block;"></div>
+      </div>
+    </div>
+  </div>
+  <script src="js/vue.js"></script>
+  <script src="js/calendar-vue.js"></script>
+</body>
+
+</html>

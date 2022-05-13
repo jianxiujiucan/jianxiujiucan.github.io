@@ -34,8 +34,6 @@ body {
   }
 }
 
-
-
 .week-list {
   margin: 0 0 2px;
   display: grid;
@@ -50,8 +48,12 @@ body {
 .date-list {
   position: relative;
   height: 228px;
-  overflow-y: hidden;
-  &::-webkit-scrollbar{
+  //overflow-y: hidden;
+  box-sizing: border-box;
+  // opacity: .5;
+  // pointer-events: none;
+
+  &::-webkit-scrollbar {
     display: none;
   }
   &.is-show {
@@ -73,8 +75,8 @@ body {
     grid-template-columns: repeat(7, 50px);
     gap: 2px;
     overflow: hidden;
-    transition: transform .3s;
-    transform: translateY(-150px);
+    transition: transform 0.3s;
+    transform: translateY(-190px);
   }
 
   &__item {
@@ -87,7 +89,7 @@ body {
     border: solid 2px rgba(255, 255, 255, 0.3);
     box-sizing: border-box;
     cursor: default;
-    transition: 0.2s;
+    transition: color 0.2s;
     &:before {
       position: absolute;
       top: 0;
@@ -236,19 +238,24 @@ button:hover .arrow {
   //display: grid;
   display: none;
   animation: show 0.2s both;
+  height: 264px;
+  overflow: hidden;
+  // border: solid 1px #fff;
+  // box-sizing: border-box;
   &__items {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(4, 1fr);
-    height: 264px;
+    grid-template-rows: repeat(12, 64px);
     gap: 2px;
+    transform: translateY(-198px);
+    transition: transform 0.3s;
   }
   &__item {
     display: flex;
     justify-content: center;
     align-items: center;
-    border: solid 2px transparent;
-    box-sizing: border-box;
+    // border: solid 2px #fff;
+    // box-sizing: border-box;
     cursor: default;
     &:hover {
       border-color: rgba(255, 255, 255, 0.3);

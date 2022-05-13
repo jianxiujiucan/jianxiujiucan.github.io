@@ -51,7 +51,7 @@ body {
 .date-list {
   position: relative;
   height: 228px;
-  overflow-y: hidden;
+  box-sizing: border-box;
 }
 .date-list::-webkit-scrollbar {
   display: none;
@@ -73,7 +73,7 @@ body {
   gap: 2px;
   overflow: hidden;
   transition: transform 0.3s;
-  transform: translateY(-150px);
+  transform: translateY(-190px);
 }
 .date-list__item {
   display: flex;
@@ -85,7 +85,7 @@ body {
   border: solid 2px rgba(255, 255, 255, 0.3);
   box-sizing: border-box;
   cursor: default;
-  transition: 0.2s;
+  transition: color 0.2s;
 }
 .date-list__item:before {
   position: absolute;
@@ -217,20 +217,21 @@ button:hover .arrow {
   display: none;
   -webkit-animation: show 0.2s both;
           animation: show 0.2s both;
+  height: 264px;
+  overflow: hidden;
 }
 .grid-list__items {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(4, 1fr);
-  height: 264px;
+  grid-template-rows: repeat(12, 64px);
   gap: 2px;
+  transform: translateY(-198px);
+  transition: transform 0.3s;
 }
 .grid-list__item {
   display: flex;
   justify-content: center;
   align-items: center;
-  border: solid 2px transparent;
-  box-sizing: border-box;
   cursor: default;
 }
 .grid-list__item:hover {
