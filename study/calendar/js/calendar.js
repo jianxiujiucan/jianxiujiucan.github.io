@@ -158,7 +158,7 @@ class Calendar {
     console.log(prefix);
     this.$changeDate.innerHTML = `${prefix} - ${prefix + 9}`;
     prefix = prefix - 12;
-    console.log(this.currentYear - 100);
+    //console.log(this.currentYear - 100);
     // for (let i = 0; i < 48; i++) {
     //   if (i >= 22) {
     //     yearDom += `<div class="grid-list__item is-disabled" data-year=${
