@@ -2,8 +2,8 @@ class Calendar {
   constructor() {
     this.date = new Date();
     this.showDays = false;
-    this.showMonth = false;
-    this.showYear = true;
+    this.showMonth = true;
+    this.showYear = false;
     this.currentYear = this.date.getFullYear();
     this.currentMonth = this.date.getMonth();
     this.currentDay = this.date.getDate();
@@ -23,8 +23,8 @@ class Calendar {
     //this.renderDayList(this.currentYear, this.currentMonth);
     this.renderWeekList();
     this.handleClick();
-    //this.renderMonthList(this.currentYear);
-    this.renderYearList(this.currentYear);
+    this.renderMonthList(this.currentYear);
+    //this.renderYearList(this.currentYear);
   }
 
   renderTime() {
