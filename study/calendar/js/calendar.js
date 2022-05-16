@@ -1,14 +1,15 @@
 class Calendar {
   constructor() {
     this.date = new Date();
-    this.showDays = false;
-    this.showMonth = true;
-    this.showYear = false;
+    this.isShowDays = false;
+    this.isShowMonths = false;
+    this.isShowYears = true;
     this.currentYear = this.date.getFullYear();
     this.currentMonth = this.date.getMonth();
     this.currentDay = this.date.getDate();
     this.slideDown = "380px";
     this.slideUp = "38px";
+    this.transitionTime = 300;
     this.$changeDate = document.getElementById("changeDate");
     this.$dayWrapper = document.getElementById("dayWrapper");
     this.$weekList = document.getElementById("weekList");
@@ -23,8 +24,8 @@ class Calendar {
     //this.renderDayList(this.currentYear, this.currentMonth);
     this.renderWeekList();
     this.handleClick();
-    this.renderMonthList(this.currentYear);
-    //this.renderYearList(this.currentYear);
+    //this.renderMonthList(this.currentYear);
+    this.renderYearList(this.currentYear);
   }
 
   renderTime() {
@@ -54,7 +55,7 @@ class Calendar {
   }
 
   renderDayList(year, month) {
-    this.showDays = true;
+    this.isShowDays = true;
     this.$changeDate.innerHTML = `${year}年${parseInt(month) + 1}月`;
     const DAY_MILLISECONDS = 24 * 60 * 60 * 1000;
     let date = new Date(year, month);
@@ -98,41 +99,28 @@ class Calendar {
   renderMonthList(year) {
     this.$changeDate.innerHTML = `${year}年`;
     let monthDom = `<ul class="grid-list__items">`;
-    for (let i = 1; i <= 48; i++) {
-      if (i <= 12) {
-        monthDom += `<li class="grid-list__item" data-year=${
-          year - 1
-        } data-month=${i}>${i}月</li>`;
-      } else if (i > 12 && i <= 24) {
+    let perYears = year - 1;
+    for (let j = 0; j < 4; j++) {
+      for (let i = 1; i <= 12; i++) {
         if (
-          i - 12 === this.currentMonth + 1 &&
-          this.date.getFullYear() === year
+          i === this.currentMonth + 1 &&
+          this.date.getFullYear() === perYears + j
         ) {
-          monthDom += `<div class="grid-list__item is-current" data-year=${year} data-month=${
-            i - 12
-          }>${i - 12}月</div>`;
+          monthDom += `<li class="grid-list__item is-current" data-year="${
+            perYears + j
+          }
+        " data-month="${i}">${i}月</li>`;
+        } else if (j === 2) {
+          monthDom += `<li class="grid-list__item is-disabled" data-year="${
+            perYears + j
+          }" data-month="${i}">${i}月</li>`;
         } else {
-          monthDom += `<li class="grid-list__item" data-year=${year} data-month=${
-            i - 12
-          }>${i - 12}月</li>`;
+          monthDom += `<li class="grid-list__item" data-year="${
+            perYears + j
+          }" data-month="${i}">${i}月</li>`;
         }
-      } else if (i > 24 && i <= 36) {
-        if (i - 24 <= 4) {
-          monthDom += `<li class="grid-list__item is-disabled" data-year=${
-            year + 1
-          } data-month=${i - 24}>${i - 24}月</li>`;
-        } else {
-          monthDom += `<li class="grid-list__item" data-year=${
-            year + 1
-          } data-month=${i - 24}>${i - 24}月</li>`;
-        }
-      } else {
-        monthDom += `<li class="grid-list__item is-disabled" data-year=${
-          year + 2
-        } data-month=${i - 36}>${i - 36}月</li>`;
       }
     }
-
     monthDom += `</ul>`;
     this.$monthList.innerHTML = monthDom;
 
@@ -141,18 +129,19 @@ class Calendar {
     for (let itemMonth of itemsMonth) {
       itemMonth.addEventListener("click", function () {
         for (let i = 0; i < itemsMonth.length; i++) {
+          console.log(+this.dataset.year, this.dataset.month - 1);
           that.renderDayList(+this.dataset.year, this.dataset.month - 1);
           that.$dayWrapper.style.display = "block";
           that.$dateList.classList.add("is-show");
           that.$monthList.style.display = "none";
-          that.showMonth = false;
+          that.isShowMonths = false;
         }
       });
     }
   }
 
   renderYearList(year) {
-    this.showYear = true;
+    this.isShowYears = true;
     let yearDom = `<ul class="grid-list__items">`;
     let prefix = Number.parseInt(year / 10) * 10;
     console.log(prefix);
@@ -174,18 +163,32 @@ class Calendar {
     //     }</div>`;
     //   }
     // }
+   
     let arrayYear = [];
     for (let i = this.currentYear - 100; i <= this.currentYear + 100; i += 4) {
       let arrSub = [];
-      for (let j = 0; j <= 3; j++) {
+      for (let j = 0; j < 4; j++) {
         arrSub.push(i + j);
       }
       arrayYear.push(arrSub);
     }
-    console.log(arrayYear);
+    console.log(arrayYear)
+    let yearList = []
+    for (let i = 22; i < 31; i++) {
+      for(let j= 0; j < 4; j++) {
+        yearList.push(arrayYear[i][j]);
+      }
+    }
+    console.log(yearList);
+
+    for(let i = 0; i< yearList.length; i++){
+      yearDom += `<div class="grid-list__item" data-year="${yearList[i]}"><span>${yearList[i]}</span></div>`
+    }
 
     yearDom += `</ul>`;
+    console.log(yearDom);
     this.$yearList.innerHTML = yearDom;
+
     let that = this;
     let itemsYear = document.querySelectorAll(".grid-list__item");
     for (let itemYear of itemsYear) {
@@ -194,109 +197,137 @@ class Calendar {
           that.renderMonthList(+this.dataset.year);
           that.$monthList.style.display = "block";
           that.$yearList.style.display = "none";
-          that.showYear = false;
-          that.showMonth = true;
+          that.isShowYears = false;
+          that.isShowMonths = true;
         }
       });
     }
   }
 
   handleClick() {
-    let transitionTime = 300;
-
-    //上个月点击
+    //向上箭头点击
     this.$lastMonth.addEventListener("click", () => {
-      console.log(this.showDays, this.showMonth, this.showYear);
-      if (this.showDays) {
-        this.currentMonth--;
-        if (this.currentMonth < 0) {
-          this.currentYear -= 1;
-          this.currentMonth = 11;
-        }
-        document.querySelector(
-          ".date-list__items"
-        ).style.transform = `translateY(-${this.slideUp})`;
-        setTimeout(() => {
-          this.renderDayList(this.currentYear, this.currentMonth);
-        }, transitionTime);
+      console.log(this.isShowDays, this.isShowMonths, this.isShowYears);
+      if (this.isShowDays) {
+        this.showLastDays();
       }
-      if (this.showMonth) {
-        this.currentYear--;
-        this.$changeDate.innerHTML = `${this.currentYear}年`;
-        document.querySelector(
-          ".grid-list__items"
-        ).style.transform = `translateY(0)`;
-        setTimeout(() => {
-          this.renderMonthList(this.currentYear);
-        }, transitionTime);
+      if (this.isShowMonths) {
+        this.showLastMonths();
       }
-      if (this.showYear) {
-        document.querySelector(
-          ".grid-list__items"
-        ).style.transform = `translateY(0)`;
-        this.currentYear -= 10;
-        setTimeout(() => {
-          this.renderYearList(this.currentYear);
-        }, transitionTime);
+      if (this.isShowYears) {
+        this.showLastYears();
+        
       }
     });
     // 下个月点击
     this.$nextMonth.addEventListener("click", () => {
-      console.log("下个月:", this.showDays, this.showMonth, this.showYear);
-      if (this.showDays) {
-        this.currentMonth++;
-        if (this.currentMonth > 11) {
-          this.currentYear += 1;
-          this.currentMonth = 0;
-        }
-        document.querySelector(
-          ".date-list__items"
-        ).style.transform = `translateY(-${this.slideDown})`;
-        setTimeout(() => {
-          this.renderDayList(this.currentYear, this.currentMonth);
-        }, transitionTime);
+      if (this.isShowDays) {
+        this.showNextDays();
       }
       // 月份
-      if (this.showMonth) {
-        this.currentYear++;
-        this.$changeDate.innerHTML = `${this.currentYear}年`;
-        document.querySelector(
-          ".grid-list__items"
-        ).style.transform = `translateY(-396px)`;
-        document.querySelectorAll(".is-disabled").forEach((item) => {
-          item.classList.remove("is-disabled");
-        });
-        setTimeout(() => {
-          this.renderMonthList(this.currentYear);
-        }, transitionTime);
+      if (this.isShowMonths) {
+        this.showNextMonths();
       }
       // 年份
-      if (this.showYear) {
-        this.currentYear += 10;
-        document.querySelector(
-          ".grid-list__items"
-        ).style.transform = `translateY(-396px)`;
-        setTimeout(() => {
-          this.renderYearList(this.currentYear);
-        }, transitionTime);
+      if (this.isShowYears) {
+        this.showNextYears();
       }
     });
 
     this.$changeDate.addEventListener("click", () => {
-      console.log(this.showDays, this.showMonth, this.showYear);
-      if (this.showDays) {
+      console.log(this.isShowDays, this.isShowMonths, this.isShowYears);
+      if (this.isShowDays) {
         this.$dayWrapper.style.display = "none";
         this.$monthList.style.display = "block";
         this.$changeDate.innerHTML = `${this.currentYear}年`;
-        this.showMonth = true;
-        this.showDays = false;
+        this.isShowMonths = true;
+        this.isShowDays = false;
         this.renderMonthList(this.currentYear);
-      } else if (this.showMonth) {
+      } else if (this.isShowMonths) {
         this.$monthList.style.display = "none";
         this.$yearList.style.display = "block";
-        this.showMonth = false;
+        this.isShowMonths = false;
         this.renderYearList(this.currentYear);
       }
     });
+  }
+
+  showLastDays() {
+    this.currentMonth--;
+    if (this.currentMonth < 0) {
+      this.currentYear -= 1;
+      this.currentMonth = 11;
+    }
+    document.querySelector(
+      ".date-list__items"
+    ).style.transform = `translateY(-${this.slideUp})`;
+    setTimeout(() => {
+      this.renderDayList(this.currentYear, this.currentMonth);
+    }, this.transitionTime);
+  }
+
+  showLastMonths() {
+    this.currentYear--;
+    this.$changeDate.innerHTML = `${this.currentYear}年`;
+    document.querySelector(
+      ".grid-list__items"
+    ).style.transform = `translateY(0)`;
+    setTimeout(() => {
+      this.renderMonthList(this.currentYear);
+    }, this.transitionTime);
+  }
+
+  showLastYears() {
+    document.querySelector(
+      ".grid-list__items"
+    ).style.transform = `translateY(0)`;
+    this.currentYear -= 10;
+    setTimeout(() => {
+      this.renderYearList(this.currentYear);
+    }, this.transitionTime);
+  }
+  showNextDays() {
+    this.currentMonth++;
+    if (this.currentMonth > 11) {
+      this.currentYear += 1;
+      this.currentMonth = 0;
+    }
+    document.querySelector(
+      ".date-list__items"
+    ).style.transform = `translateY(-${this.slideDown})`;
+    setTimeout(() => {
+      this.renderDayList(this.currentYear, this.currentMonth);
+    }, this.transitionTime);
+  }
+  showNextMonths() {
+    this.currentYear++;
+    this.$changeDate.innerHTML = `${this.currentYear}年`;
+    document.querySelector(
+      ".grid-list__items"
+    ).style.transform = `translateY(-396px)`;
+    document.querySelectorAll(".is-disabled").forEach((item) => {
+      item.classList.remove("is-disabled");
+    });
+    setTimeout(() => {
+      this.renderMonthList(this.currentYear);
+    }, this.transitionTime);
+  }
+  showNextYears() {
+    this.currentYear += 10;
+    document.querySelector(
+      ".grid-list__items"
+    ).style.transform = `translateY(-396px)`;
+    setTimeout(() => {
+      this.renderYearList(this.currentYear);
+    }, this.transitionTime);
+  }
+  showLastYears(){
+    document.querySelector(
+      ".grid-list__items"
+    ).style.transform = `translateY(0)`;
+    this.currentYear -= 10;
+    setTimeout(() => {
+      this.renderYearList(this.currentYear);
+    }, this.transitionTime);
   }
 }

@@ -51,6 +51,7 @@ body {
 .date-list {
   position: relative;
   height: 228px;
+  overflow-y: hidden;
   box-sizing: border-box;
 }
 .date-list::-webkit-scrollbar {
