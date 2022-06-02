@@ -143,7 +143,7 @@
     getData()
 
     function getData() {
-      let url = 'https://api-shoulei-ssl.xunlei.com/pss/static/config_json_1879/mobile_and_m_xunlei_com_config.json'
+      let url = 'https://2ygmio01i5pzwe64odb.xbase.xyz/fn/study/5yrcemb'
       let xhr = new XMLHttpRequest()
       xhr.onreadystatechange = function () {
         if (xhr.readyState === 4) {
@@ -165,6 +165,26 @@
         console.log(name)
       }
     }
+
+    var xhr = new XMLHttpRequest();
+    //xhr.open("POST", "https://2vdai4wohm0bnnkzhsh.xbase.xyz/fn/statappeal/5yrcemb", true);
+    xhr.open('POST','https://2ygmio01i5pzwe64odb.xbase.xyz/fn/study/5yrcemb', true)
+    xhr.setRequestHeader('content-type', 'application/json');
+
+    var sendData = { "123": "abc" };
+    //将用户输入值序列化成字符串
+    xhr.send(JSON.stringify(sendData));
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState == 4) {
+        //根据服务器的响应内容格式处理响应结果
+        if (xhr.getResponseHeader('content-type') === 'application/json') {
+          console.log(11111111)
+        } else {
+          console.log(xhr.responseText);
+        }
+      }
+    }
+
 
 
   </script>

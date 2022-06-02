@@ -18,6 +18,7 @@ class Calendar {
     this.$yearList = document.getElementById("yearList");
     this.$lastMonth = document.getElementById("lastMonth");
     this.$nextMonth = document.getElementById("nextMonth");
+    this.$timeDate = document.getElementById("timeDate");
   }
   render() {
     this.renderTime();
@@ -30,6 +31,9 @@ class Calendar {
 
   renderTime() {
     this.createTime();
+    this.$timeDate.innerHTML = `${this.currentYear}年${
+      this.currentMonth + 1
+    }月${this.currentDay}日`;
     setInterval(() => {
       this.createTime();
     }, 1000);
@@ -70,7 +74,7 @@ class Calendar {
         contentList += `<li class="date-list__item is-disabled"><span>${currentDate.getDate()}</span></li>`;
       } else if (
         currentDate.getDate() === this.currentDay &&
-        this.date.getMonth() === currentDate.getMonth() &&
+        currentDate.getMonth() === this.date.getMonth() &&
         currentDate.getFullYear() === this.date.getFullYear()
       ) {
         contentList += `<li class="date-list__item is-current"><span>${currentDate.getDate()}</span></li>`;
@@ -141,52 +145,56 @@ class Calendar {
   }
 
   renderYearList(year) {
+    console.log(year);
     this.isShowYears = true;
     let yearDom = `<ul class="grid-list__items">`;
     let prefix = Number.parseInt(year / 10) * 10;
-    console.log(prefix);
     this.$changeDate.innerHTML = `${prefix} - ${prefix + 9}`;
-    prefix = prefix - 12;
-    //console.log(this.currentYear - 100);
-    // for (let i = 0; i < 48; i++) {
-    //   if (i >= 22) {
-    //     yearDom += `<div class="grid-list__item is-disabled" data-year=${
-    //       prefix + i
-    //     }>${prefix + i}</div>`;
-    //   } else if (prefix + i === this.date.getFullYear()) {
-    //     yearDom += `<div class="grid-list__item is-current" data-year=${
-    //       prefix + i
-    //     }>${prefix + i}</div>`;
-    //   } else {
-    //     yearDom += `<div class="grid-list__item" data-year=${prefix + i}>${
-    //       prefix + i
-    //     }</div>`;
-    //   }
-    // }
-   
+
     let arrayYear = [];
-    for (let i = this.currentYear - 100; i <= this.currentYear + 100; i += 4) {
+    for (
+      let i = this.date.getFullYear() - 100;
+      i <= this.date.getFullYear() + 100;
+      i += 4
+    ) {
       let arrSub = [];
       for (let j = 0; j < 4; j++) {
+        if(i + j <= this.date.getFullYear() + 100){
         arrSub.push(i + j);
+        }
       }
       arrayYear.push(arrSub);
     }
     console.log(arrayYear)
-    let yearList = []
-    for (let i = 22; i < 31; i++) {
-      for(let j= 0; j < 4; j++) {
+    let mark = 0;
+    for (let i = 0; i < arrayYear.length; i++) {
+      //console.log(arrayYear[i])
+      for (let j = 0; j < 4; j++) {
+        //console.log(arrayYear[i][j]);
+        if (arrayYear[i][j] === this.currentYear) {
+          mark = i;
+        }
+      }
+    }
+    let yearList = [];
+    
+    for (let i = mark - 4; i < mark + 6; i++) {
+      for (let j = 0; j < arrayYear[i].length; j++) {
         yearList.push(arrayYear[i][j]);
       }
     }
+    
     console.log(yearList);
-
-    for(let i = 0; i< yearList.length; i++){
-      yearDom += `<div class="grid-list__item" data-year="${yearList[i]}"><span>${yearList[i]}</span></div>`
+    for (let i = 0; i < yearList.length; i++) {
+      if (yearList[i] < prefix || yearList[i] > prefix + 9) {
+        yearDom += `<li class="grid-list__item is-disabled" data-year=${yearList[i]}>${yearList[i]}</li>`;
+      } else {
+        yearDom += `<li class="grid-list__item" data-year="${yearList[i]}"><span>${yearList[i]}</span></li>`;
+      }
     }
 
     yearDom += `</ul>`;
-    console.log(yearDom);
+    //console.log(yearDom);
     this.$yearList.innerHTML = yearDom;
 
     let that = this;
@@ -216,7 +224,6 @@ class Calendar {
       }
       if (this.isShowYears) {
         this.showLastYears();
-        
       }
     });
     // 下个月点击
@@ -312,6 +319,7 @@ class Calendar {
       this.renderMonthList(this.currentYear);
     }, this.transitionTime);
   }
+  
   showNextYears() {
     this.currentYear += 10;
     document.querySelector(
@@ -319,9 +327,10 @@ class Calendar {
     ).style.transform = `translateY(-396px)`;
     setTimeout(() => {
       this.renderYearList(this.currentYear);
-    }, this.transitionTime);
+    }, 1000);
   }
-  showLastYears(){
+
+  showLastYears() {
     document.querySelector(
       ".grid-list__items"
     ).style.transform = `translateY(0)`;

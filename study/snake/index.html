@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>snake</title>
+  <style>
+    :root {
+      --width: 500px;
+      --size: 20px;
+    }
+
+    .box {
+      position: relative;
+      margin: 0 auto;
+      width: var(--width);
+      height: var(--width);
+      border: solid 1px #ccc;
+      box-sizing: border-box;
+      overflow: hidden;
+    }
+
+    .cover {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      font-size: 16px;
+      background: rgba(0, 0, 0, .5);
+    }
+
+    .canvas {
+      width: var(--width);
+      height: var(--width);
+      box-sizing: border-box;
+      background: repeating-linear-gradient(transparent 0 calc(var(--size) - 1px), #ccc var(--size)), repeating-linear-gradient(to right, transparent 0 calc(var(--size) - 1px), #ccc var(--size));
+    }
+
+    .operate {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 12px 0 0;
+    }
+
+    button {
+      margin: 0 6px;
+      width: 70px;
+      height: 26px;
+      color: #fff;
+      background: #69f;
+      border-radius: 4px;
+      border: 0;
+      outline: 0;
+      cursor: pointer;
+    }
+
+    button.is-disabled {
+      background: #ccc;
+      cursor: not-allowed;
+    }
+
+    p {
+      margin-right: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box">
+    <canvas id="canvas" class="canvas"></canvas>
+    <div id="cover" class="cover"></div>
+  </div>
+  <div class="operate">
+    <p class="score">分数: <span id="score">0</span></p>
+    <button id="buttonStart">开始</button>
+    <button id="buttonTodo">暂停</button>
+  </div>
+  <script>
+    // 写一个Canvas的贪吃蛇游戏
+    class Snake {
+      constructor() {
+        this.canvas = document.getElementById('canvas');
+        this.ctx = this.canvas.getContext("2d");
+        this.cover = document.getElementById('cover');
+        this.score = document.getElementById('score');
+        this.size = 20
+        this.width = 500;
+        this.height = 500;
+        this.snake = [];
+        this.colorFood = 'orange'; //食物颜色
+        this.colorSnake = '#666';   //蛇身颜色
+        this.colorHead = 'red';    //蛇头颜色
+        this.direction = 'right'; //初始方向
+        this.timer = null; //定时器
+        this.food = []; //食物位置数组
+        this.speed = 150; //初始速度
+        this.isStart = false; //是否开始
+        this.isPause = false; //是否暂停
+        this.scoreValue = 0; //分数
+      }
+      render() {
+        this.canvas.width = this.width;
+        this.canvas.height = this.height;
+        this.cover.style.display = 'none';
+        this.score.innerText = 0;
+        this.getFood()
+        this.createSnake()
+        this.getDirection()
+        this.moving('right')
+      }
+      createSnake() {
+        this.snake = [
+          [2, 1],
+          [1, 1],
+          [0, 1]
+        ];
+      }
+      draw() {
+        //每次绘制都要清除画布
+        this.ctx.clearRect(0, 0, this.width, this.height);
+
+        // 绘制食物
+        this.ctx.fillStyle = this.colorFood;
+        this.ctx.fillRect(this.food[0] * this.size, this.food[1] * this.size, this.size, this.size);
+
+        // 绘制蛇头
+        this.ctx.fillStyle = this.colorHead;
+        this.ctx.fillRect(this.snake[0][0] * this.size, this.snake[0][1] * this.size, this.size, this.size);
+
+        // 绘制蛇身
+        this.ctx.fillStyle = this.colorSnake;
+        for (let i = 1; i < this.snake.length; i++) {
+          this.ctx.fillRect(this.snake[i][0] * this.size, this.snake[i][1] * this.size, this.size, this.size);
+        }
+      }
+      moving(key) {
+        if (this.timer) {
+          clearInterval(this.timer)
+        }
+        console.log(key)
+        this.timer = setInterval(() => {
+          let [x, y] = this.snake[0];
+          switch (key) {
+            case 'left':
+              x--;
+              break
+            case 'right':
+              x++
+              break
+            case 'up':
+              y--
+              break
+            case 'down':
+              y++
+              break
+          }
+
+          if (x > this.width / this.size - 1 || x < 0 || y > this.height / this.size - 1 || y < 0) {
+;
+            this.over('撞墙啦, 游戏结束...(｡•ˇ‸ˇ•｡) ...', 'end')
+            return
+          }
+          if (this.snake.some((item) => {
+            return item[0] === x && item[1] === y
+          })) {
+            this.over('撞自己啦, 游戏结束...(｡•ˇ‸ˇ•｡) ...', 'end')
+            return
+          }
+          if (this.snake.length === this.width / this.size * this.height / this.size) {
+            this.over('恭喜你, 已经走完啦, 游戏结束＼(＠＾０＾＠)/', 'end')
+            return
+          }
+
+          if (x === this.food[0] && y === this.food[1]) {
+            this.snake.unshift([x, y])
+            this.getFood()
+            this.getDirection()
+            this.scoreValue += 10
+            this.score.innerHTML = this.scoreValue
+          } else {
+            this.snake.unshift([x, y])
+            this.snake.pop()
+          }
+          this.draw()
+        }, this.speed);
+      }
+      over(text, type) {
+        this.cover.style.display = 'flex'
+        this.cover.innerHTML = `<p>${text}</p>`
+        clearInterval(this.timer)
+        if (type === 'end') {
+          this.ctx.clearRect(0, 0, this.width, this.height);
+        }
+        return
+      }
+      pause() {
+        if (!this.isPause) {
+          this.isPause = true
+          clearInterval(this.timer)
+          this.over('游戏暂停中~')
+          return
+        } else {
+          this.cover.style.display = 'none'
+          this.moving(this.direction)
+          this.isPause = false
+        }
+        console.log(this.isPause)
+      }
+      getFood() {
+        this.food = [this.randomNumber(), this.randomNumber()]
+        this.snake.forEach(item => {
+          if (this.food[0] === item[0] && this.food[1] === item[1]) {
+            return this.getFood()
+          }
+        })
+      }
+      getDirection() {
+        let that = this
+        document.body.addEventListener("keydown", function (e) {
+          switch (e.keyCode) {
+            case 37:
+              if (that.direction === 'right') return
+              that.direction = 'left';
+              break;
+            case 38:
+              if (that.direction === 'down') return
+              that.direction = 'up';
+              break;
+            case 39:
+              if (that.direction === 'left') return
+              that.direction = 'right';
+              break;
+            case 40:
+              if (that.direction === 'up') return
+              that.direction = 'down';
+              break;
+          }
+          that.moving(that.direction)
+        })
+      }
+
+      randomNumber() {
+        return parseInt((this.width / this.size - 1) * Math.random())
+      }
+    }
+
+    let snake = new Snake();
+    const buttonStart = document.getElementById('buttonStart')
+    const buttonTodo = document.getElementById('buttonTodo')
+    buttonStart.addEventListener('click', function () {
+      snake.render();
+      this.innerHTML = '重新开始'
+    })
+    buttonTodo.addEventListener('click', function () {
+      snake.pause()
+      if (!snake.isPause) {
+        this.innerHTML = '暂停'
+      } else {
+        this.innerHTML = '继续'
+      }
+    })
+
+  </script>
+</body>
+
+</html>

@@ -13,24 +13,32 @@
   <div id="app">
     <div class="wrapper">
       <div class="time">
-        <p id="timeText" class="time__text">00:00:00</p>
-        <p id="timeDate" class="time__date"></p>
+        <p id="timeText" class="time__text">{{time}}</p>
+        <p id="timeDate" class="time__date">{{timeDate}}</p>
       </div>
       <div class="calendar">
         <div class="header">
-          <p id="changeDate" class="change-date"></p>
+          <p  class="change-date">{{changeDate}}</p>
           <div class="button">
-            <button id="lastMonth"><i class="arrow arrow--up"></i></button>
-            <button id="nextMonth"><i class="arrow arrow--down"></i></button>
+            <button @click="handlePrev"><i class="arrow arrow--up"></i></button>
+            <button @click="handleNext"><i class="arrow arrow--down"></i></button>
           </div>
         </div>
         <!-- 日期 -->
-        <div id="dayWrapper" class="date-wrapper" style="display: none;">
-          <div id="weekList" class="week-list"></div>
-          <div id="dateList" class="date-list"></div>
+        <div class="date-wrapper">
+          <div class="week-list">
+            <span v-for="(item, index) in weekList" :key="index">{{item}}</span>
+          </div>
+          <div class="date-list">
+            <ul class="date-list__items" :style="styleObject">
+              <li class="date-list__item" :class="{'is-disabled': item.disabled, 'is-current': item.current}"  v-for="(item, index) in dateList" :key="index"> 
+                <span>{{item.day}}</span>
+              </li>
+            </ul>
+          </div>
         </div>
         <!-- 月份 -->
-        <div id="monthList" class="grid-list"style="display: block;"></div>
+        <div id="monthList" class="grid-list"></div>
         <!-- 年份 -->
         <div id="yearList" class="grid-list" ></div>
       </div>
@@ -38,6 +46,9 @@
   </div>
   <script src="js/vue.js"></script>
   <script src="js/calendar-vue.js"></script>
+  <script>
+    
+  </script>
 </body>
 
 </html>

@@ -86,7 +86,6 @@ body {
   border: solid 2px rgba(255, 255, 255, 0.3);
   box-sizing: border-box;
   cursor: default;
-  transition: color 0.2s;
 }
 .date-list__item:before {
   position: absolute;

@@ -1,142 +1,145 @@
 new Vue({
   el: "#app",
   data: {
-    activeClass: '',
-    weekList: ['日', '一', '二', '三', '四', '五', '六'],
-    days: [],
+    date: new Date(),
+    weekList: ["一", "二", "三", "四", "五", "六", "日"],
+    currentYear: 0,
+    currentMonth: 0,
+    currentDay: 0,
     dateList: [],
-    date: '',
-    timeDate: '',
+    timeDate: "",
     dateData: {},
-    year: '',
-    month: '',
-    day: '',
-    firstDay: '',
-    lastDay: '',
-    time: '',
+    year: "",
+    month: "",
+    day: "",
+    firstDay: "",
+    lastDay: "",
+    time: "",
     activeDay: true,
+    changeDate: "",
+    slide: -190,
+    transitionTime: 400,
+    styleObject: {
+      transform: "translateY(-190px)",
+      transition: "transform 0.4s"
+    }
   },
 
   mounted() {
-    this.renderAll()
+    this.renderAll();
   },
 
   methods: {
     renderAll() {
-      this.getDate()
-      this.renderTime()
-      this.renderDays(this.dateData)
+      this.getDate();
+      this.renderTime();
+      this.renderDayList(this.currentYear, this.currentMonth);
     },
 
     getDate() {
-      let date = new Date()
-      this.dateData = {
-        year: date.getFullYear(),
-        month: date.getMonth(),
-        today: date.getDate(),
-      }
-    },
-    timer() {
-      let date = new Date()
-      let hour = date.getHours().toString().padStart(2, '0')
-      let minute = date.getMinutes().toString().padStart(2, '0')
-      let second = date.getSeconds().toString().padStart(2, '0')
-      this.time = `${hour}:${minute}:${second}`
+      this.currentYear = this.date.getFullYear();
+      this.currentMonth = this.date.getMonth();
+      this.currentDay = this.date.getDate();
     },
     renderTime() {
-      this.timer()
-      this.timeDate = `${this.dateData.year}年${this.dateData.month + 1}月${this.dateData.today}日`
+      this.createTime();
+      this.timeDate = `${this.date.getFullYear()}年${this.date.getMonth() + 1}月${
+        this.date.getDate()
+      }日`;
       setInterval(() => {
-        this.timer()
-      }, 1000)
+        this.createTime();
+      }, 1000);
     },
-    renderDays(dateData) {
-      this.date = new Date()
-      let {
-        year,
-        month,
-        today
-      } = dateData
+    createTime() {
+      let hour = this.date.getHours().toString().padStart(2, "0");
+      let minute = this.date.getMinutes().toString().padStart(2, "0");
+      let second = this.date.getSeconds().toString().padStart(2, "0");
+      this.time = `${hour}:${minute}:${second}`;
+    },
+    
 
-      let days = [31, this.isLeapYear(year), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
-      let firstDay = new Date(year, month, 1)
-      let items = 0 // 元素计数
-      this.dateList = []
-
-      for (let i = firstDay.getDay() - 1; i >= 0; i--) {
-        let over = month === 0 ? 31 : days[month - 1]
-        let lastMonthObject = {
-          day: over - i,
-          disabled: true,
-        }
-        this.dateList.push(lastMonthObject)
-        items++
-      }
-
-      for (let i = 1; i <= days[month]; i++) {
-        let currentMonthObject = {
-          day: i,
-        }
-        if (i === today && month === this.date.getMonth() && year === this.date.getFullYear()) {
-          currentMonthObject.current = true
-        }
-        this.dateList.push(currentMonthObject)
-        items++
-      }
-
-      let lastDay = new Date(year, month, days[month])
-      for (let i = 1; i < 7 - lastDay.getDay(); i++) {
-        let nextMonthObject = {
-          day: i,
-          disabled: true,
-        }
-        this.dateList.push(nextMonthObject)
-        items++
-      }
-
-      // 如果当前月份不足6行，则填充1行，保证每次生成6行。
-      if (items < 42) {
-        for (let i = 1; i <= 7; i++) {
-          let stuffObject = {
-            day: i,
+    renderDayList(year, month) {
+      const DAY_MILLISECONDS = 24 * 60 * 60 * 1000;
+      let date = new Date(year, month);
+      let deltaDay = (date.getDay() + 6) % 7;
+      let firstDayTime =
+        date.getTime() - deltaDay * DAY_MILLISECONDS - 35 * DAY_MILLISECONDS;
+      this.dateList = [];
+      this.changeDate = `${year}年${parseInt(month) + 1}月`
+      for (let i = 0; i < 112; i++) {
+        const currentDate = new Date(firstDayTime + DAY_MILLISECONDS * i);
+        if (currentDate.getMonth() !== month && i >= 28 && i <= 77) {
+          const lastMonthObject = {
+            day: currentDate.getDate(),
             disabled: true,
+          };
+          this.dateList.push(lastMonthObject);
+        } else if (
+          currentDate.getDate() === this.date.getDate() &&
+          currentDate.getMonth() === this.date.getMonth() &&
+          currentDate.getFullYear() === this.date.getFullYear()
+        ) {
+          const currentObject = {
+            day: currentDate.getDate(),
+            current: true,
+          };
+          this.dateList.push(currentObject);
+        } else {
+          const currentObject = {
+            day: currentDate.getDate(),
+          };
+          this.dateList.push(currentObject);
+        }
+        if (currentDate.getDate() === 1 && i < 14) {
+          if (i < 7) {
+            this.slide = "0px";
+          } else {
+            this.slide = "-38px";
           }
-          this.dateList.push(stuffObject)
+        }
+        if (i === 70) {
+          if (currentDate.getDate() > 7 || currentDate.getDate() === 1) {
+            this.slideDown = "380px";
+          } else {
+            this.slideDown = "342px";
+          }
         }
       }
     },
 
-    //是否闰年
-    isLeapYear(year) {
-      if (year % 4 === 0 && year % 100 != 0 || year % 400 === 0) {
-        return 29
-      } else {
-        return 28
-      }
-    },
     //上个月
     handlePrev() {
-      this.dateData.month--
-      if (this.dateData.month < 0) {
-        this.dateData.year -= 1
-        this.dateData.month = 11
-      }
-      this.renderDays(this.dateData)
+      this.showLastMonths()
     },
     //下个月
     handleNext() {
-      this.dateData.month++
-      if (this.dateData.month > 11) {
-        this.dateData.year += 1
-        this.dateData.month = 0
+      this.currentMonth++;
+      if (this.currentMonth > 11) {
+        this.currentYear += 1;
+        this.currentMonth = 0;
       }
-      this.renderDays(this.dateData)
+      this.renderDayList(this.currentYear, this.currentMonth);
     },
-    handleActive(index) {
-      this.activeClass = index;
-    },
-    handleShowMonth() {
 
-    }
-  }
-})
+    showLastMonths() {
+      this.currentMonth--;
+      if (this.currentMonth < 0) {
+        this.currentYear -= 1;
+        this.currentMonth = 11;
+      }
+      //this.styleObject.transform = `translateY(${this.slide}px)`;
+      this.styleObject = {
+        transform: `translateY(${this.slide})`,
+        transition: `transform ${this.transitionTime}ms`
+      }
+      console.log(this.styleObject)
+      setTimeout(() => {
+        this.renderDayList(this.currentYear, this.currentMonth);
+        this.styleObject = {
+          transform: `translateY(-190px)`,
+          transition: "unset"
+        }
+      }, this.transitionTime);
+    },
+  },
+});
