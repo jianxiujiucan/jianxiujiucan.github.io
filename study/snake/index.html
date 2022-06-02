@@ -212,7 +212,6 @@
           this.moving(this.direction)
           this.isPause = false
         }
-        console.log(this.isPause)
       }
       getFood() {
         this.food = [this.randomNumber(), this.randomNumber()]
@@ -223,28 +222,29 @@
         })
       }
       getDirection() {
-        let that = this
-        document.body.addEventListener("keydown", function (e) {
+        // let that = this
+        document.body.addEventListener('keydown',(e) => {
           switch (e.keyCode) {
             case 37:
-              if (that.direction === 'right') return
-              that.direction = 'left';
+              if (this.direction === 'right') return
+              this.direction = 'left';
               break;
             case 38:
-              if (that.direction === 'down') return
-              that.direction = 'up';
+              if (this.direction === 'down') return
+              this.direction = 'up';
               break;
             case 39:
-              if (that.direction === 'left') return
-              that.direction = 'right';
+              if (this.direction === 'left') return
+              this.direction = 'right';
               break;
             case 40:
-              if (that.direction === 'up') return
-              that.direction = 'down';
+              if (this.direction === 'up') return
+              this.direction = 'down';
               break;
           }
-          that.moving(that.direction)
+          this.moving(this.direction)
         })
+
       }
 
       randomNumber() {
