@@ -104,6 +104,7 @@
         this.speed = 150; //初始速度
         this.isStart = false; //是否开始
         this.isPause = false; //是否暂停
+        this.isOver = false; //是否结束
         this.scoreValue = 0; //分数
       }
       render() {
@@ -164,7 +165,6 @@
           }
 
           if (x > this.width / this.size - 1 || x < 0 || y > this.height / this.size - 1 || y < 0) {
-;
             this.over('撞墙啦, 游戏结束...(｡•ˇ‸ˇ•｡) ...', 'end')
             return
           }
@@ -198,6 +198,7 @@
         clearInterval(this.timer)
         if (type === 'end') {
           this.ctx.clearRect(0, 0, this.width, this.height);
+          this.isOver = true;
         }
         return
       }
@@ -222,8 +223,8 @@
         })
       }
       getDirection() {
-        // let that = this
         document.body.addEventListener('keydown',(e) => {
+          if(this.isOver) return
           switch (e.keyCode) {
             case 37:
               if (this.direction === 'right') return
