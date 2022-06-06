@@ -91,10 +91,10 @@
         this.ctx = this.canvas.getContext("2d");
         this.cover = document.getElementById('cover');
         this.score = document.getElementById('score');
-        this.size = 20
-        this.width = 500;
-        this.height = 500;
-        this.snake = [];
+        this.size = 20 // 每个格子的大小
+        this.width = 500; // 游戏区域的宽度
+        this.height = 500;  // 游戏区域的高度
+        this.snake = []; // 蛇的身体
         this.colorFood = 'orange'; //食物颜色
         this.colorSnake = '#666';   //蛇身颜色
         this.colorHead = 'red';    //蛇头颜色
@@ -108,16 +108,19 @@
         this.scoreValue = 0; //分数
       }
       render() {
+        this.init()
+        this.getFood()
+        this.createSnake()
+        this.getDirection()
+        this.moving(this.direction)
+      }
+      init() {
         this.canvas.width = this.width;
         this.canvas.height = this.height;
         this.cover.style.display = 'none';
         this.score.innerText = 0;
         this.isOver = false;
         this.direction = 'right'
-        this.getFood()
-        this.createSnake()
-        this.getDirection()
-        this.moving('right')
       }
       createSnake() {
         this.snake = [
@@ -145,7 +148,6 @@
         }
       }
       moving(key) {
-
         if (this.timer) {
           clearInterval(this.timer)
         }
@@ -181,7 +183,6 @@
             this.over('恭喜你, 已经走完啦, 游戏结束＼(＠＾０＾＠)/', 'end')
             return
           }
-
           if (x === this.food[0] && y === this.food[1]) {
             this.snake.unshift([x, y])
             this.getFood()
@@ -248,7 +249,6 @@
           }
           this.moving(this.direction)
         })
-
       }
 
       randomNumber() {
