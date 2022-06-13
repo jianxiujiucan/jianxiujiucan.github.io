@@ -6,18 +6,43 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <style>
+    .box {
+      width: 300px;
+    }
+
+    p {
+      word-wrap: break-word;
+      white-space: pre-wrap;
+      word-break: break-all;
+    }
+
+    .blue {
+      color: blue;
+    }
+
+    .red {
+      color: red;
+    }
+
+    .bold {
+      font-weight: bold;
+    }
+
+    .spacing {
+      margin: 0 2px;
+    }
+  </style>
 </head>
 
 <body>
-  <script>
-    function sum(a, b){
-      return a + b
-    }
-
-    console.log(sum(1,5))
-
-    
-  </script>
+  <div class="box">
+    <p class="popup-text">检测到手机号<span class="mobile blue">+86 18665800852</span><i>已绑定帐号</i><span
+        class="another-account blue spacing">hellworld</span>,<span class="red bold">且该账号剩余</span><span
+        class="remaining-vip-day red bold">4326</span><span class="red bold">天迅雷会员</span><i>，您可通过手机号</i><span
+        class="mobile blue">+86 18665800852</span><span class="blue">+验证码</span><span class="bold">方式登录，查看会员时长</span>
+    </p>
+  </div>
 </body>
 
 </html>

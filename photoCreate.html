@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>照片生成器</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    html,
+    body {
+      overflow: hidden;
+    }
+
+    canvas {
+      border: dashed 1px #ccc;
+    }
+
+    .button {
+      margin: 0 20px;
+      width: 80px;
+      height: 30px;
+      color: #fff;
+      background: #69f;
+      border-radius: 4px;
+      border: 0;
+      outline: 0;
+    }
+
+    .button--upload{
+      pointer-events: none;
+    }
+
+    .upload {
+      position: relative;
+    }
+
+    .file-upload{
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+    }
+
+    .wrapper {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin:  0 20px;
+    }
+
+    .operate {
+      display: flex;
+      align-items: center;
+      margin:  20px 0;
+    }
+    #canvas{
+      margin: 0 auto;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrapper">
+    <div class="operate">
+      <button class="button button--upload">选择照片</button>
+      <input id="button" class="file-upload" type="file" accept="image/*" name="picture" />
+      <button class="button" id="download">下载</button>
+    </div>
+    <canvas id="canvas"></canvas>
+  </div>
+  <script>
+    // 写一个上传照片到canvas的方法
+    const button = document.getElementById('button')
+    const canvas = document.getElementById('canvas')
+    const download = document.getElementById('download')
+    const ctx = canvas.getContext('2d')
+    const imageWidth = 295
+    const imageHeight = 413
+    const canvasWidth = 1200
+    const canvasHeight = 1800
+    const gap = 12
+    randerCanvas()
+    function randerCanvas() {
+      canvas.width = canvasWidth
+      canvas.height = canvasHeight
+      const windowWidth = window.innerWidth
+      const scaleValue =  windowWidth / canvasWidth * 0.8
+      canvas.style.zoom = scaleValue
+      ctx.fillStyle = '#fff'
+      ctx.fillRect(0, 0, canvas.width, canvas.height)
+    }
+
+    button.addEventListener('change', function (e) {
+      const file = e.target.files[0]
+      const reader = new FileReader()
+      reader.readAsDataURL(file)
+      reader.onload = function (e) {
+        const img = new Image()
+        img.src = e.target.result
+        img.onload = function () {
+          for (let i = 0; i < 3; i++) {
+            for (let j = 0; j < 4; j++) {
+              ctx.drawImage(img, j * (imageWidth + gap), i * (imageHeight + gap), imageWidth, imageHeight)
+            }
+          }
+        }
+      }
+    })
+
+    download.addEventListener('click', function () {
+      const a = document.createElement('a')
+      a.href = canvas.toDataURL('image/png')
+      a.download = 'photo.png'
+      a.click()
+    })
+
+  </script>
+</body>
+
+</html>
