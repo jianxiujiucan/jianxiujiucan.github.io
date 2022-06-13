@@ -32,7 +32,7 @@
       outline: 0;
     }
 
-    .button--upload{
+    .button--upload {
       pointer-events: none;
     }
 
@@ -40,11 +40,13 @@
       position: relative;
     }
 
-    .file-upload{
+    .file-upload {
       position: absolute;
       top: 0;
-      left: 0;
+      left: 20px;
       opacity: 0;
+      width: 80px;
+      height: 30px;
     }
 
     .wrapper {
@@ -52,15 +54,16 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      margin:  0 20px;
+      margin: 0 20px;
     }
 
     .operate {
       display: flex;
       align-items: center;
-      margin:  20px 0;
+      margin: 20px 0;
     }
-    #canvas{
+
+    #canvas {
       margin: 0 auto;
     }
   </style>
@@ -69,8 +72,10 @@
 <body>
   <div class="wrapper">
     <div class="operate">
-      <button class="button button--upload">选择照片</button>
-      <input id="button" class="file-upload" type="file" accept="image/*" name="picture" />
+      <div class="upload">
+        <button class="button button--upload">选择照片</button>
+        <input id="button" class="file-upload" type="file" accept="image/*" name="picture" />
+      </div>
       <button class="button" id="download">下载</button>
     </div>
     <canvas id="canvas"></canvas>
@@ -91,7 +96,7 @@
       canvas.width = canvasWidth
       canvas.height = canvasHeight
       const windowWidth = window.innerWidth
-      const scaleValue =  windowWidth / canvasWidth * 0.8
+      const scaleValue = windowWidth / canvasWidth * 0.8
       canvas.style.zoom = scaleValue
       ctx.fillStyle = '#fff'
       ctx.fillRect(0, 0, canvas.width, canvas.height)
