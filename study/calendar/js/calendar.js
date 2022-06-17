@@ -9,6 +9,7 @@ class Calendar {
     this.currentDay = this.date.getDate();
     this.slideDown = "-380px";
     this.slideUp = "38px";
+    this.slide = "-380px";
     this.transitionTime = 300;
     this.$changeDate = document.getElementById("changeDate");
     this.$dayWrapper = document.getElementById("dayWrapper");
@@ -22,11 +23,11 @@ class Calendar {
   }
   render() {
     this.renderTime();
-    //this.renderDayList(this.currentYear, this.currentMonth);
+    this.renderDayList(this.currentYear, this.currentMonth);
     this.renderWeekList();
     this.handleClick();
-    //this.renderMonthList(this.currentYear);
-    this.renderYearList(this.currentYear);
+    // this.renderMonthList(this.currentYear);
+    // this.renderYearList(this.currentYear);
   }
 
   renderTime() {
@@ -40,9 +41,9 @@ class Calendar {
   }
 
   /**
-   * 生成当前时间，格式为：时:分:秒
+   * 生成当前时间
+   * 格式为：时:分:秒
    */
-
   createTime() {
     let date = new Date();
     let hour = date.getHours().toString().padStart(2, "0");
@@ -67,7 +68,7 @@ class Calendar {
   }
 
   /**
-   * 
+   * 渲染日期列表
    * @param {Number} 传入某年
    * @param {Number} 传入某年的某月，渲染该年月的日期
    */
@@ -75,11 +76,10 @@ class Calendar {
   renderDayList(year, month) {
     this.isShowDays = true;
     this.$changeDate.innerHTML = `${year}年${parseInt(month) + 1}月`;
-    const DAY_MILLISECONDS = 24 * 60 * 60 * 1000;
-    let date = new Date(year, month);
-    let deltaDay = (date.getDay() + 6) % 7;
-    let firstDayTime =
-      date.getTime() - deltaDay * DAY_MILLISECONDS - 35 * DAY_MILLISECONDS;
+    const DAY_MILLISECONDS = 24 * 60 * 60 * 1000; // 一天的毫秒数
+    let date = new Date(year, month); // 当前月份的第一天
+    let deltaDay = (date.getDay() + 6) % 7; // 当月第一天是星期几
+    let firstDayTime = date.getTime() - deltaDay * DAY_MILLISECONDS - 35 * DAY_MILLISECONDS; // 当月第一天的时间戳
     let contentList = `<ul class="date-list__items">`;
 
     for (let i = 0; i < 112; i++) {
@@ -115,7 +115,8 @@ class Calendar {
   }
 
   /**
-   * 
+   * 渲染月份列表
+   * 当前年的12个月常亮，下一年的月份置灰
    * @param {Number} 传入某年年份，渲染某年的月份列表
    */
   renderMonthList(year) {
@@ -167,13 +168,12 @@ class Calendar {
    */
 
   renderYearList(year) {
-    console.log(year);
     this.isShowYears = true;
     let yearDom = `<ul class="grid-list__items">`;
     let prefix = Number.parseInt(year / 10) * 10;
     this.$changeDate.innerHTML = `${prefix} - ${prefix + 9}`;
 
-    let arrayYear = [];
+    let arrayYear = []; 
     for (
       let i = this.date.getFullYear() - 100;
       i <= this.date.getFullYear() + 100;
@@ -181,38 +181,44 @@ class Calendar {
     ) {
       let arrSub = [];
       for (let j = 0; j < 4; j++) {
-        if(i + j <= this.date.getFullYear() + 100){
-        arrSub.push(i + j);
+        if (i + j <= this.date.getFullYear() + 100) {
+          arrSub.push(i + j);
         }
       }
       arrayYear.push(arrSub);
     }
-    console.log(arrayYear)
+    console.log(arrayYear);
     let mark = 0;
     for (let i = 0; i < arrayYear.length; i++) {
-      //console.log(arrayYear[i])
       for (let j = 0; j < 4; j++) {
-        //console.log(arrayYear[i][j]);
         if (arrayYear[i][j] === this.currentYear) {
           mark = i;
         }
       }
     }
     let yearList = [];
-    
-    for (let i = mark - 4; i < mark + 6; i++) {
-      for (let j = 0; j < arrayYear[i].length; j++) {
-        yearList.push(arrayYear[i][j]);
+    if (prefix % 4 === 0) {
+      for (let i = mark - 4; i < mark + 6; i++) {
+        for (let j = 0; j < arrayYear[i].length; j++) {
+          yearList.push(arrayYear[i][j]);
+        }
       }
+      this.slide = "-396px";
+    } else {
+      for (let i = mark - 3; i < mark + 6; i++) {
+        for (let j = 0; j < arrayYear[i].length; j++) {
+          yearList.push(arrayYear[i][j]);
+        }
+      }
+      this.slide = "-330px";
     }
-    
-    console.log(yearList);
+
     for (let i = 0; i < yearList.length; i++) {
       if (yearList[i] < prefix || yearList[i] > prefix + 9) {
         yearDom += `<li class="grid-list__item is-disabled" data-year=${yearList[i]}>${yearList[i]}</li>`;
-      } else if(yearList[i] === this.currentYear){
+      } else if (yearList[i] === this.date.getFullYear()) {
         yearDom += `<li class="grid-list__item is-current" data-year=${yearList[i]}>${yearList[i]}</li>`;
-      }else{
+      } else {
         yearDom += `<li class="grid-list__item" data-year="${yearList[i]}"><span>${yearList[i]}</span></li>`;
       }
     }
@@ -343,15 +349,15 @@ class Calendar {
       this.renderMonthList(this.currentYear);
     }, this.transitionTime);
   }
-  
+
   showNextYears() {
     this.currentYear += 10;
     document.querySelector(
       ".grid-list__items"
-    ).style.transform = `translateY(-396px)`;
+    ).style.transform = `translateY(${this.slide})`;
     setTimeout(() => {
       this.renderYearList(this.currentYear);
-    }, 1000);
+    }, this.transitionTime);
   }
 
   showLastYears() {
