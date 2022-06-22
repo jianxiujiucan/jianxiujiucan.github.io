@@ -36,13 +36,30 @@
 </head>
 
 <body>
-  <div class="box">
-    <p class="popup-text">检测到手机号<span class="mobile blue">+86 18665800852</span><i>已绑定帐号</i><span
-        class="another-account blue spacing">hellworld</span>,<span class="red bold">且该账号剩余</span><span
-        class="remaining-vip-day red bold">4326</span><span class="red bold">天迅雷会员</span><i>，您可通过手机号</i><span
-        class="mobile blue">+86 18665800852</span><span class="blue">+验证码</span><span class="bold">方式登录，查看会员时长</span>
-    </p>
-  </div>
+  <button id="leo2">点击</button>
+  <script>
+    let arr = []
+
+    function add(detail) {
+      document.dispatchEvent(
+        new CustomEvent("onAdd", {
+          detail
+        })
+      )
+    }
+    
+    // 监听添加事件
+    document.addEventListener("onAdd", (e) => {
+      e.detail ? arr.push(e.detail.age) : null
+      console.log(arr)
+    })
+    // 触发事件
+    //add()
+    
+    add({ age: 18 })
+
+
+  </script>
 </body>
 
 </html>
