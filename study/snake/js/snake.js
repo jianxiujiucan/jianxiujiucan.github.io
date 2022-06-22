@@ -106,19 +106,19 @@ class Snake {
 
       // 判断是否撞墙
       if (x > this.width / this.size - 1 || x < 0 || y > this.height / this.size - 1 || y < 0) {
-        this.over('撞墙啦, 游戏结束...(｡•ˇ‸ˇ•｡) ...', 'end')
+        this.showCover('撞墙啦, 游戏结束...(｡•ˇ‸ˇ•｡) ...', 'end')
         return
       }
       // 判断是否撞自己
       if (this.snake.some((item) => {
         return item[0] === x && item[1] === y
       })) {
-        this.over('撞自己啦, 游戏结束...(｡•ˇ‸ˇ•｡) ...', 'end')
+        this.showCover('撞自己啦, 游戏结束...(｡•ˇ‸ˇ•｡) ...', 'end')
         return
       }
       // 判断是否走完格子
       if (this.snake.length === this.width / this.size * this.height / this.size) {
-        this.over('恭喜你, 已经走完啦, 游戏结束＼(＠＾０＾＠)/', 'end')
+        this.showCover('恭喜你, 已经走完啦, 游戏结束＼(＠＾０＾＠)/', 'end')
         return
       }
       // 判断是否吃到食物
@@ -141,7 +141,7 @@ class Snake {
    * @param {string} text 文本
    * @param {string} type 类型
    */
-  over(text, type) {
+  showCover(text, type) {
     this.cover.style.display = 'flex'
     this.cover.innerHTML = `<p>${text}</p>`
     clearInterval(this.timer)
@@ -158,7 +158,7 @@ class Snake {
     if (!this.isPause) {
       this.isPause = true
       clearInterval(this.timer)
-      this.over('游戏暂停中~')
+      this.showCover('游戏暂停中~')
       return
     } else {
       this.cover.style.display = 'none'
@@ -182,7 +182,7 @@ class Snake {
   */ 
   _getDirection() {
     document.body.addEventListener('keydown', (e) => {
-      if (this.isOver) return
+      if (this.isOver || this.isPause) return
       console.log(e.key)
       switch (e.key) {
         case 'ArrowLeft':

@@ -51,11 +51,14 @@ button {
   border: 0;
   outline: 0;
   cursor: pointer;
+  user-select: none;
 }
 
 button.is-disabled {
   background: #ccc;
   cursor: not-allowed;
+  pointer-events: none;
+  
 }
 
 p {
