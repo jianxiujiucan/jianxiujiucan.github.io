@@ -1,5 +1,5 @@
 class Snake {
-  constructor() {
+  constructor(params) {
     this.canvas = document.getElementById('canvas');
     this.ctx = this.canvas.getContext("2d");
     this.cover = document.getElementById('cover');
@@ -24,6 +24,7 @@ class Snake {
     this.isPause = false; //是否暂停
     this.isOver = false; //是否结束
     this.scoreValue = 0; //分数
+    this.gameOverCallBack = params.gameOverCallBack; // 游戏结束回调
   }
   /**
    * 开始渲染 
@@ -148,6 +149,9 @@ class Snake {
     if (type === 'end') {
       this.ctx.clearRect(0, 0, this.width, this.height);
       this.isOver = true;
+      if ("function" === typeof this.gameOverCallBack) {
+        this.gameOverCallBack();
+      }
     }
     return
   }

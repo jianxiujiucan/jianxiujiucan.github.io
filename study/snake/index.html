@@ -21,9 +21,14 @@
   </div>
   <script src="js/snake.js"></script>
   <script>
-    let snake = new Snake();
     const buttonStart = document.getElementById('buttonStart')
     const buttonTodo = document.getElementById('buttonTodo')
+    let snake = new Snake({
+      gameOverCallBack:function(){
+        buttonTodo.classList.add('is-disabled')
+      }
+    });
+    
     buttonStart.addEventListener('click', function () {
       snake.render();
       this.innerHTML = '重新开始'
@@ -36,9 +41,7 @@
       } else {
         this.innerHTML = '继续'
       }
-      if (snake.isOver) {
-        buttonTodo.classList.add('is-disabled')
-      }
+      
     })
 
 
