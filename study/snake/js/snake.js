@@ -11,13 +11,14 @@ class Snake {
     this.colorFood = 'orange'; //食物颜色
     this.colorSnake = '#666';   //蛇身颜色
     this.colorHead = 'red';    //蛇头颜色
-    this.keyDown = ''; //按键
+    
     this.direction = { //蛇移动方向
       left: 'left',
       right: 'right',
       up: 'up',
       down: 'down'
     },
+    this.keyDown = this.direction.right; //按键
     this.timer = null; //定时器
     this.food = []; //食物位置数组
     this.speed = 150; //初始速度
@@ -31,10 +32,11 @@ class Snake {
    */
   render() {
     this.init()
-    this._getFood()
+    this._createFood()
     this._createSnake()
     this._getDirection()
     this._moving(this.keyDown)
+    console.log('开始')
   }
   /**
    * 初始化
@@ -79,18 +81,14 @@ class Snake {
     }
   }
 
-  /**
-   * 移动路径绘制
-   * @param {string} keyDown 方向, left, right, up, down
-   */
-  _moving(keyDown) {
+  _moving() {
     if (this.timer) {
       clearInterval(this.timer)
     }
 
     this.timer = setInterval(() => {
       let [x, y] = this.snake[0];
-      switch (keyDown) {
+      switch (this.keyDown) {
         case this.direction.left:
           x--;
           break
@@ -125,7 +123,7 @@ class Snake {
       // 判断是否吃到食物
       if (x === this.food[0] && y === this.food[1]) {
         this.snake.unshift([x, y])
-        this._getFood()
+        this._createFood()
         this._getDirection()
         this.scoreValue += 10
         this.score.innerHTML = this.scoreValue
@@ -165,6 +163,7 @@ class Snake {
       this.showCover('游戏暂停中~')
       return
     } else {
+      console.log('取消暂停')
       this.cover.style.display = 'none'
       this._moving(this.keyDown)
       this.isPause = false
@@ -173,11 +172,11 @@ class Snake {
   /**
    * 获取食物
    */
-  _getFood() {
+  _createFood() {
     this.food = [this._randomNumber(), this._randomNumber()]
     this.snake.forEach(item => {
       if (this.food[0] === item[0] && this.food[1] === item[1]) {
-        return this._getFood()
+        return this._createFood()
       }
     })
   }
@@ -186,27 +185,30 @@ class Snake {
   */ 
   _getDirection() {
     document.body.addEventListener('keydown', (e) => {
-      if (this.isOver || this.isPause) return
-      console.log(e.key)
+      if (this.isOver) return
+      console.log(e.key,'key')
       switch (e.key) {
         case 'ArrowLeft':
-          if (this.keyDown === this.direction.right) return
+          if (this.keyDown === this.direction.right || this.isPause) return
           this.keyDown = this.direction.left;
           break;
         case 'ArrowUp':
-          if (this.keyDown === 'down') return
+          if (this.keyDown === this.direction.down || this.isPause) return
           this.keyDown = this.direction.up;
           break;
         case 'ArrowRight':
-          if (this.keyDown === 'left') return
+          if (this.keyDown === this.direction.left  || this.isPause) return
           this.keyDown = this.direction.right;
           break;
         case 'ArrowDown':
-          if (this.keyDown === 'up') return
+          if (this.keyDown === this.direction.up  || this.isPause) return
           this.keyDown = this.direction.down;
           break;
+        case 's':
+        case 'S':
+          this.pause()  
+          break;
       }
-      this._moving(this.keyDown)
     })
   }
   /**
