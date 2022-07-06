@@ -1,0 +1,61 @@
+:root {
+  --width: 500px;
+  --size: 20px;
+}
+
+.snake-wrapper {
+  position: relative;
+  margin: 0 auto;
+  border: solid 1px #ccc;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.cover {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-size: 16px;
+  background: rgba(0, 0, 0, .5);
+}
+
+.canvas {
+  box-sizing: border-box;
+}
+
+.operate {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 12px 0 0;
+}
+
+button {
+  margin: 0 6px;
+  width: 70px;
+  height: 26px;
+  color: #fff;
+  background: #69f;
+  border-radius: 4px;
+  border: 0;
+  /* outline: 0; */
+  cursor: pointer;
+  user-select: none;
+}
+
+button.is-disabled {
+  background: #ccc;
+  cursor: not-allowed;
+  pointer-events: none;
+  
+}
+
+p {
+  margin-right: 10px;
+}

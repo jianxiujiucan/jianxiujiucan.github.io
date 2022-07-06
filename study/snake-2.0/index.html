@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>snake</title>
+  <link rel="stylesheet" href="css/snake.css">
+</head>
+
+<body>
+  <div class="snake-wrapper">
+    <canvas id="canvas" class="canvas"></canvas>
+    <div id="cover" class="cover"></div>
+  </div>
+  <div class="operate">
+    <p class="score">分数: <span id="score">0</span></p>
+    <button id="buttonStart">开始</button>
+    <button id="buttonTodo" class="is-disabled">暂停</button>
+    <div class="operate-select">
+      <label for="">难度选择：</label>
+      <select id="selectLevel">
+        <option value="600">简单</option>
+        <option value="200">一般</option>
+        <option value="100">难</option>
+      </select>
+    </div>
+  </div>
+  <div class="infomation">
+    <ol>
+      <li>S键开始</li>
+      <li>P键暂停</li>
+    </ol>
+  </div>
+
+  <script src="js/snake.js"></script>
+</body>
+
+</html>
