@@ -10,31 +10,33 @@
 </head>
 
 <body>
-  <div class="snake-wrapper">
-    <canvas id="canvas" class="canvas"></canvas>
-    <div id="cover" class="cover"></div>
-  </div>
-  <div class="operate">
-    <p class="score">分数: <span id="score">0</span></p>
-    <button id="buttonStart">开始</button>
-    <button id="buttonTodo" class="is-disabled">暂停</button>
-    <div class="operate-select">
-      <label for="">难度选择：</label>
-      <select id="selectLevel">
-        <option value="600">简单</option>
-        <option value="200">一般</option>
-        <option value="100">难</option>
-      </select>
+  <div class="snake">
+    <div class="snake__scroe">分数<span id="score"></span></div>
+    <div class="snake__area">
+      <canvas id="canvas" class="snake__canvas"></canvas>
+      <div id="cover" class="snake__cover"></div>
+    </div>
+    <div class="snake__button">
+      <span class="button" id="buttonStart">开始</span>
+      <span class="button" id="buttonTodo" class="is-disabled">暂停</span>
+    </div>
+
+    <div class="snake__select">
+      <label>难度选择：</label>
+      <input type="radio" value="300" name="level" id="easy" checked> <label for="easy">简单</label>
+      <input type="radio" value="200" name="level" id="medium"> <label for="medium">一般</label>
+      <input type="radio" value="100" name="level" id="hard"> <label for="hard">困难</label>
+    </div>
+
+    <div class="snake__instructions">
+      游戏说明：
+      <ol>
+        <li>S键开始，P键暂停</li>
+        <li>每吃到一次蛇加10分</li>
+      </ol>
     </div>
   </div>
-  <div class="infomation">
-    <ol>
-      <li>S键开始</li>
-      <li>P键暂停</li>
-    </ol>
-  </div>
-
-  <script src="js/snake.js"></script>
+  <script type="module" src="js/snake.js"></script>
 </body>
 
 </html>
