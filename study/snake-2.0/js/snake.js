@@ -22,8 +22,8 @@ const buttonTodo = document.getElementById("buttonTodo");
 class Snake {
   constructor(params) {
     this.size = params.size || 20; // 每个格子的大小
-    this.width = params.width || 200; // 游戏区域的宽度
-    this.height = params.height || 200; // 游戏区域的高度
+    this.width = params.width || 500; // 游戏区域的宽度
+    this.height = params.height || 500; // 游戏区域的高度
     this.colorFood = params.colorFood || "yellow"; //食物颜色
     this.colorSnake = params.colorSnake || "orange"; //蛇身颜色
     this.colorHead = params.colorHead || "white"; //蛇头颜色
