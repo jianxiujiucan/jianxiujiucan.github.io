@@ -8,6 +8,7 @@ const direction = {
   down: "down",
 };
 
+/** 浮层参数 */
 const overType = {
   end: "end",
 };
@@ -83,7 +84,6 @@ class Snake {
    * @param {string} corner 渐变线的起始点位置，传入的值与css渐变side-or-corner的值对应。
    * @returns 返回渐变的值
    */
-
   _createBackgroundGrid(corner){
     return `repeating-linear-gradient(${corner},transparent 0 ${
       this.size - 1}px, #fff ${this.size}px)`
@@ -173,8 +173,9 @@ class Snake {
         return;
       }
 
-      this.snake.unshift([x, y]);
       // 判断是否吃到食物
+      this.snake.unshift([x, y]);
+
       if (x === this.food[0] && y === this.food[1]) {
         this._createFood();
         this._getDirection();
@@ -244,8 +245,6 @@ class Snake {
     // 随机取出坐标为食物
     const index = this._getRandom(0, tempGrid.length - 1);
     this.food = tempGrid[index];
-    console.log(this.snake)
-    console.log(tempGrid)
   }
   /**
    * 获取方向
@@ -279,7 +278,7 @@ class Snake {
    * 生成某个范围的随机数
    * @param {number} 范围小值
    * @param {number} 范围大值
-   * @returns
+   * @returns 返回随机数
    */
   _getRandom(min, max) {
     const index = Math.floor(Math.random() * (max - min + 1) + min);
@@ -290,14 +289,16 @@ class Snake {
 let snake = new Snake({});
 snake.reset();
 
+/** 监听S和P键，控制暂停和继续 */
 document.body.addEventListener("keydown", (e) => {
-  if (e.key.toLocaleLowerCase() === "s") {
-    snake.render();
-  } else if (e.key.toLocaleLowerCase() === "p") {
+  if (e.key.toLocaleLowerCase() === "p") {
     snake.pause();
+  } else if (e.key.toLocaleLowerCase() === "s") {
+    snake.render();
   }
 });
 
+/** 点击开始或重新开始游戏按钮 */
 buttonStart.addEventListener("click", function () {
   let level = 0
   const radios = document.getElementsByName('level')
@@ -313,6 +314,7 @@ buttonStart.addEventListener("click", function () {
   
 });
 
+/** 点击暂停或继续按钮 */
 buttonTodo.addEventListener("click", function () {
   snake.pause();
   if (!snake.isPause && !snake.isOver) {
