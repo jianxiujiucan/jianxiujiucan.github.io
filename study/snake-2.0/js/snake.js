@@ -52,6 +52,7 @@ class Snake {
     this._createFood();
     this._getDirection();
     this._moving(this.keyDown);
+    buttonTodo.classList.remove("is-disabled");
   }
   /**
    * 重置所有状态和样式
@@ -64,6 +65,7 @@ class Snake {
     canvas.style.background = `${this._createBackgroundGrid('to bottom')}, ${this._createBackgroundGrid('to right')}`;
     cover.style.display = "none";
     score.innerText = 0;
+    this.scoreValue = 0;
     this.isOver = false;
     this.isPause = false;
     this.keyDown = direction.right;
@@ -214,11 +216,13 @@ class Snake {
       this.isPause = true;
       cancelMySetInterval(this.timer);
       this.showCover("游戏暂停中~");
+      buttonTodo.innerHTML = "继续"
       return;
     } else {
       cover.style.display = "none";
       this._moving(this.keyDown);
       this.isPause = false;
+      buttonTodo.innerHTML = "暂停";
     }
   }
 
@@ -295,6 +299,7 @@ document.body.addEventListener("keydown", (e) => {
     snake.pause();
   } else if (e.key.toLocaleLowerCase() === "s") {
     snake.render();
+    buttonStart.innerHTML = "重新开始";
   }
 });
 
@@ -310,16 +315,11 @@ buttonStart.addEventListener("click", function () {
   snake.speed = level;
   snake.render();
   this.innerHTML = "重新开始";
-  buttonTodo.classList.remove("is-disabled");
   
 });
 
 /** 点击暂停或继续按钮 */
 buttonTodo.addEventListener("click", function () {
   snake.pause();
-  if (!snake.isPause && !snake.isOver) {
-    this.innerHTML = "暂停";
-  } else {
-    this.innerHTML = "继续";
-  }
+  
 });

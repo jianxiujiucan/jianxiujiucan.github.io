@@ -15,12 +15,14 @@ body {
   color: #fff;
   border-radius: 4px;
 }
+
 .snake__area {
   position: relative;
   margin: 0 auto;
   border: solid 10px rgba(255, 255, 255, 0.7);
   overflow: hidden;
 }
+
 .snake__cover {
   position: absolute;
   top: 0;
@@ -34,20 +36,24 @@ body {
   font-size: 16px;
   background: rgba(0, 0, 0, 0.5);
 }
+
 .snake__canvas {
   box-sizing: border-box;
 }
+
 .snake__button {
   display: flex;
   justify-content: center;
   padding: 20px 0;
 }
+
 .snake__select {
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 0 20px 20px;
 }
+
 .snake__select input {
   margin: 0 5px;
   width: 18px;
@@ -55,23 +61,25 @@ body {
   background: #fff;
   border: solid 4px #fff;
   border-radius: 50%;
-  -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
+  appearance: none;
 }
+
 .snake__select input:checked {
   background: #fff;
   border-color: orange;
 }
+
 .snake__scroe {
   text-align: center;
   padding: 0 20px;
 }
+
 .snake__scroe span {
   display: block;
   font-size: 50px;
-  color: rgb(255, 153, 0);
+  color: #ff9900;
 }
+
 .snake__instructions {
   position: absolute;
   top: 20px;
@@ -87,17 +95,14 @@ body {
   color: #fff;
   text-align: center;
   font-size: 13px;
-  background: rgb(255, 153, 0);
+  background: #ff9900;
   border-radius: 4px;
   border: 0;
   cursor: pointer;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
+  user-select: none;
 }
 
-button.is-disabled {
+.button.is-disabled {
   background: #ccc;
   cursor: not-allowed;
   pointer-events: none;
@@ -105,4 +110,4 @@ button.is-disabled {
 
 p {
   margin-right: 10px;
-}/*# sourceMappingURL=snake.css.map */
+}

@@ -89,12 +89,11 @@ body {
   border: 0;
   cursor: pointer;
   user-select: none;
-}
-
-button.is-disabled {
-  background: #ccc;
-  cursor: not-allowed;
-  pointer-events: none;
+  &.is-disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
 }
 
 p {
