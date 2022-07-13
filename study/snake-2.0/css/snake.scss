@@ -52,7 +52,7 @@ body {
       border: solid 4px #fff;
       border-radius: 50%;
       appearance: none;
-      &:checked{
+      &:checked {
         background: #fff;
         border-color: orange;
       }
@@ -71,7 +71,14 @@ body {
     position: absolute;
     top: 20px;
     right: 50px;
-    padding: 0 20px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    h2 {
+      font-size: 16px;
+    }
+    li {
+      margin: 0 0 0 20px;
+    }
   }
   border-radius: 4px;
 }
