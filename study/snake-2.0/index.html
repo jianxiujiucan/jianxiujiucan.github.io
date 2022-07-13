@@ -17,13 +17,14 @@
       <div id="cover" class="snake__cover"></div>
     </div>
     <div class="snake__button">
-      <span class="button" id="buttonStart">开始</span>
-      <span class="button is-disabled" id="buttonTodo">暂停</span>
+      <span id="buttonStart" class="button">开始游戏</span>
+      <span id="buttonTodo" class="button is-disabled">暂停游戏</span>
+      <span id="buttonEnd" class="button is-disabled">结束游戏</span>
     </div>
 
-    <div class="snake__select">
+    <div id="selectLevel" class="snake__select">
       <label>难度选择：</label>
-      <input type="radio" value="300" name="level" id="easy" checked> <label for="easy">简单</label>
+      <input type="radio" value="400" name="level" id="easy" checked> <label for="easy">简单</label>
       <input type="radio" value="200" name="level" id="medium"> <label for="medium">一般</label>
       <input type="radio" value="100" name="level" id="hard"> <label for="hard">困难</label>
     </div>
@@ -31,7 +32,7 @@
     <div class="snake__instructions">
       <h2>游戏说明：</h2>
       <ol>
-        <li>S键开始，P键暂停</li>
+        <li>S键开始，P键暂停,E键结束游戏</li>
         <li>每吃到一次食物加10分</li>
       </ol>
     </div>

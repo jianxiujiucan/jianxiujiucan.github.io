@@ -51,10 +51,19 @@ body {
       background: #fff;
       border: solid 4px #fff;
       border-radius: 50%;
+      outline: none;
       appearance: none;
       &:checked {
         background: #fff;
         border-color: orange;
+      }
+    }
+    &.is-disabled {
+      input {
+        pointer-events: none;
+        &:checked {
+          border-color: #ccc;
+        }
       }
     }
   }

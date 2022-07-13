@@ -61,12 +61,21 @@ body {
   background: #fff;
   border: solid 4px #fff;
   border-radius: 50%;
+  outline: none;
   appearance: none;
 }
 
 .snake__select input:checked {
   background: #fff;
   border-color: orange;
+}
+
+.snake__select.is-disabled input {
+  pointer-events: none;
+}
+
+.snake__select.is-disabled input:checked {
+  border-color: #ccc;
 }
 
 .snake__scroe {

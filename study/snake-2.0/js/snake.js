@@ -1,4 +1,4 @@
-import { mySetInterval ,cancelMySetInterval} from './setInterval.js'
+import { mySetInterval, cancelMySetInterval } from "./setInterval.js";
 
 /** 蛇移动方向 */
 const direction = {
@@ -20,6 +20,8 @@ const cover = document.getElementById("cover");
 const score = document.getElementById("score");
 const buttonStart = document.getElementById("buttonStart");
 const buttonTodo = document.getElementById("buttonTodo");
+const buttonEnd = document.getElementById("buttonEnd");
+const selectLevel = document.getElementById("selectLevel");
 class Snake {
   constructor(params) {
     this.size = params.size || 20; // 每个格子的大小
@@ -48,12 +50,23 @@ class Snake {
    */
   render() {
     this.reset();
+    this.elementReset();
     this._createSnake();
     this._createFood();
     this._getDirection();
     this._moving(this.keyDown);
-    buttonTodo.classList.remove("is-disabled");
   }
+
+  /**
+   * 重置表单元素状态
+   */
+
+  elementReset() {
+    buttonTodo.classList.remove("is-disabled");
+    buttonEnd.classList.remove("is-disabled");
+    selectLevel.classList.add("is-disabled");
+  }
+
   /**
    * 重置所有状态和样式
    */
@@ -62,7 +75,9 @@ class Snake {
     snakeWrapper.style.height = `${this.width}px`;
     canvas.width = this.width;
     canvas.height = this.height;
-    canvas.style.background = `${this._createBackgroundGrid('to bottom')}, ${this._createBackgroundGrid('to right')}`;
+    canvas.style.background = `${this._createBackgroundGrid(
+      "to bottom"
+    )}, ${this._createBackgroundGrid("to right")}`;
     cover.style.display = "none";
     score.innerText = 0;
     this.scoreValue = 0;
@@ -86,9 +101,10 @@ class Snake {
    * @param {string} corner 渐变线的起始点位置，传入的值与css渐变side-or-corner的值对应。
    * @returns 返回渐变的值
    */
-  _createBackgroundGrid(corner){
+  _createBackgroundGrid(corner) {
     return `repeating-linear-gradient(${corner},transparent 0 ${
-      this.size - 1}px, #fff ${this.size}px)`
+      this.size - 1
+    }px, #fff ${this.size}px)`;
   }
 
   /**
@@ -171,7 +187,10 @@ class Snake {
         this.snake.length ===
         ((this.width / this.size) * this.height) / this.size
       ) {
-        this.showCover("恭喜你, 已经走完啦, 游戏结束＼(＠＾０＾＠)/",overType.end);
+        this.showCover(
+          "恭喜你, 已经走完啦, 游戏结束＼(＠＾０＾＠)/",
+          overType.end
+        );
         return;
       }
 
@@ -204,6 +223,8 @@ class Snake {
       ctx.clearRect(0, 0, this.width, this.height);
       this.isOver = true;
       buttonTodo.classList.add("is-disabled");
+      buttonEnd.classList.add("is-disabled");
+      selectLevel.classList.remove("is-disabled");
     }
     return;
   }
@@ -216,20 +237,20 @@ class Snake {
       this.isPause = true;
       cancelMySetInterval(this.timer);
       this.showCover("游戏暂停中~");
-      buttonTodo.innerHTML = "继续"
+      buttonTodo.innerHTML = "继续游戏";
       return;
     } else {
       cover.style.display = "none";
       this._moving(this.keyDown);
       this.isPause = false;
-      buttonTodo.innerHTML = "暂停";
+      buttonTodo.innerHTML = "暂停游戏";
     }
   }
 
   /**
    * 创建食物
    */
-  _createFood() { 
+  _createFood() {
     let tempGrid = [];
     // 创建临时数组，存放非蛇身的坐标
     for (let i = 0; i < this.grid.length; i++) {
@@ -257,6 +278,7 @@ class Snake {
     document.body.addEventListener("keydown", (e) => {
       if (this.isOver) return;
       //console.log(e, e.key, "key");
+
       switch (e.key) {
         case "ArrowLeft":
           if (this.keyDown === direction.right || this.isPause) return;
@@ -300,26 +322,30 @@ document.body.addEventListener("keydown", (e) => {
   } else if (e.key.toLocaleLowerCase() === "s") {
     snake.render();
     buttonStart.innerHTML = "重新开始";
+  } else if (e.key.toLocaleLowerCase() === "e") {
+    snake.showCover("游戏结束...(｡•ˇ‸ˇ•｡) ...", "end");
   }
 });
 
 /** 点击开始或重新开始游戏按钮 */
 buttonStart.addEventListener("click", function () {
-  let level = 0
-  const radios = document.getElementsByName('level')
-  for(let i = 0; i< radios.length;i++){
-    if(radios[i].checked === true){
-      level = radios[i].value
+  let level = 0;
+  const radios = document.getElementsByName("level");
+  for (let i = 0; i < radios.length; i++) {
+    if (radios[i].checked === true) {
+      level = radios[i].value;
     }
   }
   snake.speed = level;
   snake.render();
   this.innerHTML = "重新开始";
-  
 });
 
 /** 点击暂停或继续按钮 */
 buttonTodo.addEventListener("click", function () {
   snake.pause();
-  
+});
+
+buttonEnd.addEventListener("click", function () {
+  snake.showCover("游戏结束...(｡•ˇ‸ˇ•｡) ...", "end");
 });
