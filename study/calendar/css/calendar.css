@@ -27,10 +27,12 @@ body {
   border-bottom: solid 1px rgba(255, 255, 255, 0.3);
   box-sizing: border-box;
 }
+
 .time__text {
   font-size: 40px;
   font-weight: lighter;
 }
+
 .time__date {
   color: #a6d8ff;
   font-size: 14px;
@@ -43,6 +45,7 @@ body {
   grid-template-columns: repeat(7, 50px);
   gap: 2px;
 }
+
 .week-list span {
   text-align: center;
   line-height: 36px;
@@ -54,20 +57,24 @@ body {
   overflow-y: hidden;
   box-sizing: border-box;
 }
+
 .date-list::-webkit-scrollbar {
   display: none;
 }
+
 .date-list.is-show {
-  -webkit-animation: show 0.2s both;
-          animation: show 0.2s both;
+  animation: show 0.2s both;
 }
+
 .date-list:hover .date-list__item:before {
   display: none;
 }
+
 .date-list:hover .date-list__item:hover {
   position: relative;
   border-color: rgba(255, 255, 255, 0.6);
 }
+
 .date-list__items {
   display: grid;
   grid-template-columns: repeat(7, 50px);
@@ -76,6 +83,7 @@ body {
   transition: transform 0.3s;
   transform: translateY(-190px);
 }
+
 .date-list__item {
   display: flex;
   justify-content: center;
@@ -87,6 +95,7 @@ body {
   box-sizing: border-box;
   cursor: default;
 }
+
 .date-list__item:before {
   position: absolute;
   top: 0;
@@ -98,12 +107,14 @@ body {
   transition: 0.2s;
   content: "";
 }
+
 .date-list__item:active span {
   height: 32px;
   color: #fff;
   line-height: 32px;
   outline: solid 2px rgba(255, 255, 255, 0.6);
 }
+
 .date-list__item:hover:after {
   position: absolute;
   top: 50%;
@@ -116,6 +127,7 @@ body {
   content: "";
   pointer-events: none;
 }
+
 .date-list__item.is-active span {
   height: 32px;
   color: #fff;
@@ -123,6 +135,7 @@ body {
   outline: solid 2px #0078d7;
   box-sizing: border-box;
 }
+
 .date-list__item.is-active span {
   height: 32px;
   color: #fff;
@@ -130,6 +143,7 @@ body {
   outline: solid 2px #0078d7;
   box-sizing: border-box;
 }
+
 .date-list__item.is-current span {
   width: 46px;
   height: 32px;
@@ -140,12 +154,15 @@ body {
   box-sizing: border-box;
   outline: solid 2px #0078d7;
 }
+
 .date-list__item.is-current:hover span {
-  outline: solid 2px rgb(128, 169, 250);
+  outline: solid 2px #80a9fa;
 }
+
 .date-list__item.is-disabled {
   color: rgba(255, 255, 255, 0.3);
 }
+
 .date-list__item span {
   position: relative;
   z-index: 4;
@@ -154,6 +171,7 @@ body {
   text-align: center;
   line-height: 36px;
 }
+
 .date-list__item span:after {
   position: absolute;
   top: -6px;
@@ -175,6 +193,7 @@ body {
   color: rgba(255, 255, 255, 0.9);
   cursor: default;
 }
+
 .change-date:hover {
   color: #fff;
 }
@@ -215,11 +234,11 @@ button:hover .arrow {
 
 .grid-list {
   display: none;
-  -webkit-animation: show 0.2s both;
-          animation: show 0.2s both;
+  animation: show 0.2s both;
   height: 264px;
   overflow: hidden;
 }
+
 .grid-list__items {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -228,30 +247,25 @@ button:hover .arrow {
   transform: translateY(-198px);
   transition: transform 0.3s;
 }
+
 .grid-list__item {
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: default;
 }
+
 .grid-list__item:hover {
   border-color: rgba(255, 255, 255, 0.3);
 }
+
 .grid-list__item.is-current {
   color: #fff;
   background: #0078d7;
 }
+
 .grid-list__item.is-disabled {
   color: rgba(255, 255, 255, 0.3);
-}
-
-@-webkit-keyframes show {
-  0% {
-    transform: scale(0);
-  }
-  100% {
-    transform: scale(1);
-  }
 }
 
 @keyframes show {
@@ -261,4 +275,4 @@ button:hover .arrow {
   100% {
     transform: scale(1);
   }
-}/*# sourceMappingURL=calendar.css.map */
+}
