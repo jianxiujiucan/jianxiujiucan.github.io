@@ -1,4 +1,4 @@
-let handleRequest = {};
+const handleRequest = {};
 
 /**
  * 重复调用一个函数方法
@@ -6,24 +6,16 @@ let handleRequest = {};
  * @param {number} delay 每次延迟的毫秒数
  */
 export const mySetInterval =  (fn, delay) => {
-  let requestAnimationFrame = (function () {
-      return (
-        window.requestAnimationFrame ||
-        function (callback, element) {
-          window.setTimeout(callback, 1000 / 60);
-        }
-      );
-    })(),
-    start = new Date().getTime();
+  let start = Date.now();
 
   function loop() {
-    handleRequest.value = requestAnimationFrame(loop);
-    const current = new Date().getTime();
+    const current = Date.now();
     const delta = current - start;
     if (delta >= delay) {
       fn.call();
-      start = new Date().getTime();
+      start = Date.now();
     }
+    handleRequest.value = requestAnimationFrame(loop);
   }
   handleRequest.value = requestAnimationFrame(loop);
 

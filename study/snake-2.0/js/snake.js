@@ -212,9 +212,9 @@ class Snake {
   /**
    * 浮层,暂停或结束时弹出
    * @param {string} text 浮层显示的文本
-   * @param {string} type 类型,目前参数只有'end'
+   * @param {string} [type] 类型,目前参数只有'end'
    */
-  showCover(text, type) {
+  showCover(text, type = "") {
     cover.style.display = "flex";
     cover.innerHTML = `<p>${text}</p>`;
     cancelMySetInterval(this.timer);
@@ -233,18 +233,19 @@ class Snake {
    * 游戏暂停,暂停时弹出浮层
    */
   pause() {
-    if (!this.isPause) {
-      this.isPause = true;
-      cancelMySetInterval(this.timer);
-      this.showCover("游戏暂停中~");
-      buttonTodo.innerHTML = "继续游戏";
-      return;
-    } else {
-      cover.style.display = "none";
-      this._moving(this.keyDown);
+    if (this.isPause) {
       this.isPause = false;
       buttonTodo.innerHTML = "暂停游戏";
+      cover.style.display = "none";
+      this._moving(this.keyDown);
+      return;
     }
+
+    this.isPause = true;
+    buttonTodo.innerHTML = "继续游戏";
+
+    cancelMySetInterval(this.timer);
+    this.showCover("游戏暂停中~");
   }
 
   /**
@@ -275,36 +276,42 @@ class Snake {
    * 获取方向
    */
   _getDirection() {
+    let timerGetDirection = null;
     document.body.addEventListener("keydown", (e) => {
-      if (this.isOver) return;
+      if (this.isOver || this.isPause) return;
       //console.log(e, e.key, "key");
-
-      switch (e.key) {
-        case "ArrowLeft":
-          if (this.keyDown === direction.right || this.isPause) return;
-          this.keyDown = direction.left;
-          break;
-        case "ArrowUp":
-          if (this.keyDown === direction.down || this.isPause) return;
-          this.keyDown = direction.up;
-          break;
-        case "ArrowRight":
-          if (this.keyDown === direction.left || this.isPause) return;
-          this.keyDown = direction.right;
-          break;
-        case "ArrowDown":
-          if (this.keyDown === direction.up || this.isPause) return;
-          this.keyDown = direction.down;
-          break;
-      }
+      clearTimeout(timerGetDirection);
+      timerGetDirection = setTimeout(() => {
+        switch (e.key) {
+          case "ArrowLeft":
+            if (this.keyDown === direction.right) return;
+            this.keyDown = direction.left;
+            break;
+          case "ArrowUp":
+            if (this.keyDown === direction.down) return;
+            this.keyDown = direction.up;
+            break;
+          case "ArrowRight":
+            if (this.keyDown === direction.left) return;
+            this.keyDown = direction.right;
+            break;
+          case "ArrowDown":
+            if (this.keyDown === direction.up) return;
+            this.keyDown = direction.down;
+            break;
+        }
+      },this.speed);
     });
   }
 
   /**
-   * 生成某个范围的随机数
+   * 生成左闭右闭数值区间范围的随机数
    * @param {number} 范围小值
    * @param {number} 范围大值
    * @returns 返回随机数
+   * @example
+   * _getRandom(1,5)
+   * // => 返回1、2、3、4、5之中任意一个数
    */
   _getRandom(min, max) {
     const index = Math.floor(Math.random() * (max - min + 1) + min);
@@ -317,13 +324,16 @@ snake.reset();
 
 /** 监听S和P键，控制暂停和继续 */
 document.body.addEventListener("keydown", (e) => {
-  if (e.key.toLocaleLowerCase() === "p") {
-    snake.pause();
-  } else if (e.key.toLocaleLowerCase() === "s") {
-    snake.render();
-    buttonStart.innerHTML = "重新开始";
-  } else if (e.key.toLocaleLowerCase() === "e") {
-    snake.showCover("游戏结束...(｡•ˇ‸ˇ•｡) ...", "end");
+  switch (e.key.toLocaleLowerCase()) {
+    case "p":
+      snake.pause();
+      break;
+    case "s":
+      snake.render();
+      break;
+    case "e":
+      snake.showCover("游戏结束...(｡•ˇ‸ˇ•｡) ...", "end");
+      break;
   }
 });
 
@@ -334,6 +344,7 @@ buttonStart.addEventListener("click", function () {
   for (let i = 0; i < radios.length; i++) {
     if (radios[i].checked === true) {
       level = radios[i].value;
+      break;
     }
   }
   snake.speed = level;
