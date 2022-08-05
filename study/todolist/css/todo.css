@@ -1,0 +1,345 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --color-primary: #672ee3;
+  --color-secondary: #8285a6;
+  --color-fill: #f6f5fa;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 100px;
+  height: 100vh;
+  background: #efeef5;
+  box-sizing: border-box;
+}
+
+li {
+  list-style: none;
+}
+
+.todo {
+  position: relative;
+  width: 500px;
+  background: #fff;
+  box-sizing: border-box;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.todo__write {
+  display: flex;
+  width: 300px;
+  height: 42px;
+  border: solid 2px #000;
+}
+.todo__input {
+  flex: 1;
+  height: 100%;
+  border: 0;
+  outline: 0;
+  text-indent: 1em;
+}
+.todo__submit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 15px;
+  height: 100%;
+  color: #fff;
+  background: #000;
+  border: 0;
+  outline: 0;
+}
+.todo__submit:hover {
+  background: #313131;
+}
+.todo__tips {
+  height: 30px;
+  line-height: 30px;
+  color: red;
+}
+.todo__list {
+  width: 600px;
+  border: solid 2px #000;
+}
+.todo__item {
+  display: flex;
+  align-items: center;
+  margin: 0 10px;
+  line-height: 36px;
+  border-bottom: solid 1px #ccc;
+}
+.todo__text {
+  flex: 1;
+}
+.todo__clear {
+  order: 2;
+  padding: 5px;
+  font-size: 20px;
+  cursor: pointer;
+}
+.todo__edit {
+  order: 1;
+  user-select: none;
+  cursor: pointer;
+}
+.todo__edit-input {
+  flex: 1;
+  order: 0;
+}
+.todo__save {
+  cursor: pointer;
+}
+
+.todo-tabs {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  border-bottom: solid 1px #ddd;
+}
+.todo-tabs__items {
+  display: flex;
+}
+.todo-tabs__item {
+  display: flex;
+  align-items: center;
+  margin: 0 20px;
+  height: 50px;
+  font-size: 16px;
+  font-weight: bold;
+  color: var(--color-secondary);
+}
+.todo-tabs__item.is-active {
+  color: #12131c;
+  border-bottom: solid 3px var(--color-primary);
+}
+.todo-tabs__number {
+  padding: 2px 8px;
+  margin: 0 0 0 6px;
+  font-size: 12px;
+  color: var(--color-secondary);
+  background: var(--color-fill);
+  border-radius: 10px;
+}
+.todo-tabs__add {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 20px 0 auto;
+  width: 30px;
+  height: 30px;
+  border: solid 1px var(--color-primary);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.todo-search {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin: 0 20px 0 auto;
+}
+.todo-search:hover input {
+  color: #000;
+  background: var(--color-fill);
+}
+.todo-search:hover input::-webkit-input-placeholder {
+  color: var(--color-secondary);
+}
+.todo-search input {
+  height: 30px;
+  text-indent: 10px;
+  border: 0;
+  outline: 0;
+  border-radius: 15px;
+}
+.todo-search input::-webkit-input-placeholder {
+  color: #fff;
+}
+.todo-search .icon-search {
+  position: absolute;
+  right: 10px;
+}
+
+.todo-tips {
+  position: absolute;
+  top: 110px;
+  left: 20px;
+  display: none;
+  color: rgb(233, 75, 75);
+  font-size: 12px;
+}
+.todo-tips.is-show {
+  display: block;
+}
+
+.todo-add {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin: 12px 20px;
+  height: 42px;
+}
+.todo-add__input {
+  flex: 1;
+  height: 100%;
+  text-indent: 10px;
+  font-size: 14px;
+  border: solid 1px #ddd;
+  border-radius: 6px;
+  box-sizing: border-box;
+  outline: 0;
+}
+.todo-add__input:focus {
+  border-color: var(--color-primary);
+}
+.todo-add__button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60px;
+  height: 100%;
+  color: #fff;
+  background: var(--color-primary);
+  border-radius: 0 6px 6px 0;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+}
+.todo-add .icon-clear {
+  position: absolute;
+  top: 50%;
+  right: 66px;
+  display: none;
+  margin-top: -8px;
+  opacity: 0.5;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.todo-add .icon-clear:hover {
+  opacity: 0.8;
+}
+
+.todo-list {
+  position: relative;
+  padding: 0 0 40px;
+}
+.todo-list .checkbox {
+  margin: 0 10px 0 0;
+  width: 14px;
+  height: 14px;
+  appearance: none;
+  border: solid 1px #ddd;
+  border-radius: 2px;
+}
+.todo-list .checkbox:checked {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+.todo-list .checkbox:checked:after {
+  display: block;
+  margin: 3px 0 0 2px;
+  width: 7px;
+  height: 3px;
+  border-left: solid 2px #fff;
+  border-bottom: solid 2px #fff;
+  transform: rotate(-45deg);
+  content: "";
+}
+.todo-list__item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+  margin: 0 20px;
+  border-bottom: solid 1px #ddd;
+}
+.todo-list__item:nth-last-child(1) {
+  border: 0;
+}
+.todo-list__text {
+  font-size: 15px;
+}
+.todo-list__time {
+  color: var(--color-secondary);
+  font-size: 12px;
+}
+.todo-list__operate {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+.todo-list__button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 4px;
+  width: 30px;
+  height: 30px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.todo-list__button:hover {
+  background: var(--color-fill);
+}
+.todo-list__clear {
+  position: absolute;
+  right: 20px;
+  bottom: 10px;
+  display: none;
+  align-items: center;
+  font-size: 12px;
+  color: var(--color-secondary);
+  cursor: pointer;
+}
+.todo-list__empty {
+  width: 100%;
+  text-align: center;
+  font-size: 14px;
+  color: var(--color-secondary);
+}
+
+.icon-clear {
+  width: 16px;
+  height: 16px;
+  background: url(../icon/clear.svg) no-repeat;
+  background-size: 100% 100%;
+}
+
+.icon-search {
+  width: 24px;
+  height: 24px;
+  background: url(../icon/search.svg) no-repeat;
+  background-size: 100% 100%;
+  cursor: pointer;
+}
+
+.icon-delete {
+  width: 20px;
+  height: 20px;
+  background: url(../icon/delete.svg) no-repeat;
+  background-size: 100% 100%;
+}
+
+.icon-edit {
+  width: 20px;
+  height: 20px;
+  background: url(../icon/edit.svg) no-repeat;
+  background-size: 100% 100%;
+}
+
+.icon-add {
+  width: 30px;
+  height: 30px;
+  background: url(../icon/add.svg) no-repeat;
+  background-size: 100% 100%;
+}/*# sourceMappingURL=todo.css.map */
