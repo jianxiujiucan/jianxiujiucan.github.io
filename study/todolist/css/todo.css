@@ -254,6 +254,7 @@ li {
   border-radius: 5px;
 }
 .todo-list .checkbox {
+  position: relative;
   margin: 0 10px 0 0;
   width: 14px;
   height: 14px;
@@ -275,6 +276,14 @@ li {
   border-left: solid 2px #fff;
   border-bottom: solid 2px #fff;
   transform: rotate(-45deg);
+  content: "";
+}
+.todo-list .checkbox:before {
+  position: absolute;
+  top: 50%;
+  margin: -30px 0 0;
+  width: 380px;
+  height: 60px;
   content: "";
 }
 .todo-list__content {
