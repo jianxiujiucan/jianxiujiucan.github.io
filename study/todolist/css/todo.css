@@ -317,6 +317,13 @@ li {
 .todo-list__item:hover {
   background: var(--color-fill);
 }
+.todo-list__item.is-empty {
+  justify-content: center;
+  color: var(--color-secondary);
+}
+.todo-list__item.is-empty:after {
+  display: none;
+}
 .todo-list__text {
   font-size: 15px;
 }

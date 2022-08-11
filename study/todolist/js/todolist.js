@@ -24,9 +24,9 @@ renderData(dataBase);
  */
 function renderData(data) {
   let elements = "";
-  console.log(data,'传入的数据')
-  if (data.lenght === 0) {
-    list.innerHTML = "暂无数据";
+
+  if (data.length === 0) {
+    list.innerHTML = `<li class="todo-list__item is-empty">There wasn't anything...</li>` ;
   } else {
     clearAll.style.display = "flex";
     for (let i = 0; i < data.length; i++) {
