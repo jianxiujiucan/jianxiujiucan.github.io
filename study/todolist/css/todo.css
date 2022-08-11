@@ -241,6 +241,18 @@ li {
   position: relative;
   padding: 0 0 40px;
 }
+.todo-list ul {
+  max-height: 610px;
+  overflow-y: auto;
+}
+.todo-list ul::-webkit-scrollbar {
+  width: 10px;
+  background: transparent;
+}
+.todo-list ul::-webkit-scrollbar-thumb {
+  background: #eee;
+  border-radius: 5px;
+}
 .todo-list .checkbox {
   margin: 0 10px 0 0;
   width: 14px;
@@ -275,18 +287,26 @@ li {
 }
 .todo-list__text.is-completed {
   text-decoration: line-through;
-  opacity: 0.6;
+  opacity: 0.4;
 }
 .todo-list__item {
   position: relative;
   display: flex;
   align-items: center;
-  padding: 10px 0;
-  margin: 0 20px;
-  border-bottom: solid 1px var(--color-border);
+  padding: 10px 20px;
 }
-.todo-list__item:nth-last-child(1) {
-  border: 0;
+.todo-list__item:after {
+  position: absolute;
+  right: 20px;
+  bottom: 0;
+  left: 20px;
+  height: 1px;
+  background: var(--color-border);
+  opacity: 0.8;
+  content: "";
+}
+.todo-list__item:hover {
+  background: var(--color-fill);
 }
 .todo-list__text {
   font-size: 15px;
@@ -312,7 +332,7 @@ li {
   cursor: pointer;
 }
 .todo-list__button:hover {
-  background: var(--color-fill);
+  background: #e4e4ea;
 }
 .todo-list__button--save {
   display: none;
@@ -335,7 +355,7 @@ li {
 }
 
 .input-edit {
-  width: 150px;
+  width: 260px;
   height: 30px;
   text-indent: 6px;
   border: solid 1px var(--color-border);

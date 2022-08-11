@@ -110,13 +110,13 @@ li {
     font-size: 16px;
     font-weight: bold;
     color: var(--color-secondary);
-    transition: color .2s;
+    transition: color 0.2s;
     cursor: pointer;
     &.is-active {
       color: #12131c;
       border-bottom: solid 3px var(--color-primary);
     }
-    &:hover{
+    &:hover {
       color: #12131c;
     }
   }
@@ -238,6 +238,19 @@ li {
 .todo-list {
   position: relative;
   padding: 0 0 40px;
+  ul {
+    max-height: 610px;
+    overflow-y: auto;
+    &::-webkit-scrollbar{
+      width: 10px;
+      background: transparent;
+      &-thumb{
+        background: #eee;
+        border-radius: 5px;
+      }
+    }
+ 
+  }
   .checkbox {
     margin: 0 10px 0 0;
     width: 14px;
@@ -268,21 +281,29 @@ li {
     font-size: 14px;
     line-height: 20px;
   }
-  &__text{
-    &.is-completed{
+  &__text {
+    &.is-completed {
       text-decoration: line-through;
-      opacity: .6;
+      opacity: 0.4;
     }
   }
   &__item {
     position: relative;
     display: flex;
     align-items: center;
-    padding: 10px 0;
-    margin: 0 20px;
-    border-bottom: solid 1px var(--color-border);
-    &:nth-last-child(1) {
-      border: 0;
+    padding: 10px 20px;
+    &:after{
+      position: absolute;
+      right: 20px;
+      bottom: 0;
+      left: 20px;
+      height: 1px;
+      background: var(--color-border);
+      opacity: .8;
+      content: '';
+    }
+    &:hover{
+      background: var(--color-fill);
     }
   }
   &__text {
@@ -308,9 +329,9 @@ li {
     border-radius: 4px;
     cursor: pointer;
     &:hover {
-      background: var(--color-fill);
+      background: #e4e4ea;
     }
-    &--save{
+    &--save {
       display: none;
     }
   }
@@ -333,13 +354,13 @@ li {
 }
 
 .input-edit {
-  width: 150px;
+  width: 260px;
   height: 30px;
   text-indent: 6px;
   border: solid 1px var(--color-border);
   border-radius: 4px;
   outline: 0;
-  &:focus{
+  &:focus {
     border-color: var(--color-primary);
   }
 }
