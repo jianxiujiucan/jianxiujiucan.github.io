@@ -6,6 +6,7 @@
   --color-primary: #672ee3;
   --color-secondary: #8285a6;
   --color-fill: #f6f5fa;
+  --color-border: #ddd;
 }
 body {
   display: flex;
@@ -97,7 +98,7 @@ li {
   display: flex;
   align-items: center;
   width: 100%;
-  border-bottom: solid 1px #ddd;
+  border-bottom: solid 1px var(--color-border);
   &__items {
     display: flex;
   }
@@ -109,9 +110,14 @@ li {
     font-size: 16px;
     font-weight: bold;
     color: var(--color-secondary);
+    transition: color .2s;
+    cursor: pointer;
     &.is-active {
       color: #12131c;
       border-bottom: solid 3px var(--color-primary);
+    }
+    &:hover{
+      color: #12131c;
     }
   }
   &__number {
@@ -189,7 +195,7 @@ li {
     height: 100%;
     text-indent: 10px;
     font-size: 14px;
-    border: solid 1px #ddd;
+    border: solid 1px var(--color-border);
     border-radius: 6px;
     box-sizing: border-box;
     outline: 0;
@@ -237,7 +243,7 @@ li {
     width: 14px;
     height: 14px;
     appearance: none;
-    border: solid 1px #ddd;
+    border: solid 1px var(--color-secondary);
     border-radius: 2px;
     &:checked {
       background-color: var(--color-primary);
@@ -255,6 +261,18 @@ li {
     }
   }
   &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 40px;
+    font-size: 14px;
+    line-height: 20px;
+  }
+  &__text{
+    &.is-completed{
+      text-decoration: line-through;
+      opacity: .6;
+    }
   }
   &__item {
     position: relative;
@@ -262,7 +280,7 @@ li {
     align-items: center;
     padding: 10px 0;
     margin: 0 20px;
-    border-bottom: solid 1px #ddd;
+    border-bottom: solid 1px var(--color-border);
     &:nth-last-child(1) {
       border: 0;
     }
@@ -292,6 +310,9 @@ li {
     &:hover {
       background: var(--color-fill);
     }
+    &--save{
+      display: none;
+    }
   }
   &__clear {
     position: absolute;
@@ -308,6 +329,18 @@ li {
     text-align: center;
     font-size: 14px;
     color: var(--color-secondary);
+  }
+}
+
+.input-edit {
+  width: 150px;
+  height: 30px;
+  text-indent: 6px;
+  border: solid 1px var(--color-border);
+  border-radius: 4px;
+  outline: 0;
+  &:focus{
+    border-color: var(--color-primary);
   }
 }
 
@@ -337,6 +370,13 @@ li {
   width: 20px;
   height: 20px;
   background: url(../icon/edit.svg) no-repeat;
+  background-size: 100% 100%;
+}
+
+.icon-save {
+  width: 20px;
+  height: 20px;
+  background: url(../icon/save.svg) no-repeat;
   background-size: 100% 100%;
 }
 

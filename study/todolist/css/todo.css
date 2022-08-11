@@ -7,6 +7,7 @@
   --color-primary: #672ee3;
   --color-secondary: #8285a6;
   --color-fill: #f6f5fa;
+  --color-border: #ddd;
 }
 
 body {
@@ -85,7 +86,10 @@ li {
 }
 .todo__edit {
   order: 1;
-  user-select: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
   cursor: pointer;
 }
 .todo__edit-input {
@@ -100,7 +104,7 @@ li {
   display: flex;
   align-items: center;
   width: 100%;
-  border-bottom: solid 1px #ddd;
+  border-bottom: solid 1px var(--color-border);
 }
 .todo-tabs__items {
   display: flex;
@@ -113,10 +117,15 @@ li {
   font-size: 16px;
   font-weight: bold;
   color: var(--color-secondary);
+  transition: color 0.2s;
+  cursor: pointer;
 }
 .todo-tabs__item.is-active {
   color: #12131c;
   border-bottom: solid 3px var(--color-primary);
+}
+.todo-tabs__item:hover {
+  color: #12131c;
 }
 .todo-tabs__number {
   padding: 2px 8px;
@@ -190,7 +199,7 @@ li {
   height: 100%;
   text-indent: 10px;
   font-size: 14px;
-  border: solid 1px #ddd;
+  border: solid 1px var(--color-border);
   border-radius: 6px;
   box-sizing: border-box;
   outline: 0;
@@ -236,8 +245,10 @@ li {
   margin: 0 10px 0 0;
   width: 14px;
   height: 14px;
-  appearance: none;
-  border: solid 1px #ddd;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  border: solid 1px var(--color-secondary);
   border-radius: 2px;
 }
 .todo-list .checkbox:checked {
@@ -254,13 +265,25 @@ li {
   transform: rotate(-45deg);
   content: "";
 }
+.todo-list__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 40px;
+  font-size: 14px;
+  line-height: 20px;
+}
+.todo-list__text.is-completed {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
 .todo-list__item {
   position: relative;
   display: flex;
   align-items: center;
   padding: 10px 0;
   margin: 0 20px;
-  border-bottom: solid 1px #ddd;
+  border-bottom: solid 1px var(--color-border);
 }
 .todo-list__item:nth-last-child(1) {
   border: 0;
@@ -291,6 +314,9 @@ li {
 .todo-list__button:hover {
   background: var(--color-fill);
 }
+.todo-list__button--save {
+  display: none;
+}
 .todo-list__clear {
   position: absolute;
   right: 20px;
@@ -306,6 +332,18 @@ li {
   text-align: center;
   font-size: 14px;
   color: var(--color-secondary);
+}
+
+.input-edit {
+  width: 150px;
+  height: 30px;
+  text-indent: 6px;
+  border: solid 1px var(--color-border);
+  border-radius: 4px;
+  outline: 0;
+}
+.input-edit:focus {
+  border-color: var(--color-primary);
 }
 
 .icon-clear {
@@ -334,6 +372,13 @@ li {
   width: 20px;
   height: 20px;
   background: url(../icon/edit.svg) no-repeat;
+  background-size: 100% 100%;
+}
+
+.icon-save {
+  width: 20px;
+  height: 20px;
+  background: url(../icon/save.svg) no-repeat;
   background-size: 100% 100%;
 }
 

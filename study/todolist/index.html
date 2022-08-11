@@ -13,10 +13,10 @@
   <div class="todo">
     <div class="todo-tabs">
       <ul class="todo-tabs__items">
-        <li class="todo-tabs__item is-active">
+        <li id="todoItem" class="todo-tabs__item is-active">
           TodoList <span class="todo-tabs__number">1</span>
         </li>
-        <li class="todo-tabs__item">Completed</li>
+        <li id="completedItem" class="todo-tabs__item">Completed</li>
       </ul>
       <div class="todo-search"> <input id="inputSearch" type="text" placeholder="Search..."> <i class="icon-search"></i>
       </div>
@@ -31,11 +31,12 @@
     </div>
     <div class="todo-list">
       <ul id="list">
+        <!-- 先留着看DOM结构 -->
         <!-- <li class="todo-list__item">
           <input class="checkbox" type="checkbox" checked>
           <div class="todo-list__content">
             <p class="todo-list__text"> Get something....</p>
-            <div class="todo-list__time">2022-05-04</div>
+            <div class="todo-list__time">2022-05-04 15:06:03</div>
           </div>
           <div class="todo-list__operate">
             <span class="todo-list__button" title="Edit"><i class="icon-edit"></i></span>
