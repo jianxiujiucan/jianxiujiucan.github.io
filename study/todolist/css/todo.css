@@ -153,11 +153,11 @@ li {
   align-items: center;
   margin: 0 20px 0 auto;
 }
-.todo-search:hover input {
+.todo-search input {
   color: #000;
   background: var(--color-fill);
 }
-.todo-search:hover input::-webkit-input-placeholder {
+.todo-search input::-webkit-input-placeholder {
   color: var(--color-secondary);
 }
 .todo-search input {
@@ -168,7 +168,7 @@ li {
   border-radius: 15px;
 }
 .todo-search input::-webkit-input-placeholder {
-  color: #fff;
+  color: #ccc;
 }
 .todo-search .icon-search {
   position: absolute;
@@ -191,7 +191,7 @@ li {
   position: relative;
   display: flex;
   align-items: center;
-  margin: 12px 20px;
+  margin: 12px 20px 20px;
   height: 42px;
 }
 .todo-add__input {
@@ -281,8 +281,9 @@ li {
 .todo-list .checkbox:before {
   position: absolute;
   top: 50%;
+  z-index: 1;
   margin: -30px 0 0;
-  width: 380px;
+  width: 370px;
   height: 60px;
   content: "";
 }
@@ -294,9 +295,11 @@ li {
   font-size: 14px;
   line-height: 20px;
 }
-.todo-list__text.is-completed {
-  text-decoration: line-through;
+.todo-list__content.is-completed {
   opacity: 0.4;
+}
+.todo-list__content.is-completed .todo-list__text {
+  text-decoration: line-through;
 }
 .todo-list__item {
   position: relative;
@@ -348,7 +351,7 @@ li {
   cursor: pointer;
 }
 .todo-list__button:hover {
-  background: #e4e4ea;
+  background-color: #e4e4ea;
 }
 .todo-list__button--save {
   display: none;
@@ -371,6 +374,8 @@ li {
 }
 
 .input-edit {
+  position: relative;
+  z-index: 2;
   width: 260px;
   height: 30px;
   text-indent: 6px;
@@ -397,25 +402,24 @@ li {
   cursor: pointer;
 }
 
+.icon-save, .icon-edit, .icon-delete {
+  width: 30px;
+  height: 30px;
+  background-size: 20px 20px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
 .icon-delete {
-  width: 20px;
-  height: 20px;
-  background: url(../icon/delete.svg) no-repeat;
-  background-size: 100% 100%;
+  background-image: url(../icon/delete.svg);
 }
 
 .icon-edit {
-  width: 20px;
-  height: 20px;
-  background: url(../icon/edit.svg) no-repeat;
-  background-size: 100% 100%;
+  background-image: url(../icon/edit.svg);
 }
 
 .icon-save {
-  width: 20px;
-  height: 20px;
-  background: url(../icon/save.svg) no-repeat;
-  background-size: 100% 100%;
+  background-image: url(../icon/save.svg);
 }
 
 .icon-add {
