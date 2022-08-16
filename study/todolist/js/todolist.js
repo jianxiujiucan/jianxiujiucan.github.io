@@ -43,12 +43,25 @@
    * tab的所有节点
    */
 
-  const tabsItems = document.querySelectorAll('.todo-tabs__item')
+  const tabsItems = document.querySelectorAll(".todo-tabs__item");
 
   /**
    * 全部tab
    */
   const allTabDom = document.getElementById("allTabItem");
+
+  /**
+   * 搜索框
+   */
+  const inputSearchDom = document.getElementById("inputSearch");
+
+  /**
+   * 搜索icon
+   */
+  const iconSearchDom = document.getElementById("iconSearch");
+
+  /** 清除搜索内容icon */
+  const iconSearchClearDom = document.getElementById("iconSearchClear");
 
   /**
    * 列表状态
@@ -79,6 +92,7 @@
      */
     localTodoData: [],
     todoType: todoTypeList.all,
+    todoSearch: "",
     getTodoDataList() {
       if (localStorage.getItem("localTodoData") !== null) {
         // 如果本地有数据，则取本地的数据
@@ -95,7 +109,7 @@
     renderList() {
       let todoList = "";
       let todoListItem = "";
-      console.log(this.todoType)
+
       switch (this.todoType) {
         case todoTypeList.all:
           todoList = this.localTodoData.sort(
@@ -108,6 +122,10 @@
         case todoTypeList.completed:
           todoList = this.localTodoData.filter((item) => item.isCompleted);
           break;
+      }
+
+      if (this.todoSearch) {
+        todoList = this.localTodoData.filter((item) => item.content.match(new RegExp(this.todoSearch)))
       }
 
       if (todoList.length === 0) {
@@ -137,7 +155,7 @@
 
           const tempOperate = isEdit
             ? `<div class="todo-list__operate">
-            <s class="todo-list__button icon-save" data-time="${time}" title="Save"></s>
+            <a class="todo-list__button icon-save" data-time="${time}" title="Save"></a>
             <b class="todo-list__button icon-delete" data-time="${time}" title="Delete"></b>
           </div>`
             : `<div class="todo-list__operate">
@@ -168,21 +186,32 @@
       inputWriteDom.value = "";
     },
 
+
+    /**
+     * 切换到全部任务的标签页
+     */
     handleChangeAllTab() {
+      inputSearchDom.value = "";
+      this.todoSearch = "";
       allTabDom.classList.add("is-active");
       completeTabDom.classList.remove("is-active");
       todoTabDom.classList.remove("is-active");
 
       this.todoType = todoTypeList.all;
       localStorage.setItem("todoType", this.todoType);
+      this.getTodoDataList();
 
       this.renderList();
     },
 
+
     /**
-     * 切换待办列表 TODO
+     * 切换待办任务的标签页
      */
     handleChangeTodoTab() {
+      inputSearchDom.value = "";
+      this.todoSearch = "";
+
       todoTabDom.classList.add("is-active");
       completeTabDom.classList.remove("is-active");
       allTabDom.classList.remove("is-active");
@@ -191,13 +220,17 @@
 
       localStorage.setItem("todoType", this.todoType);
 
+      this.getTodoDataList();
       this.renderList();
     },
 
     /**
-     * 切换已完成列表
+     * 切换已完成任务的标签页
      */
     handleChangeCompleteTab() {
+      inputSearchDom.value = "";
+      this.todoSearch = "";
+
       completeTabDom.classList.add("is-active");
       todoTabDom.classList.remove("is-active");
       allTabDom.classList.remove("is-active");
@@ -206,6 +239,7 @@
 
       localStorage.setItem("todoType", this.todoType);
 
+      this.getTodoDataList();
       this.renderList();
     },
 
@@ -232,6 +266,7 @@
         }
       });
     },
+
     /**
      * 切换清除图标显示隐藏
      */
@@ -244,6 +279,7 @@
         }
       });
     },
+
     /**
      * 清除按钮点击时，清空文本框内容
      */
@@ -253,6 +289,7 @@
         iconClearDom.style.display = "none";
       });
     },
+
     /**
      * 添加按钮点击时，添加数据，并渲染列表
      */
@@ -300,6 +337,25 @@
       }
     },
 
+    /** 点击搜索 */
+    handleSearchTodo() {
+      iconSearchDom.addEventListener("click", () => {
+        this.todoSearch = inputSearchDom.value;
+        this.getTodoDataList();
+        this.renderList();
+      });
+    },
+
+    /** 清空搜索内容，清空搜索列表 */
+    handleClearSearchInput() {
+      iconSearchClearDom.addEventListener("click", () => {
+        inputSearchDom.value = "";
+        this.todoSearch = "";
+        this.getTodoDataList();
+        this.renderList();
+      });
+    },
+
     /**
      * 清除所有任务
      */
@@ -316,10 +372,12 @@
       });
     },
 
+    /** 获取索引值 */
     getCurTodoIndex(time) {
       return this.localTodoData.findIndex((todo) => todo.time === time);
     },
 
+    /** 列表点击事件 */
     handleClickTodoItem() {
       toDoListDom.addEventListener("click", (e) => {
         const type = e.target.nodeName;
@@ -329,7 +387,7 @@
           case "I":
             this.editTask(index);
             break;
-          case "S":
+          case "A":
             const content =
               e.target.parentNode.parentNode.children[1].children[0].value;
             this.saveTask(index, content);
@@ -379,7 +437,6 @@
      * @param {number} 索引值
      */
     deleteTask(index) {
-
       this.localTodoData.splice(index, 1);
 
       localStorage.setItem("localTodoData", JSON.stringify(this.localTodoData));
@@ -402,15 +459,16 @@
 
     /**
      * 同步tab激活信息
-     * @param {number} index 
+     * @param {number} index
      */
-    handleChageTab(index){
-      for(let i = 0; i< tabsItems.length; i++){
-        tabsItems[i].classList.remove('is-active')
+    handleChageTab(index) {
+      for (let i = 0; i < tabsItems.length; i++) {
+        tabsItems[i].classList.remove("is-active");
       }
-      tabsItems[index].classList.add('is-active')
+      tabsItems[index].classList.add("is-active");
     },
 
+    /** 绑定监听事件 */
     bindListeners() {
       this.handleChangeTab();
       this.hideTipsWhenFocus();
@@ -420,8 +478,10 @@
       this.handleClearAll();
       this.handleClickTodoItem();
       this.handleEnterKeyAdd();
+      this.handleSearchTodo();
+      this.handleClearSearchInput();
     },
-
+    
     render() {
       this.getTodoDataList();
       this.renderList();
@@ -429,14 +489,16 @@
     },
   };
 
+  /** 切换tab时更新数据 */
   document.addEventListener("visibilitychange", () => {
     if (document.visibilityState === "visible") {
       todoApp.getTodoDataList();
-      todoApp.handleChageTab(Number(localStorage.getItem("todoType")))
+      todoApp.handleChageTab(Number(localStorage.getItem("todoType")));
       todoApp.renderList();
     }
   });
 
+  /** 刷新页面重置tab状态 */
   window.onload = () => {
     this.todoType = todoTypeList.all;
     localStorage.setItem("todoType", this.todoType);

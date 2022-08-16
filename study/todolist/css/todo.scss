@@ -71,6 +71,7 @@ li {
     line-height: 36px;
     border-bottom: solid 1px #ccc;
   }
+
   &__text {
     flex: 1;
   }
@@ -147,26 +148,39 @@ li {
   align-items: center;
   margin: 0 20px 0 auto;
   input {
+    padding: 0 60px 0 10px;
+    width: 180px;
+    height: 30px;
     color: #000;
+    border: 0;
+    outline: 0;
     background: var(--color-fill);
+    border-radius: 15px;
+    box-sizing: border-box;
     &::-webkit-input-placeholder {
       color: var(--color-secondary);
     }
   }
-  input {
-    height: 30px;
-    text-indent: 10px;
-    border: 0;
-    outline: 0;
-    border-radius: 15px;
-    &::-webkit-input-placeholder {
-      color: #ccc;
-    }
-  }
+
   .icon-search {
     position: absolute;
     right: 10px;
+    
   }
+  .icon-clear {
+    position: absolute;
+
+    right: 40px;
+    opacity: 0.5;
+  }
+}
+
+.todo-line {
+  position: absolute;
+  right: 36px;
+  width: 1px;
+  height: 14px;
+  background: #e1e1e1;
 }
 
 .todo-tips {
@@ -225,7 +239,6 @@ li {
     display: none;
     margin-top: -8px;
     opacity: 0.5;
-    cursor: pointer;
     transition: opacity 0.2s;
     &:hover {
       opacity: 0.8;
@@ -322,6 +335,9 @@ li {
       }
     }
   }
+  &__keyword {
+    color: red;
+  }
   &__text {
     font-size: 15px;
   }
@@ -388,6 +404,7 @@ li {
   height: 16px;
   background: url(../icon/clear.svg) no-repeat;
   background-size: 100% 100%;
+  cursor: pointer;
 }
 
 .icon-search {
