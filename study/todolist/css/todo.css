@@ -171,8 +171,14 @@ li {
   position: absolute;
   right: 10px;
 }
+.todo-search .icon-search.is-disabled {
+  cursor: not-allowed;
+  filter: grayscale(1);
+  opacity: 0.3;
+}
 .todo-search .icon-clear {
   position: absolute;
+  display: none;
   right: 40px;
   opacity: 0.5;
 }

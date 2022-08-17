@@ -165,11 +165,15 @@ li {
   .icon-search {
     position: absolute;
     right: 10px;
-    
+    &.is-disabled{
+      cursor: not-allowed;
+      filter: grayscale(1);
+      opacity: .3;
+    }
   }
   .icon-clear {
     position: absolute;
-
+    display: none;
     right: 40px;
     opacity: 0.5;
   }

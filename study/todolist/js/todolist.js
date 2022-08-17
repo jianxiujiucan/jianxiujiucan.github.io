@@ -268,7 +268,7 @@
     },
 
     /**
-     * 切换清除图标显示隐藏
+     * 新增文本框，清除图标切换显示隐藏
      */
     toggleClearIconWhenInput() {
       inputWriteDom.addEventListener("input", () => {
@@ -276,6 +276,21 @@
           iconClearDom.style.display = "none";
         } else {
           iconClearDom.style.display = "block";
+        }
+      });
+    },
+
+    /**
+     * 搜索文本框，清除图标切换显示隐藏
+     */
+     toggleSearchClearIconWhenInput() {
+      inputSearchDom.addEventListener("input", () => {
+        if (inputSearchDom.value === "") {
+          iconSearchClearDom.style.display = "none";
+          iconSearchDom.classList.add('is-disabled')
+        } else {
+          iconSearchClearDom.style.display = "block";
+          iconSearchDom.classList.remove('is-disabled')
         }
       });
     },
@@ -340,6 +355,7 @@
     /** 点击搜索 */
     handleSearchTodo() {
       iconSearchDom.addEventListener("click", () => {
+        if(iconSearchDom.classList.contains('is-disabled')) return 
         this.todoSearch = inputSearchDom.value;
         this.getTodoDataList();
         this.renderList();
@@ -349,8 +365,12 @@
     /** 清空搜索内容，清空搜索列表 */
     handleClearSearchInput() {
       iconSearchClearDom.addEventListener("click", () => {
+        iconSearchClearDom.style.display = 'none'
+        iconSearchDom.classList.add('is-disabled')
+
         inputSearchDom.value = "";
         this.todoSearch = "";
+
         this.getTodoDataList();
         this.renderList();
       });
@@ -491,6 +511,7 @@
       this.handleChangeTab();
       this.hideTipsWhenFocus();
       this.toggleClearIconWhenInput();
+      this.toggleSearchClearIconWhenInput();
       this.handleClickClearIcon();
       this.handleClickAdd();
       this.handleClearAll();
