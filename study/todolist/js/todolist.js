@@ -146,7 +146,7 @@
                 isComplete ? "is-completed" : ""
               }">
             <p class="todo-list__text ">
-              ${todoList[i].content}
+              ${this.todoSearch ? this.highlightSearchKeyWord(todoList[i].content, this.todoSearch) : todoList[i].content}
             </p>
             <p class="todo-list__time">
               ${transformTime(time)}
@@ -466,6 +466,24 @@
         tabsItems[i].classList.remove("is-active");
       }
       tabsItems[index].classList.add("is-active");
+    },
+
+     /**
+     * 高亮查找列表
+     * @param {Array} array 传入列表数组
+     * @param {String} keyword 关键字
+     * @returns {Array} 返回高亮的数组
+     * @example
+     * 
+     * highlightSearchKeyWord('aabbccdd', 'aa')
+     * // => <strong class="todo-list__keyword">aa</strong>bbccdd
+     */
+    highlightSearchKeyWord(string, keyword) {
+      highlightDom = string.split(keyword).join(
+        `<strong class="todo-list__keyword">${keyword}</strong>`
+      )
+
+      return highlightDom;
     },
 
     /** 绑定监听事件 */
