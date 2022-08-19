@@ -209,7 +209,7 @@ li {
   &__input {
     flex: 1;
     height: 100%;
-    text-indent: 10px;
+    padding: 0 90px 0 10px;
     font-size: 14px;
     border: solid 1px var(--color-border);
     border-radius: 6px;
@@ -267,6 +267,7 @@ li {
   }
   .checkbox {
     position: relative;
+    flex-shrink: 0;
     margin: 0 10px 0 0;
     width: 14px;
     height: 14px;
@@ -301,9 +302,10 @@ li {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    height: 40px;
+    min-height: 40px;
     font-size: 14px;
     line-height: 20px;
+    overflow: hidden;
     &.is-completed {
       opacity: 0.4;
       .todo-list__text {
@@ -311,8 +313,7 @@ li {
       }
     }
   }
-  &__text {
-  }
+
   &__item {
     position: relative;
     display: flex;
@@ -344,6 +345,7 @@ li {
   }
   &__text {
     font-size: 15px;
+    word-wrap: break-word;
   }
   &__time {
     color: var(--color-secondary);
