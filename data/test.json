@@ -1,0 +1,29 @@
+{
+  "plist": [
+    {
+      "title": "这是标题1",
+      "version": "1.2",
+      "src": "itms-services://?action=download-manifest&url=https://ithunder-ota.a.88cdn.com/MobileThunder/apple/6.13%286.13.1.8564%29/60e6aa49e53c3c27583476d67d48328f/15de21c670ae7c3f6f3f1f37029303c9.plist'dt'"
+    },
+    {
+      "title": "这是标题2",
+      "version": "1.3",
+      "src": "itms-services://?action=download-manifest&url=https://ithunder-ota.a.88cdn.com/MobileThunder/apple/6.13%286.13.1.8564%29/60e6aa49e53c3c27583476d67d48328f/15de21c670ae7c3f6f3f1f37029303c9.plist'dt'"
+    },
+    {
+      "title": "这是标题3",
+      "version": "1.3",
+      "src": "itms-services://?action=download-manifest&url=https://ithunder-ota.a.88cdn.com/MobileThunder/apple/6.13%286.13.1.8564%29/60e6aa49e53c3c27583476d67d48328f/15de21c670ae7c3f6f3f1f37029303c9.plist'dt'"
+    },
+    {
+      "title": "这是标题4",
+      "version": "1.3",
+      "src": "itms-services://?action=download-manifest&url=https://ithunder-ota.a.88cdn.com/MobileThunder/apple/6.13%286.13.1.8564%29/60e6aa49e53c3c27583476d67d48328f/15de21c670ae7c3f6f3f1f37029303c9.plist'dt'"
+    },
+    {
+      "title": "这是标题5",
+      "version": "1.3",
+      "src": "itms-services://?action=download-manifest&url=https://ithunder-ota.a.88cdn.com/MobileThunder/apple/6.13%286.13.1.8564%29/60e6aa49e53c3c27583476d67d48328f/15de21c670ae7c3f6f3f1f37029303c9.plist'dt'"
+    }
+  ]
+}
