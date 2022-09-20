@@ -21,4 +21,6 @@ function concat(array, ...values){
 }
 
 const arr1 = [1]
-console.log(concat(arr1, 2, [3], [[4]]))
+// console.log(concat(arr1, 2, [3], [[4]]))
+
+export default concat
