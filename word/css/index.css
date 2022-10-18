@@ -1,0 +1,53 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.word {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 150px;
+  height: 150px;
+  font-family: "KaiTi";
+  font-size: 130px;
+  border: solid 3px rgb(211, 17, 17);
+  overflow: hidden;
+}
+.word span {
+  position: relative;
+  z-index: 1;
+}
+
+.line {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 200%;
+  height: 1px;
+  margin-left: -150px;
+  background-image: repeating-linear-gradient(to right, transparent 0 6px, #999 7px 12px);
+}
+.line2 {
+  transform: rotate(90deg);
+}
+.line3 {
+  transform: rotate(45deg);
+}
+.line4 {
+  transform: rotate(-45deg);
+}
+
+#tips {
+  visibility: hidden;
+  color: red;
+}/*# sourceMappingURL=index.css.map */

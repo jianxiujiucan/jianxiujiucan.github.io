@@ -1,0 +1,36 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.math {
+  margin: 0 auto;
+  width: 1000px;
+}
+
+.list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  list-style: none;
+}
+.list li {
+  display: flex;
+}
+.list span {
+  text-align: center;
+}
+.list span.number {
+  width: 2em;
+}
+.list span.symbol {
+  width: 15px;
+}
+.list.is-show .answer {
+  display: block;
+}
+.list .answer {
+  display: none;
+  width: 2em;
+  text-align: center;
+  color: red;
+}/*# sourceMappingURL=index.css.map */

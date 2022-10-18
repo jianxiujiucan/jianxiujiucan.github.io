@@ -14,9 +14,7 @@
    */
   const toDoListDom = document.getElementById("list");
 
-  /**
-   * 待办提示
-   */
+  /** 待办提示*/
   const todoTipsDom = document.getElementById("todoTips");
 
   /**
@@ -492,7 +490,7 @@
      * 高亮查找列表
      * @param {Array} array 传入列表数组
      * @param {String} keyword 关键字
-     * @returns {Array} 返回高亮的数组
+     * @returns {HTMLElement} 返回高亮的HTML结构
      * @example
      * 
      * highlightSearchKeyWord('aabbccdd', 'aa')

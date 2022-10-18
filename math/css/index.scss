@@ -1,0 +1,37 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.math {
+  margin: 0 auto;
+  width: 1000px;
+}
+
+.list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  list-style: none;
+  li {
+    display: flex;
+  }
+  span {
+    text-align: center;
+    &.number {
+      width: 2em;
+    }
+    &.symbol {
+      width: 15px;
+    }
+  }
+  &.is-show {
+    .answer {
+      display: block;
+    }
+  }
+  .answer {
+    display: none;
+    width: 2em;
+    text-align: center;
+    color: red;
+  }
+}
