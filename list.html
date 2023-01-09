@@ -5,6 +5,9 @@
     <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0">
     <title>Document</title>
     <style>
+      p{
+        user-select: none
+      }
       ol {
         counter-reset: section; /* 为每个ol元素创建新的计数器实例 */
         list-style-type: none;
@@ -37,6 +40,9 @@
         background: #fff;
         font-size: 13px;
         transform: translate(-50%, -50%);
+      }
+      .dialog p{
+        user-select: text;
       }
     </style>
   </head>
