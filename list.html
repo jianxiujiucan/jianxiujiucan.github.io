@@ -13,11 +13,14 @@
         counter-increment: section; /* 只增加计数器的当前实例 */
         content: counters(section, ".") " "; /* 为所有计数器实例增加以“.”分隔的值 */
       }
+      li{
+        user-select: text;
+      }
     </style>
   </head>
   <body>
     <ol>
-      <li>item</li>          <!-- 1     -->
+      <li>item11</li>          <!-- 1     -->
       <li>item               <!-- 2     -->
         <ol>
           <li>item</li>      <!-- 2.1   -->
