@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .box {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      display: flex;
+      align-items: center;
+      padding: 0 8px;
+      height: 44px;
+      background: #E3EDFE;
+      border: solid 1px #36f;
+      border-radius: 22px;
+      cursor: pointer;
+    }
+
+    .inner {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0 8px;
+      width: 62px;
+      color: #4A83E7;
+      font-weight: bold;
+      overflow: hidden;
+    }
+
+    .line {
+      width: 1px;
+      height: 28px;
+      background: rgba(56, 129, 255, 0.2);
+    }
+
+    .box.is-hide #inner {
+      animation: hide .5s ease-in-out both;
+    }
+
+    .box.is-hide .line {
+      display: none;
+    }
+
+    .box.is-show #inner {
+      animation: show .5s ease-in-out both;
+    }
+
+    .box.is-show .line {
+      display: block;
+    }
+
+    @keyframes hide {
+      0% {
+        width: 62px;
+        margin: 0 8px;
+      }
+
+      100% {
+        width: 0px;
+        margin: 0;
+      }
+    }
+
+    @keyframes show {
+      0% {
+        width: 0px;
+        margin: 0;
+      }
+
+      100% {
+        width: 62px;
+        margin: 0 8px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box">
+    <div class="inner">20M/s</div>
+    <i class="line"></i>
+    <div id="inner" class="inner">1024G</div>
+  </div>
+  <script>
+    const box = document.querySelector('.box')
+    box.addEventListener('click', () => {
+      if (box.classList.contains('is-hide')) {
+        box.classList.remove('is-hide')
+        box.classList.add('is-show')
+      } else {
+        box.classList.remove('is-show')
+        box.classList.add('is-hide')
+        
+      }
+    })
+  </script>
+</body>
+
+</html>
