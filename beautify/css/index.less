@@ -11,7 +11,7 @@ body {
 }
 
 a {
-  color: var(--bty-link-active);
+  color: var(--bty-link-default);
   &:active {
     color: var(--bty-link-active)
   }
@@ -52,7 +52,7 @@ a {
     font-weight: bold;
   }
   /* 链接列表 */
-  &-transform-list {
+  &-transform-content {
     margin: 0 0 10px;
     padding: 10px;
     background: var(--bty-fill-2);
@@ -171,4 +171,37 @@ a {
   }
 }
 
+/* 面包屑 */
 
+.@{namespace} {
+  &-transform-breadcrumb {
+    padding: 10px 0;
+    color: var(--bty-color-des);
+    a {
+      color: var(--bty-link-active);
+    }
+  }
+}
+
+.@{namespace} {
+  &-transform-list {
+    padding: 0 10px;
+    background: var(--bty-fill-2);
+    color: var(--bty-color-des);
+    a {
+      color: var(--bty-link-active);
+    }
+    p{
+      margin: 10px 0;
+    }
+    &__content{
+      color: var( --bty-color-text);
+      font-size: 12px;
+    }
+    li{
+      padding: 10px 0;
+      margin: 0 0 10px;
+      border-bottom: solid 1px var(--bty-border-color);
+    }
+  }
+}
