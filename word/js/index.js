@@ -8,10 +8,8 @@ const buttonNext = document.getElementById("buttonNext");
 function createWord() {
   if (wordList.length > 0) {
     const position = getWord();
-    console.log(position);
     word.innerHTML = wordList[position];
     wordList.splice(position, 1);
-    console.log(wordList);
   } else {
     document.getElementById('tips').style.visibility = 'visible'
   }

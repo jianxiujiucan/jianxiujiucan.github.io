@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="color-scheme" content="light dark">
+  <title>beautify</title>
+  <link rel="stylesheet/less" type="text/css" href="css/index-b.less" />
+  <script src="js/less.js"></script>
+</head>
+
+<body class="is-dark">
+  <div id="beautify">
+    <ul class="bty-transform-nav bty-transform-column-4">
+      <li class="bty-transform-nav__item">
+        <a href="https://www.ygdy8.net/html/gndy/dyzz/index.html">最新影片</a>
+      </li>
+      <li class="bty-transform-nav__item">
+        <a href="https://www.ygdy8.net/html/gndy/index.html">经典影片</a>
+      </li>
+      <li class="bty-transform-nav__item">
+        <a href="https://www.ygdy8.net/html/gndy/china/index.html">国内电影</a>
+      </li>
+      <li class="bty-transform-nav__item">
+        <a href="https://www.ygdy8.net/html/gndy/oumei/index.html">欧美电影</a>
+      </li>
+      <li class="bty-transform-nav__item">
+        <a href="/html/gndy/rihan/index.html">其它电影</a>
+      </li>
+      <li class="bty-transform-nav__item">
+        <a href="/html/tv/hytv/index.html">华语电视</a>
+      </li>
+      <li class="bty-transform-nav__item">
+        <a href="/html/tv/oumeitv/index.html">欧美电视</a>
+      </li>
+      <li class="bty-transform-nav__item">
+        <a href="/html/zongyi2013/index.html">最新综艺</a>
+      </li>
+      <li class="bty-transform-nav__item">
+        <a href="/html/2009zongyi/index.html">旧版综艺</a>
+      </li>
+      <li class="bty-transform-nav__item">
+        <a href="/html/dongman/index.html">动漫资源</a>
+      </li>
+      <li class="bty-transform-nav__item">
+        <a href="/html/game/index.html">旧版游戏</a>
+      </li>
+      <li class="bty-transform-nav__item">
+        <a href="/html/newgame/index.html">游戏下载</a>
+      </li>
+      <li class="bty-transform-nav__item">
+        <a href="/html/gndy/jddy/20160320/50523.html">高分经典</a>
+      </li>
+    </ul>
+
+    <div class="bty-transform-image">
+      <header class="bty-transform-header">
+        <h2 class="bty-transform-title">最新电视剧</h2>
+        <a href="#" class="bty-transform-header__more">更多&gt;</a>
+      </header>
+      <ul class="bty-transform-column-3">
+        <li v-for="(item, index) in imageList" :key="index">
+          <a class="bty-transform-image__link" :href="item.link" target="_blank">
+            <figure class="bty-transform-image__figure">
+              <img decoding="async" :src="item.src" :alt="item.title">
+              <figcaption>{{item.title}}</figcaption>
+            </figure>
+            <span class="bty-transform-image__tag">连载至38</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="bty-transform-list">
+      <header class="bty-transform-header">
+        <h2 class="bty-transform-title">2023新片精品</h2>
+      </header>
+      <ul>
+        <li v-for="(item, index) in linkList2023" :key="index">
+          <p class="bty-transform-name">·[<a href="/html/gndy/dyzz/index.html">最新电影下载</a>]
+            <a :href="item.link">{{item.title}}</a>
+          </p>
+          <p class="bty-transform-date"> {{item.date}}</p>
+        </li>
+      </ul>
+    </div>
+    <div class="bty-transform-list">
+      <div class="bty-transform-header">
+        <h2 class="bty-transform-title">最新电影更新:</h2>
+      </div>
+      <ul class="bty-transform-column-2">
+        <li v-for="(item, index) in linkList" :key="index">
+          <a :href="item.link">{{item.title}}</a>
+        </li>
+      </ul>
+    </div>
+
+    <footer class="bty-transform-footer">
+      <p>电影天堂 - 电影APP</p>
+      <p>Copyright @ 2023 电影天堂-www.dytt8.net. All Rights Reserved</p>
+    </footer>
+  </div>
+
+  <script src="js/vue3.js"></script>
+  <script src="js/data.js"></script>
+  <script>
+
+    const { createApp } = Vue
+
+    createApp({
+
+      data() {
+        return {
+          linkList,
+          linkList2023,
+          imageList,
+        }
+      }
+    }).mount('#beautify')
+  </script>
+</body>
+
+</html>

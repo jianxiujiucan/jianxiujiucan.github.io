@@ -1,0 +1,190 @@
+@import "reset";
+@import "var";
+
+/* 命名空间 */
+@namespace: bty;
+
+body {
+  padding: 5px 0 0;
+  font-size: var(--bty-font-default);
+  background: var(--bty-fill-1);
+  -webkit-tap-highlight-color: transparent;
+}
+
+a {
+  color: var(--bty-link-default);
+  &:active {
+    color: var(--bty-link-active)
+  }
+}
+
+/* 溢出隐藏代码块 */
+.textOverflow {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+/* 模块共同样式代码块 */
+.boxStyle {
+  margin-left: 10px;
+  margin-right: 10px;
+  background: var(--bty-fill-2);
+  border-radius: 6px;
+  box-shadow: var(--bty-shadow);
+}
+
+.@{namespace} {
+  /* 导航栏 */
+  &-transform-nav {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 5px 0;
+    margin: 0 0 10px;
+    .boxStyle();
+    
+    &__item {
+      padding: 5px;
+      text-align: center;
+      box-sizing: border-box;
+    }
+  }
+  /* 共用模块头部 */
+  &-transform-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding:5px;
+    margin: 0 5px 10px;
+    border-bottom: solid 1px #eee;
+    &__more {
+      color: var(--bty-font-des);
+    }
+  }
+  /* 共用模块大标题 */
+  &-transform-title {
+    padding: 5px 0;
+    font-size: var(--bty-font-title);
+    font-weight: bold;
+  }
+  /* 链接列表 */
+  &-transform-list {
+    margin: 0 0 10px;
+    padding: 5px;
+    .boxStyle();
+    ul {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    li {
+      padding: 5px;
+      display: flex;
+      box-sizing: border-box;
+      overflow: hidden;
+    }
+    a {
+      .textOverflow();
+    }
+  }
+  /* 图文格式 */
+  &-transform-image {
+    padding: 5px;
+    margin: 0 0 10px;
+    .boxStyle();
+    &__link {
+      position: relative;
+    }
+    &__tag {
+      position: absolute;
+      top: 0;
+      right: 0;
+      padding: 2px 5px;
+      font-size: 9px;
+      color: #fff;
+      background: #3f85ff;
+      border-radius: 0 6px;
+    }
+    ul {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    li {
+      padding: 0 5px;
+      margin: 0 0 8px;
+
+      box-sizing: border-box;
+
+      img {
+        width: 100%;
+        border-radius: 6px;
+      }
+    }
+
+    figcaption {
+      -webkit-line-clamp: 2;
+      display: -webkit-box;
+      word-break: break-all;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      -webkit-box-orient: vertical;
+    }
+  }
+  &-transform-name {
+    .textOverflow();
+  }
+
+  /* 日期 */
+  &-transform-date {
+    flex-shrink: 0;
+    margin: 0 0 0 10px;
+    color: var(--bty-font-des);
+    white-space: nowrap;
+  }
+
+  /* 展示的列数，加在ul上 */
+  &-transform-column-2 {
+    li {
+      width: 50%;
+    }
+  }
+  &-transform-column-3 {
+    li {
+      width: var(--bty-column-3);
+    }
+  }
+  &-transform-column-4 {
+    li {
+      width: var(--bty-column-4);
+    }
+  }
+  &-transform-column-5 {
+    li {
+      width: var(--bty-column-5);
+    }
+  }
+
+  /* 页脚 */
+  &-transform-footer {
+    padding: 5px 0 10px;
+    text-align: center;
+    line-height: 20px;
+    font-size: 10px;
+    color: var(--bty-font-des);
+  
+  }
+}
+
+.@{namespace} {
+  &-transform-details {
+    padding: 5px;
+    background: var(--bty-fill-2);
+    .boxStyle();
+    img {
+      display: block;
+      margin: 0 auto;
+      width: 90%;
+    }
+  }
+}
+
+

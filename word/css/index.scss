@@ -51,7 +51,23 @@
   }
 }
 
-#tips{
+#buttonNext {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70px;
+  height: 30px;
+  color: #fff;
+  background: #69f;
+  border-radius: 4px;
+  border: 0;
+  outline: 0;
+  &:active{
+    background: rgb(93, 141, 238);
+  }
+}
+
+#tips {
   visibility: hidden;
-  color: red;
+  color: rgb(237, 95, 95);
 }

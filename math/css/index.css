@@ -3,18 +3,25 @@
   padding: 0;
 }
 
+html,
+body {
+  font-size: 26.66vw;
+}
+
 .math {
-  margin: 0 auto;
-  width: 1000px;
+  font-size: 0.12rem;
 }
 
 .list {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   list-style: none;
 }
 .list li {
   display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
 }
 .list span {
   text-align: center;
@@ -33,4 +40,21 @@
   width: 2em;
   text-align: center;
   color: red;
+}
+
+.option {
+  padding: 0.1rem;
+  text-align: center;
+}
+
+.button-create {
+  display: block;
+  margin: 0 auto;
+  width: 0.8rem;
+  height: 0.3rem;
+  color: #fff;
+  background: #69f;
+  border: 0;
+  border-radius: 0.04rem;
+  outline: 0;
 }/*# sourceMappingURL=index.css.map */
