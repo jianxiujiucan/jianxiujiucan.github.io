@@ -1,22 +1,38 @@
-body, dl, dd, h1, h2, h3, h4, h5, h6, p, form , figure{
-  margin: 0;
+/* 命名空间 */
+@namespace: bty;
+
+.@{namespace}-transform-root {
+  font-size: 26.6667vw;
+  body {
+    margin: 0;
+    background: var(--bty-fill-1);
+    -webkit-tap-highlight-color: transparent;
+    word-break: break-word;
+  }
+  dl, dd, h1, h2, h3, h4, h5, h6, p, form , figure {
+    margin: 0;
+  }
+  p:focus, span:focus, a:focus, div:focus {
+    outline: none;
+  }
+  
+  ol, ul, input, button {
+    margin: 0;
+    padding: 0;
+  }
+  
+  ol, ul {
+    list-style: none;
+  }
+
+  a {
+    color: var(--bty-link-default);
+    text-decoration: none;
+    &:active {
+      color: var(--bty-link-active)
+    }
+  }
 }
 
-p:focus, span:focus, a:focus, div:focus {
-  outline: none;
-}
-
-ol, ul, input, button {
-  margin: 0;
-  padding: 0;
-}
-
-ol, ul {
-  list-style: none;
-}
-
-a{
-  text-decoration: none;
-}
 
 

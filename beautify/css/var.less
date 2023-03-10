@@ -1,47 +1,58 @@
 :root {
-  color-scheme: light dark;
+  color-scheme: light dark; // 适配暗黑模式
+}
 
-  --bty-font-title: 16px;
-  --bty-font-default: 14px;
-  
-  --bty-column-2: 50%;
-  --bty-column-3: calc(100% / 3);
-  --bty-column-4: 25%;
-  --bty-column-5: 20%;
+.@{namespace}-transform-root {
+  --bty-font-size-1: 0.16rem; // 用于标题
+  --bty-font-size-2: 0.14rem; // 用于正文/链接
+  --bty-font-size-3: 0.12rem; // 用于描述性
 
-  --bty-color-title: #000;
-  --bty-color-text: #333;
-  --bty-link-default: #333;
-  --bty-link-active: rgb(74, 103, 160);
-  --bty-color-des: #999;
-  
-  --bty-border-color: #eee;
+  --bty-column-2: 50%; // 两栏
+  --bty-column-3: calc(100% / 3); // 三栏
+  --bty-column-4: 25%; // 四栏
+  --bty-column-5: 20%; // 五栏
 
-  --bty-fill-1: #eaeef2;
-  --bty-fill-2: #fff;
+  --bty-brand-default: #3f85ff; // 主题色，用于按钮等
+  --bty-brand-active: #2a73f4; // 主题色，用于按钮激活等
+  --bty-font-color-1: #3a3b3d; // 用于标题
+  --bty-font-color-2: #2a3444; // 用于正文
+  --bty-font-color-3: #9ea0a6; // 用于描述性文字
+  --bty-link-default: #3f4854; // 用于链接
+  --bty-link-active: #5572ab; // 用于链接点击
 
-  --bty-shadow: 0px 0px 0px 1px rgba(255, 255, 255, 6%) inset, 0px 2px 6px rgba(0, 0, 0, 5%);
+  --bty-border-color: #e0e0e0; // 分割线
+
+  --bty-fill-1: #eff1f6; // 大背景填充色
+  --bty-fill-2: #fff; // 模块填充色
+  --bty-fill-3: #eff1f6; // 搜索框填充色
+
+  --bty-shadow: 0px 0px 0px 1px rgba(255, 255, 255, 6%) inset,
+    0px 2px 6px rgba(0, 0, 0, 5%); // 模块阴影
 }
 
 @media (prefers-color-scheme: dark) {
-  body {
-    --bty-font-title: rgba(255, 255, 255, 0.9);
-    --bty-font-text: rgba(255, 255, 255, 0.56);
-    --bty-link-default: rgba(255, 255, 255, 0.56);
-    --bty-color-des: rgba(255, 255, 255, 0.25);
-  
-    --bty-fill-1: rgba(255,255,255,0.09);
-    --bty-fill-2: #000;
+  .@{namespace}-transform-root {
+    --bty-font-color-1: rgba(255, 255, 255, 0.95);
+    --bty-font-color-2: rgba(255, 255, 255, 0.8);
+    --bty-font-color-3: rgba(255, 255, 255, 0.4);
+    --bty-link-default: rgba(255, 255, 255, 0.8);
+    --bty-link-active: #9fb2d8;
+    --bty-border-color: rgba(255, 255, 255, 0.15);
+    --bty-fill-1: #000;
+    --bty-fill-2: rgba(255, 255, 255, 0.09);
+    --bty-fill-3: rgba(255, 255, 255, 0.1);
   }
 }
-// body.is-dark {
-//   --bty-font-title: rgba(255, 255, 255, 0.9);
-//   --bty-font-text: rgba(255, 255, 255, 0.56);
-//   --bty-link-default: rgba(255, 255, 255, 0.56);
-//   --bty-color-des: rgba(255, 255, 255, 0.25);
 
-//   --bty-fill-1: #000;
-//   --bty-fill-2: rgba(255, 255, 255, 0.09);
-// }
-
-
+/* 临时看效果用，实际移动端以上面的媒体查询为准 */
+body.is-dark {
+  --bty-font-color-1: rgba(255, 255, 255, 0.95);
+  --bty-font-color-2: rgba(255, 255, 255, 0.8);
+  --bty-font-color-3: rgba(255, 255, 255, 0.4);
+  --bty-link-default: rgba(255, 255, 255, 0.8);
+  --bty-link-active: #92abdf;
+  --bty-border-color: rgba(255, 255, 255, 0.15);
+  --bty-fill-1: #000;
+  --bty-fill-2: rgba(255, 255, 255, 0.09);
+  --bty-fill-3: rgba(255, 255, 255, 0.1);
+}
