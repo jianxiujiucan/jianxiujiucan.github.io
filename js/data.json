@@ -1,0 +1,79 @@
+{
+  "wx-short-video": {
+  "apk": {
+  "default": "https://m.down.sandai.net/MobileThunder/Android_7.07.0.7102/thunder-7.07.0.7102-stable-release-jiagu-mobile_share_shortvideo_C.apk"
+  },
+  "yyb": {
+  "default": "http://a.app.qq.com/o/simple.jsp?pkgname=com.xunlei.downloadprovider&ckey=CK1359543292325"
+  },
+  "ios": "https://ithunder-ota.a.88cdn.com/download-guide/index.html?channel=sharelink",
+  "ios_call": "xunleiapp://m.xunlei.com/"
+  },
+  "download-share": {
+  "apk": {
+  "default": "https://m.down.sandai.net/mobile/OfficialSite_MobileThunder1.apk",
+  "filesize_23": "http://m.down.sandai.net/MobileThunder/Android_7.07.0.7102/thunder-7.07.0.7102-stable-release-jiagu-mobile_share_download_D_yingyongbao.apk"
+  },
+  "yyb": {
+  "default": "http://a.app.qq.com/o/simple.jsp?pkgname=com.xunlei.downloadprovider&ckey=CK1349279977100",
+  "filesize_23": "http://a.app.qq.com/o/simple.jsp?pkgname=com.xunlei.downloadprovider&ckey=CK1349279977100"
+  },
+  "ios": "https://ithunder-ota.a.88cdn.com/download-guide/index.html?channel=sharelink",
+  "ios_call": "xunleiapp://m.xunlei.com/"
+  },
+  "personal": {
+  "apk": "https://m.down.sandai.net/MobileThunder/Android_7.07.0.7102/thunder-7.07.0.7102-stable-release-jiagu-mobile_share_homepage.apk",
+  "yyb": "http://a.app.qq.com/o/simple.jsp?pkgname=com.xunlei.downloadprovider&ckey=CK1358941696051",
+  "ios": "https://ithunder-ota.a.88cdn.com/download-guide/index.html?channel=sharelink",
+  "ios_call": "xunleiapp://m.xunlei.com/"
+  },
+  "article": {
+  "apk": "https://m.down.sandai.net/MobileThunder/Android_7.07.0.7102/thunder-7.07.0.7102-stable-release-jiagu-mobile_share_homepage_yingyongbao.apk",
+  "yyb": "http://a.app.qq.com/o/simple.jsp?pkgname=com.xunlei.downloadprovider&ckey=CK1381185941266",
+  "ios": "https://ithunder-ota.a.88cdn.com/download-guide/index.html?channel=sharelink",
+  "ios_call": "xunleiapp://m.xunlei.com/"
+  },
+  "link-share": {
+  "apk": "https://m.down.sandai.net/MobileThunder/Android_7.07.0.7102/thunder-7.07.0.7102-stable-release-jiagu-mobile_share_website.apk",
+  "yyb": "http://a.app.qq.com/o/simple.jsp?pkgname=com.xunlei.downloadprovider&ckey=CK1372795891734",
+  "ios": "https://ithunder-ota.a.88cdn.com/download-guide/index.html?channel=sharelink",
+  "ios_call": "xunleiapp://m.xunlei.com/"
+  },
+  "xmp": {
+  "default": "http://www.xunlei.com/",
+  "android": "http://a.app.qq.com/o/simple.jsp?pkgname=com.xunlei.downloadprovider&ckey=CK1377801885906",
+  "ios": "https://ithunder-ota.a.88cdn.com/download-guide/index.html?channel=sharelink"
+  },
+  "share-download-vip": {
+  "apk": "https://m.down.sandai.net/MobileThunder/Android_7.07.0.7102/thunder-7.07.0.7102-stable-release-jiagu-Activity_Invitation1.apk",
+  "yyb": "http://a.app.qq.com/o/simple.jsp?pkgname=com.xunlei.downloadprovider&ckey=CK1361364295703",
+  "ios": "https://ithunder-ota.a.88cdn.com/download-guide/index.html?channel=sharelink",
+  "ios_call": "xunleiapp://m.xunlei.com/"
+  },
+  "album-share": {
+  "apk": "https://m.down.sandai.net/MobileThunder/Android_7.07.0.7102/thunder-7.07.0.7102-stable-release-jiagu-mobile_share_shortvideo_C.apk",
+  "yyb": "http://a.app.qq.com/o/simple.jsp?pkgname=com.xunlei.downloadprovider&ckey=CK1359543292325",
+  "ios": "https://ithunder-ota.a.88cdn.com/download-guide/index.html?channel=sharelink",
+  "ios_call": "xunleiapp://xunlei.com/"
+  },
+  "download-share2qi": {
+  "apk": {
+  "default": "https://m.down.sandai.net/MobileThunder/Android_7.07.0.7102/thunder-7.07.0.7102-stable-release-jiagu-Activity_Invitation1.apk"
+  },
+  "yyb": {
+  "default": "http://a.app.qq.com/o/simple.jsp?pkgname=com.xunlei.downloadprovider&ckey=CK1361364295703"
+  },
+  "ios": "https://ithunder-ota.a.88cdn.com/download-guide/index.html?channel=sharelink",
+  "ios_call": "xunleiapp://m.xunlei.com/"
+  },
+  "clipvideo_detail_page_share": {
+  "apk": {
+  "default": "https://m.down.sandai.net/mobile/clipvideo_detail_page.apk"
+  },
+  "yyb": {
+  "default": "http://a.app.qq.com/o/simple.jsp?pkgname=com.xunlei.downloadprovider&ckey=CK1486054094448"
+  },
+  "ios": "https://ithunder-ota.a.88cdn.com/download-guide/index.html?channel=sharelink",
+  "ios_call": "xunleiapp://m.xunlei.com/"
+  }
+  }

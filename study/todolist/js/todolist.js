@@ -342,6 +342,8 @@
           JSON.stringify(this.localTodoData)
         );
 
+        console.log(this.localTodoData)
+
         iconClearDom.style.display = "none";
 
         this.renderList();
