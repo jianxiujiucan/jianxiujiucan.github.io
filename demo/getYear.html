@@ -29,9 +29,7 @@
         xhr.onreadystatechange = function () {
           if (xhr.readyState == 2) {
             var dateStr = xhr.getResponseHeader("Date");
-
             const date = dateStr ? new Date(dateStr) : now;
-            console.log('服务器时间', date)
             callback && callback(date);
           }
         };

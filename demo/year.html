@@ -27,32 +27,20 @@
       thisYear = now.getFullYear()
       console.log('系统时间', thisYear)
       xhr = new window.XMLHttpRequest();
-      xhr.open("GET", window.location.href, true);
+      xhr.open("GET", window.location.href, false);
       xhr.send(null);
-      new Promise((resolve, reject) => {
-        try {
-          xhr.onreadystatechange = function () {
-            if (xhr.readyState == 2) {
-              let dateStr = xhr.getResponseHeader("Date");
-              console.log('时间', dateStr)
-              const date = dateStr ? new Date(dateStr) : now;
-              thisYear = date.getFullYear();
-              console.log('服务器时间', thisYear)
-              return thisYear
-            }
-          }
-        } catch (e) {
-          console.log('错误')
-          reject(error)
-        }
-
-      }).catch((e) => {
-        console.log(e)
-      }).then(() => {
-        return thisYear
-      })
       
-
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState == 2) {
+          let dateStr = xhr.getResponseHeader("Date");
+          console.log('时间', dateStr)
+          const date = dateStr ? new Date(dateStr) : now;
+          thisYear = date.getFullYear();
+          console.log('服务器时间', thisYear)
+        }
+        
+      }
+      return thisYear
     }
 
     document.getElementById("footerYear").innerText = getServerDate()
