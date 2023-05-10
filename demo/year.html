@@ -20,30 +20,70 @@
   <p id="footerYear"></p>
   <script>
 
-    function getServerDate() {
-      let thisYear = 0
-      let xhr = null;
-      let now = new Date();
-      thisYear = now.getFullYear()
-      console.log('系统时间', thisYear)
-      xhr = new window.XMLHttpRequest();
-      xhr.open("GET", window.location.href, false);
-      xhr.send(null);
-      
-      xhr.onreadystatechange = function () {
-        if (xhr.readyState == 2) {
-          let dateStr = xhr.getResponseHeader("Date");
-          console.log('时间', dateStr)
-          const date = dateStr ? new Date(dateStr) : now;
-          thisYear = date.getFullYear();
-          console.log('服务器时间', thisYear)
+    // function getServerDate() {
+    //   let thisYear = 0
+    //   let xhr = null;
+    //   let now = new Date();
+    //   thisYear = now.getFullYear()
+    //   console.log('系统时间', thisYear)
+    //   xhr = new window.XMLHttpRequest();
+    //   xhr.open("GET", window.location.href, false);
+    //   xhr.send(null);
+
+    //   xhr.onreadystatechange = function () {
+    //     if (xhr.readyState == 2) {
+    //       let dateStr = xhr.getResponseHeader("Date");
+    //       console.log('时间', dateStr)
+    //       const date = dateStr ? new Date(dateStr) : now;
+    //       thisYear = date.getFullYear();
+    //       console.log('服务器时间', thisYear)
+    //     }
+
+    //   }
+    //   return thisYear
+    // }
+    const getServerDate = () => {
+      return new Promise((resolve, reject) => {
+        try {
+          // 判断是否为node环境
+          if (typeof window === 'undefined') {
+            // node环境，一般为SSR环境，本地时间可信，直接使用 
+            const date = new Date();
+            resolve(date.getFullYear());
+          } else {
+            // 浏览器环境，发一个请求获取服务器时间
+            var xhr = null;
+            var now = new Date();
+            console.log('系统时间', now)
+            if (window.XMLHttpRequest) {
+              xhr = new window.XMLHttpRequest();
+            } else {
+              // ie
+              xhr = new ActiveObject("Microsoft");
+            }
+
+            xhr.open("GET", window.location.href, true);
+            xhr.send(null);
+
+            xhr.onreadystatechange = function () {
+              if (xhr.readyState == 2) {
+                var dateStr = xhr.getResponseHeader("Date");
+                const date = dateStr ? new Date(dateStr) : now;
+                resolve(date.getFullYear())
+              }
+            };
+          }
+        } catch (e) {
+          resolve('')
         }
-        
-      }
-      return thisYear
+      })
     }
 
-    document.getElementById("footerYear").innerText = getServerDate()
+    async function getTime () {
+      let time = await getServerDate()
+      document.getElementById("footerYear").innerText = time
+    }
+    getTime()
 
   </script>
 </body>
