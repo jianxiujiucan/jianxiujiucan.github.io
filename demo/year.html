@@ -29,25 +29,33 @@
       xhr = new window.XMLHttpRequest();
       xhr.open("GET", window.location.href, true);
       xhr.send(null);
-
-      xhr.onreadystatechange = function () {
-        if (xhr.readyState == 2) {
-          let dateStr = xhr.getResponseHeader("Date");
-          console.log('时间', dateStr)
-          const date = dateStr ? new Date(dateStr) : now;
-          thisYear = date.getFullYear();
-          console.log('服务器时间', thisYear)
+      new Promise((resolve, reject) => {
+        try {
+          xhr.onreadystatechange = function () {
+            if (xhr.readyState == 2) {
+              let dateStr = xhr.getResponseHeader("Date");
+              console.log('时间', dateStr)
+              const date = dateStr ? new Date(dateStr) : now;
+              thisYear = date.getFullYear();
+              console.log('服务器时间', thisYear)
+            }
+          }
+        } catch (e) {
+          console.log('错误')
+          reject(error)
         }
-      }
-      return thisYear
+
+      }).catch((e) => {
+        console.log(e)
+      }).then(() => {
+        return thisYear
+      })
+
+
     }
 
     document.getElementById("footerYear").innerText = getServerDate()
 
-    // getServerDate(function (now) {
-    //   const nowYear = now.getFullYear();
-    //   document.getElementById("footerYear").innerText = nowYear;
-    // });
   </script>
 </body>
 
