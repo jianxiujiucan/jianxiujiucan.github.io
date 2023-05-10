@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    (function () {
+      function getServerDate(callback) {
+        var xhr = null;
+        var now = new Date();
+        console.log('系统时间', now)
+        callback(now);
+        if (window.XMLHttpRequest) {
+          xhr = new window.XMLHttpRequest();
+        } else {
+          // ie
+          xhr = new ActiveObject("Microsoft");
+        }
+
+        xhr.open("GET", window.location.href, true);
+        xhr.send(null);
+
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState == 2) {
+            var dateStr = xhr.getResponseHeader("Date");
+
+            const date = dateStr ? new Date(dateStr) : now;
+            console.log('服务器时间', date)
+            callback && callback(date);
+          }
+        };
+      }
+
+      getServerDate(function (now) {
+        const nowYear = now.getFullYear();
+        document.getElementById("footerYear").innerText = nowYear;
+      });
+    })();
+  </script>
+</body>
+
+</html>
