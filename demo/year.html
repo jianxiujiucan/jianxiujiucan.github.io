@@ -49,7 +49,7 @@
           if (typeof window === 'undefined') {
             // node环境，一般为SSR环境，本地时间可信，直接使用 
             const date = new Date();
-            resolve(date.getFullYear());
+            resolve(date);
           } else {
             // 浏览器环境，发一个请求获取服务器时间
             var xhr = null;
@@ -69,19 +69,22 @@
               if (xhr.readyState == 2) {
                 var dateStr = xhr.getResponseHeader("Date");
                 const date = dateStr ? new Date(dateStr) : now;
-                resolve(date.getFullYear())
+                resolve(date)
               }
             };
           }
         } catch (e) {
-          resolve('')
+          const date = new Date();
+          resolve(date);
         }
       })
     }
 
     async function getTime () {
       let time = await getServerDate()
-      document.getElementById("footerYear").innerText = time
+      console.log(typeof time)
+      console.log(time.getFullYear())
+      // document.getElementById("footerYear").innerText = time
     }
     getTime()
 
