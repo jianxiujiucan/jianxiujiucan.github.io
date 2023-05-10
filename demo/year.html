@@ -38,6 +38,7 @@
               const date = dateStr ? new Date(dateStr) : now;
               thisYear = date.getFullYear();
               console.log('服务器时间', thisYear)
+              return thisYear
             }
           }
         } catch (e) {
@@ -47,14 +48,12 @@
 
       }).catch((e) => {
         console.log(e)
-      }).then(() => {
-        return thisYear
       })
-
+      return thisYear
 
     }
 
-    document.getElementById("footerYear").innerText = getServerDate()
+    document.getElementById("footerYear").innerText = await getServerDate()
 
   </script>
 </body>
