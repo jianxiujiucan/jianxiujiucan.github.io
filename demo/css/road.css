@@ -50,17 +50,7 @@ body {
   border-right: 30px solid #fff;
   transform: rotateX(100deg);
   transform-origin: center bottom;
-  -webkit-animation: backgroundAni 1s both linear infinite;
-          animation: backgroundAni 1s both linear infinite;
-}
-
-@-webkit-keyframes backgroundAni {
-  0% {
-    transform: rotateX(100deg) translateY(0);
-  }
-  100% {
-    transform: rotateX(100deg) translateY(var(--bgPos));
-  }
+  animation: backgroundAni 1s both linear infinite;
 }
 
 @keyframes backgroundAni {

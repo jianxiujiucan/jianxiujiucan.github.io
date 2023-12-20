@@ -55,16 +55,7 @@ body {
   transform: rotateX(90deg) translateZ(calc(var(--size) / -2));
 }
 .cube--outer {
-  -webkit-animation: out 5s infinite;
-          animation: out 5s infinite;
-}
-@-webkit-keyframes out {
-  0% {
-    transform: rotateY(0deg);
-  }
-  20%, 100% {
-    transform: rotateY(90deg);
-  }
+  animation: out 5s infinite;
 }
 @keyframes out {
   0% {
@@ -80,16 +71,7 @@ body {
   left: 0;
   transform: scale3d(0.5, 0.5, 0.5);
   --background: #69f;
-  -webkit-animation: in 5s infinite;
-          animation: in 5s infinite;
-}
-@-webkit-keyframes in {
-  0% {
-    transform: scale3d(0.5, 0.5, 0.5) rotateY(0deg);
-  }
-  20%, 100% {
-    transform: scale3d(0.5, 0.5, 0.5) rotateY(-90deg);
-  }
+  animation: in 5s infinite;
 }
 @keyframes in {
   0% {

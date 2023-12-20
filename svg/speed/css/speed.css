@@ -215,8 +215,7 @@ body::-webkit-scrollbar:horizontal {
   background-color: rgb(51, 111, 255);
   border-radius: 4px;
   offset-path: path("M3,207c1.371-5.683,19.811-30.553,65-51,89.1-40.317,247.781-44.943,326.029-152.613");
-  -webkit-animation: fadeIn 0.2s 1s both, move 3s 1s ease-out forwards;
-          animation: fadeIn 0.2s 1s both, move 3s 1s ease-out forwards;
+  animation: fadeIn 0.2s 1s both, move 3s 1s ease-out forwards;
 }
 .ani-tips--vip:after {
   bottom: -13px;
@@ -241,8 +240,7 @@ body::-webkit-scrollbar:horizontal {
   border-radius: 4px;
   filter: drop-shadow(0 0 3px rgba(163, 163, 163, 0.5));
   offset-path: path("M4,35c10.53-6.7,29.436-23.611,80-25C299.967,4.066,314,5,314,5");
-  -webkit-animation: fadeIn 0.2s 1.5s both, move 7s 1.5s ease-out forwards;
-          animation: fadeIn 0.2s 1.5s both, move 7s 1.5s ease-out forwards;
+  animation: fadeIn 0.2s 1.5s both, move 7s 1.5s ease-out forwards;
 }
 .ani-tips--normal:after {
   bottom: -13px;
@@ -269,16 +267,14 @@ body::-webkit-scrollbar:horizontal {
 }
 .ani-element--vip {
   offset-path: path("M3,207c1.371-5.683,19.811-30.553,65-51,89.1-40.317,247.781-44.943,326.029-152.613");
-  -webkit-animation: fadeIn 0.2s 1s both, move 3s 1s ease-out forwards;
-          animation: fadeIn 0.2s 1s both, move 3s 1s ease-out forwards;
+  animation: fadeIn 0.2s 1s both, move 3s 1s ease-out forwards;
 }
 .ani-element--normal {
   top: 164px;
   left: 0;
   background-position: 0 -34px;
   offset-path: path("M4,35c10.53-6.7,29.436-23.611,80-25C299.967,4.066,314,5,314,5");
-  -webkit-animation: fadeIn 0.2s 1.5s both, move 7s 1.5s ease-out forwards;
-          animation: fadeIn 0.2s 1.5s both, move 7s 1.5s ease-out forwards;
+  animation: fadeIn 0.2s 1.5s both, move 7s 1.5s ease-out forwards;
 }
 
 .speed-line {
@@ -294,29 +290,12 @@ body::-webkit-scrollbar:horizontal {
   stroke: #77a2fb;
 }
 
-@-webkit-keyframes move {
-  0% {
-    offset-distance: 0%;
-  }
-  100% {
-    offset-distance: 98%;
-  }
-}
-
 @keyframes move {
   0% {
     offset-distance: 0%;
   }
   100% {
     offset-distance: 98%;
-  }
-}
-@-webkit-keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
   }
 }
 @keyframes fadeIn {

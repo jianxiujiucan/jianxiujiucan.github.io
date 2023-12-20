@@ -3,6 +3,5 @@
 }
 
 .item {
-  -webkit-animation: move 1s both;
-          animation: move 1s both;
+  animation: move 1s both;
 }/*# sourceMappingURL=translateZ.css.map */

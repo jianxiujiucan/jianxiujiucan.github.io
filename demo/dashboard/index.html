@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="css/index.css">
+  <style>
+    .box {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    input {
+      padding: 0 0 0 10px;
+      margin: 0 5px 0 0;
+      width: 100px;
+      height: 28px;
+      border: solid 1px #ccc;
+      border-radius: 3px;
+      outline: 0;
+    }
+    input:focus {
+      border-color: #3f85ff;
+    }
+
+    button {
+      width: 60px;
+      height: 28px;
+      color: #fff;
+      background: #3f85ff;
+      border: 0;
+      outline: 0;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="circle">
+    <div class="background"></div>
+    <div class="wrapper">
+      <div id="pointer" class="pointer"></div>
+    </div>
+    <div class="progress">
+      <div id="progress" class="inner"></div>
+      <div class="svg">
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+          viewBox="0 0 255 179">
+          <defs>
+            <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" style="stop-color: #1bbdfa; stop-opacity: 1" />
+              <stop offset="100%" style="stop-color: #3cfdf3; stop-opacity: 1" />
+            </linearGradient>
+            <filter id="filter_shadow" x="0" y="0" width="254" height="254" filterUnits="userSpaceOnUse"
+              color-interpolation-filters="sRGB">
+              <feFlood flood-opacity="0" result="BackgroundImageFix" />
+              <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+              <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                result="hardAlpha" />
+              <feOffset />
+              <feGaussianBlur stdDeviation="5" />
+              <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
+              <feColorMatrix type="matrix" values="0 0 0 0 0.354167 0 0 0 0 1 0 0 0 0 0.9225 0 0 0 1 0" />
+              <feBlend mode="normal" in2="shape" result="effect1_innerShadow_331_7285" />
+            </filter>
+          </defs>
+          <g filter="url(#filter_shadow)">
+            <path class="path"
+              d="M29.1,170.6C5.5,116.4,30.3,53.4,84.5,29.8c31.6-13.7,66.1-11.1,94.1,4.3c20.1,11,36.8,28.5,46.7,51.1 c11.7,26.8,11.5,55.7,1.8,81l-1.4,3.1"
+              fill="transparent" stroke="url(#grad1)" stroke-width="40" />
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+  <div class="box">
+    <input id="input" type="text" placeholder="请输入数字">
+    <button id="button">开始</button>
+  </div>
+
+  <script>
+    function getSpeedRotateValue(value) {
+      let element = document.getElementById('pointer')
+      const intervalArray = [
+        {
+          rangeValue: [0, 30],
+          angle: 0,
+          offset: 423,
+        },
+        {
+          rangeValue: [31, 50],
+          angle: 22,
+          offset: 375,
+        },
+        {
+          rangeValue: [51, 100],
+          angle: 44,
+          offset: 334,
+        },
+        {
+          rangeValue: [101, 200],
+          angle: 66,
+          offset: 293,
+        },
+        {
+          rangeValue: [201, 300],
+          angle: 90,
+          offset: 251,
+        },
+        {
+          rangeValue: [301, 400],
+          angle: 112,
+          offset: 208,
+        },
+        {
+          rangeValue: [401, 500],
+          angle: 135,
+          offset: 165,
+        },
+        {
+          rangeValue: [501, 700],
+          angle: 157,
+          offset: 125,
+        },
+        {
+          rangeValue: [701, 1000],
+          angle: 179,
+          offset: 82,
+        },
+        {
+          rangeValue: [1001, 2000],
+          angle: 202,
+          offset: 40,
+        },
+        {
+          rangeValue: [2001, 2001],
+          angle: 226,
+          offset: 0,
+        },
+      ];
+      let rotateValue = 0
+      let offsetValue = 0
+      const path = document.querySelector(".path")
+      const length = path.getTotalLength() - 2 // svg路径长度
+
+      if (value <= intervalArray[0].rangeValue[0]) {
+        rotateValue = 0;
+        offsetValue = 423
+      } else if (value >= intervalArray[intervalArray.length - 1].rangeValue[1]) {
+        rotateValue = intervalArray[intervalArray.length - 1].angle;
+        offsetValue = 0
+      } else {
+        const matched = intervalArray.find((item) => {
+          console.log(item)
+          return item.rangeValue[0] <= value && item.rangeValue[1] >= value;
+        });
+
+        if (!matched) return 0;
+        console.log(matched)
+        const [min, max] = matched.rangeValue;
+        const angle = 22 // 区间角度
+        const percent = angle / (max - min)
+        rotateValue = (percent * (value - min) + matched.angle).toFixed(0)
+        const offsetPercent = 41 / (max - min)
+        offsetValue = (matched.offset - offsetPercent * (value - min)).toFixed(0)
+        console.log(offsetValue)
+      }
+
+      element.style.transform = `rotate(${rotateValue}deg)`
+      path.style.strokeDashoffset = offsetValue
+    }
+
+
+    const button = document.getElementById('button')
+
+    button.addEventListener('click', () => {
+      const numberValue = document.getElementById('input').value
+      getSpeedRotateValue(numberValue)
+    })
+
+  </script>
+</body>
+
+</html>

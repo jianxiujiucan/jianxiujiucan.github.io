@@ -34,7 +34,6 @@ button:hover {
   position: fixed;
   -webkit-user-select: none;
      -moz-user-select: none;
-      -ms-user-select: none;
           user-select: none;
   --ball-width: 50px;
   --ball-height: 50px;
@@ -47,29 +46,10 @@ button:hover {
   -webkit-clip-path: polygon(100% 0, 100% 106px, 50% 100%, 0 106px, 0 0);
           clip-path: polygon(100% 0, 100% 106px, 50% 100%, 0 106px, 0 0);
   overflow: hidden;
-  -webkit-animation: maskAni 1s 0.2s both;
-          animation: maskAni 1s 0.2s both;
+  animation: maskAni 1s 0.2s both;
 }
 .xly-suspension.is-vip-login .xly-suspension-panel {
-  -webkit-animation: changeBox 1.6s 0.9s both, changePanel 0.4s 1.3s both;
-          animation: changeBox 1.6s 0.9s both, changePanel 0.4s 1.3s both;
-}
-@-webkit-keyframes changeBox {
-  0% {
-    transform: translate3d(0, 0, 0) scale(1) rotate(0);
-  }
-  50% {
-    transform: translate3d(0, 95px, 0) scale(0.5) rotate(-90deg);
-  }
-  80% {
-    transform: translate3d(0, -8px, 0) scale(1) rotate(0);
-  }
-  95% {
-    transform: translate3d(0, 3px, 0) scale(1) rotate(0);
-  }
-  100% {
-    transform: translate3d(0, 0, 0) scale(1) rotate(0);
-  }
+  animation: changeBox 1.6s 0.9s both, changePanel 0.4s 1.3s both;
 }
 @keyframes changeBox {
   0% {
@@ -88,14 +68,6 @@ button:hover {
     transform: translate3d(0, 0, 0) scale(1) rotate(0);
   }
 }
-@-webkit-keyframes changePanel {
-  0%, 50% {
-    background-image: url(../img/normal.png);
-  }
-  51%, 100% {
-    background-image: url(../img/vip.png);
-  }
-}
 @keyframes changePanel {
   0%, 50% {
     background-image: url(../img/normal.png);
@@ -106,20 +78,10 @@ button:hover {
 }
 .xly-suspension.is-vip-login .xly-suspension-hole {
   display: block;
-  -webkit-animation: lightShow1 2.5s 0.5s both;
-          animation: lightShow1 2.5s 0.5s both;
+  animation: lightShow1 2.5s 0.5s both;
 }
 .xly-suspension.is-vip-login .xly-suspension-hole:before {
-  -webkit-animation: lightShow1 2.2s 0.5s both, filterAni 2.2s 0.5s both;
-          animation: lightShow1 2.2s 0.5s both, filterAni 2.2s 0.5s both;
-}
-@-webkit-keyframes filterAni {
-  0%, 55% {
-    filter: hue-rotate(0deg);
-  }
-  60%, 100% {
-    filter: hue-rotate(-132deg);
-  }
+  animation: lightShow1 2.2s 0.5s both, filterAni 2.2s 0.5s both;
 }
 @keyframes filterAni {
   0%, 55% {
@@ -127,19 +89,6 @@ button:hover {
   }
   60%, 100% {
     filter: hue-rotate(-132deg);
-  }
-}
-@-webkit-keyframes lightShow1 {
-  0% {
-    transform: scale(0);
-  }
-  10%, 90% {
-    transform: scale(1);
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-    transform: scale(0);
   }
 }
 @keyframes lightShow1 {
@@ -156,8 +105,7 @@ button:hover {
   }
 }
 .xly-suspension.is-vip-login .xly-suspension-hole__svg {
-  -webkit-animation: lightShow1 2.2s 0.5s both;
-          animation: lightShow1 2.2s 0.5s both;
+  animation: lightShow1 2.2s 0.5s both;
 }
 
 .xly-suspension-panel {
@@ -203,15 +151,6 @@ button:hover {
   stroke-width: 2px;
 }
 
-@-webkit-keyframes flash {
-  50% {
-    opacity: 1;
-  }
-  0%, 100% {
-    opacity: 0;
-  }
-}
-
 @keyframes flash {
   50% {
     opacity: 1;
@@ -235,19 +174,6 @@ button:hover {
 
 .xly-suspension-light__path-2 {
   transform: rotate(-180deg) scaleY(-1);
-}
-
-@-webkit-keyframes pathOut {
-  1% {
-    opacity: 1;
-    stroke-dasharray: 49, 166;
-    stroke-dashoffset: -98;
-  }
-  60%, 100% {
-    opacity: 0.5;
-    stroke-dasharray: 0, 166;
-    stroke-dashoffset: 0;
-  }
 }
 
 @keyframes pathOut {
@@ -281,14 +207,6 @@ button:hover {
   border-radius: 0 4px 4px 0;
   box-sizing: border-box;
   overflow: hidden;
-}
-@-webkit-keyframes showRight {
-  0% {
-    transform: translate3d(-76px, 0, 0);
-  }
-  100% {
-    transform: translate3d(0, 0, 0);
-  }
 }
 @keyframes showRight {
   0% {

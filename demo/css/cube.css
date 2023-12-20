@@ -25,8 +25,7 @@ li {
   width: 200px;
   height: 200px;
   transform-style: preserve-3d;
-  -webkit-animation: spin 5s both linear infinite;
-          animation: spin 5s both linear infinite;
+  animation: spin 5s both linear infinite;
 }
 
 .flat {
@@ -56,29 +55,12 @@ li {
   transform: translateZ(100px);
 }
 
-@-webkit-keyframes spin1 {
-  from {
-    transform: rotate3d(0);
-  }
-  to {
-    transform: rotate3d(1, 1, 1, 360deg);
-  }
-}
-
 @keyframes spin1 {
   from {
     transform: rotate3d(0);
   }
   to {
     transform: rotate3d(1, 1, 1, 360deg);
-  }
-}
-@-webkit-keyframes spin {
-  from {
-    transform: rotateY(0);
-  }
-  to {
-    transform: rotateY(360deg);
   }
 }
 @keyframes spin {

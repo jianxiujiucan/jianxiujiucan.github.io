@@ -19,8 +19,7 @@ main {
   --endX2: 67%;
   --endY1: 40%;
   --endY2: 60%;
-  -webkit-animation: po var(--durM) ease-in-out infinite;
-          animation: po var(--durM) ease-in-out infinite;
+  animation: po var(--durM) ease-in-out infinite;
   margin: auto;
   overflow: hidden;
   perspective: 5em;
@@ -36,8 +35,7 @@ main:before, div {
 }
 
 main:before {
-  -webkit-animation: end var(--durM) ease-in-out infinite;
-          animation: end var(--durM) ease-in-out infinite;
+  animation: end var(--durM) ease-in-out infinite;
   background: currentColor;
   box-shadow: 0 0 1em 1em;
   color: #000;
@@ -79,45 +77,26 @@ div {
 }
 
 .t {
-  -webkit-animation: t var(--durD) linear infinite;
-          animation: t var(--durD) linear infinite;
+  animation: t var(--durD) linear infinite;
   background-position: 0 calc(var(--bgPos) / 2);
   filter: brightness(40%);
   transform: rotateX(-90deg);
 }
 
 .r {
-  -webkit-animation: r var(--durD) linear infinite;
-          animation: r var(--durD) linear infinite;
+  animation: r var(--durD) linear infinite;
   background-position: calc(var(--bgPos) / 2) 0;
   transform: rotateY(-90deg);
 }
 
 .b {
-  -webkit-animation: b var(--durD) linear infinite;
-          animation: b var(--durD) linear infinite;
+  animation: b var(--durD) linear infinite;
   transform: rotateX(90deg);
 }
 
 .l {
-  -webkit-animation: l var(--durD) linear infinite;
-          animation: l var(--durD) linear infinite;
+  animation: l var(--durD) linear infinite;
   transform: rotateY(90deg);
-}
-
-@-webkit-keyframes po {
-  from, to {
-    perspective-origin: var(--endX1) var(--endY1);
-  }
-  25% {
-    perspective-origin: var(--endX2) var(--endY1);
-  }
-  50% {
-    perspective-origin: var(--endX2) var(--endY2);
-  }
-  75% {
-    perspective-origin: var(--endX1) var(--endY2);
-  }
 }
 
 @keyframes po {
@@ -134,19 +113,9 @@ div {
     perspective-origin: var(--endX1) var(--endY2);
   }
 }
-@-webkit-keyframes t {
-  to {
-    transform: rotateX(-90deg) translateY(calc(var(--bgPos) * -1));
-  }
-}
 @keyframes t {
   to {
     transform: rotateX(-90deg) translateY(calc(var(--bgPos) * -1));
-  }
-}
-@-webkit-keyframes r {
-  to {
-    transform: rotateY(-90deg) translateX(var(--bgPos));
   }
 }
 @keyframes r {
@@ -154,42 +123,14 @@ div {
     transform: rotateY(-90deg) translateX(var(--bgPos));
   }
 }
-@-webkit-keyframes b {
-  to {
-    transform: rotateX(90deg) translateY(var(--bgPos));
-  }
-}
 @keyframes b {
   to {
     transform: rotateX(90deg) translateY(var(--bgPos));
   }
 }
-@-webkit-keyframes l {
-  to {
-    transform: rotateY(90deg) translateX(calc(var(--bgPos) * -1));
-  }
-}
 @keyframes l {
   to {
     transform: rotateY(90deg) translateX(calc(var(--bgPos) * -1));
-  }
-}
-@-webkit-keyframes end {
-  from, to {
-    top: var(--endY1);
-    left: var(--endX1);
-  }
-  25% {
-    top: var(--endY1);
-    left: var(--endX2);
-  }
-  50% {
-    top: var(--endY2);
-    left: var(--endX2);
-  }
-  75% {
-    top: var(--endY2);
-    left: var(--endX1);
   }
 }
 @keyframes end {

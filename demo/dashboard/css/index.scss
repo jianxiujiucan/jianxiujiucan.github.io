@@ -1,0 +1,82 @@
+.circle {
+  position: relative;
+  margin: 300px auto 50px;
+  width: 264px;
+  height: 230px;
+
+}
+
+.background {
+  width: 264px;
+  height: 230px;
+  background: url(../img/bg.png) center / 100% no-repeat;
+}
+
+.pointer {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin: -6px 0 0 -60px;
+  width: 66px;
+  height: 12px;
+  width: 66px;
+  height: 12px;
+  background: url(../img/pointer.png) 0 0 / 100% no-repeat;
+  transform-origin: 60px 6px;
+  transition: transform .5s;
+  filter: drop-shadow(0px 0px 5px rgba(10, 122, 255, 0.25));
+}
+
+.wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 264px;
+  height: 264px;
+  // transform: rotate(-30deg);
+  transform: rotate(-22deg);
+
+  &:before {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 1px;
+    height: 1px;
+    background: #000;
+    content: '';
+  }
+}
+
+.progress {
+  position: absolute;
+  top: -9px;
+  left: -9px;
+  width: 282px;
+  height: 282px;
+  // background: conic-gradient(#000 0deg 180deg, transparent 180deg );
+  clip-path: polygon(100% 0, 100% 72%, 50% 52%, 0 71%, 0 0);
+
+  .inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url(../img/progress.png) center /100% no-repeat;
+    -webkit-mask: conic-gradient(from -113deg, transparent 0deg 360deg);
+    content: '';
+  }
+}
+
+.svg {
+  width: 255px;
+  position: absolute;
+  left: 14px;
+  top: 13px;
+}
+
+.path {
+  transition: .5s;
+  stroke-dashoffset: 423px;
+  stroke-dasharray: 423px;
+}

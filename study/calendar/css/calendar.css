@@ -58,8 +58,7 @@ body {
   display: none;
 }
 .date-list.is-show {
-  -webkit-animation: show 0.2s both;
-          animation: show 0.2s both;
+  animation: show 0.2s both;
 }
 .date-list:hover .date-list__item:before {
   display: none;
@@ -215,8 +214,7 @@ button:hover .arrow {
 
 .grid-list {
   display: none;
-  -webkit-animation: show 0.2s both;
-          animation: show 0.2s both;
+  animation: show 0.2s both;
   height: 264px;
   overflow: hidden;
 }
@@ -243,15 +241,6 @@ button:hover .arrow {
 }
 .grid-list__item.is-disabled {
   color: rgba(255, 255, 255, 0.3);
-}
-
-@-webkit-keyframes show {
-  0% {
-    transform: scale(0);
-  }
-  100% {
-    transform: scale(1);
-  }
 }
 
 @keyframes show {

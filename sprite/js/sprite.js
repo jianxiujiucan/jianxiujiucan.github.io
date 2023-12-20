@@ -1,16 +1,21 @@
+import { fileNameCompare } from "./fileNameCompare.js";
+
 const canvas = document.createElement("canvas");
 const ctx = canvas.getContext("2d");
 const area = document.getElementById("area");
 const codeWrapper = document.querySelector(".code");
 const text = document.getElementById("text");
 const spriteImage = document.getElementById("spriteImage");
-let codeString = "";
+const animation = document.getElementById('animation')
 let spriteArray = [],
   pictureArray = [],
   loadNumber = 0,
   canvasWidth = 0,
   canvasHeight = 0,
-  margin = 0;
+  margin = 0,
+  total = 0,
+  createImageWidth = 0,
+  codeString = "";
 
 area.addEventListener(
   "dragover",
@@ -27,21 +32,22 @@ area.addEventListener(
     clearCanvas();
     text.style.display = "none";
     const files = e.dataTransfer.files;
-    const total = files.length;
+    total = files.length;
     margin = parseFloat(document.querySelector("#inputMargin").value) || 0;
-    spriteWidth = parseFloat(document.querySelector("#inputWidth").value) || 0;
+    createImageWidth =
+      parseFloat(document.querySelector("#inputWidth").value) || 0;
 
+    // 生成文件数组
     for (let i = 0; i < files.length; i++) {
       pictureArray.push(files[i]);
     }
 
-    pictureArray.sort(function (a, b) {
-      return a.name > b.name ? 1 : -1;
-    });
-
+    // 文件名重新排序
+    pictureArray.sort((a, b) => fileNameCompare(a.name, b.name));
+    pictureArray.sort((a, b) => fileNameCompare(a.name, b.name));
+    console.log(pictureArray)
     for (let i = 0; i < total; i++) {
       spriteArray[i] = new Image();
-
       const reader = new FileReader();
       reader.onload = function (e) {
         spriteArray[i].src = e.target.result;
@@ -54,7 +60,6 @@ area.addEventListener(
       spriteArray[i].onload = function () {
         canvasWidth += spriteArray[i].width + margin;
         loadNumber++;
-
         if (loadNumber === spriteArray.length) {
           canvasWidth = canvasWidth - margin;
           draw();
@@ -82,20 +87,39 @@ function draw() {
     }
   }
 
-  if (spriteWidth > 0) {
-    const numberX = Math.floor(spriteWidth / (spriteArray[0].width + margin));
+  margin = margin * multiple;
+  console.log(margin)
+
+  if (createImageWidth > 0) {
+    const numberX = Math.floor(
+      createImageWidth / (spriteArray[0].width + margin)
+    );
     const numberY = Math.ceil(spriteArray.length / numberX);
 
-    canvas.width = spriteArray[0].height * numberX + margin * numberX - margin;
+    canvas.width = spriteArray[0].width * numberX + margin * numberX - margin;
     canvas.height = spriteArray[0].height * numberY + margin * numberY - margin;
+    codeString = `<span class="name">.sprite </span> { <span class="attribute">width:</span><span class="value"> ${spriteArray[0].width / multiple}px</span>; <span class="attribute">height:</span><span class="value">  ${spriteArray[0].height / multiple}px</span>;<span class="attribute">background: </span> <span class="value">url(sprite.png) no-repeat;</span> <span class="attribute">background-size: </span> <span class="value">${
+      canvas.width / multiple
+    }px auto; </span> }<br>`;
     let mark = 0;
+    let iconName = [];
     for (let n = 0; n < spriteArray.length; n++) {
-      if (positionX + spriteArray[n].width + mark * margin > spriteWidth) {
+      // 如果大于图片的设置的宽度，则换行绘制
+      if (positionX + spriteArray[n].width + mark * margin > createImageWidth) {
         positionX = 0;
         mark = 0;
         positionY += spriteArray[n].height + margin;
       }
+      let pointIndex = pictureArray[n].name.lastIndexOf(".");
+      let className = pictureArray[n].name.slice(0, pointIndex);
+      iconName.push(className);
 
+      codeString += createCSSCode(
+        positionX + margin * mark,
+        positionY,
+        multiple,
+        className
+      );
       ctx.drawImage(
         spriteArray[n],
         0,
@@ -107,10 +131,12 @@ function draw() {
         spriteArray[n].width,
         spriteArray[n].height
       );
-      //console.log(positionX + margin * n, positionY, ">>>");
+
       positionX += spriteArray[n].width;
       mark++;
     }
+    console.log(iconName);
+    
   } else {
     codeString = `<span class="name">.sprite </span> { <span class="attribute">background: </span> <span class="value">url(sprite.png) no-repeat;</span> <span class="attribute">background-size: </span> <span class="value">${
       canvasWidth / multiple
@@ -119,14 +145,12 @@ function draw() {
     for (let n = 0; n < spriteArray.length; n++) {
       let pointIndex = pictureArray[n].name.lastIndexOf(".");
       let className = pictureArray[n].name.slice(0, pointIndex);
-
-      codeString += `<span class="name">.${className}</span> { <span class="attribute">width: </span><span class="value">${
-        spriteArray[n].width / multiple
-      }px</span>; <span class="attribute">height:</span><span class="value">${
-        spriteArray[n].height / multiple
-      }px; </span><span class="attribute">background-position:</span> <span class="value">${
-        (positionX * -1 - margin * n) / multiple
-      }px 0 </span>}<br>`;
+      codeString += createCSSCode(
+        positionX * -1 - margin * n,
+        0,
+        multiple,
+        className
+      );
 
       ctx.drawImage(
         spriteArray[n],
@@ -142,9 +166,18 @@ function draw() {
       positionX += spriteArray[n].width;
     }
   }
-
+  
   codeWrapper.innerHTML = codeString;
   spriteImage.src = canvas.toDataURL("png");
+  animation.style.width = spriteArray[0].width / multiple
+  animation.style.height = spriteArray[0].width / multiple
+  animation.cssText = `width: ${spriteArray[0].width}; height: ${spriteArray[0].width}; background: url(${canvas.toDataURL("png")}) no-repeat;`
+}
+
+function createCSSCode(x, y, multiple, className) {
+  return `<span class="name">.${className}</span> { <span class="attribute">background-position: </span> <span class="value">${
+    -x / multiple
+  }${x === 0 ? "" : "px"} ${-y / multiple}${y === 0 ? "" : "px"} </span>}<br>`;
 }
 
 /**

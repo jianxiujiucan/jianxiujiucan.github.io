@@ -32,8 +32,7 @@ body {
   border: 8px solid #fff;
   border-radius: 5px;
   box-sizing: border-box;
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
 .back {

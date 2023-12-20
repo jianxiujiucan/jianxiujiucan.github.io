@@ -72,29 +72,12 @@ li {
   background-image: url(../img/3d/right.png);
 }
 
-@-webkit-keyframes spin1 {
-  from {
-    transform: rotate3d(0);
-  }
-  to {
-    transform: rotate3d(1, 1, 1, 360deg);
-  }
-}
-
 @keyframes spin1 {
   from {
     transform: rotate3d(0);
   }
   to {
     transform: rotate3d(1, 1, 1, 360deg);
-  }
-}
-@-webkit-keyframes spin {
-  from {
-    transform: rotateY(0);
-  }
-  to {
-    transform: rotateY(360deg);
   }
 }
 @keyframes spin {

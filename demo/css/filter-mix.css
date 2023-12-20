@@ -26,8 +26,7 @@ body {
   height: 150px;
   background: #fff;
   filter: blur(5px);
-  -webkit-animation: move1 5s ease-out infinite;
-          animation: move1 5s ease-out infinite;
+  animation: move1 5s ease-out infinite;
   border-radius: 50%;
 }
 
@@ -42,25 +41,13 @@ body {
   line-height: 100px;
   background: red;
   filter: blur(5px);
-  -webkit-animation: move2 5s ease-out infinite;
-          animation: move2 5s ease-out infinite;
+  animation: move2 5s ease-out infinite;
   border-radius: 50%;
-}
-
-@-webkit-keyframes move1 {
-  50% {
-    transform: translateX(100px);
-  }
 }
 
 @keyframes move1 {
   50% {
     transform: translateX(100px);
-  }
-}
-@-webkit-keyframes move2 {
-  50% {
-    transform: translateX(-200px);
   }
 }
 @keyframes move2 {

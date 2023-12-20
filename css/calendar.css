@@ -61,8 +61,7 @@ body {
   overflow: hidden;
 }
 .date-list.is-show {
-  -webkit-animation: show 0.2s both;
-          animation: show 0.2s both;
+  animation: show 0.2s both;
 }
 .date-list:hover .item:before {
   display: none;
@@ -216,17 +215,7 @@ button:hover .arrow {
   grid-template-rows: repeat(4, 1fr);
   gap: 2px;
   height: 264px;
-  -webkit-animation: show 0.2s both;
-          animation: show 0.2s both;
-}
-
-@-webkit-keyframes show {
-  0% {
-    transform: scale(0);
-  }
-  100% {
-    transform: scale(1);
-  }
+  animation: show 0.2s both;
 }
 
 @keyframes show {

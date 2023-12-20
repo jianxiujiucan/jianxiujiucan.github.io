@@ -81,8 +81,7 @@ li {
   height: calc(var(--diameter) / 2 - 10px);
   background: #000;
   transform-origin: center calc(var(--diameter) / 2 - 20px);
-  -webkit-animation: round 60s steps(60) infinite;
-          animation: round 60s steps(60) infinite;
+  animation: round 60s steps(60) infinite;
 }
 .clock .minute {
   position: absolute;
@@ -94,8 +93,7 @@ li {
   background: #000;
   border-radius: 2px;
   transform-origin: center bottom;
-  -webkit-animation: round 3600s -300s steps(60) infinite;
-          animation: round 3600s -300s steps(60) infinite;
+  animation: round 3600s -300s steps(60) infinite;
 }
 .clock .minute:before {
   position: absolute;
@@ -129,8 +127,7 @@ li {
   height: calc(var(--diameter) / 2 - 45px);
   background: #000;
   transform-origin: center bottom;
-  -webkit-animation: round 216000s -72000s steps(60) infinite;
-          animation: round 216000s -72000s steps(60) infinite;
+  animation: round 216000s -72000s steps(60) infinite;
 }
 .clock .hour:before {
   position: absolute;
@@ -270,8 +267,7 @@ li:nth-child(12):before {
   width: 4px;
   height: 200px;
   background: #b29482;
-  -webkit-animation: shake 1s linear alternate infinite;
-          animation: shake 1s linear alternate infinite;
+  animation: shake 1s linear alternate infinite;
   transform-origin: top center;
 }
 .shake:before {
@@ -351,29 +347,12 @@ li:nth-child(12):before {
   content: "";
 }
 
-@-webkit-keyframes shake {
-  0% {
-    transform: rotate(10deg);
-  }
-  100% {
-    transform: rotate(-10deg);
-  }
-}
-
 @keyframes shake {
   0% {
     transform: rotate(10deg);
   }
   100% {
     transform: rotate(-10deg);
-  }
-}
-@-webkit-keyframes round {
-  0% {
-    transform: 0;
-  }
-  100% {
-    transform: rotate(1turn);
   }
 }
 @keyframes round {

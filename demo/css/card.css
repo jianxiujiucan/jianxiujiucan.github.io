@@ -31,26 +31,16 @@ body {
   transform: translateZ(-200px);
 }
 .box--front.is-animation {
-  -webkit-animation: rotate1 6s both;
-          animation: rotate1 6s both;
+  animation: rotate1 6s both;
 }
 .box--back {
   transform: rotateX(-10deg) rotateY(-180deg);
 }
 .box--back.is-animation {
-  -webkit-animation: rotate2 6s both;
-          animation: rotate2 6s both;
+  animation: rotate2 6s both;
 }
 .box--back .card .item {
   background-image: url("../img/card/bg-card.png");
-}
-@-webkit-keyframes rotate1 {
-  0% {
-    transform: rotateX(-10deg) rotateY(720deg);
-  }
-  100% {
-    transform: rotateX(-10deg) rotateY(0);
-  }
 }
 @keyframes rotate1 {
   0% {
@@ -58,14 +48,6 @@ body {
   }
   100% {
     transform: rotateX(-10deg) rotateY(0);
-  }
-}
-@-webkit-keyframes rotate2 {
-  0% {
-    transform: rotateX(-10deg) rotateY(540deg);
-  }
-  100% {
-    transform: rotateX(-10deg) rotateY(-180deg);
   }
 }
 @keyframes rotate2 {
@@ -89,8 +71,7 @@ body {
   gap: 50px;
   transform-style: preserve-3d;
   pointer-events: none;
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
 .item {
@@ -102,29 +83,29 @@ body {
   cursor: pointer;
 }
 .item:nth-child(1) {
-  background-image: url("../img/card/card5.png");
+  background-image: url("../img/card/card1.png");
 }
 .item:nth-child(2) {
-  background-image: url("../img/card/card2.png");
+  background-image: url("../img/card/card1.png");
 }
 .item:nth-child(3) {
-  background-image: url("../img/card/card4.png");
+  background-image: url("../img/card/card5.png");
 }
 .item:nth-child(4) {
-  background-image: url("../img/card/card1.png");
+  background-image: url("../img/card/card4.png");
 }
 .item:nth-child(5) {
   background-image: url("../img/card/card2.png");
 }
 .item:nth-child(6) {
-  background-image: url("../img/card/card1.png");
+  background-image: url("../img/card/card4.png");
 }
 .item:nth-child(7) {
   background-image: url("../img/card/card3.png");
 }
 .item:nth-child(8) {
-  background-image: url("../img/card/card5.png");
+  background-image: url("../img/card/card4.png");
 }
 .item:nth-child(9) {
-  background-image: url("../img/card/card2.png");
+  background-image: url("../img/card/card4.png");
 }/*# sourceMappingURL=card.css.map */

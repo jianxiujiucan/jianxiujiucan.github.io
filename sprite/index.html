@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 
 <head>
   <meta charset="UTF-8">
@@ -15,29 +15,38 @@
       <h1>图片设置</h1>
       <ul>
         <li>
-          <label> <span class="title">间距</span> <input type="text" id="inputMargin" class="input" placeholder="0" value="10">px</label>
+          <span class="title">间距</span>
+          <label> <input type="text" id="inputMargin" class="input" placeholder="0" value="10">px</label>
         </li>
         <li>
-          <label><span class="title">原图倍数</span>
+          <span class="title">原图倍数</span>
+          <label>
             <input type="radio" value="1" name="multiple" class="radio" checked> <span>1x</span>
             <input type="radio" value="2" name="multiple" class="radio"> <span>2x</span>
             <input type="radio" value="3" name="multiple" class="radio"> <span>3x</span>
           </label>
         </li>
-        <li><label><span class="title">雪碧图宽度</span>
-            <input type="text" id="inputWidth" class="input" placeholder="0" value="400">px
+        <li></li>
+        <li>
+          <span class="title">雪碧图最大宽度</span>
+          <label>
+            <input type="text" id="inputWidth" class="input" placeholder="0" value="0">px
+          </label>
         </li>
       </ul>
     </aside>
     <div id="area" class="area">
       <p id="text">请将图片拖到此处</p>
       <img id="spriteImage" class="sprite">
+      <div id="animation" class="animation"></div>
       <!-- <canvas id="canvas" width="0" height="0"></canvas> -->
     </div>
-    <div class="code"></div>
+    <div class="code">
+
+    </div>
     <button class="button">Download</button>
   </div>
-  <script src="js/sprite.js"></script>
+  <script type="module" src="js/sprite.js"></script>
   <script>
 
   </script>
