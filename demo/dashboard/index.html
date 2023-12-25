@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="css/index.css">
   <style>
     .box {
+      margin: 80px auto;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -23,6 +24,7 @@
       border-radius: 3px;
       outline: 0;
     }
+
     input:focus {
       border-color: #3f85ff;
     }
@@ -45,6 +47,15 @@
     <div class="background"></div>
     <div class="wrapper">
       <div id="pointer" class="pointer"></div>
+      <div class="text-expected"><span id="expected">预计提速 <i class="icon-rocket"></i> </span>
+      </div>
+      <div class="line-mask">
+        <div class="line">
+          <div class="particle">
+            <i></i><i></i><i></i>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="progress">
       <div id="progress" class="inner"></div>
@@ -68,14 +79,33 @@
               <feColorMatrix type="matrix" values="0 0 0 0 0.354167 0 0 0 0 1 0 0 0 0 0.9225 0 0 0 1 0" />
               <feBlend mode="normal" in2="shape" result="effect1_innerShadow_331_7285" />
             </filter>
+            <filter id="filter_expected" x="0" y="0" width="254" height="258" filterUnits="userSpaceOnUse"
+              color-interpolation-filters="sRGB">
+              <feFlood flood-opacity="0" result="BackgroundImageFix" />
+              <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+              <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                result="hardAlpha" />
+              <feOffset dy="4" />
+              <feGaussianBlur stdDeviation="2" />
+              <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
+              <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 1 0" />
+              <feBlend mode="normal" in2="shape" result="effect1_innerShadow_394_14096" />
+            </filter>
           </defs>
+          <g filter="url(#filter_expected)" style="opacity: 0.12;">
+            <path class="expected-path"
+              d="M29.1,170.6C5.5,116.4,30.3,53.4,84.5,29.8c31.6-13.7,66.1-11.1,94.1,4.3c20.1,11,36.8,28.5,46.7,51.1 c11.7,26.8,11.5,55.7,1.8,81l-1.4,3.1"
+              fill="transparent" stroke="#3f85ff" stroke-width="40" />
+          </g>
           <g filter="url(#filter_shadow)">
             <path class="path"
               d="M29.1,170.6C5.5,116.4,30.3,53.4,84.5,29.8c31.6-13.7,66.1-11.1,94.1,4.3c20.1,11,36.8,28.5,46.7,51.1 c11.7,26.8,11.5,55.7,1.8,81l-1.4,3.1"
               fill="transparent" stroke="url(#grad1)" stroke-width="40" />
           </g>
+
         </svg>
       </div>
+      <div class="scale"></div>
     </div>
   </div>
   <div class="box">
@@ -90,91 +120,130 @@
         {
           rangeValue: [0, 30],
           angle: 0,
-          offset: 423,
+          offset: 420,
+          scale: [22, 44],
         },
         {
           rangeValue: [31, 50],
-          angle: 22,
-          offset: 375,
+          angle: 22.5,
+          offset: 378,
+          scale: [44, 67],
         },
         {
           rangeValue: [51, 100],
-          angle: 44,
-          offset: 334,
+          angle: 45,
+          offset: 336,
+          scale: [67, 90],
         },
         {
           rangeValue: [101, 200],
-          angle: 66,
-          offset: 293,
+          angle: 67.5,
+          offset: 295,
+          scale: [90, 112],
         },
         {
           rangeValue: [201, 300],
           angle: 90,
           offset: 251,
+          scale: [112, 136],
         },
         {
           rangeValue: [301, 400],
-          angle: 112,
-          offset: 208,
+          angle: 112.5,
+          offset: 210,
+          scale: [136, 160],
         },
         {
           rangeValue: [401, 500],
           angle: 135,
-          offset: 165,
+          offset: 168,
+          scale: [161, 180],
         },
         {
           rangeValue: [501, 700],
-          angle: 157,
+          angle: 157.5,
           offset: 125,
+          scale: [181, 200],
         },
         {
           rangeValue: [701, 1000],
-          angle: 179,
+          angle: 180,
           offset: 82,
+          scale: [201, 222],
         },
         {
           rangeValue: [1001, 2000],
-          angle: 202,
+          angle: 202.5,
           offset: 40,
+          scale: [223, 245],
         },
         {
           rangeValue: [2001, 2001],
           angle: 226,
           offset: 0,
+          scale: [223, 245],
         },
       ];
       let rotateValue = 0
       let offsetValue = 0
       const path = document.querySelector(".path")
       const length = path.getTotalLength() - 2 // svg路径长度
+      const line = document.querySelector('.line')
 
       if (value <= intervalArray[0].rangeValue[0]) {
         rotateValue = 0;
         offsetValue = 423
+        scaleValue = 0
       } else if (value >= intervalArray[intervalArray.length - 1].rangeValue[1]) {
         rotateValue = intervalArray[intervalArray.length - 1].angle;
         offsetValue = 0
+        scaleValue = 245
       } else {
         const matched = intervalArray.find((item) => {
-          console.log(item)
           return item.rangeValue[0] <= value && item.rangeValue[1] >= value;
         });
 
         if (!matched) return 0;
-        console.log(matched)
+
         const [min, max] = matched.rangeValue;
-        const angle = 22 // 区间角度
+        const angle = 22.5 // 区间角度
         const percent = angle / (max - min)
-        rotateValue = (percent * (value - min) + matched.angle).toFixed(0)
+        rotateValue = Number((percent * (value - min) + matched.angle).toFixed(1))
         const offsetPercent = 41 / (max - min)
-        offsetValue = (matched.offset - offsetPercent * (value - min)).toFixed(0)
-        console.log(offsetValue)
+        offsetValue = (matched.offset - offsetPercent * (value - min)).toFixed(1)
+
+        if (value == max) {
+          scaleValue = matched.scale[1]
+        } else {
+          scaleValue = matched.scale[0]
+        }
       }
-
+      console.log(rotateValue, typeof rotateValue)
+      const textExpected = document.querySelector('.text-expected')
       element.style.transform = `rotate(${rotateValue}deg)`
+      line.style.transform = `rotate(${rotateValue}deg)`
       path.style.strokeDashoffset = offsetValue
-    }
+      textExpected.style.transform = `rotate(${rotateValue}deg)`
+      expected.style.transform = `rotate(${-rotateValue + 22}deg)`
+      const scale = document.querySelector('.scale')
+      setTimeout(() => {
+        textExpected.style.opacity = 1
+        line.style.opacity = 1
+      }, 500);
 
+      let mark = 0
+      timer = Math.floor((500 / rotateValue))
+
+      const t = setInterval(() => {
+        mark += 1
+        scale.style.webkitMask = `conic-gradient(from -127deg  at 73px 77px, #000 0deg ${mark}deg, transparent ${mark}deg 360deg)`
+
+        if (mark > (scaleValue)) {
+          clearInterval(t);
+        }
+      }, timer);
+
+    }
 
     const button = document.getElementById('button')
 

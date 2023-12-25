@@ -1,3 +1,4 @@
+
 .circle {
   position: relative;
   margin: 300px auto 50px;
@@ -10,6 +11,27 @@
   width: 264px;
   height: 230px;
   background: url(../img/bg.png) center / 100% no-repeat;
+}
+
+.wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  width: 264px;
+  height: 264px;
+  transform: rotate(-22deg);
+  
+
+  &:before {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 1px;
+    height: 1px;
+    background: #000;
+    content: '';
+  }
 }
 
 .pointer {
@@ -27,24 +49,148 @@
   filter: drop-shadow(0px 0px 5px rgba(10, 122, 255, 0.25));
 }
 
-.wrapper {
+.line-mask {
   position: absolute;
   top: 0;
+  right: 0;
+  bottom: 0;
   left: 0;
-  width: 264px;
-  height: 264px;
-  // transform: rotate(-30deg);
-  transform: rotate(-22deg);
+  -webkit-mask: radial-gradient(transparent 0 86px, #000 87px 126px, transparent 128px);
+}
 
-  &:before {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    width: 1px;
-    height: 1px;
-    background: #000;
-    content: '';
+.line {
+  position: absolute;
+  top: 50%;
+  margin-top: -1px;
+  left: 4px;
+  width: 128px;
+  height: 2px;
+  background: linear-gradient(to right, #fff 0 43px, transparent 43px);
+  transform-origin: right 1px;
+  transition: transform .5s, opacity .5s;
+  opacity: 0;
+}
+
+.text-expected {
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  height: 30px;
+  margin-right: -3px;
+  margin-top: -15px;
+  width: 185px;
+  display: flex;
+  align-items: center;
+  transform-origin: right 15px;
+  color: #3f85ff;
+  opacity: 0;
+  transition: .2s;
+  
+
+  span {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    font-size: 12px;
+    &:before {
+      position: absolute;
+      left: 100%;
+      margin-left: 3px;
+      width: 16px;
+      height: 16px;
+      background: url(../img/icon-rocket.svg) center / 100% no-repeat;
+      content: '';
+    }
   }
+}
+
+.particle {
+  position: absolute;
+  z-index: 5;
+  --time: 1.8s;
+  --delay: -1.5s;
+  i {
+   
+    &:before,
+    &:after {
+      position: absolute;
+      bottom: -3px;
+      width: 3px;
+      height: 3px;
+      background: #fff;
+      border-radius: 50%;
+      content: '';
+      animation: particle var(--time) var(--delay) infinite;
+
+    }
+
+    &:nth-child(1) {
+      &:before {
+        left: 5px;
+      }
+
+      &:after {
+        left: 10px;
+        --time: 1.9s;
+        --delay: -1.5s;
+      }
+    }
+    &:nth-child(2) {
+      &:before {
+        left: 24px;
+        width: 2px;
+        height: 2px;
+        --time: 2s;
+        --delay: -1.2s;
+      }
+
+      &:after {
+        left: 15px;
+        --time: 2s;
+        --delay: -1.4s;
+      }
+    }
+    &:nth-child(3) {
+      &:before {
+        left: 33px;
+        --time: 1.9s;
+        --delay: -1s;
+      }
+
+      &:after {
+        left: 24px;
+        --time: 2s;
+        --delay: -1.9s;
+      }
+    }
+  }
+
+}
+@keyframes particle {
+  0%{
+    opacity: 0;
+    transform: translateY(0);
+  }
+  5%{
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100%{
+    opacity: 0;
+    transform: translateY(15px);
+  }
+}
+
+
+.scale {
+  position: absolute;
+  top: 65px;
+  left: 66px;
+  width: 153px;
+  height: 107px;
+  background: url(../img/scale.png) center / 100% auto no-repeat;
+  -webkit-mask: conic-gradient(transparent 0deg 180deg, transparent 180deg);
 }
 
 .progress {
@@ -79,4 +225,22 @@
   transition: .5s;
   stroke-dashoffset: 423px;
   stroke-dasharray: 423px;
+}
+
+.expected-path {
+  stroke-dashoffset: 154px;
+  stroke-dasharray: 423px;
+}
+
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background: #1a1a1a;
+  }
+  .background {
+    background-image: url(../img/bg-dark.png);
+  }
+  .scale {
+    background-image: url(../img/scale-dark.png);
+  }
 }
