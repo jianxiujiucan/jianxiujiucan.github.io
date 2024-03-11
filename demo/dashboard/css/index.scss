@@ -1,4 +1,7 @@
-
+:root {
+  --gradient-1: #0596FF;
+  --gradient-2: #5AFFEB;
+}
 .circle {
   position: relative;
   margin: 300px auto 50px;
@@ -223,7 +226,7 @@
 
 .path {
   transition: .5s;
-  stroke-dashoffset: 423px;
+  stroke-dashoffset: 0;
   stroke-dasharray: 423px;
 }
 
