@@ -25,13 +25,7 @@
       let xhr = null;
       let now = new Date();
       thisYear = now.getFullYear()
-      if (window.XMLHttpRequest) {
-        xhr = new window.XMLHttpRequest();
-        console.log(xhr)
-      } else {
-        // ie
-        xhr = new ActiveObject("Microsoft");
-      }
+      xhr = new window.XMLHttpRequest();
       xhr.open("GET", window.location.href, true);
       xhr.send(null);
 
