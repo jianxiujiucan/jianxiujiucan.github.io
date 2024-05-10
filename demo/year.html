@@ -17,44 +17,23 @@
 </head>
 
 <body>
-  <p id="footerYear"></p>
+  <div>Copyright &copy; 2023-<span id="footerYear"></span></div>
   <script>
 
-    // function getServerDate() {
-    //   let thisYear = 0
-    //   let xhr = null;
-    //   let now = new Date();
-    //   thisYear = now.getFullYear()
-    //   console.log('系统时间', thisYear)
-    //   xhr = new window.XMLHttpRequest();
-    //   xhr.open("GET", window.location.href, false);
-    //   xhr.send(null);
+    const isBrowser = typeof window !== "undefined" && typeof window.document !== "undefined";
 
-    //   xhr.onreadystatechange = function () {
-    //     if (xhr.readyState == 2) {
-    //       let dateStr = xhr.getResponseHeader("Date");
-    //       console.log('时间', dateStr)
-    //       const date = dateStr ? new Date(dateStr) : now;
-    //       thisYear = date.getFullYear();
-    //       console.log('服务器时间', thisYear)
-    //     }
-
-    //   }
-    //   return thisYear
-    // }
     const getServerDate = () => {
       return new Promise((resolve, reject) => {
         try {
           // 判断是否为node环境
-          if (typeof window === 'undefined') {
+          if (!isBrowser) {
             // node环境，一般为SSR环境，本地时间可信，直接使用 
             const date = new Date();
             resolve(date);
           } else {
             // 浏览器环境，发一个请求获取服务器时间
-            var xhr = null;
-            var now = new Date();
-            console.log('系统时间', now)
+            let xhr = null;
+            let now = new Date();
             if (window.XMLHttpRequest) {
               xhr = new window.XMLHttpRequest();
             } else {
@@ -63,30 +42,26 @@
             }
 
             xhr.open("GET", window.location.href, true);
-            xhr.send(null);
-
             xhr.onreadystatechange = function () {
-              if (xhr.readyState == 2) {
-                var dateStr = xhr.getResponseHeader("Date");
+              if (xhr.readyState === 2 || xhr.readyState === 4) {
+                let dateStr = xhr.getResponseHeader("Date");
                 const date = dateStr ? new Date(dateStr) : now;
                 resolve(date)
               }
             };
+            xhr.send(null);
           }
         } catch (e) {
-          const date = new Date();
-          resolve(date);
+          resolve(new Date())
         }
       })
     }
 
-    async function getTime () {
-      let time = await getServerDate()
-      console.log(typeof time)
-      console.log(time.getFullYear())
-      // document.getElementById("footerYear").innerText = time
-    }
-    getTime()
+    getServerDate().then((res) => {
+      console.log(res.getFullYear())
+      document.getElementById('footerYear').innerHTML = res.getFullYear()
+    })
+
 
   </script>
 </body>
