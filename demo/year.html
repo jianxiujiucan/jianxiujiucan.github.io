@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .box {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+  </style>
+</head>
+
+<body>
+  <p id="footerYear"></p>
+  <script>
+    
+    function getServerDate() {
+      let thisYear = 0
+      let xhr = null;
+      let now = new Date();
+      thisYear = now.getFullYear()
+      if (window.XMLHttpRequest) {
+        xhr = new window.XMLHttpRequest();
+        console.log(xhr)
+      } else {
+        // ie
+        xhr = new ActiveObject("Microsoft");
+      }
+      xhr.open("GET", window.location.href, true);
+      xhr.send(null);
+
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState == 2) {
+          let dateStr = xhr.getResponseHeader("Date");
+          console.log('时间', dateStr)
+          const date = dateStr ? new Date(dateStr) : now;
+          thisYear = date.getFullYear();
+        }
+      }
+      return thisYear
+    }
+
+    document.getElementById("footerYear").innerText = getServerDate()
+
+    // getServerDate(function (now) {
+    //   const nowYear = now.getFullYear();
+    //   document.getElementById("footerYear").innerText = nowYear;
+    // });
+  </script>
+</body>
+
+</html>
