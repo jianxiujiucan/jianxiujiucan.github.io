@@ -17,7 +17,7 @@
 </head>
 
 <body>
-  <div>Copyright &copy; 2023-<span id="footerYear"></span></div>
+  <div>Copyright &copy; 2003-<span id="footerYear"></span></div>
   <script>
 
     const isBrowser = typeof window !== "undefined" && typeof window.document !== "undefined";
@@ -32,16 +32,10 @@
             resolve(date);
           } else {
             // 浏览器环境，发一个请求获取服务器时间
-            let xhr = null;
-            let now = new Date();
-            if (window.XMLHttpRequest) {
-              xhr = new window.XMLHttpRequest();
-            } else {
-              // ie
-              xhr = new ActiveObject("Microsoft");
-            }
+            const xhr = new window.XMLHttpRequest();
+            const now = new Date();
 
-            xhr.open("GET", window.location.href, true);
+            xhr.open("HEAD", window.location.href, true);
             xhr.onreadystatechange = function () {
               if (xhr.readyState === 2 || xhr.readyState === 4) {
                 let dateStr = xhr.getResponseHeader("Date");
