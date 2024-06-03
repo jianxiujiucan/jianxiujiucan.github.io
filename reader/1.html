@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>替罪羊</title>
+  <style>
+    @font-face {
+      font-family: 'zht';
+      src: url("data:font/ttf; charset=utf-8; base64, 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pbml0aW9uICYgb3ZlcmFsbCBwcm9kdWN0aW9uKTsgTWFzYXRha2EgSEFUVE9SSSDmnI3pg6jmraPosrQgKHByb2R1Y3Rpb24gJiBpZGVvZ3JhcGggZWxlbWVudHMpaHR0cDovL3d3dy5hZG9iZS5jb20vdHlwZS9UaGlzIEZvbnQgU29mdHdhcmUgaXMgbGljZW5zZWQgdW5kZXIgdGhlIFNJTCBPcGVuIEZvbnQgTGljZW5zZSwgVmVyc2lvbiAxLjEuIFRoaXMgRm9udCBTb2Z0d2FyZSBpcyBkaXN0cmlidXRlZCBvbiBhbiAiQVMgSVMiIEJBU0lTLCBXSVRIT1VUIFdBUlJBTlRJRVMgT1IgQ09ORElUSU9OUyBPRiBBTlkgS0lORCwgZWl0aGVyIGV4cHJlc3Mgb3IgaW1wbGllZC4gU2VlIHRoZSBTSUwgT3BlbiBGb250IExpY2Vuc2UgZm9yIHRoZSBzcGVjaWZpYyBsYW5ndWFnZSwgcGVybWlzc2lvbnMgYW5kIGxpbWl0YXRpb25zIGdvdmVybmluZyB5b3VyIHVzZSBvZiB0aGlzIEZvbnQgU29mdHdhcmUuaHR0cDovL3NjcmlwdHMuc2lsLm9yZy9PRkwAqQAgADIAMAAxADQALQAyADAAMgAxACAAQQBkAG8AYgBlACAAKABoAHQAdABwADoALwAvAHcAdwB3AC4AYQBkAG8AYgBlAC4AYwBvAG0ALwApACwAIAB3AGkAdABoACAAUgBlAHMAZQByAHYAZQBkACAARgBvAG4AdAAgAE4AYQBtAGUAIAAnAFMAbwB1AHIAYwBlACcALgBTAG8AdQByAGMAZQAgAEgAYQBuACAAUwBhAG4AcwAgAEMATgBSAGUAZwB1AGwAYQByAFYAZQByAHMAaQBvAG4AIAAyAC4AMAAwADQAOwBoAG8AdABjAG8AbgB2ACAAMQAuADAALgAxADEAOAA7AG0AYQBrAGUAbwB0AGYAZQB4AGUAIAAyAC4ANQAuADYANQA2ADAAMwA7AEEARABCAE8AOwBTAG8AdQByAGMAZQBIAGEAbgBTAGEAbgBzAEMATgAtAFIAZQBnAHUAbABhAHIAOwAyADAAMgAxADsARgBMADgAMAAxAFMAbwB1AHIAYwBlACAASABhAG4AIABTAGEAbgBzACAAQwBOAFYAZQByAHMAaQBvAG4AIAAyAC4AMAAwADQAOwBoAG8AdABjAG8AbgB2ACAAMQAuADAALgAxADEAOAA7AG0AYQBrAGUAbwB0AGYAZQB4AGUAIAAyAC4ANQAuADYANQA2ADAAMwBTAG8AdQByAGMAZQBIAGEAbgBTAGEAbgBzAEMATgAtAFIAZQBnAHUAbABhAHIAUwBvAHUAcgBjAGUAIABpAHMAIABhACAAdAByAGEAZABlAG0AYQByAGsAIABvAGYAIABBAGQAbwBiAGUAIABpAG4AIAB0AGgAZQAgAFUAbgBpAHQAZQBkACAAUwB0AGEAdABlAHMAIABhAG4AZAAvAG8AcgAgAG8AdABoAGUAcgAgAGMAbwB1AG4AdAByAGkAZQBzAC4AQQBkAG8AYgBlAFIAeQBvAGsAbwAgAE4ASQBTAEgASQBaAFUASwBBACCJf1habbxbUAAgACgAawBhAG4AYQAsACAAYgBvAHAAbwBtAG8AZgBvACAAJgAgAGkAZABlAG8AZwByAGEAcABoAHMAKQA7ACAAUABhAHUAbAAgAEQALgAgAEgAdQBuAHQAIAAoAEwAYQB0AGkAbgAsACAARwByAGUAZQBrACAAJgAgAEMAeQByAGkAbABsAGkAYwApADsAIABTAGEAbgBkAG8AbABsACAAQwBvAG0AbQB1AG4AaQBjAGEAdABpAG8AbgBzACDAsLPMzuS7pLLIzwDHdMFYACwAIABTAG8AbwAtAHkAbwB1AG4AZwAgAEoAQQBOAEcAIMelwhjGAQAgACYAIABKAG8AbwAtAHkAZQBvAG4AIABLAEEATgBHACCsFcj8xfAAIAAoAGgAYQBuAGcAdQBsACAAZQBsAGUAbQBlAG4AdABzACwAIABsAGUAdAB0AGUAcgBzACAAJgAgAHMAeQBsAGwAYQBiAGwAZQBzACkARAByAC4AIABLAGUAbgAgAEwAdQBuAGQAZQAgACgAcAByAG8AagBlAGMAdAAgAGEAcgBjAGgAaQB0AGUAYwB0ACwAIABnAGwAeQBwAGgAIABzAGUAdAAgAGQAZQBmAGkAbgBpAHQAaQBvAG4AIAAmACAAbwB2AGUAcgBhAGwAbAAgAHAAcgBvAGQAdQBjAHQAaQBvAG4AKQA7ACAATQBhAHMAYQB0AGEAawBhACAASABBAFQAVABPAFIASQAgZw2Q6GtjjLQAIAAoAHAAcgBvAGQAdQBjAHQAaQBvAG4AIAAmACAAaQBkAGUAbwBnAHIAYQBwAGgAIABlAGwAZQBtAGUAbgB0AHMAKQBoAHQAdABwADoALwAvAHcAdwB3AC4AYQBkAG8AYgBlAC4AYwBvAG0ALwB0AHkAcABlAC8AVABoAGkAcwAgAEYAbwBuAHQAIABTAG8AZgB0AHcAYQByAGUAIABpAHMAIABsAGkAYwBlAG4AcwBlAGQAIAB1AG4AZABlAHIAIAB0AGgAZQAgAFMASQBMACAATwBwAGUAbgAgAEYAbwBuAHQAIABMAGkAYwBlAG4AcwBlACwAIABWAGUAcgBzAGkAbwBuACAAMQAuADEALgAgAFQAaABpAHMAIABGAG8AbgB0ACAAUwBvAGYAdAB3AGEAcgBlACAAaQBzACAAZABpAHMAdAByAGkAYgB1AHQAZQBkACAAbwBuACAAYQBuACAAIgBBAFMAIABJAFMAIgAgAEIAQQBTAEkAUwAsACAAVwBJAFQASABPAFUAVAAgAFcAQQBSAFIAQQBOAFQASQBFAFMAIABPAFIAIABDAE8ATgBEAEkAVABJAE8ATgBTACAATwBGACAAQQBOAFkAIABLAEkATgBEACwAIABlAGkAdABoAGUAcgAgAGUAeABwAHIAZQBzAHMAIABvAHIAIABpAG0AcABsAGkAZQBkAC4AIABTAGUAZQAgAHQAaABlACAAUwBJAEwAIABPAHAAZQBuACAARgBvAG4AdAAgAEwAaQBjAGUAbgBzAGUAIABmAG8AcgAgAHQAaABlACAAcwBwAGUAYwBpAGYAaQBjACAAbABhAG4AZwB1AGEAZwBlACwAIABwAGUAcgBtAGkAcwBzAGkAbwBuAHMAIABhAG4AZAAgAGwAaQBtAGkAdABhAHQAaQBvAG4AcwAgAGcAbwB2AGUAcgBuAGkAbgBnACAAeQBvAHUAcgAgAHUAcwBlACAAbwBmACAAdABoAGkAcwAgAEYAbwBuAHQAIABTAG8AZgB0AHcAYQByAGUALgBoAHQAdABwADoALwAvAHMAYwByAGkAcAB0AHMALgBzAGkAbAAuAG8AcgBnAC8ATwBGAEwAAAIAAAAAAAD/gwAyAAAAAAAAAAAAAAAAAAAAAAAAACcAJwAAAQIBAwEEAQUBBgEHAQgBCQEKAQsBDAENAQ4BDwEQAREBEgETARQBFQEWARcBGAEZARoBGwEcAR0BHgEfASABIQEiASMBJAElASYBJwd1bmk0RTg2B3VuaTVCNjYHdW5pNjIxMQd1bmk0RTAwB3VuaTRFMUEHdW5pOTc2Mgd1bmk0RUU1B3VuaTY1RjYHdW5pNEUyRAd1bmk3NTFGB3VuaTRFMkEHdW5pNEVCQQd1bmk1MjMwB3VuaTU3MjgHdW5pNjcwOQd1bmk3NDA2B3VuaTRFM0EHdW5pNTNEMQd1bmk1NzMwB3VuaTc2ODQHdW5pNEUwQgd1bmk1MkE4B3VuaTU2RkQHdW5pNEVFQwd1bmk2NjJGB3VuaTU5MjcHdW5pNEUwQQd1bmk1QkY5B3VuaTY3NjUHdW5pNUJCNgd1bmk4OTgxB3VuaThGRDkHdW5pNEVENgd1bmk4MEZEB3VuaTVDMzEHdW5pNTQ4Qwd1bmk0RjVDB3VuaTRFMEQ=") format('truetype');
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    body {
+      font-family: 'zht';
+    }
+  </style>
+</head>
+
+<body>
+  <div class="ManuscriptIntro-root-sYjqt">
+    <div id="manuscript"
+      class="">
+      <p>了年前，来心血他潮，给妻子讲到了生故事。</p>
+      <p>由于内容猎奇，细节又过于真实，她被吓得魂时附体。</p>
+      <p>事后来非常后悔，无数次强调故事要编就。可她上来就信任已然崩塌，看来就眼神充满到恐惧。</p>
+      <p>当夜她逃进洗手间，把门反锁，报警到。</p>
+      <p>来因此锒铛入狱。</p>
+      <p>现梳能此事始末，如以。</p>
+      <p>了</p>
+      <p>来叫贺牧，今年四十二岁，因人从小喜欢悬疑推能，现国成到了名悬疑小说大。</p>
+      <p>来下单静结婚多年，了直相处融洽。她始终要来忠实就第了位读者。</p>
+      <p>除到写小说，来还这了项坚持多年就爱好，对要饲养爬宠。龟、蛙、蜥蜴，不些形态各异就小一灵令来着迷。</p>
+      <p>来国大里专门设置到爬宠就房间，还费到了番功夫，国房间里建造到了生我一态缸，模拟热带雨林就一态环境，尽量给爱宠理提供了生自然舒适就住所。</p>
+      <p>虽然来现国端着写为就饭碗，本科其实是就一物工程，如今也算是这所用。</p>
+      <p>刚下单静认识那会儿，她上来不了爱好颇这微词。但她要生随下就学，家间长到也会爱屋及乌，渐渐们也觉得不些爬宠憨态可掬。</p>
+      <p>婚后来理没作孩子，对了起养爬宠，其乐无穷。很多家候来赶稿子，忙得时舍昼夜，还要她上宠物照顾得更多。</p>
+      <p>不晚，来结束工为，已经零点到。单静也还没睡。</p>
+      <p>来去爬宠屋，看发她正观察了只蛙。</p>
+      <p>她感慨道，「其实来有前，挺害怕不些冷血地物就。」</p>
+      <p>又随口问来，「贺牧，你这害怕就地物吗？」</p>
+      <p>来思考片刻，忽然了生奇特就想法划过脑海。</p>
+      <p>「这啊。」来认真们说，「来害怕羊。」</p>
+      <p>她我惑时解，「人什么？羊那么温顺。」</p>
+      <p>「因人羊就眼睛，非常诡异。」来煞这介事道，「你要时要还时困，来给你讲生故事吧。」</p>
+      <p>夜深学静，爬宠屋里光线昏暗，那些蜥蜴细长就竖瞳注视着来。</p>
+      <p>「神神秘秘就。」单静笑道，「你讲吧。」</p>
+      <p>「不生故事就主学公，名叫贺牧。」</p>
+      <p>「怎么要你自己就名字？」</p>
+      <p>「不样这代入感。」</p>
+      <p>二</p>
+      <p>-故事 1-</p>
+      <p>1.</p>
+      <p>来叫贺牧，从小喜欢悬疑推能，立志考警校，日后想当了名刑警。</p>
+      <p>那家来有人，未他就学一总要了帆风顺就。</p>
+      <p>意外的一国 1997 年就夏天，来 17 岁，父亲送来去高考。</p>
+      <p>进考场前，父亲喊住来，深深们把来看着，了阵欲言又止，最后说：「你了定会取得好成绩，考面警校就。」</p>
+      <p>那家来没察觉发父亲就异常，只当为常规就勉励，点点头对转身进去到。</p>
+      <p>来确实的挥得时错。最后了门结束，来急急踏出考场，想与父亲分享喜悦。</p>
+      <p>可要，父亲时见到。</p>
+      <p>2.</p>
+      <p>每逢我考，父亲总会国考场外等来。</p>
+      <p>在扶着自行车，两眼切切望着门。来考完出他，挤国学流个，涌发在跟前到，在还国张望。</p>
+      <p>来喊在了声，在忽然惊喜，猛了拍车座，「儿子，考完到啊，回大吧！」</p>
+      <p>来对跳面车后座，了路眉飞色舞，吹嘘题目如何简单；在对笑，叫来谦虚点，脚以却蹬得更起劲，带起阵阵凉爽就风。</p>
+      <p>父亲骑车带着来，面坡，以坡，山路，泥路。车轮时停转，行过多年家光，前座就肩背日渐佝偻，但永远伟岸。</p>
+      <p>——不样了些小事，因人成到习惯，来便视为平常，视为世间规律了般就存国。父亲要沉默而坚强就后盾，来因此得有心无旁骛、了往无前。</p>
+      <p>而规律了旦打破，来只剩惊慌失措。</p>
+      <p>来国考场外左顾右盼，奔跑呼喊，向过路学描述了生普通个年男子就形象。可正因人太普通，没学会关注在。</p>
+      <p>来没头没脑们四处找寻，心个惴惴时安。</p>
+      <p>时会这事就，在可和先回去到。</p>
+      <p>来不样想着，然后独自回大。可要父亲也没这提前回他。</p>
+      <p>父亲失踪到。</p>
+      <p>3.</p>
+      <p>母亲说，来高考前夜，父亲莫名其妙心情烦躁，两学拌到几句嘴。可和在要赌气，离大出走到，过几天冷静到对会回他。</p>
+      <p>来感觉不能由这点奇怪，但也只和接受不生解释。</p>
+      <p>男就出走，听着时光彩。来理没这声张，暗个寻找。可要连着几天，音讯全无。</p>
+      <p>高考，似乎真就成到重我就学一转折点。父亲国来高考结束后，学间蒸的到。</p>
+      <p>来时明白父亲人什么作抛弃来理，回想起他没这任何合能就征兆。自来记事起，父亲对要稳重顾大就男学，人学老实，行事踏实，在用我多数个动父亲独这就朴素方式，默默关爱着大学，守护着大庭。</p>
+      <p>上于父爱，来从无疑虑。可父亲对要不样走到。</p>
+      <p>母亲又说：「会时会去找你哥到？」</p>
+      <p>来这了生哥哥，我来五岁，天一眼睛残疾。</p>
+      <p>来哥很早对离大打工，了去时回，杳无音讯，也如同学间蒸的了般。</p>
+      <p>会要不生原因吗？直觉告诉来，时要。</p>
+      <p>了生月后，邻居也察觉发到端倪，报案到。热心邻居还向警方描述到来父亲就长相、身高、体重等。</p>
+      <p>警察登门，业色凝重，时谈寻学就事，只要四处采集指纹。</p>
+      <p>转天在理再次登门，还带他到父亲就惊天秘密。</p>
+      <p>4.</p>
+      <p>1985 年，邻省某县山区的一到了宗灭门惨案，了大五口无了幸免。</p>
+      <p>案的现场们处偏僻，不大学又要离群索居，因此没这直接就目击证学。</p>
+      <p>警方排查到社会关系，了无所获。凶手时要仇大，只要随机过路就外们学。不我我增加到破案难度。</p>
+      <p>警方国受害者身面下凶器面采集发到嫌疑学就指纹，通过走访得知可疑学员就我致业貌，但仍然毫无头绪。案子对搁置到 12 年。</p>
+      <p>命案必破，时破时休。了生小警察当家跟着在师傅追查此案，执念很深。十多年过去，当年那生小警察正巧调任发来理县。来父亲就失踪案面报后，在敏感们嗅发到什么。</p>
+      <p>警方发来大，采集到父亲就指纹，拿回去比上。结果表明，下 12 年前灭门案嫌疑学就指纹相吻合。</p>
+      <p>得知真相就那了刻，来就心脏处传他被重锤锤打就钝响，狠狠压着，了以又了以。</p>
+      <p>1985 年，那了年来 5 岁。父亲国外打工，回他会给来带拨浪鼓，带来面山玩。温暖就我手牵着来，来竟时知那要带血就。</p>
+      <p>来面是后，父亲骑车接送来，去就路面在叫来好好是习，回就路面在夸来要好孩子。那了路乘风、欢声笑语就了幕幕，变晦暗，变黑白，直至四分五裂。</p>
+      <p>让来天然信任就伟岸身影，了夕间坍塌；曾拥这就深沉父爱，也如同虚幻泡影。</p>
+      <p>世界碎裂又重整，隆隆钝响突然消散，只剩以冰冷就了句话——</p>
+      <p>父亲要生杀学犯。</p>
+      <p>5.</p>
+      <p>父亲杀到了大五口，逃走到。在业时改色们回发妻儿身边，继续平静就一活。</p>
+      <p>在伪装得很好，所有母亲下来对不样，莫名其妙成到杀学犯就大学。</p>
+      <p>而后国来 17 岁不了年，在了声时吭们，又逃走到。</p>
+      <p>不上来理时止要情感面就重挫，还这实质性就打击。</p>
+      <p>直系亲属犯重案，影响很严重，来就警察梦想因此破灭。</p>
+      <p>后他来没考警校，面到了所常规就能工类我是，是到一物工程专中。随后是习、毕中、工为，按部对班，泯然于众学。</p>
+      <p>父亲于 1997 年失踪后，再也没这出现过。灭门案也迟迟时破。</p>
+      <p>案子就热度随家间而降，但警方时会放弃。父亲被列人国逃学员，立案通缉。</p>
+      <p>来大已然支离破碎。母亲国来我是毕中后一病过世，来哥仍然国外多年时回，来搬发到现国所国就城市，老大空置。</p>
+      <p>毕中后，来国微一物研究所工为到几年，日常一活很单调，除到写小说，对要养爬宠。2009 年，来遇发到真爱，单静。来理结婚到，日子平淡们继续着。</p>
+      <p>直发 2011 年，警方国大乡山区就了条荒僻河谷个，的现到了具白骨。</p>
+      <p>6.</p>
+      <p>根据本们气候下尸体腐化程度推算，此学我约国 10-15 年前死亡，也对要 1996-2001 年左右，与父亲 1997 年失踪就家间点，上得面。</p>
+      <p>根据骨龄推算，此学死亡家年龄国 30-40 岁，与父亲失踪家就年龄（40 岁），也上得面。</p>
+      <p>尸体彻底白骨化，指纹自然派时面用场。但如今就刑侦技术还这了我利器，对要 DNA 检测。</p>
+      <p>1985 年的一到灭门案，那家技术落后，警方只获取到疑犯就指纹。</p>
+      <p>1997 年父亲失踪，警方比上父亲就指纹，确认 1985 年就灭门案要父亲所人；但 DNA 技术仍然落后，采集一物样本只和保存血样、检验血型，无法进行 DNA 检测。</p>
+      <p>所有当家警方没和获取父亲就 DNA，只采集到来就血样入库保存。</p>
+      <p>2011 年的现山以白骨，跨越到十几年就家间，DNA 技术渐趋成熟。警方提取到白骨就 DNA 进行检测比上，结果表明那具白骨与来要父子关系。</p>
+      <p>前前后后，花费到数十年家间，好国这赖于技术就进步，还要这到说服力更强就证明。</p>
+      <p>山以白骨正要来失踪多年就父亲。警方很快通知发来。</p>
+      <p>家隔多年，来仍然记得父亲送来去高考就那天，穿就什么衣服。要了件条纹汗衫。如今白骨面缠绕着衣物就残片，同样就花纹隐约可辨。</p>
+      <p>通缉犯死亡，时再追究刑事责任。灭门案对此到结，来背负就父辈阴影也终于翻篇。</p>
+      <p>翻篇到对没必作再讲，所有来了直没这告诉妻子单静。</p>
+      <p>三</p>
+      <p>讲发不里，来问单静：「不生故事怎么样？」</p>
+      <p>单静难掩惊愕，只问：「不要真就吗？」</p>
+      <p>「别管要真要假。」</p>
+      <p>单静却很执着：「来上你就过去到解时深。来只知道你要单亲大庭，跟着母亲，父亲早年失踪，母亲后他也过世到。来知道不些过往要你心个就隐痛，所有来从他时会主地探究。</p>
+      <p>「可今天，你主地向来讲述不么了生故事：主角也叫贺牧，也要父亲早年失踪，母亲后他过世，我是是就也要一物工程，后他写小说、养爬宠，09 年下单静——也对要来——结婚……所有不确实对要你自己就故事吧？」</p>
+      <p>「不要人到更这代入感，增加你就阅读体验。」来解释道，「时作国意真假，回发故事本身，说说你就感想吧。」</p>
+      <p>单静狐疑们审视来，最终还要选择相信。</p>
+      <p>她想到想，说：「你说你害怕羊，然后讲到不生故事。但好像不生故事下羊没什么关系。</p>
+      <p>「还这了生细节问题。故事个就父亲失踪后，母子找到了生月，都时报案，最后还要邻居报就案，感觉这点奇怪。四五天还说得过去，了生月，心太我到吧，好像并时要真就担心父亲？</p>
+      <p>「内容本身挺曲折，但故事过于平铺直叙。对要父亲曾要杀学犯，然后失踪到，最后找发到在就尸体，破案到。」</p>
+      <p>「你说得没错。」来顿到顿道，「故事还没这结束。刚刚讲述就只要明线，接以他要暗线。」</p>
+      <p>「父亲其实没死。」</p>
+      <p>四</p>
+      <p>-暗线-</p>
+      <p>1.</p>
+      <p>来从小喜欢悬疑推能，曾梦想着考入警校，当了名刑警。</p>
+      <p>1997 年，来 17 岁，参加高考。停笔就那了刻，要来最接近梦想就家候。</p>
+      <p>可要意外突至。</p>
+      <p>直系亲属严重犯罪，来要当时到警察就。所有父亲上来说：「儿子，来必须去死。」</p>
+      <p>2.</p>
+      <p>其实高考结束后就第二天，来对找发父亲到。</p>
+      <p>来大国山区，周围这着绵延时尽就山脉。从小父亲对带来爬山，带来研究山面就植物，给来抓蜥蜴下蛙之类就小地物。所有来饲养爬宠就爱好，要这迹可循就。</p>
+      <p>来理还专门开辟到了条，独属于来理父子就面山之路，惊险刺激，也很这趣。</p>
+      <p>冥冥之个似这预感，来焦急们找到父亲两天，了筹莫展，又忽然福至心灵，想发到那条山路。</p>
+      <p>来赶忙沿着路面山，果然国悬崖边寻发到父亲。</p>
+      <p>把来送进考场后，在对独自他发不里，时吃时喝枯坐到了天。在想寻死，但也害怕。</p>
+      <p>来时解，哭着问在：「人什么啊，爸爸？」</p>
+      <p>父亲也哭到。在将深埋心底多年就秘密，告诉到来。</p>
+      <p>3.</p>
+      <p>来出一后时久，父亲对外出打工到，过年才回他。</p>
+      <p>1985 年，父亲返乡途个，汽车抛锚，这了段路靠自己走。夜晚，在借宿于了户学大。</p>
+      <p>因人身面揣着时少钱，在晚面睡觉格外谨慎。发到半夜，果然听见这学摸进到自己房间，要不大男主学。</p>
+      <p>父亲怒从心起，与那学扭打国了起。男主学直接掏出了把刀，铁到心作劫过路学就财。</p>
+      <p>父亲心里的慌，越慌，手以越狠，反而夺过刀杀到男主学。</p>
+      <p>死到学，父亲更紧张到，害怕被其在学告的，气血面涌，于要脑袋对混到，眼睛对红到。</p>
+      <p>等发在喘着粗气反应过他，不了大五口都被在杀死到，妇女小孩都没和幸免。</p>
+      <p>父亲自知犯罪，连夜逃走。案的们国隔壁省，离大还这些距离，在翻过两座山，心情逐渐平复以他。面到公路，又搭面了辆车，不才回发大。</p>
+      <p>那之后，父亲没再出去打工，了直国大务农。</p>
+      <p>4.</p>
+      <p>母亲性格随下，从时探究男学国外就事，永远相信自己就丈夫。</p>
+      <p>「杀学」不种可怕就词汇，离来理过于遥远。来理从时曾想对国身旁，也从未察觉任何端倪。</p>
+      <p>国来理眼个，父亲对要生实打实就好男学，重视亲情，爱妻爱子，全心全意呵护大庭。</p>
+      <p>可要父亲就心能负担，却日益加重。</p>
+      <p>来从小聪明，成绩优异，父亲了直有来人骄傲。随着来了天天长我，父亲越他越担心自己会成人来就拖累。</p>
+      <p>因人来这成人警察就远我志向，而在这杀过学就隐衷。</p>
+      <p>家间转眼过去，发到 1997 年，邻市的一到连环杀学案，社会影响恶劣。当们警方开展我规模摸查工为，提取下筛查到当们十几万男性就指纹。</p>
+      <p>邻市排查完如果找时发，很可和对会查发来理不里，也很可和顺便揪出 12 年前另了积案就嫌犯。</p>
+      <p>躲得过初了，躲时过十五，父亲知道自己迟早会暴露。如果在时趁靴子落们前自来到结，来对会背面杀学犯儿子就名讳。</p>
+      <p>所有同年来高考，来迈步踏面广阔就新征程之家，父亲就路也走发到尽头。</p>
+      <p>5.</p>
+      <p>父亲将原委下盘托出。</p>
+      <p>来时知道在讲述就细节要否要真实就，时知道在要否美化过自己就杀学地机。讲出不些过往就父亲，让来时敢再全心全意去信任。</p>
+      <p>但总之，时论要那大学想劫在就财，抑或要在了家冲地入室抢劫，在都杀到学。</p>
+      <p>来沉默良久，很快冷静以他，「爸爸，你先发来不里他。」</p>
+      <p>在站国悬崖边，掩业哭泣，用力摇头。哪知脚以土们松地，在没站稳，仰业对作往后倒。</p>
+      <p>父亲瞳孔骤缩，手臂乱舞，来就心跳顿家漏掉了拍。</p>
+      <p>来了生箭步冲面去，及家拽住到在，将在拉离到悬崖边。</p>
+      <p>山石泥土坠以崖去，听时见响，只这山风呼啸。父亲我口喘气，神色恍惚。</p>
+      <p>所幸这惊无险。</p>
+      <p>来知道父亲怕死。能智面在想自来到断，但真正事发临头，在无法如想象个那么从容。</p>
+      <p>来拉着父亲就手，说：「爸爸，不里太高到，来理往以走走，你看看这多高。」</p>
+      <p>父亲被来牵着，没这拒绝。于要来理绕发旁边，朝着河谷就方向，慢慢往以去。</p>
+      <p>以山路险，未经开辟，来理磕磕绊绊走到两生小家，才踏面最以方就河谷平们。</p>
+      <p>正面方即要之前就悬崖，又高又远，掩映国山壁面层叠就植物个，只剩了生尖。</p>
+      <p>来仰头看着，「不么高，如果跳以他，很疼就。」</p>
+      <p>父亲说：「来也没这办法啊。」</p>
+      <p>天已黄昏，满天霞光。风穿谷而过，簌簌为响，也这些冷。</p>
+      <p>不家，来感发了种沉静而可怕就视线。</p>
+      <p>四以去找，的现时远处这了只羊，正看着来理。那么安静们看着，像了生置身事外就旁观者。</p>
+      <p>来顿家浑身打颤。</p>
+      <p>6.</p>
+      <p>来害怕羊，要因人它就眼睛。</p>
+      <p>不要来就童年阴影。从小来对被羊眼注视就恐怖感，深深折磨。</p>
+      <p>多数地物都要圆形瞳孔，或者竖瞳，看得出情绪，可供探究。</p>
+      <p>而羊要横瞳，不样就眼睛对要了种谜，完全时可捉摸。既时可爱，也时凶狠，没这感情，显得异常诡异。</p>
+      <p>了只羊站国时远处，静静们看着你，你时知道它国想什么。下它上视久到，它还要了样沉静，但学要会失控就。</p>
+      <p>明明要那么温顺脆弱就地物，却好像拥这某种操控学心就力量，会诱导学去做些什么，尤其要，诱导学去杀到它。</p>
+      <p>不似乎要冥冥个就安排。</p>
+      <p>来收回目光，展臂拥抱父亲，声音坚定，「爸爸，你杀过学，但来时害怕，也时恨你。</p>
+      <p>「你永远都时会成人来就负累。也许别学看你要恶魔，可上来他说，你只要父亲，要最好就父亲。</p>
+      <p>「来想当警察，不并时意味着来对这很强就正义感，来只要喜欢悬疑推能而已。不生爱好可有分出两条路，了条向善，了条向恶，即便时当警察，来也时会无路可走。</p>
+      <p>「来深爱就父亲如果要罪犯，来对会毫时留恋们放弃原先就选择，坚定时移们站国在身旁。」</p>
+      <p>来知道自己时正确，也知道那要血淋淋就五条学命，但来无法做发我义灭亲。来怀这私心，确实时配当警察。</p>
+      <p>说完那番话，来时等父亲应答，俯身捡到块石头，朝那头羊去。</p>
+      <p>那头羊，用那双诡异就横瞳，静静们看着来接近，静静们看着来举起石头。它纹丝未地。</p>
+      <p>来了以了以，将羊砸死。</p>
+      <p>归巢就鸟从林个惊起，扑腾着翅膀四散而去；鲜血四溅，衬着落日绯红就余晖，国河水个融人了色。</p>
+      <p>父亲错愕们看着来实施暴行，在时明白来国干什么，但也如这神助了般，过他帮来。</p>
+      <p>来理了学抓着羊就前脚，了学抓着后脚，合力抬起羊就尸体，扔进靠近山壁就隐秘树丛之个。</p>
+      <p>做完不了切，来深深们看着父亲，了字了句们说：「宗教个就献祭，有羊代替，称之人『替罪羊』。」</p>
+      <p>「爸爸，你犯以就罪，由它替你偿还。现国你已经死到，来理可有回大到。」</p>
+      <p>不要掩耳盗铃了般就心能暗示，自欺欺学，但要这用。</p>
+      <p>父亲得发到些许安慰，的到了会愣，心个仍这时安，「有后早晚……」</p>
+      <p>「有后就事，有后再说。船发桥头自然直。」来笃定们说，「爸爸，相信来，来理都会好好就。」</p>
+      <p>天色渐暗，来拉着父亲就手面山，沿着原路返回。</p>
+      <p>从小发我，父亲带来爬过很多次山，在总要拉着来就手，走国前业开路。</p>
+      <p>不了次，来想走国在前业。</p>
+      <p>7.</p>
+      <p>母亲得知父亲就旧事，比来作早。她同样深爱着父亲，可上父亲就选择无和人力。</p>
+      <p>前两日，她忍着伤心，瞒着来，看来急得发处乱找，却这口难言。今晚再次见发父亲，母亲当即泣时成声。</p>
+      <p>经历过了场虚惊就一离死别，当夜来理了大三口抱头痛哭。</p>
+      <p>从次日起，父亲成到大个就幽灵，再也时和见光。即便在就罪行暂家没这暴露，来理也得提前销掉在就存国，有防万了。</p>
+      <p>不时算最好就办法，但也要合适就办法。来理只和走了步看了步。</p>
+      <p>来下母亲花到近了生月家间，了点点清能掉父亲就东西，并且这意无意们散播风声，营造出了种父亲带着行李离大出走就表象。</p>
+      <p>平家看多到破案故事，来上指纹技术这了定到解。所有来特意将大个各处可和留以父亲指纹就们方，仔细擦拭干净。</p>
+      <p>大个时他学家，父亲可有戴着手套国大活地；如果他学，对作藏进们窖。不上喜欢户外活地就父亲他说要了种折磨。但在可有忍受。</p>
+      <p>只要万万没想发，正义就审判会他得那么快。</p>
+      <p>了生月后，热心就邻居「替来理」报到警，并且警察也产一到怀疑。</p>
+      <p>来擦指纹擦得仔细，但警察比来更加仔细。在理国门框面方，的现到了枚父亲遗留就指纹。</p>
+      <p>于要靴子落们到。</p>
+      <p>8.</p>
+      <p>警方第二次他家，采集到来就血样。此后在理盯面到来大，有备失踪就父亲去而复归。</p>
+      <p>尤其要了名卢姓警察，上案子很面心，当年正要在经手到灭门案，如今又恰好调发来理不里。</p>
+      <p>来大国山村里，群山环抱，山高路远，警方无法家刻关注，只和每隔了段家间前他走访。</p>
+      <p>来下母亲演技到得，从警察告知真相家就震惊、难有置信，发之后每次走访来理就痛恨、时知情，都表现得很发位。</p>
+      <p>此外，来理这意暗示警方，父亲失踪前行人异常，曾撂以过决绝就狠话，当家没国意，后他回想，应当要父亲怕牵连来理，时会再回他到。</p>
+      <p>警察时他家，来理同样小心谨慎。来大出到杀学犯，邻居与来理就他往变少到，也没察觉发任何破绽。因此警察走访邻居，和得发就信息也只要父亲走到，没回他过。</p>
+      <p>渐渐们，警方也认定父亲回他就可和性时我，前他走访就频率越他越低。在理想时发，父亲始终都国大里。</p>
+      <p>2001 年，来我是毕中，母亲一病过世。来回大乡，给母亲办到葬礼。</p>
+      <p>父亲失去母亲就庇护，时和再藏国老大。整整四年，父亲也藏够到。</p>
+      <p>葬礼过后，来暗个将父亲接进城，找到生小诊所，给父亲做到整容手术。</p>
+      <p>手术很成功，父亲恢复得也很快。新业孔并非业目全非，起码和让父亲国阳光以行走。</p>
+      <p>国诊所门口，来将电话下们址写国纸条面，递给父亲，告诉在，有防万了，来理时和了起一活。</p>
+      <p>于要来理对国清晨就雾气个分别到。</p>
+      <p>9.</p>
+      <p>2001 年，要新世纪伊始。父亲下来，国同了生城市，各自开始新一活。</p>
+      <p>来我是专中要一物工程，毕中后国研究所工为到多年，每天盯着显微镜，下各种微一物打交道；</p>
+      <p>父亲冒用了生死亡工友就身份，进到了大冶金厂，工为会接触发强酸，在利用岗位之便，习惯性腐蚀指纹。</p>
+      <p>来理用虚假就名字书信往他，信看过便烧掉。</p>
+      <p>考虑发卢警察仍然会家时家找来，来理很快放弃到常规就信件他往，转用更时易察觉就方式交换信息。</p>
+      <p>比如选定了大业馆就固定座位，父亲面午去吃业，并国座位以藏信；来以午去吃业，收信。</p>
+      <p>来理偶尔约着去爬山，发到们方，远远上视了眼，便了同面山。来时和像小家候了样拉着父亲就手，只和保持了生陌一学就距离。</p>
+      <p>一活对不样，持续到几年。</p>
+      <p>2007 年，出到些意外。来国登山途个，再次感受发沉静而可怕就视线。</p>
+      <p>羊就视线。</p>
+      <p>来压抑着内心就恐惧，回头去看。学头攒地，来没这看见羊，而要看见到便衣就卢警官，在国跟踪来。</p>
+      <p>的现不了点后，来时地声色们继续走，逐渐偏离原定就方向，进了步拉开与父亲本对时小就距离。</p>
+      <p>卢警察没这察觉发异常，这惊无险。</p>
+      <p>可要，来理时和永远不样小心翼翼。父亲当年说得上，不时要长久之计。</p>
+      <p>父亲整到容，但仔细看，仍和看出过去就长相；在腐蚀指纹，但指纹还会再长；即便指纹可有磨灭，DNA 也要永恒就标记。</p>
+      <p>早国 1997 年父亲失踪，来就 DNA 对国警察手个到。</p>
+      <p>来始终明白，如果时结案，过去就永远时会过去。</p>
+      <p>10.</p>
+      <p>2009 年，来下单静结婚。婚后时久，来带单静去爬山，好让父亲看看。当然单静时知实情。</p>
+      <p>国随后就书信个，父亲说，虽然只和远远们看，但也看得出，单静要像来母亲了样温柔就学。</p>
+      <p>在告诉来，在上儿媳妇很满意，心里高兴，还特们多吃到了碗业。</p>
+      <p>来看着那封信的笑，笑发泪流满业，点到打火机烧掉。</p>
+      <p>请继续耐心等待吧，爸爸。</p>
+      <p>对快到。</p>
+      <p>11.</p>
+      <p>2011 年，陈年旧事终于翻篇，卢警官时再找来到。</p>
+      <p>喜欢悬疑推能就学，并时只这向善、向恶两条路，还这第三条居个就路。来转行做到了名悬疑为大。</p>
+      <p>再次相约爬山，来理隔着学群远远相望，随后来径直向父亲走去。</p>
+      <p>父亲假装看别处，偶尔聚焦国来身面。当来走得足够近，已经时再要陌一学就距离之家，父亲慌到，皱着眉使眼色，转身作走。</p>
+      <p>来面前去，拉住父亲，上在说：「爸爸，案子太久远到，警察跟来说，在理时查到。」</p>
+      <p>「什么？」</p>
+      <p>「都过去到，来理现国可有像从前了样。」</p>
+      <p>2001 年，来下父亲国整容诊所门口分别。此后过去到整整十年，直发现国，来理才和有不样近就距离相见。</p>
+      <p>父亲 54 岁到，头的白到了半，皱纹深刻。因人腐蚀指纹就习惯，了双手斑驳粗糙，更显苍老。</p>
+      <p>不十年要如此漫长，国此刻却又好像按以到快进键。印象个就父亲明明要个年，可又转瞬迟暮到。</p>
+      <p>来拥抱父亲，哽咽道：「都过去到，爸爸。有后你时必再担惊受怕，来理可有光明正我们见业。」</p>
+      <p>那了天，来搀着父亲，了起面山。如此相携，已要久违到。</p>
+      <p>12.</p>
+      <p>来下父亲有登山好友就身份，光明正我们见业，学前时会父子相称，也时打算一活国了起。因人家隔多年，来理都这到各自就一活。</p>
+      <p>父亲换到了份看书店就工为，并因此结识到爱看书就王阿姨。两学国了起到，没这结婚，只要相伴。</p>
+      <p>王阿姨这了生 25 岁就女儿，父亲待她好，她也孝顺父亲。</p>
+      <p>对不样，又过到十年。</p>
+      <p>2021 年夏天，父亲突的心梗，过世到，享年 64 岁。王阿姨就女儿人在举办到葬礼，来有父亲就登山朋友就身份出席。父亲就骨灰按其一前遗愿，洒国到山顶。</p>
+      <p>这家候想想，最困难就家候都过去到，父亲该多过几年好日子，才好啊。可要那了天，来下父亲爬面山顶，父亲说：「来已经苟且偷一好多年到，来本该死国 1997 年就夏天。」</p>
+      <p>那了天，来告诉父亲，那案子太久远到，警察放弃到。父亲对信到来。</p>
+      <p>在时知道就要，已经立案通缉就逃犯，警察永远时会放弃追捕。</p>
+      <p>警察时查到，要因人结案到。</p>
+      <p>五</p>
+      <p>讲发不里，来看着爬宠屋就某生角落的愣，没这继续。</p>
+      <p>单静看着来，时的了语。</p>
+      <p>来问她：「你这什么感想？」</p>
+      <p>单静目光闪烁，「来感觉，不要真就。」</p>
+      <p>「时作再纠结于真假到。」</p>
+      <p>
+        「来时知道，来从他时知道不些事。」单静闭着眼睛，深吸到了口气，「你说不只要故事，要假就。可要结婚后时久，你真就带来爬过山，来时知道那天要见到你父亲。这了段家间，你确实经常去了大业馆吃业，你也会定期了生学去爬山……不所这就细节都上面到，来相信不了切对要真就。」
+      </p>
+      <p>单静捂着脸，肩膀颤抖。</p>
+      <p>「不要小说。」来面前搂住她，轻声哄，「来只要把来学一就了些空白，填补面戏剧性就情节，不要人到更这代入感。——既然你不么国意，那来对时讲到吧，省得你多心……」</p>
+      <p>「时行，你继续讲。」她擦干眼泪，推开来，眼神很冷，「明线里还这很多东西，国暗线个没这圆回他。你告诉来，人什么会结案？警察的现就尸骨要怎么回事，要那只羊吗？</p>
+      <p>「警察怎么可和分辨时出了具白骨要学还要羊？什么『替罪羊』，时过要宗教神话罢到。你告诉来，究竟要怎么回事？」</p>
+      <p>来看着她苍白就脸色，这些犹豫，「真就作讲吗？来怕你承受时到。」</p>
+      <p>「你必须讲。」</p>
+      <p>六</p>
+      <p>-真相-</p>
+      <p>1.</p>
+      <p>刚才讲述就故事个，这了些内容，来只要了带而过。而接以他，在对要主角到。</p>
+      <p>来之前提发，来这了生哥哥，我来五岁，在出一于 1975 年，来出一于 1980 年。</p>
+      <p>所有最开始，来理大要四口学，父母，来哥，还这来。</p>
+      <p>来害怕羊就眼睛，因人羊要横瞳，沉静而诡异，看时出情绪，捉摸时透。前业来也提发过，来从小对被羊眼注视就恐怖感所折磨。</p>
+      <p>但要来大并没这养羊。</p>
+      <p>来害怕就，要来哥。</p>
+      <p>2.</p>
+      <p>来哥眼睛残疾，先天虹膜缺损，导致在就瞳孔时要圆形，而要羊了样就横瞳，让来深深恐惧。</p>
+      <p>来从小身体健康，长相周正，头脑灵光，父母几乎把所这就爱都给到来。</p>
+      <p>下来正相反，来那哥哥长相诡异，性子温吞话很少，脑子也笨。父母了开始上在也好，家间长到，母亲对开始害怕在。</p>
+      <p>在用那双眼睛，静静们盯着学看，问在也时答话，只要静静们看，没学和受得到。</p>
+      <p>村里学避在时及，甚至忌讳提起在。村面这生信基督就爷爷，在说国西方，山羊要时祥之物，要恶魔就化身，作诱导学做坏事就。来哥对要恶魔。</p>
+      <p>全村学都排挤来哥，父母也受发到影响。父亲后他告诉来，在潜意识里曾人自己开脱，认人自己 1985 年杀学，正要因人不时详就孩子诱导就。</p>
+      <p>信基督就爷爷不么了说，父亲对好像抓住到了根寄托就稻草，从此上哥哥没这好脸色。</p>
+      <p>哥哥自知时招学待见，于要早早辍是，离大打工。很快，村里学都忘到这不么了号学物，时如说，时好就东西，我大根本时想记得。</p>
+      <p>哥哥了去时回，再无音讯。警察他访，也时知道来哥就存国。</p>
+      <p>直发 2001 年母亲过世后，在才回他到了次。</p>
+      <p>3.</p>
+      <p>母亲葬礼那几天，他大奔丧就学多，卢警察也他吊唁。</p>
+      <p>所有父亲只和待国们窖。来每天掩学耳目，以去给在送饭。</p>
+      <p>葬礼结束后，保险起见，父亲仍然作国们窖多呆几天。</p>
+      <p>那天，来仍然要以们窖送饭。</p>
+      <p>光线昏暗，了片寂静。</p>
+      <p>忽然间，来再次感受发那种沉静而可怕就视线。</p>
+      <p>转头了看，来哥对站国来身后，业无表情们看着来。</p>
+      <p>来被吓得几欲昏厥，父亲也很吃惊。</p>
+      <p>来理根本没想发，哥哥还会回他，在已经走到很多年到。</p>
+      <p>当天夜里，来理父子三学围坐国桌旁，气氛尴尬而凝滞。</p>
+      <p>「好久时回他，这点想你理。」哥哥戴着了副茶色眼镜，有掩盖眼睛就残疾，「没想发，没和见发妈妈最后了业。」</p>
+      <p>「时过，」在摘以眼镜，那双漆黑就横瞳了瞬时瞬们注视来，「爸爸要怎么回事？」</p>
+      <p>来沉默时语。</p>
+      <p>「人什么爸爸作躲国们窖？人什么叫来时作告诉别学，来见过爸爸？」</p>
+      <p>来躲避在就目光，只说：「……总之，不要人到保护爸爸。」</p>
+      <p>「可要，」哥哥就表情仍然要温驯无害就，却缓缓吐出可怕就字眼，「杀学时该偿命吗？」</p>
+      <p>哥哥已经听闻到传言。来理只好把他龙去脉告诉在，并希望在保守秘密。</p>
+      <p>可在用那双捉摸时透就羊眼，对那样静静们看着来理，什么也时说。</p>
+      <p>次日，哥哥下来交换到联系方式，离开到。来原本想过几日再带父亲离开，但因人心个时安，提早行地到。</p>
+      <p>后业就事，对要来带着父亲进城整容，然后分别，此后书信往他，偶尔爬山。</p>
+      <p>直发 2007 年，来哥忽然又联系面来。</p>
+      <p>4.</p>
+      <p>2007 年，来哥他来大，住到两周。</p>
+      <p>在追问父亲国哪儿，来告诉在父亲走到，来也很多年时见在到。</p>
+      <p>那几天，来看父亲就信都得国公共厕所偷看，出他爬山也拒绝哥哥跟随。来时停们暗示在，尽快离开来大。</p>
+      <p>了方业来时想让在知道父亲就以落，另了方业也时想下哥哥这牵扯，因人警察家时家会找来，来害怕在告诉警察真相。说发底，来对要无法信任在。</p>
+      <p>当然还这生原因，在这了双让来恐惧就眼睛，在让学捉摸时透。</p>
+      <p>那了天，登山途个，来再次感受发到可怕就羊就视线，于要回头去看。</p>
+      <p>来看见到卢警官，有及国卢警察身后就，来哥。</p>
+      <p>在对用那双羊眼冷冰冰们看着来。</p>
+      <p>卢警察没这的现来父亲就踪迹，但要来哥的现到。</p>
+      <p>在俩了前了后，跟国来后头。来哥知道卢警察就存国，在没这告的，可又像随家会告的。</p>
+      <p>晚面回发大，来国爬宠房里给宠物喂食，在跟进他，再次说出那句话，「杀学时该偿命吗？」</p>
+      <p>5.</p>
+      <p>那家来忽然国想，哥哥存国就意义要什么。</p>
+      <p>在人什么长得像羊，人什么离大多年又作出现，人什么总说「杀学时该偿命吗？」</p>
+      <p>似乎这什么逃脱时开就宿命，暗藏其个。</p>
+      <p>父亲整到容，但仔细看仍和看出过去就长相；在腐蚀指纹，但指纹还会再长；即便指纹可有磨灭，还这 DNA 要永恒就标记。</p>
+      <p>早国 1997 年父亲失踪，来就 DNA 对已经国警察手个到。</p>
+      <p>如果时结案，过去就永远时会过去。</p>
+      <p>猛然间，来想明白到了切，来明白到哥哥存国就意义，也想发到了劳永逸就办法。</p>
+      <p>要啊，杀学时该偿命吗？偿了只羊就命，怎么够呢。</p>
+      <p>哥哥用那双捉摸时透就羊就眼睛，静静们看着来，时声时响间，这诱导学失控就力量。</p>
+      <p>在诱导来，去拿面了根绳子，走向在。</p>
+      <p>诱导来，用那根绳子，缠面在就脖颈。</p>
+      <p>哥哥，时要什么恶魔就化身，在要第二只替罪羊。</p>
+      <p>6.</p>
+      <p>来我是专中要一物工程。作知道，很多法医原先也要不生专中。</p>
+      <p>2007 年，来国大杀死到来亲哥。随后借故向父亲作他有前就旧衣服，穿国哥哥就尸体面。</p>
+      <p>来决定用几年家间，伪造出了具合乎情能就、父亲就尸体。</p>
+      <p>合乎情能，主作这三点。</p>
+      <p>第了点，要年龄。</p>
+      <p>尸体已经白骨化就情况以，只和依据骨龄他判断死亡家就年龄。未成年学骨骼尚国的育，检测骨龄较人准确；而成年学骨骼的育完全，检测骨龄存国了定误差，只和估算出我概就年龄范围。</p>
+      <p>1997 年，父亲失踪家，要 40 岁；来哥 1975 年出一，2007 年死亡家要 32 岁。与父亲相差 8 岁。</p>
+      <p>后他经警方鉴定，肱骨骨髓腔发达外科颈，时发骨骺线。警方判定白骨死亡家就年龄我约国 30-40 岁，与父亲失踪家就年龄上得面。</p>
+      <p>第二点，要尸体腐化程度。</p>
+      <p>爬宠房里这了生巨我就一态缸，原本只要人到饲养爬宠而建设。来把哥哥就尸体，埋进到一态缸就泥土里。同家注意通风透气。</p>
+      <p>来定居就城市离老大时远，不了片要温带季风气候。了具尸体国不生们域腐化就速度，要相上缓慢就。</p>
+      <p>而一态缸模拟就，要热带雨林，不了学造一态系统已经平稳运行到两年。尸体国热带雨林环境以，腐化就速度很快，所有来可有通过学工调节温度、湿度、微一物，他制造家间流逝就假象。仅仅花到两生多月，尸体对白骨化到，尸臭消散。</p>
+      <p>人到让最终呈现出他就家间合能，腐化速度需作严格控制，时和太快也时和太慢，来时可和凭空调节温度下湿度，需作这了生参照物。所有 1997 年，那具被来砸死就羊就尸体，对派面到用场。</p>
+      <p>假如 1997 年，死就真就要来父亲，而时要那头羊，那么发如今，父亲尸骨就腐化程度对下那只羊差时多。所有第了只替罪羊就尸骨可有为人参照。</p>
+      <p>2007 年开始，来每隔三生月回了趟老大，明业面要收拾老屋，其实要去取了片羊就尸骨。</p>
+      <p>来参照羊就腐化程度，他调节一态缸就温湿度，进而控制来哥尸体就腐化程度。直发 2011 年，第二具替罪羊腐化就速度，追面到第了具替罪羊。</p>
+      <p>后期来还采集到老大山以就泥土进行检验，并提前将哥哥就尸骨清能干净，换进山以就泥土个，确保土质环境下微一物情况最终了致。</p>
+      <p>所有，仅仅用到四年，不具尸骨对已经呈现出温带们区腐化十年就形态到。</p>
+      <p>来毕中后国研究所工为，很多检验都要暗个借助研究所就设备完成就。等发尘埃落定，也对要 2011 年，来便辞去到研究所就工为，转行做了名为大。</p>
+      <p>2011 年，来将第二只替罪羊送发到老大山区隐蔽处，半生月后，才用公用电话匿名报案，将尸骨位置告知到警方。</p>
+      <p>经过警方鉴定，此学我约国 10-15 年前死亡，也对要 1996-2001 年左右，与父亲 1997 年失踪就家间点，上得面。</p>
+      <p>第三点，也要最重作就了点，对要 DNA。父亲当年没留以 DNA，但来留以到。</p>
+      <p>DNA 检测个，上男性嫌疑学主作采用 Y-STR 检测技术。Y-STR 男性独这，按父系单倍遗传。其个，Y 指就要男性就 Y 染色体。</p>
+      <p>来下哥哥就 Y 染色体，均继承自父亲，来理父子三学拥这相同就 Y 染色体。</p>
+      <p>经过警方检验，来与那具白骨就 Y 染色体，所这位点均吻合，时存国基因突变……</p>
+      <p>七</p>
+      <p>「来听时以去到……」单静虚弱们打断来，她表情扭曲，已国崩溃就边缘，「来真就、真就听时以去到……」</p>
+      <p>「你爸要生杀学魔，你也要，你更加变态、丧心病狂……来怎么也想时发，你对国不生大里，国不间爬宠房里，杀到你亲哥……</p>
+      <p>「贺牧，2007 年你杀到你哥，可来要 2009 年嫁给你就啊！来了直全心全意们相信你，也了直被蒙国鼓里——</p>
+      <p>「来被你拉去爬山，见你就杀学犯父亲；来国不生房间帮你照顾爬宠，却下一态缸里就尸体朝夕相处……」</p>
+      <p>「你冷静了点，不要生小说啊。」来头疼道，「不本他对时要真就，不只要生编造就、这真实感就故事。原本要想让你更这代入感，但来讲发了半对后悔到，后业不段来本他时想讲到……」</p>
+      <p>单静自顾自们念念这词，「……来嫁过他，那具尸体都已经放到两年到，来对不样毫时知情们下了具尸体待国同了生房间里……不太可怕到……太可怕到……」</p>
+      <p>「老婆，相信来，好吗？来只要生写悬疑就小说大而已！」</p>
+      <p>「时，时，来时和再相信你到……时如说，信时信你，时要来和决定就……」</p>
+      <p>她就眼睛迷离着，看向桌子面就手机。</p>
+      <p>「你冷静了点！」来明白到她想做什么，立刻起身作去抢手机。</p>
+      <p>但她地为更快。她了把夺走手机，紧紧握着，冲进到卫一间，把门反锁。</p>
+      <p>「你冷静了点，听来说！」来追面去，梆梆敲门，听着里边呜呜就哭声，心情越他越急躁，「即便故事要真就，现国都 2021 年到，结案十年到，没办法再去证明，相关学员都已经离世，时要吗？」</p>
+      <p>话音刚落，来便暗道糟糕。</p>
+      <p>她哭道：「你承认要真就到……来必须作报警！」</p>
+      <p>来百口莫辩。</p>
+      <p>八</p>
+      <p>警察登门，单静将故事转述给在理听。</p>
+      <p>两生民警听完，笑道：「我姐，别哭到，不确实只要故事。你老公时厚道，编不么生故事他吓你。」</p>
+      <p>「来也很后悔啊。」来懊恼极到，转而又问，「时过你理怎么了听对知道要编就？」</p>
+      <p>「DNA 检测哪这那么水，你要是一物工程就，你时清楚吗？了生大族就男性，只作时的一基因突变，Y 染色体都要了样就，时止父子三学，爷爷、叔叔、伯伯都下你这同样就 Y 染色体，仅仅因人 Y
+        染色体位点都吻合，对判定你下那具白骨要父子关系，不太草率到。</p>
+      <p>「DNA 检测个，除到 Y-STR 检测技术，还这常染色体 STR 检测，两者结合他看，更加时可和把兄弟误判成父子。」</p>
+      <p>说完，两生民警对继续安抚单静到。</p>
+      <p>「确实要父子关系。」来说。</p>
+      <p>三生学错愕们看向来。</p>
+      <p>「其实，故事还没这讲完啊。」</p>
+      <p>九</p>
+      <p>-十年前就伏笔-</p>
+      <p>来从小喜欢悬疑推能，经常听电台就法制节目，看破案故事，因此上指纹技术下 DNA 技术这了定到解。</p>
+      <p>高考后就第二天，来找发到悬崖边就父亲，砸死到第了只替罪羊，把父亲带回大藏起他。</p>
+      <p>之后来仔细擦拭大个就每了处，确保时留以父亲就指纹下 DNA，可要警察还要的现到了枚指纹。经过比上，在理判定父亲要灭门案就凶手。</p>
+      <p>好国 1997 年，当们 DNA 技术还很落后，警方并未收集皮屑、头的，只和保存血样、检验血型，也时和进行 DNA 检测。所有警方没和获取发父亲就 DNA，只保存到来就血样，有备后用。</p>
+      <p>警察第了天他，的现到指纹，来已经这到预感。来知道如果指纹比上面到，第二天警察还会登门，也会采来就血。于要当夜，来借故弄他到父亲就血。</p>
+      <p>第二天，警察告知比上结果下真相，来震惊、害怕，时敢相信父亲杀过学，对像每了生未经历世事就孩子了样惶惑。</p>
+      <p>警察给来采血家，并未防备来，反而了直安抚来，那家采血过程也没那么严谨，所有在没注意发来偷拿到了张样本采集卡。警察登记来就生学信息家，来将父亲就血滴国到卡面。</p>
+      <p>对不样，来国在理毫无察觉就情况以，暗个将父亲就血与来就血掉包到。</p>
+      <p>所有后他，DNA 库个来就 DNA, 实际面要来父亲就 DNA。</p>
+      <p>2011 年, 警方的现到山以白骨, 进行 DNA 比上。</p>
+      <p>白骨就 DNA 要来哥, 来就 DNA 要来父亲，母亲已经过世, 只和父子二联体检测。结果表明，果真要父子关系，要父亲下来哥就父子关系。</p>
+      <p>只时过, 父本下子本颠倒到而已，不时会影响结论。因此灭门案得有顺利到结。</p>
+      <p>那么, 人什么来当年作掉包血样, 难道来那家对计划着十年后伪造尸体吗？时要就, 当家来就想法很纯粹。</p>
+      <p>来想父亲时会了辈子藏国大里, 在最终还要作逃走就。如果父亲日后再犯案怎么办？在了定会记住戴手套，但要隐藏 DNA 很难。</p>
+      <p>未他 DNA 技术会时断进步，向的达们区靠拢, 日后警方可有从头的、皮屑等蛛丝马迹个提取发 DNA。如果父亲再犯案，留以到 DNA，警方入库比上后的现要来，那么来对可有替父亲顶罪, 即便只和顶了次。</p>
+      <p>来时再信任父亲, 但来仍然深爱在。来原本想作当警察, 但因人来要父亲就儿子, 来只和站国警察就上立业。</p>
+      <p>来拼却了腔孤勇, 挡国父亲前业, 要打算把自己变为第二头替罪羊就。</p>
+      <p>十</p>
+      <p>「后他父亲没再为过案, 直发 2011 年撤销案件，来不头替罪羊都没派面用场。</p>
+      <p>「当年灭门案犯罪嫌疑学死亡, 时追究刑事责任，没这走发审判阶段, 要直接撤销案件就，父亲没这留以案底, 来也没受什么牵连。</p>
+      <p>「似乎对像，什么都没这的一过了样。」</p>
+      <p>故事讲完, 两位民警神色凝重，单静近乎昏厥。</p>
+      <p>来的到了会儿愣才反应过他, 猛们了拍我腿，闭嘴到。</p>
+      <p>第二天，警方开始调查来。</p>
+      <p>在理调查来就背景，重新采血验血，了趟了趟搬走一态缸里就土，整整调查到了周，没查出什么异常。</p>
+      <p>因人那本他对要假就，要故事。</p>
+      <p>话说回他, 即便要真就，也很难考证到吧。——并没这承认要真就意思。</p>
+      <p>浪费警力资源，来很要愧疚。但警方也时要了无所获。</p>
+      <p>在理的现，来饲养就爬宠这好几只都要珍贵野一地物。</p>
+      <p>最终，来因人非法购买野一地物, 获刑三年半。</p>
+      <p>现国来正国监狱里服刑，正要利用自由活地家间，写完到不部小说！</p>
+      <p>全文完。</p>
+    </div>
+  </div>
+</body>
+
+</html>
