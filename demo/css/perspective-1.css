@@ -33,25 +33,25 @@
 }
 .wrapper .left {
   transform: rotateY(90deg) translateZ(calc(var(--size) / -2));
-  background: rgb(197, 9, 122);
+  background: rgb(108, 102, 212);
 }
 .wrapper .back {
   transform: translateZ(calc(var(--size) / -2));
-  background: rgb(126, 110, 178);
+  background: rgb(154, 154, 25);
 }
 .wrapper .right {
   transform: rotateY(90deg) translateZ(calc(var(--size) / 2));
-  background: rgb(203, 57, 167);
+  background: rgb(84, 58, 80);
 }
 .wrapper .front {
   transform: translateZ(calc(var(--size) / 2));
-  background: rgb(155, 38, 170);
+  background: rgb(84, 212, 227);
 }
 .wrapper .top {
   transform: rotateX(90deg) translateZ(calc(var(--size) / 2));
-  background: rgb(28, 166, 124);
+  background: rgb(104, 25, 95);
 }
 .wrapper .bottom {
   transform: rotateX(90deg) translateZ(calc(var(--size) / -2));
-  background: rgb(144, 102, 6);
+  background: rgb(142, 92, 13);
 }/*# sourceMappingURL=perspective-1.css.map */

@@ -16,10 +16,15 @@
   </style>
 </head>
 <body>
-  <button id="download">立即下载</button>
+  <button id="download">立即下载 Android</button>
+  <button id="download1">立即下载 IOS</button>
   <script>
     document.getElementById('download').addEventListener('click', () => {
       window.location.href = "market://details?id=com.xunlei.browser";
+    })
+
+    document.getElementById('download1').addEventListener('click', () => {
+      window.location.href = 'https://apps.apple.com/cn/app/id6479516779';
     })
   </script>
 </body>

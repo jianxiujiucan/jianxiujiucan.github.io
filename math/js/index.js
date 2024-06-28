@@ -20,6 +20,7 @@ function createList(type) {
     }
   }
   document.querySelector(".list").innerHTML = htmlDomArray;
+  
 }
 
 function createStepOne() {
@@ -108,4 +109,6 @@ buttonCreate.addEventListener("click", () => {
   const type = select.value;
   console.log(type);
   createList(type);
+  buttonAnswer.style.display = 'block'
+  document.querySelector(".list").classList.remove('is-show')
 });

@@ -2,10 +2,19 @@
   margin: 0;
   padding: 0;
 }
+
+:root {
+  --color-font-1: #000;
+  --color-font-2: rgba(0, 0, 0, .8);
+  --color-font-3: rgba(0, 0, 0, .5);
+  --color-font-4: rgba(0, 0, 0, .3);
+}
+
 html,
 body {
   font-size: 26.66vw;
 }
+
 .math {
   font-size: 0.12rem;
 }
@@ -15,47 +24,69 @@ body {
   grid-template-columns: repeat(2, 1fr);
 
   list-style: none;
+  height: 180px;
+
   li {
     display: flex;
     width: 100%;
     align-items: center;
     justify-content: center;
   }
+
   span {
     text-align: center;
+
     &.number {
       width: 2em;
     }
+
     &.symbol {
       width: 15px;
     }
   }
+
   &.is-show {
     .answer {
-      display: block;
+      visibility: visible;
     }
   }
+
   .answer {
-    display: none;
+    visibility: hidden;
     width: 2em;
     text-align: center;
     color: red;
   }
 }
 
-.option{
+.option {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: .1rem;
   text-align: center;
 }
 
-.button-create {
+.button-create,
+.button-answer {
   display: block;
   margin: 0 auto;
   width: 0.8rem;
   height: 0.3rem;
   color: #fff;
   background: #69f;
-  border: 0;
+  border: 1px solid #69f;
   border-radius: 0.04rem;
   outline: 0;
+}
+
+.button-create {
+  margin: 0 0 0 10px;
+}
+
+.button-answer {
+  display: none;
+  background: #fff;
+  color: var(--color-font-2);
+  border-color: var(--color-font-4);
 }
