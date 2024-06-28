@@ -16,22 +16,26 @@ body {
 }
 
 .math {
+  padding: .2rem 0 0;
   font-size: 0.12rem;
 }
 
 .list {
+  padding: .2rem 0 0;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-
   list-style: none;
-  height: 180px;
+  height: 3.6rem;
 
   li {
     display: flex;
     width: 100%;
     align-items: center;
     justify-content: center;
+    height: .3rem;
+    font-size: .16rem;
   }
+
 
   span {
     text-align: center;
@@ -67,10 +71,17 @@ body {
   text-align: center;
 }
 
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: .2rem 0 0;
+}
+
 .button-create,
 .button-answer {
   display: block;
-  margin: 0 auto;
+  margin: 0 .2rem;
   width: 0.8rem;
   height: 0.3rem;
   color: #fff;
@@ -80,12 +91,7 @@ body {
   outline: 0;
 }
 
-.button-create {
-  margin: 0 0 0 10px;
-}
-
 .button-answer {
-  display: none;
   background: #fff;
   color: var(--color-font-2);
   border-color: var(--color-font-4);
