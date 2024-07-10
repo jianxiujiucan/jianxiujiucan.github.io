@@ -1,132 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-      }
-      .box {
-        display: flex;
-        width: 800px;
-        height: 200px;
-        margin: 0 auto;
-      }
-      .item {
-        margin: auto;
-        width: 100px;
-        height: 100px;
-      }
-      .item1 {
-        width: 100px;
-        flex-grow: 1;
-        background: rgba(0, 0, 0, 0.1);
-      }
-      .item2 {
-        width: 150px;
 
-        background: rgba(0, 0, 0, 0.15);
-      }
-      .item3 {
-        width: 100px;
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
 
-        background: rgba(0, 0, 0, 0.2);
-      }
-      .container {
-        margin: 10px;
-        display: flex;
-        height: 200px;
-        background-color: #eee;
-        color: #666;
-        text-align: center;
-      }
-      .item {
-        height: 100px;
-      }
-      .item p {
-        margin: 0;
-        overflow: hidden;
-        text-overflow: ellipsis;
-      }
-      .a {
-        flex-basis: 400px;
-        flex-shrink: 0;
-        background-color: #ff4466;
-      }
-      .b {
-   
-        flex-grow: 1;
-        /* flex-shrink: 1; */
-        background-color: #42b983;
-      }
-      .c {
-        width: 300px;
-        /* flex-shrink: 2; */
-        background-color: #61dafb;
+    .line {
+      width: 200px;
+      height: 2px;
+      background-color: #000;
+      transform-style: preserve-3d;
+      transform: rotateZ(100deg);
+      animation: move 3000ms linear infinite;
+    }
+
+    @keyframes move {
+      0% {
+        transform: translateZ(300px);
       }
 
-      .panel{
-        width: 800px;
-        display: flex;
-        flex-flow: row wrap;
+      100% {
+        transform: translateZ(-300px);
       }
-      .panel__item{
-        margin: 10px;
-        width: 300px;
-        height: 100px;
-        background: #eee;
-      }
-      .panel__item:nth-child(2n){
-        background: rgba(0,0,0,.1);
-      }
-      .aa{
-        display: grid;
-        grid-template-columns: repeat(5, 1fr);
-        gap: 10px
-      }
-      .aa-item{
-        
-       
-        height: 30px;
-        background: #ccc;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="box">
-      <div class="item item1">1</div>
-      <div class="item item2">2</div>
-      <div class="item item3">3</div>
-    </div>
-    <div class="container">
-      <div class="item a">
-        <p>width:30099999999999999999999999999999999999999999999999999999999999</p>
-      </div>
-      <div class="item b">
-        <p>B</p>
-        <p>width:150</p>
-        <p>flex-shrink: 2</p>
-      </div>
-      <div class="item c">
-        <p>C</p>
-        <p>width:200</p>
-        <p>flex-shrink: 3</p>
-      </div>
-    </div>
-    <div class="panel">
-      <div class="panel__item"></div>
-      
-      <div class="panel__item"></div><div class="panel__item"></div><div class="panel__item"></div>
-    </div>
-    <div class="aa">
-      <div class="aa-item"></div>
-      <div class="aa-item"></div>
-      <div class="aa-item"></div>
-      <div class="aa-item"></div>
-      <div class="aa-item"></div>
-    </div>
-  </body>
+    }
+  </style>
+</head>
+
+<body style="display: flex; height: 100vh; align-items: center; justify-content: center;">
+  <div class="line"></div>
+
+</body>
+
 </html>

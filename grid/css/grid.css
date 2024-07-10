@@ -249,7 +249,7 @@ section {
 
 .box1-item:nth-child(1) {
   text-align: center;
-  background: rgba(77, 21, 245, 0.5);
+  background: rgba(126, 119, 191, 0.5);
 }
 .box1-item:nth-child(1):after {
   content: "1";
@@ -257,7 +257,7 @@ section {
 
 .box1-item:nth-child(2) {
   text-align: center;
-  background: rgba(226, 231, 199, 0.5);
+  background: rgba(23, 162, 138, 0.5);
 }
 .box1-item:nth-child(2):after {
   content: "2";
@@ -265,7 +265,7 @@ section {
 
 .box1-item:nth-child(3) {
   text-align: center;
-  background: rgba(141, 104, 153, 0.5);
+  background: rgba(188, 245, 197, 0.5);
 }
 .box1-item:nth-child(3):after {
   content: "3";
@@ -273,7 +273,7 @@ section {
 
 .box1-item:nth-child(4) {
   text-align: center;
-  background: rgba(12, 38, 187, 0.5);
+  background: rgba(104, 71, 175, 0.5);
 }
 .box1-item:nth-child(4):after {
   content: "4";
@@ -281,7 +281,7 @@ section {
 
 .box1-item:nth-child(5) {
   text-align: center;
-  background: rgba(159, 33, 250, 0.5);
+  background: rgba(223, 60, 90, 0.5);
 }
 .box1-item:nth-child(5):after {
   content: "5";
@@ -289,7 +289,7 @@ section {
 
 .box1-item:nth-child(6) {
   text-align: center;
-  background: rgba(69, 241, 255, 0.5);
+  background: rgba(26, 11, 11, 0.5);
 }
 .box1-item:nth-child(6):after {
   content: "6";
@@ -305,7 +305,7 @@ section {
 
 .box2-item:nth-child(1) {
   text-align: center;
-  background: rgba(22, 239, 102, 0.5);
+  background: rgba(241, 151, 100, 0.5);
 }
 .box2-item:nth-child(1):after {
   content: "1";
@@ -313,7 +313,7 @@ section {
 
 .box2-item:nth-child(2) {
   text-align: center;
-  background: rgba(245, 30, 42, 0.5);
+  background: rgba(228, 100, 14, 0.5);
 }
 .box2-item:nth-child(2):after {
   content: "2";
@@ -321,7 +321,7 @@ section {
 
 .box2-item:nth-child(3) {
   text-align: center;
-  background: rgba(85, 197, 49, 0.5);
+  background: rgba(171, 221, 251, 0.5);
 }
 .box2-item:nth-child(3):after {
   content: "3";
@@ -329,7 +329,7 @@ section {
 
 .box2-item:nth-child(4) {
   text-align: center;
-  background: rgba(115, 167, 37, 0.5);
+  background: rgba(1, 202, 195, 0.5);
 }
 .box2-item:nth-child(4):after {
   content: "4";
@@ -337,7 +337,7 @@ section {
 
 .box2-item:nth-child(5) {
   text-align: center;
-  background: rgba(191, 235, 36, 0.5);
+  background: rgba(158, 33, 227, 0.5);
 }
 .box2-item:nth-child(5):after {
   content: "5";
@@ -345,7 +345,7 @@ section {
 
 .box2-item:nth-child(6) {
   text-align: center;
-  background: rgba(252, 16, 170, 0.5);
+  background: rgba(242, 247, 86, 0.5);
 }
 .box2-item:nth-child(6):after {
   content: "6";
@@ -353,7 +353,7 @@ section {
 
 .box2-item:nth-child(7) {
   text-align: center;
-  background: rgba(2, 224, 161, 0.5);
+  background: rgba(110, 245, 130, 0.5);
 }
 .box2-item:nth-child(7):after {
   content: "7";
@@ -361,7 +361,7 @@ section {
 
 .box2-item:nth-child(8) {
   text-align: center;
-  background: rgba(92, 214, 82, 0.5);
+  background: rgba(172, 209, 29, 0.5);
 }
 .box2-item:nth-child(8):after {
   content: "8";
@@ -369,7 +369,7 @@ section {
 
 .box2-item:nth-child(9) {
   text-align: center;
-  background: rgba(65, 95, 36, 0.5);
+  background: rgba(170, 4, 214, 0.5);
 }
 .box2-item:nth-child(9):after {
   content: "9";
@@ -377,7 +377,7 @@ section {
 
 .box2-item:nth-child(10) {
   text-align: center;
-  background: rgba(253, 131, 223, 0.5);
+  background: rgba(79, 140, 134, 0.5);
 }
 .box2-item:nth-child(10):after {
   content: "10";
@@ -385,7 +385,7 @@ section {
 
 .box2-item:nth-child(11) {
   text-align: center;
-  background: rgba(215, 113, 29, 0.5);
+  background: rgba(107, 148, 45, 0.5);
 }
 .box2-item:nth-child(11):after {
   content: "11";
@@ -393,7 +393,7 @@ section {
 
 .box2-item:nth-child(12) {
   text-align: center;
-  background: rgba(107, 150, 86, 0.5);
+  background: rgba(127, 156, 172, 0.5);
 }
 .box2-item:nth-child(12):after {
   content: "12";

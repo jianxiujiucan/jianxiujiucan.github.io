@@ -28,7 +28,7 @@ body {
   transform-style: preserve-3d;
   animation: move 3000ms linear infinite;
 
-  @for $i from 1 through 150 {
+  @for $i from 1 through 100 {
     &:nth-child(#{$i}) {
       $delay: random(10000) * -1ms;
       animation-delay: $delay;
@@ -38,7 +38,7 @@ body {
       }
 
       .star {
-        transform: rotateZ(random(360) + 0deg) translateX(random(300) + 20px);
+        transform: rotateZ(random(360) + 0deg) translateX(random(50) + 20px);
       }
     }
   }
@@ -52,24 +52,24 @@ body {
   position: absolute;
   top: -1px;
   left: -1px;
-  width: 2px;
-  height: 2px;
-  background: #fff;
-  border-radius: 50%;
+  width: 50px;
+  height: 1px;
+  background: linear-gradient(to right, #fff, transparent);
+  border-radius: 2px;
   transition: 2000ms;
   transform-origin: 0 0;
-  transform: rotateY(-90deg);
+  transform: rotateY(-45deg);
   transform-style: preserve-3d;
   animation: fade 3000ms linear infinite;
 }
 
 @keyframes move {
   0% {
-    transform: translateZ(-500px);
+    transform: translateZ(300px);
   }
 
   100% {
-    transform: translateZ(500px);
+    transform: translateZ(-300px);
   }
 }
 
