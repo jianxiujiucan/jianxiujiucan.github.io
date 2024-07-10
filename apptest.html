@@ -8,14 +8,14 @@
 </head>
 
 <body>
-  <button id="button">打开</button>
+  <button id="button">打开APP</button>
   <script>
     const url = 'xl-browser://web?url=https%3A%2F%2Fx.xunlei.com%2Fx-browser%2Flabor-day%3FnoActionBar%3Dtrue%26noStatusBar%3Dtrue%26x-secure%3D5260DAAD5CAF1D9B22EB34A008CBF06C'
     const button = document.getElementById('button')
     button.addEventListener('click', function () {
       window.location.href = url
+      copy(url)
       setTimeout(() => {
-        copy(url);
         window.location.href = 'market://details?id=com.xunlei.browser'
       }, 3000);
     })
