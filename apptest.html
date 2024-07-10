@@ -10,38 +10,12 @@
 <body>
   <button id="button">打开APP</button>
   <script>
-    const url = 'xl-browser://web?url=https%3A%2F%2Fx.xunlei.com%2Fx-browser%2Flabor-day%3FnoActionBar%3Dtrue%26noStatusBar%3Dtrue%26x-secure%3D5260DAAD5CAF1D9B22EB34A008CBF06C'
+    const url = 'xl-browser://web?cooper_source=aaaaaaaaaaaaa&url=https%3A%2F%2Fwww.baidu.com'
     const button = document.getElementById('button')
     button.addEventListener('click', function () {
       window.location.href = url
-      copy(url)
-      setTimeout(() => {
-        window.location.href = 'market://details?id=com.xunlei.browser'
-      }, 3000);
     })
 
-    function copy(url) {
-      var text = url;
-      if (navigator.clipboard) {
-        // clipboard api 复制
-        navigator.clipboard.writeText(text);
-      } else {
-        var textarea = document.createElement('textarea');
-        document.body.appendChild(textarea);
-        // 隐藏此输入框
-        textarea.style.position = 'fixed';
-        textarea.style.clip = 'rect(0 0 0 0)';
-        textarea.style.top = '10px';
-        // 赋值
-        textarea.value = text;
-        // 选中
-        textarea.select();
-        // 复制
-        document.execCommand('copy', true);
-        // 移除输入框
-        document.body.removeChild(textarea);
-      }
-    }
   </script>
 </body>
 
