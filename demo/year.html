@@ -19,12 +19,13 @@
 <body>
   <p id="footerYear"></p>
   <script>
-    
+
     function getServerDate() {
       let thisYear = 0
       let xhr = null;
       let now = new Date();
       thisYear = now.getFullYear()
+      console.log('系统时间', thisYear)
       xhr = new window.XMLHttpRequest();
       xhr.open("GET", window.location.href, true);
       xhr.send(null);
@@ -35,6 +36,7 @@
           console.log('时间', dateStr)
           const date = dateStr ? new Date(dateStr) : now;
           thisYear = date.getFullYear();
+          console.log('服务器时间', thisYear)
         }
       }
       return thisYear
