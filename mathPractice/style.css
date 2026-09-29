@@ -1,0 +1,270 @@
+/* ===== 基础 ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  background: linear-gradient(160deg, #6a8dff 0%, #a06cd5 100%);
+  min-height: 100vh;
+  color: #333;
+}
+
+.page {
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 16px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.hidden {
+  display: none !important;
+}
+
+h1 {
+  text-align: center;
+  color: #fff;
+  font-size: 28px;
+  margin: 28px 0 18px;
+  letter-spacing: 2px;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+}
+
+.tip {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 13px;
+  margin-top: 14px;
+}
+
+/* ===== 卡片 ===== */
+.card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 22px 18px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+}
+
+/* ===== 设置选项 ===== */
+.option-group {
+  margin-bottom: 18px;
+}
+
+.option-label {
+  font-size: 15px;
+  font-weight: 600;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.pill-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.pill {
+  border: 2px solid #dcdcdc;
+  background: #f7f7f9;
+  color: #555;
+  border-radius: 999px;
+  padding: 8px 16px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  user-select: none;
+}
+
+.pill:active {
+  transform: scale(0.95);
+}
+
+.pill.active {
+  border-color: #6a8dff;
+  background: #6a8dff;
+  color: #fff;
+  font-weight: 600;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  color: #555;
+  cursor: pointer;
+  user-select: none;
+}
+
+.checkbox-label input {
+  width: 20px;
+  height: 20px;
+  accent-color: #6a8dff;
+  cursor: pointer;
+}
+
+/* ===== 按钮 ===== */
+.primary-btn {
+  width: 100%;
+  padding: 14px;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #fff;
+  background: linear-gradient(135deg, #ff9f43, #ff6b6b);
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(255, 107, 107, 0.4);
+  transition: transform 0.1s ease;
+}
+
+.primary-btn:active {
+  transform: scale(0.97);
+}
+
+.secondary-btn {
+  display: block;
+  margin: 14px auto 0;
+  padding: 8px 32px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #6a8dff;
+  background: #eef2ff;
+  border: 2px solid #6a8dff;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: transform 0.1s ease;
+}
+
+.secondary-btn:active {
+  transform: scale(0.95);
+}
+
+/* ===== 答题页 ===== */
+.quiz-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 2px 16px;
+}
+
+.badge {
+  background: rgba(255, 255, 255, 0.22);
+  color: #fff;
+  font-size: 17px;
+  font-weight: 700;
+  padding: 6px 16px;
+  border-radius: 999px;
+  min-width: 76px;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+.question-card {
+  padding: 34px 18px 26px;
+}
+
+.question-line {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  font-size: 30px;
+  font-weight: 700;
+  color: #333;
+}
+
+#question-text {
+  white-space: nowrap;
+}
+
+#answer-input {
+  width: 96px;
+  padding: 6px 8px;
+  font-size: 30px;
+  font-weight: 700;
+  text-align: center;
+  color: #333;
+  border: 2px solid #6a8dff;
+  border-radius: 10px;
+  outline: none;
+  background: #fff;
+  caret-color: #6a8dff;
+}
+
+#answer-input:focus {
+  box-shadow: 0 0 0 3px rgba(106, 141, 255, 0.25);
+}
+
+#answer-input:disabled {
+  background: #f2f2f2;
+  color: #888;
+  border-color: #ccc;
+}
+
+#result-icon {
+  width: 40px;
+  font-size: 34px;
+  font-weight: 800;
+  text-align: center;
+}
+
+#result-icon.right {
+  color: #2ecc71;
+}
+
+#result-icon.wrong {
+  color: #e74c3c;
+}
+
+#feedback {
+  margin-top: 16px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 600;
+  color: #e74c3c;
+}
+
+#next-btn {
+  margin-top: 16px;
+}
+
+/* ===== 结果区 ===== */
+#result-area {
+  margin-top: 16px;
+  text-align: center;
+}
+
+.result-title {
+  font-size: 16px;
+  color: #888;
+  font-weight: 600;
+}
+
+#score-text {
+  font-size: 44px;
+  font-weight: 800;
+  color: #ff6b6b;
+  margin: 6px 0 2px;
+}
+
+#cheer-text {
+  font-size: 17px;
+  font-weight: 600;
+  color: #6a8dff;
+  margin-bottom: 8px;
+}
+
+#summary-text {
+  font-size: 15px;
+  color: #888;
+  margin-bottom: 18px;
+  font-variant-numeric: tabular-nums;
+}
