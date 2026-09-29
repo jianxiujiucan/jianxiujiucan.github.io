@@ -1,98 +1,120 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>口算答题器</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-
-  <!-- 首页：设置页 -->
-  <div id="setup-page" class="page">
-    <h1>口算答题器</h1>
-    <div class="card">
-      <div class="option-group">
-        <div class="option-label">题目数量</div>
-        <div class="pill-group" id="count-group">
-          <button type="button" class="pill active" data-value="10">10题</button>
-          <button type="button" class="pill" data-value="20">20题</button>
-          <button type="button" class="pill" data-value="30">30题</button>
-          <button type="button" class="pill" data-value="50">50题</button>
-          <button type="button" class="pill" data-value="100">100题</button>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>口算答题器</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- 首页：设置页 -->
+    <div id="setup-page" class="page">
+      <h1>口算答题器</h1>
+      <div class="card">
+        <div class="option-group">
+          <div class="option-label">题目数量</div>
+          <div class="pill-group" id="count-group">
+            <button type="button" class="pill active" data-value="10">
+              10题
+            </button>
+            <button type="button" class="pill" data-value="20">20题</button>
+            <button type="button" class="pill" data-value="30">30题</button>
+            <button type="button" class="pill" data-value="50">50题</button>
+            <button type="button" class="pill" data-value="100">100题</button>
+          </div>
         </div>
-      </div>
 
-      <div class="option-group">
-        <div class="option-label">运算类型</div>
-        <div class="pill-group" id="optype-group">
-          <button type="button" class="pill active" data-value="add">仅加法</button>
-          <button type="button" class="pill" data-value="sub">仅减法</button>
-          <button type="button" class="pill" data-value="addsub">加减混合</button>
-          <button type="button" class="pill" data-value="mul">仅乘法</button>
-          <button type="button" class="pill" data-value="div">仅除法</button>
-          <button type="button" class="pill" data-value="muldiv">乘除混合</button>
+        <div class="option-group">
+          <div class="option-label">运算类型</div>
+          <div class="pill-group" id="optype-group">
+            <button type="button" class="pill active" data-value="add">
+              仅加法
+            </button>
+            <button type="button" class="pill" data-value="sub">仅减法</button>
+            <button type="button" class="pill" data-value="addsub">
+              加减混合
+            </button>
+            <button type="button" class="pill" data-value="mul">仅乘法</button>
+            <button type="button" class="pill" data-value="div">仅除法</button>
+            <button type="button" class="pill" data-value="muldiv">
+              乘除混合
+            </button>
+          </div>
         </div>
-      </div>
 
-      <div class="option-group">
-        <div class="option-label">计算结果范围</div>
-        <div class="pill-group" id="range-group">
-          <button type="button" class="pill" data-value="10">10以内</button>
-          <button type="button" class="pill active" data-value="20">20以内</button>
-          <button type="button" class="pill" data-value="100">100以内</button>
+        <div class="option-group">
+          <div class="option-label">计算结果范围</div>
+          <div class="pill-group" id="range-group">
+            <button type="button" class="pill" data-value="10">10以内</button>
+            <button type="button" class="pill active" data-value="20">
+              20以内
+            </button>
+            <button type="button" class="pill" data-value="100">100以内</button>
+          </div>
         </div>
-      </div>
 
-      <div class="option-group">
-        <div class="option-label">运算项个数</div>
-        <div class="pill-group" id="operands-group">
-          <button type="button" class="pill active" data-value="2">两个数</button>
-          <button type="button" class="pill" data-value="3">三个数</button>
+        <div class="option-group">
+          <div class="option-label">运算项个数</div>
+          <div class="pill-group" id="operands-group">
+            <button type="button" class="pill active" data-value="2">
+              两个数
+            </button>
+            <button type="button" class="pill" data-value="3">三个数</button>
+          </div>
         </div>
+
+        <div class="option-group" id="carry-group">
+          <label class="checkbox-label" for="carry-checkbox">
+            <input type="checkbox" id="carry-checkbox" />
+            <span>进位 / 退位练习（加大出题概率）</span>
+          </label>
+        </div>
+
+        <button id="start-btn" class="primary-btn">开始答题</button>
       </div>
-
-      <div class="option-group" id="carry-group">
-        <label class="checkbox-label" for="carry-checkbox">
-          <input type="checkbox" id="carry-checkbox">
-          <span>进位 / 退位练习（加大出题概率）</span>
-        </label>
-      </div>
-
-      <button id="start-btn" class="primary-btn">开始答题</button>
-    </div>
-    <p class="tip">适合小学一、二年级口算练习</p>
-  </div>
-
-  <!-- 答题页 -->
-  <div id="quiz-page" class="page hidden">
-    <div class="quiz-header">
-      <span class="badge" id="progress">1/10</span>
-      <span class="badge" id="timer">00:00</span>
-    </div>
-
-    <div class="card question-card">
-      <div class="question-line">
-        <span id="question-text">1. 3 + 6 =</span>
-        <input id="answer-input" type="text" inputmode="numeric" pattern="[0-9]*"
-               maxlength="3" autocomplete="off" placeholder="?">
-        <span id="result-icon"></span>
-      </div>
-      <div id="feedback" class="hidden"></div>
-      <button id="submit-btn" class="secondary-btn">确定</button>
+      <p class="tip">适合小学一、二年级口算练习</p>
     </div>
 
-    <button id="next-btn" class="primary-btn hidden">下一题</button>
+    <!-- 答题页 -->
+    <div id="quiz-page" class="page hidden">
+      <div class="quiz-header">
+        <span class="badge" id="progress">1/10</span>
+        <span class="badge" id="timer">00:00</span>
+      </div>
 
-    <div id="result-area" class="card hidden">
-      <div class="result-title">本次得分</div>
-      <div id="score-text">100 分</div>
-      <div id="cheer-text"></div>
-      <div id="summary-text"></div>
-      <button id="home-btn" class="primary-btn">返回首页</button>
+      <div class="card question-card">
+        <div class="question-line">
+          <span class="number" id="number">(1)</span>
+          <p id="question-text">3 + 6 =</p>
+          <input
+            id="answer-input"
+            type="text"
+            inputmode="numeric"
+            pattern="[0-9]*"
+            maxlength="3"
+            autocomplete="off"
+            placeholder="?"
+          />
+          <span id="result-icon"></span>
+        </div>
+        <div id="feedback" class="hidden"></div>
+        <button id="submit-btn" class="secondary-btn">确定</button>
+      </div>
+
+      <button id="next-btn" class="primary-btn hidden">下一题</button>
+
+      <div id="result-area" class="card hidden">
+        <div class="result-title">本次得分</div>
+        <div id="score-text">100 分</div>
+        <div id="cheer-text"></div>
+        <div id="summary-text"></div>
+        <button id="home-btn" class="primary-btn">返回首页</button>
+      </div>
     </div>
-  </div>
 
-  <script src="script.js"></script>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>

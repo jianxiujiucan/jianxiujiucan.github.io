@@ -3,7 +3,7 @@
  * 功能：小学一、二年级 加/减/乘/除 口算练习
  * ========================================================= */
 
-'use strict';
+"use strict";
 
 /* ---------------- 工具函数 ---------------- */
 
@@ -30,13 +30,15 @@ function shuffle(arr) {
 
 /** 去重 key：操作数排序（用于纯加法、纯乘法等满足交换律的题） */
 function sortedKey(prefix, nums) {
-  return prefix + [...nums].sort((a, b) => a - b).join(',');
+  return prefix + [...nums].sort((a, b) => a - b).join(",");
 }
 
 /** 去重 key：按算式顺序（减、除、混合运算交换后是不同题） */
 function seqKey(nums, ops) {
   let k = String(nums[0]);
-  ops.forEach((op, i) => { k += op + nums[i + 1]; });
+  ops.forEach((op, i) => {
+    k += op + nums[i + 1];
+  });
   return k;
 }
 
@@ -50,7 +52,7 @@ function tryAdd2(range, minNum, requireCarry) {
     if (maxB < minNum) continue;
     const b = randInt(minNum, maxB);
     if (requireCarry && (a % 10) + (b % 10) < 10) continue;
-    return { nums: [a, b], ops: ['+'], answer: a + b };
+    return { nums: [a, b], ops: ["+"], answer: a + b };
   }
   return null;
 }
@@ -59,11 +61,11 @@ function tryAdd2(range, minNum, requireCarry) {
 function trySub2(range, minNum, requireBorrow) {
   for (let i = 0; i < 300; i++) {
     const a = randInt(minNum + 1, range);
-    const maxB = a - 1;               // 结果 >= 1，且 b < a
+    const maxB = a - 1; // 结果 >= 1，且 b < a
     if (maxB < minNum) continue;
     const b = randInt(minNum, maxB);
-    if (requireBorrow && (a % 10) >= (b % 10)) continue;
-    return { nums: [a, b], ops: ['-'], answer: a - b };
+    if (requireBorrow && a % 10 >= b % 10) continue;
+    return { nums: [a, b], ops: ["-"], answer: a - b };
   }
   return null;
 }
@@ -77,7 +79,7 @@ function tryAdd3(range, minNum, requireCarry) {
     const sum = a + b + c;
     if (sum > range) continue;
     if (requireCarry && (a % 10) + (b % 10) + (c % 10) < 10) continue;
-    return { nums: [a, b, c], ops: ['+', '+'], answer: sum };
+    return { nums: [a, b, c], ops: ["+", "+"], answer: sum };
   }
   return null;
 }
@@ -85,18 +87,18 @@ function tryAdd3(range, minNum, requireCarry) {
 /** 三数减法：a-b-c >= 0（三个数相减结果允许为 0），a <= range */
 function trySub3(range, minNum, requireBorrow) {
   for (let i = 0; i < 300; i++) {
-    const a = randInt(2 * minNum, range);   // 保证 b、c 都有取值空间
-    if (a < 2 * minNum) continue;           // range 太小（无解）时跳过
+    const a = randInt(2 * minNum, range); // 保证 b、c 都有取值空间
+    if (a < 2 * minNum) continue; // range 太小（无解）时跳过
     const b = randInt(minNum, a - minNum);
-    const r1 = a - b;                       // r1 >= minNum
+    const r1 = a - b; // r1 >= minNum
     const c = randInt(minNum, r1);
-    const answer = r1 - c;                  // >= 0，允许等于 0
+    const answer = r1 - c; // >= 0，允许等于 0
     if (requireBorrow) {
-      const firstBorrow = (a % 10) < (b % 10);
-      const secondBorrow = (r1 % 10) < (c % 10);
+      const firstBorrow = a % 10 < b % 10;
+      const secondBorrow = r1 % 10 < c % 10;
       if (!firstBorrow && !secondBorrow) continue;
     }
-    return { nums: [a, b, c], ops: ['-', '-'], answer };
+    return { nums: [a, b, c], ops: ["-", "-"], answer };
   }
   return null;
 }
@@ -110,30 +112,30 @@ function tryMix3(range, minNum, requireCarryBorrow) {
       const b = randInt(minNum, range - a); // 和 s <= range，且 s >= minNum
       const s = a + b;
       if (s > range || s < minNum) continue;
-      const c = randInt(minNum, s);         // 结果 >= 0，允许为 0
+      const c = randInt(minNum, s); // 结果 >= 0，允许为 0
       const answer = s - c;
       if (requireCarryBorrow) {
         const carry = (a % 10) + (b % 10) >= 10;
-        const borrow = (s % 10) < (c % 10);
+        const borrow = s % 10 < c % 10;
         if (!carry && !borrow) continue;
       }
-      return { nums: [a, b, c], ops: ['+', '-'], answer };
+      return { nums: [a, b, c], ops: ["+", "-"], answer };
     } else {
       // a - b + c（减法部分结果 >= 1，避免 a-a+c 的形式）
       const a = randInt(minNum + 1, range);
       if (a < minNum + 1) continue;
       const b = randInt(minNum, a - 1);
       const r = a - b;
-      if (range - r < minNum) continue;     // 保证 c 有取值空间
+      if (range - r < minNum) continue; // 保证 c 有取值空间
       const c = randInt(minNum, range - r);
       const answer = r + c;
       if (answer > range) continue;
       if (requireCarryBorrow) {
-        const borrow = (a % 10) < (b % 10);
+        const borrow = a % 10 < b % 10;
         const carry = (r % 10) + (c % 10) >= 10;
         if (!borrow && !carry) continue;
       }
-      return { nums: [a, b, c], ops: ['-', '+'], answer };
+      return { nums: [a, b, c], ops: ["-", "+"], answer };
     }
   }
   return null;
@@ -143,16 +145,24 @@ function tryMix3(range, minNum, requireCarryBorrow) {
 function tryRandom(cfg, minNum, want) {
   const { opType, range, operands } = cfg;
   let q = null;
-  if (opType === 'add') {
-    q = operands === 2 ? tryAdd2(range, minNum, want) : tryAdd3(range, minNum, want);
-  } else if (opType === 'sub') {
-    q = operands === 2 ? trySub2(range, minNum, want) : trySub3(range, minNum, want);
-  } else { // addsub 加减混合
+  if (opType === "add") {
+    q =
+      operands === 2
+        ? tryAdd2(range, minNum, want)
+        : tryAdd3(range, minNum, want);
+  } else if (opType === "sub") {
+    q =
+      operands === 2
+        ? trySub2(range, minNum, want)
+        : trySub3(range, minNum, want);
+  } else {
+    // addsub 加减混合
     if (operands === 2) {
       // 某个分支无解时自动落到另一分支（保持加数下限约束）
-      q = Math.random() < 0.5
-        ? (tryAdd2(range, minNum, want) || trySub2(range, minNum, want))
-        : (trySub2(range, minNum, want) || tryAdd2(range, minNum, want));
+      q =
+        Math.random() < 0.5
+          ? tryAdd2(range, minNum, want) || trySub2(range, minNum, want)
+          : trySub2(range, minNum, want) || tryAdd2(range, minNum, want);
     } else {
       // 随机排序三种形式依次尝试：纯加法无解（如10以内+进位）时落到减法/混合
       const fns = shuffle([tryAdd3, trySub3, tryMix3]);
@@ -163,15 +173,15 @@ function tryRandom(cfg, minNum, want) {
     }
   }
   if (!q) return null;
-  q.key = q.ops.every(o => o === '+')
-    ? sortedKey('A', q.nums)
+  q.key = q.ops.every((o) => o === "+")
+    ? sortedKey("A", q.nums)
     : seqKey(q.nums, q.ops);
   return q;
 }
 
 function genRandomOne(cfg) {
   // 勾选进位/退位后：所有加数不小于 4，且 75% 的题强制要求进位/退位
-  const minNum = cfg.carry ? 4 : 1;   // 加减法中加数不允许出现 0
+  const minNum = cfg.carry ? 4 : 1; // 加减法中加数不允许出现 0
   const want = cfg.carry ? Math.random() < 0.75 : false;
 
   let q = tryRandom(cfg, minNum, want);
@@ -191,7 +201,12 @@ function mulCandidates(range, operands) {
     for (let a = 2; a <= 9; a++) {
       for (let b = a; b <= 9; b++) {
         if (a * b <= range) {
-          list.push({ nums: [a, b], ops: ['×'], answer: a * b, key: sortedKey('M', [a, b]) });
+          list.push({
+            nums: [a, b],
+            ops: ["×"],
+            answer: a * b,
+            key: sortedKey("M", [a, b]),
+          });
         }
       }
     }
@@ -201,7 +216,12 @@ function mulCandidates(range, operands) {
         for (let c = b; c <= 9; c++) {
           const p = a * b * c;
           if (p <= range) {
-            list.push({ nums: [a, b, c], ops: ['×', '×'], answer: p, key: sortedKey('M', [a, b, c]) });
+            list.push({
+              nums: [a, b, c],
+              ops: ["×", "×"],
+              answer: p,
+              key: sortedKey("M", [a, b, c]),
+            });
           }
         }
       }
@@ -218,7 +238,12 @@ function divCandidates(range, operands) {
       for (let c = 2; c <= 9; c++) {
         const a = b * c;
         if (a <= range) {
-          list.push({ nums: [a, b], ops: ['÷'], answer: c, key: seqKey([a, b], ['÷']) });
+          list.push({
+            nums: [a, b],
+            ops: ["÷"],
+            answer: c,
+            key: seqKey([a, b], ["÷"]),
+          });
         }
       }
     }
@@ -229,7 +254,12 @@ function divCandidates(range, operands) {
         for (let k = 2; k <= 9; k++) {
           const a = b * c * k;
           if (a <= range) {
-            list.push({ nums: [a, b, c], ops: ['÷', '÷'], answer: k, key: seqKey([a, b, c], ['÷', '÷']) });
+            list.push({
+              nums: [a, b, c],
+              ops: ["÷", "÷"],
+              answer: k,
+              key: seqKey([a, b, c], ["÷", "÷"]),
+            });
           }
         }
       }
@@ -251,7 +281,12 @@ function mulDivCandidates(range, operands) {
       if (p > range) continue;
       for (let c = 2; c <= 9; c++) {
         if (p % c !== 0) continue;
-        list.push({ nums: [a, b, c], ops: ['×', '÷'], answer: p / c, key: seqKey([a, b, c], ['×', '÷']) });
+        list.push({
+          nums: [a, b, c],
+          ops: ["×", "÷"],
+          answer: p / c,
+          key: seqKey([a, b, c], ["×", "÷"]),
+        });
       }
     }
   }
@@ -263,7 +298,12 @@ function mulDivCandidates(range, operands) {
       for (let c = 2; c <= 9; c++) {
         const r = k * c;
         if (r > range) continue;
-        list.push({ nums: [a, b, c], ops: ['÷', '×'], answer: r, key: seqKey([a, b, c], ['÷', '×']) });
+        list.push({
+          nums: [a, b, c],
+          ops: ["÷", "×"],
+          answer: r,
+          key: seqKey([a, b, c], ["÷", "×"]),
+        });
       }
     }
   }
@@ -274,7 +314,7 @@ function mulDivCandidates(range, operands) {
 
 function generateQuestions(cfg) {
   const { count, opType } = cfg;
-  const randomTypes = ['add', 'sub', 'addsub'];
+  const randomTypes = ["add", "sub", "addsub"];
 
   if (randomTypes.includes(opType)) {
     const qs = [];
@@ -299,9 +339,12 @@ function generateQuestions(cfg) {
   }
 
   // 枚举类（乘/除/乘除混合）：洗牌后依次取，候选不足时循环洗牌补足
-  const pool = opType === 'mul' ? mulCandidates(cfg.range, cfg.operands)
-    : opType === 'div' ? divCandidates(cfg.range, cfg.operands)
-    : mulDivCandidates(cfg.range, cfg.operands);
+  const pool =
+    opType === "mul"
+      ? mulCandidates(cfg.range, cfg.operands)
+      : opType === "div"
+      ? divCandidates(cfg.range, cfg.operands)
+      : mulDivCandidates(cfg.range, cfg.operands);
 
   const qs = [];
   let deck = shuffle([...pool]);
@@ -316,7 +359,7 @@ function generateQuestions(cfg) {
  * 二、页面与流程控制
  * ========================================================= */
 
-const $ = id => document.getElementById(id);
+const $ = (id) => document.getElementById(id);
 
 const state = {
   questions: [],
@@ -329,13 +372,15 @@ const state = {
 
 /* ---------- 设置页：胶囊选项组 ---------- */
 
-document.querySelectorAll('.pill-group').forEach(group => {
-  group.addEventListener('click', e => {
-    const btn = e.target.closest('.pill');
+document.querySelectorAll(".pill-group").forEach((group) => {
+  group.addEventListener("click", (e) => {
+    const btn = e.target.closest(".pill");
     if (!btn) return;
-    group.querySelectorAll('.pill').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    if (group.id === 'optype-group') toggleCarryVisibility();
+    group
+      .querySelectorAll(".pill")
+      .forEach((b) => b.classList.remove("active"));
+    btn.classList.add("active");
+    if (group.id === "optype-group") toggleCarryVisibility();
   });
 });
 
@@ -345,8 +390,11 @@ function pillValue(groupId) {
 
 /** 进位/退位只对加减法有意义，乘除类型时隐藏该选项 */
 function toggleCarryVisibility() {
-  const v = pillValue('optype-group');
-  $('carry-group').classList.toggle('hidden', !['add', 'sub', 'addsub'].includes(v));
+  const v = pillValue("optype-group");
+  $("carry-group").classList.toggle(
+    "hidden",
+    !["add", "sub", "addsub"].includes(v)
+  );
 }
 
 /* ---------- 计时 ---------- */
@@ -369,33 +417,34 @@ function stopTimer() {
 }
 
 function formatTime(sec) {
-  const m = String(Math.floor(sec / 60)).padStart(2, '0');
-  const s = String(sec % 60).padStart(2, '0');
+  const m = String(Math.floor(sec / 60)).padStart(2, "0");
+  const s = String(sec % 60).padStart(2, "0");
   return `${m}:${s}`;
 }
 
 function updateTimerDisplay() {
-  $('timer').textContent = formatTime(state.seconds);
+  $("timer").textContent = formatTime(state.seconds);
 }
 
 /* ---------- 开始答题 ---------- */
 
-$('start-btn').addEventListener('click', () => {
-  const opType = pillValue('optype-group');
+$("start-btn").addEventListener("click", () => {
+  const opType = pillValue("optype-group");
   const cfg = {
-    count: parseInt(pillValue('count-group'), 10),
+    count: parseInt(pillValue("count-group"), 10),
     opType,
-    range: parseInt(pillValue('range-group'), 10),
-    operands: parseInt(pillValue('operands-group'), 10),
-    carry: $('carry-checkbox').checked && ['add', 'sub', 'addsub'].includes(opType),
+    range: parseInt(pillValue("range-group"), 10),
+    operands: parseInt(pillValue("operands-group"), 10),
+    carry:
+      $("carry-checkbox").checked && ["add", "sub", "addsub"].includes(opType),
   };
 
   state.questions = generateQuestions(cfg);
   state.current = 0;
   state.correct = 0;
 
-  $('setup-page').classList.add('hidden');
-  $('quiz-page').classList.remove('hidden');
+  $("setup-page").classList.add("hidden");
+  $("quiz-page").classList.remove("hidden");
 
   startTimer();
   renderQuestion();
@@ -405,7 +454,9 @@ $('start-btn').addEventListener('click', () => {
 
 function exprText(q) {
   let s = String(q.nums[0]);
-  q.ops.forEach((op, i) => { s += ` ${op} ${q.nums[i + 1]}`; });
+  q.ops.forEach((op, i) => {
+    s += ` ${op} ${q.nums[i + 1]}`;
+  });
   return s;
 }
 
@@ -414,24 +465,25 @@ function renderQuestion() {
   const total = state.questions.length;
   state.answered = false;
 
-  $('progress').textContent = `${state.current + 1}/${total}`;
-  $('question-text').textContent = `${state.current + 1}. ${exprText(q)} =`;
+  $("progress").textContent = `${state.current + 1}/${total}`;
+  $("number").textContent = `(${state.current + 1})`;
+  $("question-text").textContent = `${exprText(q)} =`;
 
-  const input = $('answer-input');
-  input.value = '';
+  const input = $("answer-input");
+  input.value = "";
   input.disabled = false;
 
-  const icon = $('result-icon');
-  icon.textContent = '';
-  icon.className = '';
+  const icon = $("result-icon");
+  icon.textContent = "";
+  icon.className = "";
 
-  const fb = $('feedback');
-  fb.textContent = '';
-  fb.classList.add('hidden');
+  const fb = $("feedback");
+  fb.textContent = "";
+  fb.classList.add("hidden");
 
-  $('next-btn').classList.add('hidden');
-  $('submit-btn').classList.remove('hidden');
-  $('result-area').classList.add('hidden');
+  $("next-btn").classList.add("hidden");
+  $("submit-btn").classList.remove("hidden");
+  $("result-area").classList.add("hidden");
 
   input.focus();
 }
@@ -443,9 +495,9 @@ function currentAnswerLen() {
 }
 
 // 输入即过滤非数字字符；输入位数达到答案位数时自动判题
-$('answer-input').addEventListener('input', e => {
+$("answer-input").addEventListener("input", (e) => {
   const input = e.target;
-  input.value = input.value.replace(/\D/g, '').slice(0, 3);
+  input.value = input.value.replace(/\D/g, "").slice(0, 3);
   if (state.answered) return;
   if (input.value.length > 0 && input.value.length >= currentAnswerLen()) {
     checkAnswer();
@@ -453,18 +505,18 @@ $('answer-input').addEventListener('input', e => {
 });
 
 // 回车 = 确定
-$('answer-input').addEventListener('keydown', e => {
-  if (e.key === 'Enter') {
+$("answer-input").addEventListener("keydown", (e) => {
+  if (e.key === "Enter") {
     e.preventDefault();
     tryCheck();
   }
 });
 
-$('submit-btn').addEventListener('click', tryCheck);
+$("submit-btn").addEventListener("click", tryCheck);
 
 function tryCheck() {
   if (state.answered) return;
-  if ($('answer-input').value === '') return;
+  if ($("answer-input").value === "") return;
   checkAnswer();
 }
 
@@ -473,35 +525,35 @@ function checkAnswer() {
   state.answered = true;
 
   const q = state.questions[state.current];
-  const val = parseInt($('answer-input').value, 10);
+  const val = parseInt($("answer-input").value, 10);
   const right = val === q.answer;
 
-  $('answer-input').disabled = true;
-  $('submit-btn').classList.add('hidden');
+  $("answer-input").disabled = true;
+  $("submit-btn").classList.add("hidden");
 
-  const icon = $('result-icon');
+  const icon = $("result-icon");
   if (right) {
     state.correct++;
-    icon.textContent = '✓';
-    icon.className = 'right';
+    icon.textContent = "✓";
+    icon.className = "right";
   } else {
-    icon.textContent = '✗';
-    icon.className = 'wrong';
-    const fb = $('feedback');
+    icon.textContent = "✗";
+    icon.className = "wrong";
+    const fb = $("feedback");
     fb.textContent = `正确答案：${exprText(q)} = ${q.answer}`;
-    fb.classList.remove('hidden');
+    fb.classList.remove("hidden");
   }
 
   if (state.current === state.questions.length - 1) {
     finishQuiz();
   } else {
-    $('next-btn').classList.remove('hidden');
+    $("next-btn").classList.remove("hidden");
   }
 }
 
 /* ---------- 下一题 ---------- */
 
-$('next-btn').addEventListener('click', () => {
+$("next-btn").addEventListener("click", () => {
   state.current++;
   renderQuestion();
 });
@@ -514,22 +566,26 @@ function finishQuiz() {
   // 满分 100，按正确比例扣分，四舍五入取整
   const score = Math.round((state.correct / total) * 100);
 
-  $('score-text').textContent = `${score} 分`;
-  $('cheer-text').textContent =
-    score === 100 ? '太棒了，满分！🎉' :
-    score >= 80  ? '很棒，继续加油！' :
-    score >= 60  ? '不错，再练练会更好！' :
-                   '别灰心，多多练习！';
-  $('summary-text').textContent =
-    `答对 ${state.correct}/${total} 题 · 用时 ${formatTime(state.seconds)}`;
+  $("score-text").textContent = `${score} 分`;
+  $("cheer-text").textContent =
+    score === 100
+      ? "太棒了，满分！🎉"
+      : score >= 80
+      ? "很棒，继续加油！"
+      : score >= 60
+      ? "不错，再练练会更好！"
+      : "别灰心，多多练习！";
+  $("summary-text").textContent = `答对 ${
+    state.correct
+  }/${total} 题 · 用时 ${formatTime(state.seconds)}`;
 
-  $('result-area').classList.remove('hidden');
+  $("result-area").classList.remove("hidden");
 }
 
 /* ---------- 返回首页 ---------- */
 
-$('home-btn').addEventListener('click', () => {
+$("home-btn").addEventListener("click", () => {
   stopTimer();
-  $('quiz-page').classList.add('hidden');
-  $('setup-page').classList.remove('hidden');
+  $("quiz-page").classList.add("hidden");
+  $("setup-page").classList.remove("hidden");
 });
