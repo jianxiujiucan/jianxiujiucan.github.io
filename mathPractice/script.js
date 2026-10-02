@@ -426,6 +426,34 @@ function updateTimerDisplay() {
   $("timer").textContent = formatTime(state.seconds);
 }
 
+/* ---------- 音效 ---------- */
+
+const sounds = {
+  correct: new Audio("media/correct.wav"),
+  error: new Audio("media/error.wav"),
+};
+
+let soundOn = true; // 默认打开音效
+
+function playSound(name) {
+  if (!soundOn) return;
+  const audio = sounds[name];
+  audio.currentTime = 0; // 允许连续快速播放
+  audio.play().catch(() => {}); // 忽略浏览器自动播放限制导致的失败
+}
+
+// 右上角音效开关
+$("sound-toggle").addEventListener("click", () => {
+  soundOn = !soundOn;
+  const btn = $("sound-toggle");
+  if (soundOn) {
+    btn.classList.remove("off");
+  } else {
+    btn.classList.add("off");
+  }
+  btn.setAttribute("aria-label", soundOn ? "关闭音效" : "打开音效");
+});
+
 /* ---------- 开始答题 ---------- */
 
 $("start-btn").addEventListener("click", () => {
@@ -445,6 +473,7 @@ $("start-btn").addEventListener("click", () => {
 
   $("setup-page").classList.add("hidden");
   $("quiz-page").classList.remove("hidden");
+  $("sound-toggle").classList.remove("hidden");
 
   startTimer();
   renderQuestion();
@@ -534,9 +563,11 @@ function checkAnswer() {
   const icon = $("result-icon");
   if (right) {
     state.correct++;
+    playSound("correct");
     icon.textContent = "✓";
     icon.className = "right";
   } else {
+    playSound("error");
     icon.textContent = "✗";
     icon.className = "wrong";
     const fb = $("feedback");
@@ -588,4 +619,5 @@ $("home-btn").addEventListener("click", () => {
   stopTimer();
   $("quiz-page").classList.add("hidden");
   $("setup-page").classList.remove("hidden");
+  $("sound-toggle").classList.add("hidden");
 });

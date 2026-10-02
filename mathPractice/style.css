@@ -164,7 +164,7 @@ h1 {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.1rem 0.02rem 0.16rem;
+  padding: 0.1rem 0.05rem 0.16rem; /* 右侧给音效开关留出位置 */
 }
 
 .badge {
@@ -177,6 +177,34 @@ h1 {
   min-width: 0.76rem;
   text-align: center;
   font-variant-numeric: tabular-nums;
+}
+
+/* ===== 音效开关 ===== */
+.sound-toggle {
+  position: fixed;
+  bottom: 0.12rem;
+  right: 0.12rem;
+  z-index: 10;
+  width: 0.4rem;
+  height: 0.4rem;
+  border: none;
+  border-radius: 50%;
+  background: url(../media/sound.svg) center no-repeat rgba(255, 255, 255, 0.22);
+  background-size: 60%;
+  font-size: 0.2rem;
+  line-height: 0.4rem;
+  text-align: center;
+  cursor: pointer;
+  user-select: none;
+  transition: transform 0.1s ease;
+}
+
+.sound-toggle:active {
+  transform: scale(0.9);
+}
+
+.sound-toggle.off {
+  background-image: url(../media/mute.svg);
 }
 
 .question-card {
@@ -294,5 +322,8 @@ h1 {
   .page {
     max-width: 5rem;
     margin: 0 auto;
+  }
+  .question-line {
+    justify-content: center;
   }
 }
