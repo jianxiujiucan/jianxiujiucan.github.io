@@ -6,12 +6,6 @@ html {
   font-size: 26.6667vw; /* 100 / 375 * 100vw */
 }
 
-@media (min-width: 520px) {
-  html {
-    font-size: 138.67px; /* 520 / 3.75 */
-  }
-}
-
 /* ===== 基础 ===== */
 * {
   margin: 0;
@@ -291,4 +285,14 @@ h1 {
   color: #333;
   margin-bottom: 0.18rem;
   font-variant-numeric: tabular-nums;
+}
+
+@media (min-width: 520px) {
+  html {
+    font-size: 16vw; /* 520 / 3.75 */
+  }
+  .page {
+    max-width: 5rem;
+    margin: 0 auto;
+  }
 }
