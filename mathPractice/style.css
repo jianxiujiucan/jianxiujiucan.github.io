@@ -189,7 +189,7 @@ h1 {
   height: 0.4rem;
   border: none;
   border-radius: 50%;
-  background: url(../media/sound.svg) center no-repeat rgba(255, 255, 255, 0.22);
+  background: url(../media/sound.png) center no-repeat rgba(255, 255, 255, 0.22);
   background-size: 60%;
   font-size: 0.2rem;
   line-height: 0.4rem;
@@ -204,7 +204,7 @@ h1 {
 }
 
 .sound-toggle.off {
-  background-image: url(../media/mute.svg);
+  background-image: url(../media/mute.png);
 }
 
 .question-card {
