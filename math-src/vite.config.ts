@@ -4,8 +4,8 @@ import vue from '@vitejs/plugin-vue'
 
 // https://vite.dev/config/
 export default defineConfig({
-  // GitHub Pages 子路径发布：https://jianxiujiucan.github.io/mathPractice/
-  base: '/mathPractice/',
+  // GitHub Pages 子路径发布：https://jianxiujiucan.github.io/math/
+  base: '/math/',
   plugins: [vue()],
   resolve: {
     alias: {
@@ -13,9 +13,9 @@ export default defineConfig({
     },
   },
   build: {
-    // 产物输出到仓库的 mathPractice/ 目录（GitHub Pages 直接服务）
+    // 产物输出到仓库的 math/ 目录（GitHub Pages 直接服务）
     // outDir 在项目 root 之外，必须显式开启 emptyOutDir
-    outDir: '../mathPractice',
+    outDir: '../math',
     emptyOutDir: true,
   },
   test: {

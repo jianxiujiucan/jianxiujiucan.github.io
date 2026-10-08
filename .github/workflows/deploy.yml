@@ -1,10 +1,10 @@
-name: Build mathPractice
+name: Build math
 
 on:
   push:
     branches: [master]
     paths:
-      - 'mathPractice-src/**'
+      - 'math-src/**'
       - '.github/workflows/deploy.yml'
   workflow_dispatch:
 
@@ -13,7 +13,7 @@ permissions:
 
 # 连续 push 时排队而非并行，避免两个构建同时回传产物冲突
 concurrency:
-  group: mathPractice-build
+  group: math-build
   cancel-in-progress: false
 
 jobs:
@@ -30,29 +30,29 @@ jobs:
         with:
           node-version: 22 # 与本地开发版本一致
           cache: npm
-          cache-dependency-path: mathPractice-src/package-lock.json
+          cache-dependency-path: math-src/package-lock.json
 
       - name: Install dependencies
-        working-directory: mathPractice-src
+        working-directory: math-src
         run: npm ci
 
       - name: Run unit tests
-        working-directory: mathPractice-src
+        working-directory: math-src
         run: npm test
 
       - name: Type check & build
-        working-directory: mathPractice-src
-        run: npm run build # vue-tsc -b && vite build，产物写入 ../mathPractice
+        working-directory: math-src
+        run: npm run build # vue-tsc -b && vite build，产物写入 ../math
 
       - name: Commit build output
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add mathPractice
+          git add math
           if git diff --cached --quiet; then
             echo "构建产物无变化，跳过提交"
             exit 0
           fi
-          git commit -m "chore: rebuild mathPractice [skip ci]"
+          git commit -m "chore: rebuild math [skip ci]"
           git pull --rebase origin master
           git push
