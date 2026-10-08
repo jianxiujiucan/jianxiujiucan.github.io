@@ -1,0 +1,329 @@
+/* ===== 根单位：以 vw 定义，配合 rem 自适应缩放 =====
+ * 设计稿宽度 375px，1rem = 100px（375/3.75）；
+ * 视口 >= 520px 时锁定根字号，页面按设计尺寸居中显示，不再放大。
+ */
+html {
+  font-size: 26.6667vw; /* 100 / 375 * 100vw */
+}
+
+/* ===== 基础 ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  background: linear-gradient(160deg, #6a8dff 0%, #a06cd5 100%);
+  min-height: 100vh;
+  color: #333;
+}
+
+.page {
+  max-width: 3.75rem; /* 设计稿全宽：小屏铺满，大屏居中 */
+  margin: 0 auto;
+  padding: 0.16rem;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.hidden {
+  display: none !important;
+}
+
+h1 {
+  text-align: center;
+  color: #fff;
+  font-size: 0.28rem;
+  margin: 0.28rem 0 0.18rem;
+  letter-spacing: 0.02rem;
+  text-shadow: 0 0.02rem 0.06rem rgba(0, 0, 0, 0.25);
+}
+
+.tip {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.13rem;
+  margin-top: 0.14rem;
+}
+
+/* ===== 卡片 ===== */
+.card {
+  background: #fff;
+  border-radius: 0.16rem;
+  padding: 0.22rem 0.18rem;
+  box-shadow: 0 0.08rem 0.24rem rgba(0, 0, 0, 0.18);
+}
+
+/* ===== 设置选项 ===== */
+.option-group {
+  margin-bottom: 0.18rem;
+}
+
+.option-label {
+  font-size: 0.15rem;
+  font-weight: 600;
+  color: #555;
+  margin-bottom: 0.1rem;
+}
+
+.pill-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.08rem;
+}
+
+.pill {
+  border: 0.02rem solid #dcdcdc;
+  background: #f7f7f9;
+  color: #555;
+  border-radius: 9.99rem;
+  padding: 0.08rem 0.16rem;
+  font-size: 0.15rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  user-select: none;
+}
+
+.pill:active {
+  transform: scale(0.95);
+}
+
+.pill.active {
+  border-color: #6a8dff;
+  background: #6a8dff;
+  color: #fff;
+  font-weight: 600;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 0.08rem;
+  font-size: 0.15rem;
+  color: #555;
+  cursor: pointer;
+  user-select: none;
+}
+
+.checkbox-label input {
+  width: 0.2rem;
+  height: 0.2rem;
+  accent-color: #6a8dff;
+  cursor: pointer;
+}
+
+.number {
+  color: #999;
+}
+
+/* ===== 按钮 ===== */
+.primary-btn {
+  width: 100%;
+  padding: 0.14rem;
+  font-size: 0.18rem;
+  font-weight: 700;
+  letter-spacing: 0.02rem;
+  color: #fff;
+  background: linear-gradient(135deg, #ff9f43, #ff6b6b);
+  border: none;
+  border-radius: 0.12rem;
+  cursor: pointer;
+  box-shadow: 0 0.04rem 0.12rem rgba(255, 107, 107, 0.4);
+  transition: transform 0.1s ease;
+}
+
+.primary-btn:active {
+  transform: scale(0.97);
+}
+
+.secondary-btn {
+  display: block;
+  margin: 0.14rem auto 0;
+  padding: 0.08rem 0.32rem;
+  font-size: 0.16rem;
+  font-weight: 600;
+  color: #6a8dff;
+  background: #eef2ff;
+  border: 0.02rem solid #6a8dff;
+  border-radius: 9.99rem;
+  cursor: pointer;
+  transition: transform 0.1s ease;
+  display: none;
+}
+
+.secondary-btn:active {
+  transform: scale(0.95);
+}
+
+/* ===== 答题页 ===== */
+.quiz-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.1rem 0.05rem 0.16rem; /* 右侧给音效开关留出位置 */
+}
+
+.badge {
+  background: rgba(255, 255, 255, 0.22);
+  color: #fff;
+  font-size: 0.17rem;
+  font-weight: 700;
+  padding: 0.06rem 0.16rem;
+  border-radius: 9.99rem;
+  min-width: 0.76rem;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ===== 音效开关 ===== */
+.sound-toggle {
+  position: fixed;
+  bottom: 0.12rem;
+  right: 0.12rem;
+  z-index: 10;
+  width: 0.4rem;
+  height: 0.4rem;
+  border: none;
+  border-radius: 50%;
+  background: url(media/sound.png) center no-repeat rgba(255, 255, 255, 0.22);
+  background-size: 60%;
+  font-size: 0.2rem;
+  line-height: 0.4rem;
+  text-align: center;
+  cursor: pointer;
+  user-select: none;
+  transition: transform 0.1s ease;
+}
+
+.sound-toggle:active {
+  transform: scale(0.9);
+}
+
+.sound-toggle.off {
+  background-image: url(media/mute.png);
+}
+
+.question-card {
+  position: relative;
+  padding: 0.5rem 0.2rem;
+  height: 1.5rem;
+}
+
+.question-line {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  padding: 0 0 0 0.16rem;
+  font-size: 0.26rem;
+  font-weight: 700;
+  color: #333;
+}
+
+#question-text {
+  white-space: nowrap;
+}
+
+#answer-input {
+  width: 0.7rem;
+  padding: 0.04rem 0.08rem;
+  font-size: 0.3rem;
+  font-weight: 700;
+  text-align: center;
+  color: #333;
+  border: 0.02rem solid #6a8dff;
+  border-radius: 0.1rem;
+  outline: none;
+  background: #fff;
+  caret-color: #6a8dff;
+  margin: 0 0 0 0.08rem;
+}
+
+#answer-input:focus {
+  box-shadow: 0 0 0 0.03rem rgba(106, 141, 255, 0.25);
+}
+
+#answer-input:disabled {
+  background: #f2f2f2;
+  color: #888;
+  border-color: #ccc;
+}
+
+#result-icon {
+  width: 0.4rem;
+  font-size: 0.26rem;
+  font-weight: 800;
+  text-align: center;
+}
+
+#result-icon.right {
+  color: #2ecc71;
+}
+
+#result-icon.wrong {
+  color: #e74c3c;
+}
+
+#feedback {
+  position: absolute;
+  bottom: 0.15rem;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  font-size: 0.18rem;
+  font-weight: 600;
+  color: #e74c3c;
+}
+
+#next-btn {
+  margin-top: 0.16rem;
+}
+
+/* ===== 结果区 ===== */
+#result-area {
+  margin-top: 0.16rem;
+  text-align: center;
+}
+
+.result-title {
+  font-size: 0.16rem;
+  color: #888;
+  font-weight: 600;
+}
+
+#score-text {
+  font-size: 0.44rem;
+  font-weight: 800;
+  color: #ff6b6b;
+  margin: 0.06rem 0 0.02rem;
+}
+
+#cheer-text {
+  font-size: 0.17rem;
+  font-weight: 600;
+  color: #6a8dff;
+  margin-bottom: 0.08rem;
+}
+
+#summary-text {
+  font-size: 0.15rem;
+  color: #333;
+  margin-bottom: 0.18rem;
+  font-variant-numeric: tabular-nums;
+}
+
+@media (min-width: 520px) {
+  html {
+    font-size: 16vw; /* 520 / 3.75 */
+  }
+  .page {
+    max-width: 5rem;
+    margin: 0 auto;
+  }
+  .question-line {
+    justify-content: center;
+  }
+}
