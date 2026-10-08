@@ -1,0 +1,58 @@
+name: Build mathPractice
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - 'mathPractice-src/**'
+      - '.github/workflows/deploy.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+# 连续 push 时排队而非并行，避免两个构建同时回传产物冲突
+concurrency:
+  group: mathPractice-build
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # 回传产物前 git pull --rebase 需要完整历史
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22 # 与本地开发版本一致
+          cache: npm
+          cache-dependency-path: mathPractice-src/package-lock.json
+
+      - name: Install dependencies
+        working-directory: mathPractice-src
+        run: npm ci
+
+      - name: Run unit tests
+        working-directory: mathPractice-src
+        run: npm test
+
+      - name: Type check & build
+        working-directory: mathPractice-src
+        run: npm run build # vue-tsc -b && vite build，产物写入 ../mathPractice
+
+      - name: Commit build output
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add mathPractice
+          if git diff --cached --quiet; then
+            echo "构建产物无变化，跳过提交"
+            exit 0
+          fi
+          git commit -m "chore: rebuild mathPractice [skip ci]"
+          git pull --rebase origin master
+          git push
