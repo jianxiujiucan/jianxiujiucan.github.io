@@ -1,76 +1,84 @@
 <script setup lang="ts">
-import { computed, onMounted, ref } from 'vue'
-import { useRouter } from 'vue-router'
-import { fetchProfileApi, fetchSessionsApi } from '@/api'
-import { ApiError } from '@/api/http'
-import type { PerTypeStat, ProfileResponse, SessionSummary } from '@/types/api'
-import type { OpType } from '@/types/quiz'
-import { formatDate, formatDateTime, formatDuration, formatMsPerQ, opTypeLabel } from '@/utils/format'
+import { computed, onMounted, ref } from "vue";
+import { useRouter } from "vue-router";
+import { fetchProfileApi, fetchSessionsApi } from "@/api";
+import { ApiError } from "@/api/http";
+import type { PerTypeStat, ProfileResponse, SessionSummary } from "@/types/api";
+import type { OpType } from "@/types/quiz";
+import {
+  formatDate,
+  formatDateTime,
+  formatDuration,
+  formatMsPerQ,
+  opTypeLabel,
+} from "@/utils/format";
 
-const router = useRouter()
+const router = useRouter();
 
-const profile = ref<ProfileResponse | null>(null)
-const sessions = ref<SessionSummary[]>([])
-const total = ref(0)
-const page = ref(1)
-const pageSize = 10
-const loading = ref(true)
-const errorMsg = ref('')
+const profile = ref<ProfileResponse | null>(null);
+const sessions = ref<SessionSummary[]>([]);
+const total = ref(0);
+const page = ref(1);
+const pageSize = 10;
+const loading = ref(true);
+const errorMsg = ref("");
 
-const totalPages = computed(() => Math.max(1, Math.ceil(total.value / pageSize)))
+const totalPages = computed(() =>
+  Math.max(1, Math.ceil(total.value / pageSize))
+);
 
-const ALL_TYPES: OpType[] = ['add', 'sub', 'addsub', 'mul', 'div', 'muldiv']
+const ALL_TYPES: OpType[] = ["add", "sub", "addsub", "mul", "div", "muldiv"];
 
 /** 6 种类型完整表格行（无数据的类型显示 -） */
 const perTypeRows = computed(() => {
-  const map = new Map<OpType, PerTypeStat>()
-  for (const r of profile.value?.stats.perType ?? []) map.set(r.opType, r)
+  const map = new Map<OpType, PerTypeStat>();
+  for (const r of profile.value?.stats.perType ?? []) map.set(r.opType, r);
   return ALL_TYPES.map((t) => ({
     opType: t,
     label: opTypeLabel(t),
     sessions: map.get(t)?.sessions ?? 0,
     bestAvgMs: map.get(t)?.bestAvgMs ?? null,
     bestScore: map.get(t)?.bestScore ?? null,
-  }))
-})
+  }));
+});
 
 async function loadProfile() {
-  profile.value = await fetchProfileApi()
+  profile.value = await fetchProfileApi();
 }
 
 async function loadSessions() {
-  const r = await fetchSessionsApi(page.value, pageSize)
-  sessions.value = r.list
-  total.value = r.total
+  const r = await fetchSessionsApi(page.value, pageSize);
+  sessions.value = r.list;
+  total.value = r.total;
 }
 
 async function load() {
-  loading.value = true
-  errorMsg.value = ''
+  loading.value = true;
+  errorMsg.value = "";
   try {
-    await Promise.all([loadProfile(), loadSessions()])
+    await Promise.all([loadProfile(), loadSessions()]);
   } catch (e) {
-    errorMsg.value = e instanceof ApiError ? e.message : '加载失败，请稍后再试'
+    errorMsg.value = e instanceof ApiError ? e.message : "加载失败，请稍后再试";
   } finally {
-    loading.value = false
+    loading.value = false;
   }
 }
 
 async function goPage(p: number) {
-  if (p < 1 || p > totalPages.value) return
-  page.value = p
+  if (p < 1 || p > totalPages.value) return;
+  page.value = p;
   try {
-    await loadSessions()
+    await loadSessions();
   } catch (e) {
-    errorMsg.value = e instanceof ApiError ? e.message : '加载失败，请稍后再试'
+    errorMsg.value = e instanceof ApiError ? e.message : "加载失败，请稍后再试";
   }
 }
 
 function configText(s: SessionSummary): string {
-  return `${opTypeLabel(s.opType)} · ${s.range}以内 · ${s.count}题`
+  return `${opTypeLabel(s.opType)} · ${s.range}以内 · ${s.count}题`;
 }
 
-onMounted(load)
+onMounted(load);
 </script>
 
 <template>
@@ -84,7 +92,9 @@ onMounted(load)
     <div class="card user-card">
       <div class="username">{{ profile.user.username }}</div>
       <div class="user-meta">{{ profile.user.email }}</div>
-      <div class="user-meta">注册于 {{ formatDate(profile.user.createdAt) }}</div>
+      <div class="user-meta">
+        注册于 {{ formatDate(profile.user.createdAt) }}
+      </div>
     </div>
 
     <!-- 统计卡 -->
@@ -115,9 +125,9 @@ onMounted(load)
         <tbody>
           <tr v-for="row in perTypeRows" :key="row.opType">
             <td>{{ row.label }}</td>
-            <td>{{ row.sessions || '-' }}</td>
+            <td>{{ row.sessions || "-" }}</td>
             <td>{{ formatMsPerQ(row.bestAvgMs) }}</td>
-            <td>{{ row.bestScore ?? '-' }}</td>
+            <td>{{ row.bestScore ?? "-" }}</td>
           </tr>
         </tbody>
       </table>
@@ -128,7 +138,9 @@ onMounted(load)
       <div class="card-title">答题记录</div>
       <div v-if="sessions.length === 0" class="empty">
         <p>还没有答题记录</p>
-        <button class="primary-btn" @click="router.push('/setup')">去答一组</button>
+        <button class="primary-btn" @click="router.push('/setup')">
+          去答一组
+        </button>
       </div>
       <template v-else>
         <button
@@ -142,24 +154,39 @@ onMounted(load)
             <span class="record-time">{{ formatDateTime(s.createdAt) }}</span>
           </span>
           <span class="record-result">
-            <span class="record-score" :class="{ low: s.score < 60 }">{{ s.score }}分</span>
-            <span class="record-sub">对 {{ s.correct }}/{{ s.total }} · {{ formatDuration(s.durationMs) }}</span>
+            <span class="record-score" :class="{ low: s.score < 60 }"
+              >{{ s.score }}分</span
+            >
+            <span class="record-sub"
+              >对 {{ s.correct }}/{{ s.total }} ·
+              {{ formatDuration(s.durationMs) }}</span
+            >
           </span>
         </button>
         <div v-if="totalPages > 1" class="pager">
-          <button class="link-btn" :disabled="page <= 1" @click="goPage(page - 1)">‹ 上一页</button>
+          <button
+            class="link-btn"
+            :disabled="page <= 1"
+            @click="goPage(page - 1)"
+          >
+            ‹ 上一页
+          </button>
           <span class="pager-info">{{ page }}/{{ totalPages }}</span>
-          <button class="link-btn" :disabled="page >= totalPages" @click="goPage(page + 1)">下一页 ›</button>
+          <button
+            class="link-btn"
+            :disabled="page >= totalPages"
+            @click="goPage(page + 1)"
+          >
+            下一页 ›
+          </button>
         </div>
       </template>
     </div>
   </template>
-
-  <p class="tip"><router-link to="/" class="link">‹ 返回首页</router-link></p>
 </template>
 
 <style scoped lang="scss">
-@use '../styles/variables' as *;
+@use "../styles/variables" as *;
 
 .loading-text {
   text-align: center;
@@ -168,6 +195,8 @@ onMounted(load)
 }
 
 .card {
+  display: flex;
+  flex-direction: column;
   margin-bottom: 0.14rem;
 }
 

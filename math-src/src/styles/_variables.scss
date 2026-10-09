@@ -15,3 +15,7 @@ $success: #2ecc71;
 $bg-gradient: linear-gradient(160deg, #6a8dff 0%, #a06cd5 100%);
 $card-shadow: 0 0.08rem 0.24rem rgba(0, 0, 0, 0.18);
 $accent-shadow: 0 0.04rem 0.12rem rgba(255, 107, 107, 0.4);
+
+body {
+  --m-bg: rgba(255, 255, 255, 0.95);
+}

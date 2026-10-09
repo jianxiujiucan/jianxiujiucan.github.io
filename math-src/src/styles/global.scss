@@ -16,9 +16,33 @@ html {
   -webkit-tap-highlight-color: transparent;
 }
 
+:root {
+  --m-bg: rgba(255, 255, 255, 0.9);
+  --m-primary: #6a8dff;
+  --m-primary-light: #eef2ff;
+  --m-accent-from: #ff9f43;
+  --m-accent-to: #ff6b6b;
+
+  --m-text-main: #333;
+  --m-text-sub: #555;
+  --m-text-muted: #999;
+
+  --m-danger: #e74c3c;
+  --m-success: #2ecc71;
+
+  --m-bg-gradient: linear-gradient(180deg, #cdbcff 0%, #a69ef4 30%, #fff 50%);
+  --m-card-shadow: 0 0.08rem 0.24rem rgba(0, 0, 0, 0.18);
+  --m-accent-shadow: 0 0.04rem 0.12rem rgba(255, 107, 107, 0.4);
+  --m-button-gd: linear-gradient(
+    135deg,
+    var(--m-accent-from),
+    var(--m-accent-to)
+  );
+}
+
 body {
   font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
-  background: $bg-gradient;
+  background: var(--m-bg-gradient);
   min-height: 100vh;
   color: $text-main;
 }
@@ -58,7 +82,7 @@ h1 {
   background: #fff;
   border-radius: 0.16rem;
   padding: 0.22rem 0.18rem;
-  box-shadow: $card-shadow;
+  box-shadow: var(--m-card-shadow);
 }
 
 /* ===== 主按钮（开始答题 / 下一题 / 返回首页 共用） ===== */
@@ -69,7 +93,7 @@ h1 {
   font-weight: 700;
   letter-spacing: 0.02rem;
   color: #fff;
-  background: linear-gradient(135deg, $accent-from, $accent-to);
+  background: var(--m-button-gd);
   border: none;
   border-radius: 0.12rem;
   cursor: pointer;
@@ -93,9 +117,9 @@ h1 {
   padding: 0.08rem 0.32rem;
   font-size: 0.16rem;
   font-weight: 600;
-  color: $primary;
-  background: $primary-light;
-  border: 0.02rem solid $primary;
+  color: var(--m-primary);
+  background: var(--m-primary-light);
+  border: 0.02rem solid var(--m-primary);
   border-radius: 9.99rem;
   cursor: pointer;
   transition: transform 0.1s ease;
@@ -112,7 +136,7 @@ h1 {
 
 /* ===== 文字链接按钮 ===== */
 .link {
-  color: $primary;
+  color: var(--m-primary);
   text-decoration: none;
   cursor: pointer;
 }
@@ -121,7 +145,7 @@ h1 {
   background: none;
   border: none;
   padding: 0;
-  color: $primary;
+  color: var(--m-primary);
   font-size: inherit;
   font-family: inherit;
   cursor: pointer;
@@ -146,7 +170,7 @@ h1 {
   width: 100%;
   padding: 0.1rem 0.12rem;
   font-size: 0.16rem; // ≥16px 等效，防 iOS 聚焦自动放大
-  color: $text-main;
+  color: var(--m-text-main);
   border: 0.02rem solid #dcdcdc;
   border-radius: 0.1rem;
   outline: none;
@@ -154,16 +178,16 @@ h1 {
   transition: border-color 0.15s ease, box-shadow 0.15s ease;
 
   &:focus {
-    border-color: $primary;
+    border-color: var(--m-primary);
     box-shadow: 0 0 0 0.03rem rgba(106, 141, 255, 0.25);
   }
 
   &.input-error {
-    border-color: $danger;
+    border-color: var(--m-danger);
   }
 
   &.input-ok {
-    border-color: $success;
+    border-color: var(--m-success);
   }
 }
 
@@ -172,10 +196,10 @@ h1 {
   min-height: 0.2rem;
   font-size: 0.13rem;
   margin-top: 0.04rem;
-  color: $danger;
+  color: var(--m-danger);
 
   &.ok {
-    color: $success;
+    color: var(--m-success);
   }
 }
 
@@ -183,7 +207,7 @@ h1 {
 .form-error {
   background: #fff2f0;
   border: 0.01rem solid #ffccc7;
-  color: $danger;
+  color: var(--m-danger);
   font-size: 0.14rem;
   border-radius: 0.08rem;
   padding: 0.08rem 0.12rem;
