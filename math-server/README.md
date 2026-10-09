@@ -1,43 +1,48 @@
 # math-server
 
-口算答题器后端（Express 5 + MySQL）：注册登录、答题成绩存档、个人中心、排行榜。
+口算答题器后端（Express 5 + Postgres）：注册登录、答题成绩存档、个人中心、排行榜。
 
-## 一、安装 MySQL（二选一）
+- 线上：部署在 **Vercel**（Serverless Functions，入口 `api/[...all].ts`）
+- 数据库：**Supabase** Postgres（默认 `postgres` 库，表自动创建）
+- 本地开发：同样连接 Supabase 数据库（无需本地装数据库）
 
-**A. 官方安装器（推荐）**
+## 一、准备 Supabase（一次性）
 
-1. 下载：https://dev.mysql.com/downloads/installer/ （选 `mysql-installer-web-community-8.x`）
-2. 运行 → Setup Type 选 **Server only**
-3. Authentication Method 保持默认（caching_sha2_password，mysql2 v3 支持）
-4. 设置 root 密码（记住，稍后写进 `.env`）
-5. 勾选 **Configure MySQL Server as a Windows Service** + Start at System Startup → Execute → Finish
+1. https://supabase.com 注册（GitHub 登录）→ **New project**，填项目名和数据库密码（密码记好）
+2. 项目首页 **Connect** → **Transaction pooler** 标签 → 复制连接串（端口 6543），形如：
+   `postgresql://postgres.<ref>:<密码>@aws-x-<region>.pooler.supabase.com:6543/postgres`
+3. 把连接串填进 `.env` 的 `DATABASE_URL`
 
-**B. winget**
-
-```bash
-winget install Oracle.MySQL
-# 拉起的仍是上面的安装器，步骤相同
-```
-
-## 二、启动后端
+## 二、本地启动
 
 ```bash
 cd math-server
 npm install
-cp .env.example .env    # Windows: copy .env.example .env
-# 编辑 .env：填 DB_PASSWORD（MySQL root 密码），改 JWT_SECRET
+cp .env.example .env   # 填 DATABASE_URL、改 JWT_SECRET
 npm run dev
 ```
 
-看到 `[db] database & tables ready` 和 `listening on http://localhost:3000` 即成功。
-数据库和 4 张表**自动创建**，无需手动建库。
-
+看到 `[db] tables ready` 和 `listening on http://localhost:3000` 即成功（4 张表自动建好）。
 验证：`curl http://localhost:3000/api/health` → `{"ok":true}`
 
-## 三、SMTP（可选）
+## 三、部署到 Vercel（一次性）
 
-不配 SMTP 时，找回密码的验证码**打印到后端控制台**（开发模式）。
-要真实发信，在 `.env` 填（以 QQ 邮箱为例）：
+1. https://vercel.com 注册（GitHub 登录）→ **Add New → Project** → 导入本仓库
+2. **Root Directory** 选 `math-server`，Framework 选 **Other**（无需构建命令）
+3. 在 **Environment Variables** 里配置：
+   - `DATABASE_URL`（Supabase Transaction pooler 连接串）
+   - `JWT_SECRET`（长随机串）
+   - `SMTP_HOST` / `SMTP_PORT` / `SMTP_USER` / `SMTP_PASS` / `SMTP_FROM`（找回密码真实发信用；不配则验证码只会出现在 Vercel 日志里）
+   - `CORS_ORIGINS` 保持默认即可（已含 GitHub Pages 域名）
+4. Deploy → 得到域名 `https://<项目名>.vercel.app`
+5. 访问 `https://<项目名>.vercel.app/api/health` 验证 `{"ok":true}`
+6. 把该域名填进 `math-src/.env.production` 的 `VITE_API_BASE`，前端重新构建部署
+
+> 说明：Serverless 冷启动时会执行一次幂等建表；限流计数器按实例计（多实例下不完全精确，本项目可接受）。
+
+## 四、SMTP（找回密码）
+
+`.env`（本地）或 Vercel 环境变量（线上）填 QQ 邮箱示例：
 
 ```ini
 SMTP_HOST=smtp.qq.com
@@ -47,7 +52,7 @@ SMTP_PASS=授权码   # QQ邮箱：设置→账户→POP3/SMTP服务→生成授
 SMTP_FROM=your@qq.com
 ```
 
-## 四、接口清单
+## 五、接口清单
 
 统一错误形状：`{ "error": { "code": "...", "message": "..." } }`
 
@@ -67,40 +72,12 @@ SMTP_FROM=your@qq.com
 
 排行榜口径：每种运算类型取每用户「平均每题用时」最佳的一场（该场各题 time_ms 的 AVG），**仅正确率 ≥90% 的场次**，并列先达成者在前，前 50。
 
-## 五、curl 联调命令
-
-```bash
-# 注册
-curl -X POST http://localhost:3000/api/auth/register -H "Content-Type: application/json" -d "{\"username\":\"TEST01\",\"password\":\"abc12345\",\"email\":\"test@example.com\"}"
-
-# 登录（保存返回的 token）
-curl -X POST http://localhost:3000/api/auth/login -H "Content-Type: application/json" -d "{\"username\":\"TEST01\",\"password\":\"abc12345\"}"
-
-# 提交一场 2 题的假数据（真实使用时题数应与 count 一致）
-curl -X POST http://localhost:3000/api/quiz-sessions -H "Content-Type: application/json" -H "Authorization: Bearer <token>" -d "{\"config\":{\"count\":10,\"opType\":\"add\",\"range\":20,\"operands\":2,\"carry\":false},\"durationMs\":30000,\"questions\":[{\"seq\":1,\"expr\":\"3 + 6\",\"userAnswer\":\"9\",\"correctAnswer\":9,\"isCorrect\":true,\"timeMs\":2000}, ...]}"
-
-# 篡改验证（isCorrect 与实际不符 → 400 PAYLOAD_MISMATCH）
-# ...isCorrect:false 但 userAnswer 等于 correctAnswer
-
-# 个人中心
-curl http://localhost:3000/api/profile -H "Authorization: Bearer <token>"
-curl "http://localhost:3000/api/profile/sessions?page=1&pageSize=10" -H "Authorization: Bearer <token>"
-curl http://localhost:3000/api/profile/sessions/1 -H "Authorization: Bearer <token>"
-
-# 排行榜
-curl "http://localhost:3000/api/leaderboard?op_type=add"
-
-# 找回密码（验证码在后端控制台输出）
-curl -X POST http://localhost:3000/api/auth/forgot -H "Content-Type: application/json" -d "{\"email\":\"test@example.com\"}"
-curl -X POST http://localhost:3000/api/auth/reset -H "Content-Type: application/json" -d "{\"email\":\"test@example.com\",\"code\":\"<6位验证码>\",\"newPassword\":\"newpass123\"}"
-```
-
 ## 六、开发
 
 ```bash
-npm run dev          # tsx watch 热重载
+npm run dev          # tsx watch 热重载（本地）
 npm test             # vitest：validate / expr / code 纯逻辑
 npm run type-check   # tsc --noEmit
 ```
 
-前端在 `../math-src`：`npm run dev` 后访问 http://localhost:5173/math/ （前端通过 `.env.development` 的 `VITE_API_BASE=http://localhost:3000` 调用本服务）。
+前端在 `../math-src`：`npm run dev` 后访问 http://localhost:5173/math/。

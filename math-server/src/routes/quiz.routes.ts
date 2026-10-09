@@ -1,11 +1,10 @@
 import { Router } from 'express'
-import type { ResultSetHeader } from 'mysql2'
 import { pool } from '../db'
 import { requireAuth } from '../auth'
 import { httpError } from '../httpError'
 import { isValidConfig } from '../validate'
 import { evalExpr } from '../expr'
-import type { QuestionRecordDto } from '../types'
+import type { IdRow, QuestionRecordDto } from '../types'
 
 export const quizRoutes = Router()
 
@@ -67,46 +66,48 @@ quizRoutes.post('/', requireAuth, async (req, res) => {
   const score = Math.round((correct / total) * 100)
   const durationMs = Math.min(Math.max(Math.round(Number(body.durationMs) || 0), 0), MAX_SESSION_MS)
 
-  const conn = await pool.getConnection()
+  const client = await pool.connect()
   try {
-    await conn.beginTransaction()
-    const [r] = await conn.query<ResultSetHeader>(
+    await client.query('BEGIN')
+    const { rows } = await client.query<IdRow>(
       `INSERT INTO quiz_sessions
          (user_id, count_opt, op_type, range_limit, operands, carry, total, correct, score, duration_ms)
-       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+       VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)
+       RETURNING id`,
       [
         req.user!.uid,
         cfg.count,
         cfg.opType,
         cfg.range,
         cfg.operands,
-        cfg.carry ? 1 : 0,
+        cfg.carry,
         total,
         correct,
         score,
         durationMs,
       ]
     )
-    const sessionId = r.insertId
-    const values = normalized.map((q) => [
-      sessionId,
-      q.seq,
-      q.expr,
-      q.userAnswer,
-      q.correctAnswer,
-      q.isCorrect ? 1 : 0,
-      q.timeMs,
-    ])
-    await conn.query(
-      'INSERT INTO question_records (session_id, seq, expr, user_answer, correct_answer, is_correct, time_ms) VALUES ?',
-      [values]
+    const sessionId = rows[0].id
+
+    // 批量插入题目明细（构造多行 VALUES 占位符）
+    const values: unknown[] = []
+    const tuples = normalized.map((q, i) => {
+      const base = i * 7
+      values.push(sessionId, q.seq, q.expr, q.userAnswer, q.correctAnswer, q.isCorrect, q.timeMs)
+      return `($${base + 1}, $${base + 2}, $${base + 3}, $${base + 4}, $${base + 5}, $${base + 6}, $${base + 7})`
+    })
+    await client.query(
+      `INSERT INTO question_records
+         (session_id, seq, expr, user_answer, correct_answer, is_correct, time_ms)
+       VALUES ${tuples.join(', ')}`,
+      values
     )
-    await conn.commit()
+    await client.query('COMMIT')
     res.status(201).json({ sessionId })
   } catch (e) {
-    await conn.rollback()
+    await client.query('ROLLBACK')
     throw e
   } finally {
-    conn.release()
+    client.release()
   }
 })

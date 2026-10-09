@@ -1,45 +1,30 @@
-import mysql from 'mysql2/promise'
+import pg from 'pg'
 import { config } from './config'
 import { schemaStatements } from './schema'
 
-export let pool: mysql.Pool
+// timestamptz(1184) / timestamp(1114) 返回原始字符串，
+// 避免转成 JS Date 再 JSON 序列化成 UTC 造成时区偏差
+pg.types.setTypeParser(1184, (v: string) => v)
+pg.types.setTypeParser(1114, (v: string) => v)
 
-/** 启动时自动建库建表（幂等），免去手动 CREATE DATABASE */
+export let pool: pg.Pool
+
+/**
+ * 启动时自动建表（CREATE TABLE IF NOT EXISTS，幂等）。
+ * 数据库本身由 Supabase 提供（默认 postgres 库），无需也无法在连接内建库。
+ */
 export async function initDb(): Promise<void> {
-  // 库名要拼进 SQL（CREATE DATABASE 不支持占位符），先白名单校验防注入
-  if (!/^[A-Za-z0-9_]+$/.test(config.db.database)) {
-    throw new Error(`非法数据库名: ${config.db.database}`)
-  }
-
-  // 1) 不带 database 连接，先建库
-  const admin = await mysql.createConnection({
-    host: config.db.host,
-    port: config.db.port,
-    user: config.db.user,
-    password: config.db.password,
+  pool = new pg.Pool({
+    connectionString: config.databaseUrl,
+    ssl: config.dbSsl ? { rejectUnauthorized: false } : undefined,
+    max: 10,
   })
-  await admin.query(
-    `CREATE DATABASE IF NOT EXISTS \`${config.db.database}\`
-     CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci`
-  )
-  await admin.end()
-
-  // 2) 业务连接池
-  pool = mysql.createPool({
-    host: config.db.host,
-    port: config.db.port,
-    user: config.db.user,
-    password: config.db.password,
-    database: config.db.database,
-    connectionLimit: 10,
-    timezone: '+08:00', // DATETIME 读写按本地时区
-    dateStrings: true, // DATETIME 以字符串返回，避免 JSON 序列化成 UTC 造成时区偏差
-    charset: 'utf8mb4',
+  // 每个连接的会话时区固定为东八区，created_at 读写与前端展示一致
+  pool.on('connect', (client) => {
+    void client.query("SET TIME ZONE 'Asia/Shanghai'").catch(() => {})
   })
-
-  // 3) 逐条执行 DDL
   for (const ddl of schemaStatements) {
     await pool.query(ddl)
   }
-  console.log('[db] database & tables ready')
+  console.log('[db] tables ready')
 }

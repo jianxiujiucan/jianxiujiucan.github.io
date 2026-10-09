@@ -1,8 +1,8 @@
 import { Router } from 'express'
-import type { RowDataPacket } from 'mysql2'
 import { pool } from '../db'
 import { httpError } from '../httpError'
 import { OP_TYPES } from '../types'
+import type { LeaderboardRow } from '../types'
 
 export const leaderboardRoutes = Router()
 
@@ -18,12 +18,12 @@ leaderboardRoutes.get('/', async (req, res) => {
     throw httpError(400, 'INVALID_OP_TYPE', '运算类型不合法')
   }
 
-  const [rows] = await pool.query<RowDataPacket[]>(
+  const { rows } = await pool.query<LeaderboardRow>(
     `WITH session_avg AS (
        SELECT s.id, s.user_id, s.total, s.created_at, AVG(r.time_ms) AS avg_ms
        FROM quiz_sessions s
        JOIN question_records r ON r.session_id = s.id
-       WHERE s.op_type = ? AND s.correct * 10 >= s.total * 9
+       WHERE s.op_type = $1 AND s.correct * 10 >= s.total * 9
        GROUP BY s.id, s.user_id, s.total, s.created_at
      ),
      best AS (
@@ -34,7 +34,7 @@ leaderboardRoutes.get('/', async (req, res) => {
               ) AS rn
        FROM session_avg sa
      )
-     SELECT u.username, ROUND(b.avg_ms) AS avgMs, b.total, b.created_at AS createdAt
+     SELECT u.username, ROUND(b.avg_ms) AS "avgMs", b.total, b.created_at AS "createdAt"
      FROM best b
      JOIN users u ON u.id = b.user_id
      WHERE b.rn = 1
@@ -47,9 +47,9 @@ leaderboardRoutes.get('/', async (req, res) => {
     opType,
     list: rows.map((r, i) => ({
       rank: i + 1,
-      username: String(r.username),
+      username: r.username,
       avgMs: Number(r.avgMs),
-      total: Number(r.total),
+      total: r.total,
       createdAt: r.createdAt,
     })),
   })

@@ -1,7 +1,6 @@
 import { Router } from 'express'
 import bcrypt from 'bcryptjs'
 import rateLimit from 'express-rate-limit'
-import type { ResultSetHeader, RowDataPacket } from 'mysql2'
 import { pool } from '../db'
 import { requireAuth, signToken } from '../auth'
 import { config } from '../config'
@@ -9,6 +8,7 @@ import { httpError } from '../httpError'
 import { sendResetCode } from '../mailer'
 import { generateCode, hashCode } from '../code'
 import { CODE_RE, isValidEmail, isValidPassword, isValidUsername } from '../validate'
+import type { ElapsedRow, IdRow, ResetRow, UserAuthRow, UserPublicRow } from '../types'
 
 export const authRoutes = Router()
 
@@ -45,17 +45,18 @@ authRoutes.post('/register', async (req, res) => {
 
   const hash = await bcrypt.hash(password, config.bcryptRounds)
   try {
-    const [r] = await pool.query<ResultSetHeader>(
-      'INSERT INTO users (username, password_hash, email) VALUES (?, ?, ?)',
+    const { rows } = await pool.query<IdRow>(
+      'INSERT INTO users (username, password_hash, email) VALUES ($1, $2, $3) RETURNING id',
       [username, hash, email]
     )
-    const user = { id: r.insertId, username, email }
+    const user = { id: rows[0].id, username, email }
     const token = signToken({ uid: user.id, username })
     res.status(201).json({ token, user })
   } catch (e) {
-    const err = e as { code?: string; message?: string }
-    if (err.code === 'ER_DUP_ENTRY') {
-      if (err.message?.includes('uk_users_email')) {
+    // Postgres 唯一约束冲突
+    const err = e as { code?: string; constraint?: string }
+    if (err.code === '23505') {
+      if (err.constraint === 'uk_users_email') {
         throw httpError(409, 'EMAIL_TAKEN', '该邮箱已被注册')
       }
       throw httpError(409, 'USERNAME_TAKEN', '该用户名已被注册')
@@ -70,30 +71,26 @@ authRoutes.post('/login', async (req, res) => {
   const password = String(req.body?.password ?? '')
   if (!username || !password) throw httpError(400, 'MISSING_FIELDS', '请输入用户名和密码')
 
-  const [rows] = await pool.query<RowDataPacket[]>(
-    'SELECT id, username, email, password_hash FROM users WHERE username = ?',
+  const { rows } = await pool.query<UserAuthRow>(
+    'SELECT id, username, email, password_hash FROM users WHERE username = $1',
     [username]
   )
   const row = rows[0]
-  const ok = await bcrypt.compare(password, row ? String(row.password_hash) : DUMMY_HASH)
+  const ok = await bcrypt.compare(password, row ? row.password_hash : DUMMY_HASH)
   if (!row || !ok) throw httpError(401, 'INVALID_CREDENTIALS', '用户名或密码不正确')
 
-  const token = signToken({ uid: Number(row.id), username: String(row.username) })
-  res.json({
-    token,
-    user: { id: Number(row.id), username: String(row.username), email: String(row.email) },
-  })
+  const token = signToken({ uid: row.id, username: row.username })
+  res.json({ token, user: { id: row.id, username: row.username, email: row.email } })
 })
 
 /* ---------- 当前用户 ---------- */
 authRoutes.get('/me', requireAuth, async (req, res) => {
-  const [rows] = await pool.query<RowDataPacket[]>(
-    'SELECT id, username, email, created_at AS createdAt FROM users WHERE id = ?',
+  const { rows } = await pool.query<UserPublicRow>(
+    'SELECT id, username, email, created_at AS "createdAt" FROM users WHERE id = $1',
     [req.user!.uid]
   )
   if (rows.length === 0) throw httpError(401, 'UNAUTHORIZED', '账号不存在，请重新登录')
-  const u = rows[0]
-  res.json({ user: { id: Number(u.id), username: String(u.username), email: String(u.email), createdAt: u.createdAt } })
+  res.json({ user: rows[0] })
 })
 
 /* ---------- 找回密码：发送验证码 ---------- */
@@ -101,7 +98,7 @@ authRoutes.post('/forgot', forgotLimiter, async (req, res) => {
   const email = String(req.body?.email ?? '').trim().toLowerCase()
   if (!isValidEmail(email)) throw httpError(400, 'INVALID_EMAIL', '邮箱格式不正确')
 
-  const [users] = await pool.query<RowDataPacket[]>('SELECT id FROM users WHERE email = ?', [email])
+  const { rows: users } = await pool.query<IdRow>('SELECT id FROM users WHERE email = $1', [email])
   if (users.length === 0) {
     // 邮箱未注册：返回统一文案，不做任何事（防枚举）
     res.json({ message: FORGOT_OK_MSG })
@@ -109,9 +106,9 @@ authRoutes.post('/forgot', forgotLimiter, async (req, res) => {
   }
 
   // 重发冷却（注意：已注册邮箱冷却期内会收到 429，存在轻微枚举面，本地项目可接受）
-  const [latest] = await pool.query<RowDataPacket[]>(
-    `SELECT TIMESTAMPDIFF(SECOND, created_at, NOW(3)) AS elapsed
-     FROM password_resets WHERE email = ? ORDER BY id DESC LIMIT 1`,
+  const { rows: latest } = await pool.query<ElapsedRow>(
+    `SELECT EXTRACT(EPOCH FROM (now() - created_at)) AS elapsed
+     FROM password_resets WHERE email = $1 ORDER BY id DESC LIMIT 1`,
     [email]
   )
   if (latest[0] && Number(latest[0].elapsed) < config.resetCodeCooldownSeconds) {
@@ -119,14 +116,13 @@ authRoutes.post('/forgot', forgotLimiter, async (req, res) => {
   }
 
   // 作废旧码，生成新码
-  await pool.query('UPDATE password_resets SET used = 1 WHERE email = ? AND used = 0', [email])
+  await pool.query('UPDATE password_resets SET used = TRUE WHERE email = $1 AND used = FALSE', [email])
   const code = generateCode()
   const expiresAt = new Date(Date.now() + config.resetCodeTtlMinutes * 60_000)
-  await pool.query('INSERT INTO password_resets (email, code_hash, expires_at) VALUES (?, ?, ?)', [
-    email,
-    hashCode(email, code),
-    expiresAt,
-  ])
+  await pool.query(
+    'INSERT INTO password_resets (email, code_hash, expires_at) VALUES ($1, $2, $3)',
+    [email, hashCode(email, code), expiresAt]
+  )
   await sendResetCode(email, code)
   res.json({ message: FORGOT_OK_MSG })
 })
@@ -143,23 +139,23 @@ authRoutes.post('/reset', async (req, res) => {
     throw httpError(400, 'INVALID_PASSWORD', '密码需为 8 位以上字母和数字的组合')
   }
 
-  const [rows] = await pool.query<RowDataPacket[]>(
-    `SELECT id, code_hash, attempts, (expires_at > NOW(3)) AS unexpired
-     FROM password_resets WHERE email = ? AND used = 0 ORDER BY id DESC LIMIT 1`,
+  const { rows } = await pool.query<ResetRow>(
+    `SELECT id, code_hash, attempts, (expires_at > now()) AS unexpired
+     FROM password_resets WHERE email = $1 AND used = FALSE ORDER BY id DESC LIMIT 1`,
     [email]
   )
   const row = rows[0]
-  if (!row || !row.unexpired || Number(row.attempts) >= 5) {
+  if (!row || !row.unexpired || row.attempts >= 5) {
     throw httpError(400, 'INVALID_OR_EXPIRED_CODE', '验证码不正确或已过期')
   }
   if (hashCode(email, code) !== row.code_hash) {
     // 错一次 attempts+1，累计 5 次锁死（防 6 位码爆破）
-    await pool.query('UPDATE password_resets SET attempts = attempts + 1 WHERE id = ?', [row.id])
+    await pool.query('UPDATE password_resets SET attempts = attempts + 1 WHERE id = $1', [row.id])
     throw httpError(400, 'INVALID_OR_EXPIRED_CODE', '验证码不正确或已过期')
   }
 
   const hash = await bcrypt.hash(newPassword, config.bcryptRounds)
-  await pool.query('UPDATE users SET password_hash = ? WHERE email = ?', [hash, email])
-  await pool.query('UPDATE password_resets SET used = 1 WHERE id = ?', [row.id])
+  await pool.query('UPDATE users SET password_hash = $1 WHERE email = $2', [hash, email])
+  await pool.query('UPDATE password_resets SET used = TRUE WHERE id = $1', [row.id])
   res.json({ message: '密码已重置，请使用新密码登录' })
 })
