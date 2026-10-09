@@ -32,6 +32,27 @@ body {
   flex-direction: column;
 }
 
+/* ===== 页面标题 / 底部提示（各视图共用） ===== */
+h1 {
+  text-align: center;
+  color: #fff;
+  font-size: 0.28rem;
+  margin: 0.28rem 0 0.18rem;
+  letter-spacing: 0.02rem;
+  text-shadow: 0 0.02rem 0.06rem rgba(0, 0, 0, 0.25);
+}
+
+.tip {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.13rem;
+  margin-top: 0.14rem;
+
+  .link {
+    color: #fff;
+  }
+}
+
 /* ===== 卡片 ===== */
 .card {
   background: #fff;
@@ -58,6 +79,115 @@ body {
   &:active {
     transform: scale(0.97);
   }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+/* ===== 次级按钮（确定 / 发送验证码等） ===== */
+.secondary-btn {
+  display: block;
+  margin: 0.14rem auto 0;
+  padding: 0.08rem 0.32rem;
+  font-size: 0.16rem;
+  font-weight: 600;
+  color: $primary;
+  background: $primary-light;
+  border: 0.02rem solid $primary;
+  border-radius: 9.99rem;
+  cursor: pointer;
+  transition: transform 0.1s ease;
+
+  &:active {
+    transform: scale(0.95);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+/* ===== 文字链接按钮 ===== */
+.link {
+  color: $primary;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.link-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  color: $primary;
+  font-size: inherit;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+/* ===== 表单 ===== */
+.form-item {
+  margin-bottom: 0.14rem;
+}
+
+.form-label {
+  display: block;
+  font-size: 0.14rem;
+  font-weight: 600;
+  color: $text-sub;
+  margin-bottom: 0.06rem;
+}
+
+.text-input {
+  width: 100%;
+  padding: 0.1rem 0.12rem;
+  font-size: 0.16rem; // ≥16px 等效，防 iOS 聚焦自动放大
+  color: $text-main;
+  border: 0.02rem solid #dcdcdc;
+  border-radius: 0.1rem;
+  outline: none;
+  background: #fff;
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+
+  &:focus {
+    border-color: $primary;
+    box-shadow: 0 0 0 0.03rem rgba(106, 141, 255, 0.25);
+  }
+
+  &.input-error {
+    border-color: $danger;
+  }
+
+  &.input-ok {
+    border-color: $success;
+  }
+}
+
+// 固定最小高度，防止错误提示出现/消失时布局跳动
+.field-msg {
+  min-height: 0.2rem;
+  font-size: 0.13rem;
+  margin-top: 0.04rem;
+  color: $danger;
+
+  &.ok {
+    color: $success;
+  }
+}
+
+// 服务端/全局错误横幅
+.form-error {
+  background: #fff2f0;
+  border: 0.01rem solid #ffccc7;
+  color: $danger;
+  font-size: 0.14rem;
+  border-radius: 0.08rem;
+  padding: 0.08rem 0.12rem;
+  margin-bottom: 0.12rem;
 }
 
 @media (min-width: 520px) {

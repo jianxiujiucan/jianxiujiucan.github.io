@@ -1,14 +1,18 @@
 <script setup lang="ts">
-import { computed, nextTick, onMounted, ref, watch } from 'vue'
+import { computed, nextTick, onActivated, onMounted, ref, watch } from 'vue'
 import { useRouter } from 'vue-router'
 import SoundToggle from '@/components/SoundToggle.vue'
 import { useSound } from '@/composables/useSound'
 import { useTimer } from '@/composables/useTimer'
+import { useAuthStore } from '@/stores/auth'
 import { useQuizStore } from '@/stores/quiz'
+import { saveSessionApi } from '@/api'
 import { exprText } from '@/utils/generator'
+import type { QuestionRecordDto } from '@/types/api'
 
 const router = useRouter()
 const store = useQuizStore()
+const auth = useAuthStore()
 const { display, start, stop } = useTimer()
 const { play } = useSound()
 
@@ -18,6 +22,13 @@ const answered = ref(false)
 const lastRight = ref(false)
 const finished = ref(false)
 const inputEl = ref<HTMLInputElement>()
+
+// 每题用时采集与成绩保存
+const records = ref<QuestionRecordDto[]>([])
+let questionStart = 0 // performance.now() 时间戳
+let quizStart = 0
+const durationMs = ref(0)
+const saveState = ref<'guest' | 'saving' | 'saved' | 'failed'>('guest')
 
 const total = computed(() => store.state.questions.length)
 const currentQ = computed(() => store.state.questions[store.state.current])
@@ -45,13 +56,45 @@ function focusInput() {
   nextTick(() => inputEl.value?.focus())
 }
 
+/* 组件被 KeepAlive 缓存：路由回来不会重建。
+ * 以 store.quizId 识别「新的一场」，只有新的一场才重置局部状态。 */
+const localQuizId = ref(0)
+
+function syncWithStore() {
+  if (localQuizId.value === store.state.quizId) return
+  localQuizId.value = store.state.quizId
+  records.value = []
+  answer.value = ''
+  answered.value = false
+  finished.value = false
+  saveState.value = 'guest'
+  start()
+  questionStart = performance.now()
+  quizStart = questionStart
+  focusInput()
+}
+
+onMounted(syncWithStore)
+onActivated(syncWithStore)
+
 // 切到下一题时重置作答状态并聚焦输入框
 watch(
   () => store.state.current,
   () => {
     answer.value = ''
     answered.value = false
+    questionStart = performance.now()
     focusInput()
+  }
+)
+
+// 答题中途去登录：回来后若成绩还没保存，自动补传
+watch(
+  () => auth.state.token,
+  (t) => {
+    if (t && finished.value && saveState.value === 'guest') {
+      void saveResult()
+    }
   }
 )
 
@@ -81,6 +124,17 @@ function checkAnswer() {
   const right = parseInt(answer.value, 10) === q.answer
   lastRight.value = right
 
+  // 采集本题用时与作答明细
+  const timeMs = Math.round(performance.now() - questionStart)
+  records.value.push({
+    seq: store.state.current + 1,
+    expr: exprText(q),
+    userAnswer: answer.value,
+    correctAnswer: q.answer,
+    isCorrect: right,
+    timeMs,
+  })
+
   if (right) {
     store.markCorrect()
     play('correct')
@@ -91,6 +145,26 @@ function checkAnswer() {
   if (isLast.value) {
     finished.value = true
     stop()
+    durationMs.value = Math.round(performance.now() - quizStart)
+    void saveResult() // 答完最后一题整体上传一次
+  }
+}
+
+async function saveResult() {
+  if (!auth.state.token || !store.state.config) {
+    saveState.value = 'guest'
+    return
+  }
+  saveState.value = 'saving'
+  try {
+    await saveSessionApi({
+      config: store.state.config,
+      durationMs: durationMs.value,
+      questions: records.value,
+    })
+    saveState.value = 'saved'
+  } catch {
+    saveState.value = 'failed' // 静默降级：仅结果区提示，可手动重试
   }
 }
 
@@ -102,11 +176,6 @@ function goHome() {
   store.reset()
   router.push('/')
 }
-
-onMounted(() => {
-  start()
-  focusInput()
-})
 </script>
 
 <template>
@@ -154,6 +223,20 @@ onMounted(() => {
     <div class="score-text">{{ score }} 分</div>
     <div class="cheer-text">{{ cheer }}</div>
     <div class="summary-text">{{ summary }}</div>
+    <div class="save-tip">
+      <template v-if="saveState === 'saved'">
+        成绩已保存 ✓ <router-link to="/profile" class="link">查看个人中心</router-link>
+      </template>
+      <template v-else-if="saveState === 'saving'">成绩保存中…</template>
+      <template v-else-if="saveState === 'failed'">
+        成绩保存失败 <button class="link-btn" @click="saveResult">重试</button>
+      </template>
+      <template v-else>
+        <router-link :to="{ name: 'login', query: { redirect: '/quiz' } }" class="link">
+          登录后可保存成绩
+        </router-link>
+      </template>
+    </div>
     <button class="primary-btn" @click="goHome">返回首页</button>
   </div>
 
@@ -257,24 +340,6 @@ onMounted(() => {
   color: $danger;
 }
 
-.secondary-btn {
-  display: block;
-  margin: 0.14rem auto 0;
-  padding: 0.08rem 0.32rem;
-  font-size: 0.16rem;
-  font-weight: 600;
-  color: $primary;
-  background: $primary-light;
-  border: 0.02rem solid $primary;
-  border-radius: 9.99rem;
-  cursor: pointer;
-  transition: transform 0.1s ease;
-
-  &:active {
-    transform: scale(0.95);
-  }
-}
-
 .next-btn {
   margin-top: 0.16rem;
 }
@@ -307,8 +372,15 @@ onMounted(() => {
 .summary-text {
   font-size: 0.15rem;
   color: $text-main;
-  margin-bottom: 0.18rem;
+  margin-bottom: 0.1rem;
   font-variant-numeric: tabular-nums;
+}
+
+.save-tip {
+  font-size: 0.13rem;
+  color: $text-muted;
+  margin-bottom: 0.14rem;
+  min-height: 0.18rem;
 }
 
 @media (min-width: 520px) {

@@ -3,13 +3,8 @@ import { computed, reactive } from 'vue'
 import { useRouter } from 'vue-router'
 import PillGroup, { type PillOption } from '@/components/PillGroup.vue'
 import { useQuizStore } from '@/stores/quiz'
-import type {
-  CountOption,
-  OperandCount,
-  OpType,
-  QuizConfig,
-  RangeLimit,
-} from '@/types/quiz'
+import { opTypeOptions } from '@/utils/options'
+import type { CountOption, OperandCount, OpType, QuizConfig, RangeLimit } from '@/types/quiz'
 
 const router = useRouter()
 const store = useQuizStore()
@@ -20,15 +15,6 @@ const countOptions: PillOption<CountOption>[] = [
   { label: '30题', value: 30 },
   { label: '50题', value: 50 },
   { label: '100题', value: 100 },
-]
-
-const opTypeOptions: PillOption<OpType>[] = [
-  { label: '仅加法', value: 'add' },
-  { label: '仅减法', value: 'sub' },
-  { label: '加减混合', value: 'addsub' },
-  { label: '仅乘法', value: 'mul' },
-  { label: '仅除法', value: 'div' },
-  { label: '乘除混合', value: 'muldiv' },
 ]
 
 const rangeOptions: PillOption<RangeLimit>[] = [
@@ -90,27 +76,11 @@ function start() {
 
     <button class="primary-btn" @click="start">开始答题</button>
   </div>
-  <p class="tip">适合小学一、二年级口算练习</p>
+  <p class="tip"><router-link to="/" class="link">‹ 返回首页</router-link></p>
 </template>
 
 <style scoped lang="scss">
 @use '../styles/variables' as *;
-
-h1 {
-  text-align: center;
-  color: #fff;
-  font-size: 0.28rem;
-  margin: 0.28rem 0 0.18rem;
-  letter-spacing: 0.02rem;
-  text-shadow: 0 0.02rem 0.06rem rgba(0, 0, 0, 0.25);
-}
-
-.tip {
-  text-align: center;
-  color: rgba(255, 255, 255, 0.85);
-  font-size: 0.13rem;
-  margin-top: 0.14rem;
-}
 
 .option-group {
   margin-bottom: 0.18rem;

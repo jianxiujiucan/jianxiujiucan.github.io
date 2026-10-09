@@ -2,3 +2,5 @@ node_modules
 *.map
 *.psd
 test
+.env
+.env.local

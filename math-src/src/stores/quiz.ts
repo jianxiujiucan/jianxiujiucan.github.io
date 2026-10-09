@@ -9,6 +9,11 @@ interface QuizState {
   current: number
   /** 已答对数 */
   correct: number
+  /**
+   * 每开始一场递增。QuizView 据此识别「新的一场」并重置组件局部状态
+   * （组件被 KeepAlive 缓存，路由回来不会自动重建）。
+   */
+  quizId: number
 }
 
 // 模块级单例：跨路由共享（设置页写入，答题页读取）。
@@ -18,6 +23,7 @@ const state = reactive<QuizState>({
   questions: [],
   current: 0,
   correct: 0,
+  quizId: 0,
 })
 
 export function useQuizStore() {
@@ -26,6 +32,7 @@ export function useQuizStore() {
     state.questions = generateQuestions(config)
     state.current = 0
     state.correct = 0
+    state.quizId++
   }
 
   function markCorrect() {
