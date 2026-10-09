@@ -1,11 +1,26 @@
 <script setup lang="ts">
-import { useRouter } from "vue-router";
+import { ref } from "vue";
+import { useRoute, useRouter } from "vue-router";
+import LoginForm from "@/components/LoginForm.vue";
+import RegisterForm from "@/components/RegisterForm.vue";
 import { useAuthStore } from "@/stores/auth";
 
+const route = useRoute();
 const router = useRouter();
 const auth = useAuthStore();
 
-// 入口页不主动调任何 API：线上无后端时零报错噪音，访客路径完全离线可用
+// 登录/注册 tab，默认登录；?tab=register 可直达注册表单
+const tab = ref<"login" | "register">(
+  route.query.tab === "register" ? "register" : "login",
+);
+
+function switchTab(t: "login" | "register") {
+  tab.value = t;
+  // 同步到 URL query（保留 redirect 等参数），刷新后保持当前 tab
+  router.replace({
+    query: { ...route.query, tab: t === "login" ? undefined : "register" },
+  });
+}
 </script>
 
 <template>
@@ -21,18 +36,31 @@ const auth = useAuthStore();
       </p>
     </template>
     <template v-else>
-      <button class="primary-btn" @click="router.push('/setup')">
-        访客模式：直接开始答题
-      </button>
-      <div class="divider"><span>注册用户</span></div>
-      <button class="secondary-btn" @click="router.push('/login')">
-        登 录
-      </button>
-      <button class="secondary-btn" @click="router.push('/register')">
-        注册新账号
-      </button>
+      <div class="auth-tabs">
+        <button
+          class="auth-tab"
+          :class="{ active: tab === 'login' }"
+          @click="switchTab('login')"
+        >
+          登录
+        </button>
+        <button
+          class="auth-tab"
+          :class="{ active: tab === 'register' }"
+          @click="switchTab('register')"
+        >
+          注册
+        </button>
+      </div>
+      <LoginForm v-if="tab === 'login'" @switch="switchTab('register')" />
+      <RegisterForm v-else @switch="switchTab('login')" />
     </template>
   </div>
+  <p v-if="!auth.state.user" class="guest-row">
+    <button class="link-btn guest-btn" @click="router.push('/setup')">
+      访客模式，随便玩玩 ›
+    </button>
+  </p>
   <p class="tip">适合小学一、二年级口算练习</p>
 </template>
 
@@ -50,26 +78,31 @@ const auth = useAuthStore();
   text-align: center;
   font-size: 0.17rem;
   font-weight: 600;
-  color: var(--text-main);
+  color: var(--m-text-main);
   margin-bottom: 0.16rem;
 }
 
-.divider {
+.auth-tabs {
   display: flex;
-  align-items: center;
-  margin: 0.18rem 0 0.02rem;
-  color: $text-muted;
-  font-size: 0.13rem;
+  border-bottom: 0.01rem solid #eee;
+  margin-bottom: 0.16rem;
+}
 
-  &::before,
-  &::after {
-    content: "";
-    flex: 1;
-    border-top: 0.01rem solid #e5e5e5;
-  }
+.auth-tab {
+  flex: 1;
+  background: none;
+  border: none;
+  padding: 0.02rem 0 0.1rem;
+  font-size: 0.16rem;
+  color: var(--m-text-muted);
+  cursor: pointer;
+  border-bottom: 0.02rem solid transparent;
+  margin-bottom: -0.01rem;
 
-  span {
-    padding: 0 0.1rem;
+  &.active {
+    color: var(--m-primary);
+    font-weight: 700;
+    border-bottom-color: var(--m-primary);
   }
 }
 
@@ -77,5 +110,16 @@ const auth = useAuthStore();
   text-align: center;
   margin-top: 0.16rem;
   font-size: 0.14rem;
+}
+
+// 访客入口：不显眼的小字链接
+.guest-row {
+  text-align: center;
+  margin-top: 0.14rem;
+}
+
+.guest-btn {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.13rem;
 }
 </style>

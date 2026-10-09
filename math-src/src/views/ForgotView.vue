@@ -94,7 +94,7 @@ async function submit() {
     <!-- 完成态 -->
     <template v-if="done">
       <p class="success-text">密码已重置 ✓</p>
-      <button class="primary-btn" @click="router.push('/login')">去登录</button>
+      <button class="primary-btn" @click="router.push('/')">去登录</button>
     </template>
 
     <!-- 第一步：输邮箱发验证码 -->
@@ -169,7 +169,7 @@ async function submit() {
       </button>
     </form>
   </div>
-  <p class="tip"><router-link to="/login" class="link">‹ 返回登录</router-link></p>
+  <p class="tip"><router-link to="/" class="link">‹ 返回登录</router-link></p>
 </template>
 
 <style scoped lang="scss">

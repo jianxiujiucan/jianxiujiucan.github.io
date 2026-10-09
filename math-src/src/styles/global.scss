@@ -54,6 +54,11 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+
+  // 未登录（Tab 栏隐藏）时恢复正常底部间距
+  &.no-tabs {
+    padding-bottom: 0.16rem;
+  }
 }
 
 /* ===== 页面标题 / 底部提示（各视图共用） ===== */

@@ -242,7 +242,7 @@ function goHome() {
       </template>
       <template v-else>
         <router-link
-          :to="{ name: 'login', query: { redirect: '/quiz' } }"
+          :to="{ name: 'entry', query: { redirect: '/quiz' } }"
           class="link"
         >
           登录后可保存成绩
