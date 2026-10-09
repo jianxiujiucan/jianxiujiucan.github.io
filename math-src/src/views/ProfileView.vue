@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, onMounted, ref } from "vue";
 import { useRouter } from "vue-router";
+import { useAuthStore } from "@/stores/auth";
 import { fetchProfileApi, fetchSessionsApi } from "@/api";
 import { ApiError } from "@/api/http";
 import type { PerTypeStat, ProfileResponse, SessionSummary } from "@/types/api";
@@ -14,6 +15,7 @@ import {
 } from "@/utils/format";
 
 const router = useRouter();
+const auth = useAuthStore();
 
 const profile = ref<ProfileResponse | null>(null);
 const sessions = ref<SessionSummary[]>([]);
@@ -78,6 +80,11 @@ function configText(s: SessionSummary): string {
   return `${opTypeLabel(s.opType)} · ${s.range}以内 · ${s.count}题`;
 }
 
+function logout() {
+  auth.logout();
+  router.push("/");
+}
+
 onMounted(load);
 </script>
 
@@ -90,6 +97,7 @@ onMounted(load);
   <template v-else-if="profile">
     <!-- 用户信息卡 -->
     <div class="card user-card">
+      <button class="link-btn logout-btn" @click="logout">退出登录</button>
       <div class="username">{{ profile.user.username }}</div>
       <div class="user-meta">{{ profile.user.email }}</div>
       <div class="user-meta">
@@ -201,7 +209,16 @@ onMounted(load);
 }
 
 .user-card {
+  position: relative;
   text-align: center;
+}
+
+.logout-btn {
+  position: absolute;
+  top: 0.14rem;
+  right: 0.16rem;
+  font-size: 0.13rem;
+  color: $text-muted;
 }
 
 .username {
