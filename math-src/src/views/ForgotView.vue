@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, onUnmounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
+import PasswordInput from '@/components/PasswordInput.vue'
 import { forgotApi, resetApi } from '@/api'
 import { ApiError } from '@/api/http'
 import { emailError, passwordError } from '@/utils/validate'
@@ -140,27 +141,23 @@ async function submit() {
       </div>
       <div class="form-item">
         <label class="form-label" for="forgot-password">新密码</label>
-        <input
+        <PasswordInput
           id="forgot-password"
           v-model="newPassword"
-          class="text-input"
-          :class="{ 'input-error': newPassword && newPasswordErr }"
-          type="password"
           autocomplete="new-password"
           placeholder="8 位以上，字母+数字组合"
+          :state="newPassword && newPasswordErr ? 'error' : ''"
         />
         <div class="field-msg">{{ newPassword ? newPasswordErr : '' }}</div>
       </div>
       <div class="form-item">
         <label class="form-label" for="forgot-confirm">确认新密码</label>
-        <input
+        <PasswordInput
           id="forgot-confirm"
           v-model="confirm"
-          class="text-input"
-          :class="{ 'input-error': confirm && confirmErr }"
-          type="password"
           autocomplete="new-password"
           placeholder="再输入一次新密码"
+          :state="confirm && confirmErr ? 'error' : ''"
         />
         <div class="field-msg">{{ confirm ? confirmErr : '' }}</div>
       </div>

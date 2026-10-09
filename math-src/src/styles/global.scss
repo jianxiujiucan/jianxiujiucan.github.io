@@ -1,4 +1,4 @@
-@use './variables' as *;
+@use "./variables" as *;
 
 /* ===== 根单位：以 vw 定义，配合 rem 自适应缩放 =====
  * 设计稿宽度 375px，1rem = 100px（375/3.75）；
@@ -17,7 +17,7 @@ html {
 }
 
 body {
-  font-family: 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
   background: $bg-gradient;
   min-height: 100vh;
   color: $text-main;
@@ -129,6 +129,8 @@ h1 {
 
 /* ===== 表单 ===== */
 .form-item {
+  display: flex;
+  flex-direction: column;
   margin-bottom: 0.14rem;
 }
 
@@ -149,9 +151,7 @@ h1 {
   border-radius: 0.1rem;
   outline: none;
   background: #fff;
-  transition:
-    border-color 0.15s ease,
-    box-shadow 0.15s ease;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
 
   &:focus {
     border-color: $primary;

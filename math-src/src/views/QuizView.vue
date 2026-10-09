@@ -1,131 +1,133 @@
 <script setup lang="ts">
-import { computed, nextTick, onActivated, onMounted, ref, watch } from 'vue'
-import { useRouter } from 'vue-router'
-import SoundToggle from '@/components/SoundToggle.vue'
-import { useSound } from '@/composables/useSound'
-import { useTimer } from '@/composables/useTimer'
-import { useAuthStore } from '@/stores/auth'
-import { useQuizStore } from '@/stores/quiz'
-import { saveSessionApi } from '@/api'
-import { exprText } from '@/utils/generator'
-import type { QuestionRecordDto } from '@/types/api'
+import { computed, nextTick, onActivated, onMounted, ref, watch } from "vue";
+import { useRouter } from "vue-router";
+import SoundToggle from "@/components/SoundToggle.vue";
+import { useSound } from "@/composables/useSound";
+import { useTimer } from "@/composables/useTimer";
+import { useAuthStore } from "@/stores/auth";
+import { useQuizStore } from "@/stores/quiz";
+import { saveSessionApi } from "@/api";
+import { exprText } from "@/utils/generator";
+import type { QuestionRecordDto } from "@/types/api";
 
-const router = useRouter()
-const store = useQuizStore()
-const auth = useAuthStore()
-const { display, start, stop } = useTimer()
-const { play } = useSound()
+const router = useRouter();
+const store = useQuizStore();
+const auth = useAuthStore();
+const { display, start, stop } = useTimer();
+const { play } = useSound();
 
 // 局部 UI 状态（不进 store）
-const answer = ref('')
-const answered = ref(false)
-const lastRight = ref(false)
-const finished = ref(false)
-const inputEl = ref<HTMLInputElement>()
+const answer = ref("");
+const answered = ref(false);
+const lastRight = ref(false);
+const finished = ref(false);
+const inputEl = ref<HTMLInputElement>();
 
 // 每题用时采集与成绩保存
-const records = ref<QuestionRecordDto[]>([])
-let questionStart = 0 // performance.now() 时间戳
-let quizStart = 0
-const durationMs = ref(0)
-const saveState = ref<'guest' | 'saving' | 'saved' | 'failed'>('guest')
+const records = ref<QuestionRecordDto[]>([]);
+let questionStart = 0; // performance.now() 时间戳
+let quizStart = 0;
+const durationMs = ref(0);
+const saveState = ref<"guest" | "saving" | "saved" | "failed">("guest");
 
-const total = computed(() => store.state.questions.length)
-const currentQ = computed(() => store.state.questions[store.state.current])
-const progress = computed(() => `${store.state.current + 1}/${total.value}`)
-const expr = computed(() => `${exprText(currentQ.value)} =`)
-const answerLen = computed(() => String(currentQ.value.answer).length)
-const isLast = computed(() => store.state.current === total.value - 1)
+const total = computed(() => store.state.questions.length);
+const currentQ = computed(() => store.state.questions[store.state.current]);
+const progress = computed(() => `${store.state.current + 1}/${total.value}`);
+const expr = computed(() => `${exprText(currentQ.value)} =`);
+const answerLen = computed(() => String(currentQ.value.answer).length);
+const isLast = computed(() => store.state.current === total.value - 1);
 
 // 满分 100，按正确比例扣分，四舍五入取整
-const score = computed(() => Math.round((store.state.correct / total.value) * 100))
+const score = computed(() =>
+  Math.round((store.state.correct / total.value) * 100)
+);
 const cheer = computed(() =>
   score.value === 100
-    ? '太棒了，满分！🎉'
+    ? "太棒了，满分！🎉"
     : score.value >= 80
-      ? '很棒，继续加油！'
-      : score.value >= 60
-        ? '不错，再练练会更好！'
-        : '别灰心，多多练习！'
-)
+    ? "很棒，继续加油！"
+    : score.value >= 60
+    ? "不错，再练练会更好！"
+    : "别灰心，多多练习！"
+);
 const summary = computed(
   () => `答对 ${store.state.correct}/${total.value} 题 · 用时 ${display.value}`
-)
+);
 
 function focusInput() {
-  nextTick(() => inputEl.value?.focus())
+  nextTick(() => inputEl.value?.focus());
 }
 
 /* 组件被 KeepAlive 缓存：路由回来不会重建。
  * 以 store.quizId 识别「新的一场」，只有新的一场才重置局部状态。 */
-const localQuizId = ref(0)
+const localQuizId = ref(0);
 
 function syncWithStore() {
-  if (localQuizId.value === store.state.quizId) return
-  localQuizId.value = store.state.quizId
-  records.value = []
-  answer.value = ''
-  answered.value = false
-  finished.value = false
-  saveState.value = 'guest'
-  start()
-  questionStart = performance.now()
-  quizStart = questionStart
-  focusInput()
+  if (localQuizId.value === store.state.quizId) return;
+  localQuizId.value = store.state.quizId;
+  records.value = [];
+  answer.value = "";
+  answered.value = false;
+  finished.value = false;
+  saveState.value = "guest";
+  start();
+  questionStart = performance.now();
+  quizStart = questionStart;
+  focusInput();
 }
 
-onMounted(syncWithStore)
-onActivated(syncWithStore)
+onMounted(syncWithStore);
+onActivated(syncWithStore);
 
 // 切到下一题时重置作答状态并聚焦输入框
 watch(
   () => store.state.current,
   () => {
-    answer.value = ''
-    answered.value = false
-    questionStart = performance.now()
-    focusInput()
+    answer.value = "";
+    answered.value = false;
+    questionStart = performance.now();
+    focusInput();
   }
-)
+);
 
 // 答题中途去登录：回来后若成绩还没保存，自动补传
 watch(
   () => auth.state.token,
   (t) => {
-    if (t && finished.value && saveState.value === 'guest') {
-      void saveResult()
+    if (t && finished.value && saveState.value === "guest") {
+      void saveResult();
     }
   }
-)
+);
 
 // 输入即过滤非数字字符；输入位数达到答案位数时自动判题
 function onInput(e: Event) {
-  const input = e.target as HTMLInputElement
-  const v = input.value.replace(/\D/g, '').slice(0, 3)
-  input.value = v
-  answer.value = v
-  if (answered.value) return
+  const input = e.target as HTMLInputElement;
+  const v = input.value.replace(/\D/g, "").slice(0, 3);
+  input.value = v;
+  answer.value = v;
+  if (answered.value) return;
   if (v.length > 0 && v.length >= answerLen.value) {
-    checkAnswer()
+    checkAnswer();
   }
 }
 
 function tryCheck() {
-  if (answered.value) return
-  if (answer.value === '') return
-  checkAnswer()
+  if (answered.value) return;
+  if (answer.value === "") return;
+  checkAnswer();
 }
 
 function checkAnswer() {
-  if (answered.value) return
-  answered.value = true
+  if (answered.value) return;
+  answered.value = true;
 
-  const q = currentQ.value
-  const right = parseInt(answer.value, 10) === q.answer
-  lastRight.value = right
+  const q = currentQ.value;
+  const right = parseInt(answer.value, 10) === q.answer;
+  lastRight.value = right;
 
   // 采集本题用时与作答明细
-  const timeMs = Math.round(performance.now() - questionStart)
+  const timeMs = Math.round(performance.now() - questionStart);
   records.value.push({
     seq: store.state.current + 1,
     expr: exprText(q),
@@ -133,48 +135,48 @@ function checkAnswer() {
     correctAnswer: q.answer,
     isCorrect: right,
     timeMs,
-  })
+  });
 
   if (right) {
-    store.markCorrect()
-    play('correct')
+    store.markCorrect();
+    play("correct");
   } else {
-    play('error')
+    play("error");
   }
 
   if (isLast.value) {
-    finished.value = true
-    stop()
-    durationMs.value = Math.round(performance.now() - quizStart)
-    void saveResult() // 答完最后一题整体上传一次
+    finished.value = true;
+    stop();
+    durationMs.value = Math.round(performance.now() - quizStart);
+    void saveResult(); // 答完最后一题整体上传一次
   }
 }
 
 async function saveResult() {
   if (!auth.state.token || !store.state.config) {
-    saveState.value = 'guest'
-    return
+    saveState.value = "guest";
+    return;
   }
-  saveState.value = 'saving'
+  saveState.value = "saving";
   try {
     await saveSessionApi({
       config: store.state.config,
       durationMs: durationMs.value,
       questions: records.value,
-    })
-    saveState.value = 'saved'
+    });
+    saveState.value = "saved";
   } catch {
-    saveState.value = 'failed' // 静默降级：仅结果区提示，可手动重试
+    saveState.value = "failed"; // 静默降级：仅结果区提示，可手动重试
   }
 }
 
 function nextQuestion() {
-  store.nextQuestion()
+  store.nextQuestion();
 }
 
 function goHome() {
-  store.reset()
-  router.push('/')
+  store.reset();
+  router.push("/");
 }
 </script>
 
@@ -205,16 +207,22 @@ function goHome() {
       <span
         class="result-icon"
         :class="{ right: answered && lastRight, wrong: answered && !lastRight }"
-        >{{ answered ? (lastRight ? '✓' : '✗') : '' }}</span
+        >{{ answered ? (lastRight ? "✓" : "✗") : "" }}</span
       >
     </div>
     <div v-show="answered && !lastRight" class="feedback">
       正确答案：{{ expr }} {{ currentQ.answer }}
     </div>
-    <button v-show="!answered" class="secondary-btn" @click="tryCheck">确定</button>
+    <button v-show="!answered" class="secondary-btn" @click="tryCheck">
+      确定
+    </button>
   </div>
 
-  <button v-if="answered && !isLast" class="primary-btn next-btn" @click="nextQuestion">
+  <button
+    v-if="answered && !isLast"
+    class="primary-btn next-btn"
+    @click="nextQuestion"
+  >
     下一题
   </button>
 
@@ -225,14 +233,18 @@ function goHome() {
     <div class="summary-text">{{ summary }}</div>
     <div class="save-tip">
       <template v-if="saveState === 'saved'">
-        成绩已保存 ✓ <router-link to="/profile" class="link">查看个人中心</router-link>
+        成绩已保存 ✓
+        <router-link to="/profile" class="link">查看个人中心</router-link>
       </template>
       <template v-else-if="saveState === 'saving'">成绩保存中…</template>
       <template v-else-if="saveState === 'failed'">
         成绩保存失败 <button class="link-btn" @click="saveResult">重试</button>
       </template>
       <template v-else>
-        <router-link :to="{ name: 'login', query: { redirect: '/quiz' } }" class="link">
+        <router-link
+          :to="{ name: 'login', query: { redirect: '/quiz' } }"
+          class="link"
+        >
           登录后可保存成绩
         </router-link>
       </template>
@@ -244,7 +256,7 @@ function goHome() {
 </template>
 
 <style scoped lang="scss">
-@use '../styles/variables' as *;
+@use "../styles/variables" as *;
 
 .quiz-header {
   display: flex;
@@ -314,6 +326,10 @@ function goHome() {
   }
 }
 
+.secondary-btn {
+  display: none;
+}
+
 .result-icon {
   width: 0.4rem;
   font-size: 0.26rem;
@@ -381,6 +397,9 @@ function goHome() {
   color: $text-muted;
   margin-bottom: 0.14rem;
   min-height: 0.18rem;
+  span {
+    color: green;
+  }
 }
 
 @media (min-width: 520px) {

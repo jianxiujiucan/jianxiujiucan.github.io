@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
+import PasswordInput from '@/components/PasswordInput.vue'
 import { useAuthStore } from '@/stores/auth'
 import { ApiError } from '@/api/http'
 
@@ -62,11 +63,9 @@ async function submit() {
 
       <div class="form-item">
         <label class="form-label" for="login-password">密码</label>
-        <input
+        <PasswordInput
           id="login-password"
           v-model="password"
-          class="text-input"
-          type="password"
           autocomplete="current-password"
           placeholder="请输入密码"
         />

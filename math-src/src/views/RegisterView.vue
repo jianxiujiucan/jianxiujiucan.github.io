@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, reactive, ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
+import PasswordInput from '@/components/PasswordInput.vue'
 import { useAuthStore } from '@/stores/auth'
 import { ApiError } from '@/api/http'
 import { emailError, passwordError, usernameError } from '@/utils/validate'
@@ -16,10 +17,10 @@ const serverErrors = reactive({ username: '', email: '' })
 const errorMsg = ref('')
 const loading = ref(false)
 
-const usernameRef = ref<HTMLInputElement>()
-const emailRef = ref<HTMLInputElement>()
-const passwordRef = ref<HTMLInputElement>()
-const confirmRef = ref<HTMLInputElement>()
+const usernameRef = ref<{ focus: () => void }>()
+const emailRef = ref<{ focus: () => void }>()
+const passwordRef = ref<{ focus: () => void }>()
+const confirmRef = ref<{ focus: () => void }>()
 
 const errors = computed(() => ({
   username: usernameError(form.username),
@@ -153,15 +154,13 @@ async function submit() {
 
       <div class="form-item">
         <label class="form-label" for="reg-password">密码</label>
-        <input
+        <PasswordInput
           id="reg-password"
           ref="passwordRef"
           v-model="form.password"
-          class="text-input"
-          :class="{ 'input-error': showError('password'), 'input-ok': isOk('password') }"
-          type="password"
           autocomplete="new-password"
           placeholder="8 位以上，字母+数字组合"
+          :state="showError('password') ? 'error' : isOk('password') ? 'ok' : ''"
           @blur="onBlur('password')"
         />
         <div class="field-msg" :class="{ ok: isOk('password') }">
@@ -171,15 +170,13 @@ async function submit() {
 
       <div class="form-item">
         <label class="form-label" for="reg-confirm">确认密码</label>
-        <input
+        <PasswordInput
           id="reg-confirm"
           ref="confirmRef"
           v-model="form.confirm"
-          class="text-input"
-          :class="{ 'input-error': showError('confirm'), 'input-ok': isOk('confirm') }"
-          type="password"
           autocomplete="new-password"
           placeholder="再输入一次密码"
+          :state="showError('confirm') ? 'error' : isOk('confirm') ? 'ok' : ''"
           @blur="onBlur('confirm')"
         />
         <div class="field-msg" :class="{ ok: isOk('confirm') }">
