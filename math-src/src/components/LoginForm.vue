@@ -39,7 +39,9 @@ async function submit() {
     await auth.login(username.value, password.value);
     // 默认进入答题设置页；带 redirect（如中途去登录）则回跳
     const redirect =
-      typeof route.query.redirect === "string" ? route.query.redirect : "/setup";
+      typeof route.query.redirect === "string"
+        ? route.query.redirect
+        : "/setup";
     router.push(redirect);
   } catch (e) {
     errorMsg.value = e instanceof ApiError ? e.message : "登录失败，请稍后再试";
@@ -50,7 +52,7 @@ async function submit() {
 </script>
 
 <template>
-  <form @submit.prevent="submit">
+  <form @submit.prevent="submit" class="login-form">
     <div v-if="errorMsg" class="form-error">{{ errorMsg }}</div>
 
     <div class="form-item">
@@ -62,7 +64,7 @@ async function submit() {
         :value="username"
         maxlength="20"
         autocomplete="username"
-        placeholder="大写字母或数字"
+        placeholder="请输入用户名"
         @input="onUsernameInput"
       />
     </div>
@@ -96,5 +98,15 @@ async function submit() {
   justify-content: space-between;
   margin-top: 0.16rem;
   font-size: 0.14rem;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.14rem;
+}
+
+.primary-btn {
+  margin: 0.3rem 0 0;
 }
 </style>

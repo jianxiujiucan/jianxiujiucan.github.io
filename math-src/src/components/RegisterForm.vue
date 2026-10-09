@@ -37,8 +37,8 @@ const errors = computed(() => ({
   confirm: !form.confirm
     ? "请再次输入密码"
     : form.confirm === form.password
-      ? ""
-      : "两次输入的密码不一致",
+    ? ""
+    : "两次输入的密码不一致",
 }));
 
 type Field = "username" | "email" | "password" | "confirm";
@@ -85,9 +85,9 @@ const fieldRefs: Record<Field, typeof usernameRef> = {
 async function submit() {
   errorMsg.value = "";
   touched.username = touched.email = touched.password = touched.confirm = true;
-  const firstBad = (["username", "email", "password", "confirm"] as Field[]).find(
-    (f) => errors.value[f],
-  );
+  const firstBad = (
+    ["username", "email", "password", "confirm"] as Field[]
+  ).find((f) => errors.value[f]);
   if (firstBad) {
     fieldRefs[firstBad].value?.focus();
     return;
@@ -97,11 +97,13 @@ async function submit() {
     await auth.register(
       form.username,
       form.password,
-      form.email.trim().toLowerCase(),
+      form.email.trim().toLowerCase()
     );
     // 注册即登录，默认进入答题设置页；带 redirect 则回跳
     const redirect =
-      typeof route.query.redirect === "string" ? route.query.redirect : "/setup";
+      typeof route.query.redirect === "string"
+        ? route.query.redirect
+        : "/setup";
     router.push(redirect);
   } catch (e) {
     if (e instanceof ApiError) {
@@ -126,7 +128,7 @@ async function submit() {
 </script>
 
 <template>
-  <form @submit.prevent="submit">
+  <form class="register-form" @submit.prevent="submit">
     <div v-if="errorMsg" class="form-error">{{ errorMsg }}</div>
 
     <div class="form-item">
@@ -148,7 +150,7 @@ async function submit() {
         @blur="onBlur('username')"
       />
       <div class="field-msg" :class="{ ok: isOk('username') }">
-        {{ showError("username") || (isOk("username") ? "✓" : "") }}
+        {{ showError("username") || (isOk("username") ? "" : "") }}
       </div>
     </div>
 
@@ -159,7 +161,10 @@ async function submit() {
         ref="emailRef"
         v-model="form.email"
         class="text-input"
-        :class="{ 'input-error': showError('email'), 'input-ok': isOk('email') }"
+        :class="{
+          'input-error': showError('email'),
+          'input-ok': isOk('email'),
+        }"
         type="email"
         autocomplete="email"
         placeholder="example@qq.com"
@@ -167,7 +172,7 @@ async function submit() {
         @blur="onBlur('email')"
       />
       <div class="field-msg" :class="{ ok: isOk('email') }">
-        {{ showError("email") || (isOk("email") ? "✓" : "") }}
+        {{ showError("email") || (isOk("email") ? "" : "") }}
       </div>
     </div>
 
@@ -183,7 +188,7 @@ async function submit() {
         @blur="onBlur('password')"
       />
       <div class="field-msg" :class="{ ok: isOk('password') }">
-        {{ showError("password") || (isOk("password") ? "✓" : "") }}
+        {{ showError("password") || (isOk("password") ? "" : "") }}
       </div>
     </div>
 
@@ -199,7 +204,7 @@ async function submit() {
         @blur="onBlur('confirm')"
       />
       <div class="field-msg" :class="{ ok: isOk('confirm') }">
-        {{ showError("confirm") || (isOk("confirm") ? "✓" : "") }}
+        {{ showError("confirm") || (isOk("confirm") ? "" : "") }}
       </div>
     </div>
 
@@ -216,9 +221,20 @@ async function submit() {
 </template>
 
 <style scoped lang="scss">
+.register-form {
+  display: flex;
+  flex-direction: column;
+}
 .bottom-links {
   text-align: center;
   margin-top: 0.16rem;
   font-size: 0.14rem;
+}
+.form-item {
+  margin: 0 0 0.03rem;
+}
+
+.primary-btn {
+  margin: 0.2rem 0 0;
 }
 </style>

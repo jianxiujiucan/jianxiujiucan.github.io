@@ -6,6 +6,7 @@
  */
 html {
   font-size: 26.6667vw; // 100 / 375 * 100vw
+  line-height: 1.5;
 }
 
 /* ===== 基础 ===== */
@@ -25,12 +26,17 @@ html {
 
   --m-text-main: #333;
   --m-text-sub: #555;
-  --m-text-muted: #999;
+  --m-text-muted: #b4b6d0;
 
   --m-danger: #e74c3c;
   --m-success: #2ecc71;
 
-  --m-bg-gradient: linear-gradient(180deg, #cdbcff 0%, #a69ef4 30%, #fff 50%);
+  --m-bg-gradient: linear-gradient(
+    160deg,
+    #acb8ff 0%,
+    #d2b4ff 50%,
+    #836cd5 100%
+  );
   --m-card-shadow: 0 0.08rem 0.24rem rgba(0, 0, 0, 0.18);
   --m-accent-shadow: 0 0.04rem 0.12rem rgba(255, 107, 107, 0.4);
   --m-button-gd: linear-gradient(
@@ -54,11 +60,6 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-
-  // 未登录（Tab 栏隐藏）时恢复正常底部间距
-  &.no-tabs {
-    padding-bottom: 0.16rem;
-  }
 }
 
 /* ===== 页面标题 / 底部提示（各视图共用） ===== */
@@ -66,7 +67,7 @@ h1 {
   text-align: center;
   color: #fff;
   font-size: 0.28rem;
-  margin: 0.28rem 0 0.18rem;
+  margin: 0.1rem 0 0.18rem;
   letter-spacing: 0.02rem;
   text-shadow: 0 0.02rem 0.06rem rgba(0, 0, 0, 0.25);
 }
@@ -84,7 +85,9 @@ h1 {
 
 /* ===== 卡片 ===== */
 .card {
-  background: #fff;
+  display: flex;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.9);
   border-radius: 0.16rem;
   padding: 0.22rem 0.18rem;
   box-shadow: var(--m-card-shadow);
@@ -100,7 +103,7 @@ h1 {
   color: #fff;
   background: var(--m-button-gd);
   border: none;
-  border-radius: 0.12rem;
+  border-radius: 0.44rem;
   cursor: pointer;
   box-shadow: $accent-shadow;
   transition: transform 0.1s ease;
@@ -160,14 +163,16 @@ h1 {
 .form-item {
   display: flex;
   flex-direction: column;
-  margin-bottom: 0.14rem;
+  margin-bottom: 0.1rem;
 }
 
 .form-label {
-  display: block;
+  display: flex;
+  align-items: center;
   font-size: 0.14rem;
   font-weight: 600;
-  color: $text-sub;
+  text-indent: 0.12rem;
+  color: var(--m-text-sub);
   margin-bottom: 10px;
 }
 
@@ -176,10 +181,12 @@ h1 {
   padding: 0.1rem 0.12rem;
   font-size: 0.16rem; // ≥16px 等效，防 iOS 聚焦自动放大
   color: var(--m-text-main);
-  border: 0.02rem solid #dcdcdc;
-  border-radius: 0.1rem;
+  border: 0;
+
+  border-radius: 0.4rem;
   outline: none;
-  background: #fff;
+
+  background-color: rgba(133, 154, 222, 0.1);
   transition: border-color 0.15s ease, box-shadow 0.15s ease;
 
   &:focus {
@@ -194,12 +201,18 @@ h1 {
   &.input-ok {
     border-color: var(--m-success);
   }
+  &::placeholder {
+    color: var(--m-text-muted);
+  }
 }
 
 // 固定最小高度，防止错误提示出现/消失时布局跳动
 .field-msg {
+  display: flex;
+  align-items: center;
   min-height: 0.2rem;
   font-size: 0.13rem;
+  text-indent: 0.12rem;
   margin-top: 0.04rem;
   color: var(--m-danger);
 

@@ -1,33 +1,33 @@
 <script setup lang="ts">
-import { ref, watch } from 'vue'
-import PillGroup from '@/components/PillGroup.vue'
-import { fetchLeaderboardApi } from '@/api'
-import { ApiError } from '@/api/http'
-import type { LeaderboardItem } from '@/types/api'
-import type { OpType } from '@/types/quiz'
-import { opTypeOptions } from '@/utils/options'
-import { formatDate, formatMsPerQ } from '@/utils/format'
+import { ref, watch } from "vue";
+import PillGroup from "@/components/PillGroup.vue";
+import { fetchLeaderboardApi } from "@/api";
+import { ApiError } from "@/api/http";
+import type { LeaderboardItem } from "@/types/api";
+import type { OpType } from "@/types/quiz";
+import { opTypeOptions } from "@/utils/options";
+import { formatDate, formatMsPerQ } from "@/utils/format";
 
-const opType = ref<OpType>('add')
-const list = ref<LeaderboardItem[]>([])
-const loading = ref(false)
-const errorMsg = ref('')
+const opType = ref<OpType>("add");
+const list = ref<LeaderboardItem[]>([]);
+const loading = ref(false);
+const errorMsg = ref("");
 
 async function load() {
-  loading.value = true
-  errorMsg.value = ''
+  loading.value = true;
+  errorMsg.value = "";
   try {
-    const r = await fetchLeaderboardApi(opType.value)
-    list.value = r.list
+    const r = await fetchLeaderboardApi(opType.value);
+    list.value = r.list;
   } catch (e) {
-    list.value = []
-    errorMsg.value = e instanceof ApiError ? e.message : '加载失败，请稍后再试'
+    list.value = [];
+    errorMsg.value = e instanceof ApiError ? e.message : "加载失败，请稍后再试";
   } finally {
-    loading.value = false
+    loading.value = false;
   }
 }
 
-watch(opType, load, { immediate: true })
+watch(opType, load, { immediate: true });
 </script>
 
 <template>
@@ -45,15 +45,17 @@ watch(opType, load, { immediate: true })
         <span class="rank-badge" :class="'r' + item.rank">{{ item.rank }}</span>
         <span class="rank-name">{{ item.username }}</span>
         <span class="rank-time">{{ formatMsPerQ(item.avgMs) }}</span>
-        <span class="rank-meta">{{ item.total }}题 · {{ formatDate(item.createdAt) }}</span>
+        <span class="rank-meta"
+          >{{ item.total }}题 · {{ formatDate(item.createdAt) }}</span
+        >
       </div>
     </div>
   </div>
-  <p class="tip"><router-link to="/" class="link">‹ 返回首页</router-link></p>
+  <!-- <p class="tip"><router-link to="/" class="link">‹ 返回首页</router-link></p> -->
 </template>
 
 <style scoped lang="scss">
-@use '../styles/variables' as *;
+@use "../styles/variables" as *;
 
 .rule {
   font-size: 0.12rem;

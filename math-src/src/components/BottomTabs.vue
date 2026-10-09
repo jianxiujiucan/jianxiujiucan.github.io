@@ -21,11 +21,7 @@ const active = computed(() => {
 
 <template>
   <nav class="bottom-tabs">
-    <router-link
-      to="/setup"
-      class="tab"
-      :class="{ active: active === 'home' }"
-    >
+    <router-link to="/setup" class="tab" :class="{ active: active === 'home' }">
       <span class="tab-icon">
         <svg
           t="1791515183181"
@@ -118,8 +114,8 @@ const active = computed(() => {
   align-items: center;
   gap: 0.02rem;
   padding: 0.07rem 0 0.06rem;
-  background-color: #fff;
-  color: #333;
+  background-color: rgba(255, 255, 255, 0.95);
+  color: var(--m-text-muted);
   text-decoration: none;
 
   &.active {
@@ -141,7 +137,7 @@ const active = computed(() => {
 
 @media (min-width: 520px) {
   .bottom-tabs {
-    max-width: 5rem; // 与 .page 桌面宽度一致
+    max-width: 100%; // 与 .page 桌面宽度一致
   }
 }
 </style>

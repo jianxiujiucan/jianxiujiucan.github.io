@@ -11,7 +11,7 @@ const auth = useAuthStore();
 
 // 登录/注册 tab，默认登录；?tab=register 可直达注册表单
 const tab = ref<"login" | "register">(
-  route.query.tab === "register" ? "register" : "login",
+  route.query.tab === "register" ? "register" : "login"
 );
 
 function switchTab(t: "login" | "register") {
@@ -37,37 +37,39 @@ function switchTab(t: "login" | "register") {
     </template>
     <template v-else>
       <div class="auth-tabs">
-        <button
+        <span
           class="auth-tab"
           :class="{ active: tab === 'login' }"
           @click="switchTab('login')"
         >
-          登录
-        </button>
-        <button
+          登 录
+        </span>
+        <span
           class="auth-tab"
           :class="{ active: tab === 'register' }"
           @click="switchTab('register')"
         >
-          注册
-        </button>
+          注 册
+        </span>
       </div>
       <LoginForm v-if="tab === 'login'" @switch="switchTab('register')" />
       <RegisterForm v-else @switch="switchTab('login')" />
     </template>
   </div>
-  <p v-if="!auth.state.user" class="guest-row">
-    <button class="link-btn guest-btn" @click="router.push('/setup')">
+  <div v-if="!auth.state.user" class="guest-row">
+    <span class="link-btn guest-btn" @click="router.push('/setup')">
       访客模式，随便玩玩 ›
-    </button>
-  </p>
-  <p class="tip">适合小学一、二年级口算练习</p>
+    </span>
+  </div>
+  <!-- <p class="tip">适合小学一、二年级口算练习</p> -->
 </template>
 
 <style scoped lang="scss">
 @use "../styles/variables" as *;
 
 .login {
+  display: flex;
+  flex-direction: column;
   background: var(--m-bg);
   border-radius: 0.16rem;
   padding: 0.22rem 0.18rem;
@@ -84,11 +86,12 @@ function switchTab(t: "login" | "register") {
 
 .auth-tabs {
   display: flex;
-  border-bottom: 0.01rem solid #eee;
+
   margin-bottom: 0.16rem;
 }
 
 .auth-tab {
+  position: relative;
   flex: 1;
   background: none;
   border: none;
@@ -96,13 +99,27 @@ function switchTab(t: "login" | "register") {
   font-size: 0.16rem;
   color: var(--m-text-muted);
   cursor: pointer;
-  border-bottom: 0.02rem solid transparent;
+
   margin-bottom: -0.01rem;
+  text-align: center;
 
   &.active {
     color: var(--m-primary);
     font-weight: 700;
-    border-bottom-color: var(--m-primary);
+
+    &:after {
+      position: absolute;
+      width: 15%;
+      left: 50%;
+      transform: translateX(-50%);
+      height: 0.05rem;
+      content: "";
+      display: block;
+      height: 0.02rem;
+      background-color: var(--m-primary);
+      margin-top: 0.06rem;
+      border-radius: 0.03rem;
+    }
   }
 }
 
@@ -114,6 +131,8 @@ function switchTab(t: "login" | "register") {
 
 // 访客入口：不显眼的小字链接
 .guest-row {
+  display: flex;
+  flex-direction: column;
   text-align: center;
   margin-top: 0.14rem;
 }
