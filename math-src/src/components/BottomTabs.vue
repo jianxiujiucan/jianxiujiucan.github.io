@@ -8,12 +8,29 @@ const route = useRoute();
 const active = computed(() => {
   if (route.path.startsWith("/leaderboard")) return "leaderboard";
   if (route.path.startsWith("/profile")) return "profile";
+  if (route.path === "/") return "home";
   return "";
 });
 </script>
 
 <template>
   <nav class="bottom-tabs">
+    <router-link to="/" class="tab" :class="{ active: active === 'home' }">
+      <span class="tab-icon">
+        <svg
+          class="icon"
+          viewBox="0 0 1024 1024"
+          version="1.1"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M512 160 L96 512 h96 v352 h240 V672 h160 v192 h240 V512 h96 z"
+            fill="currentColor"
+          ></path>
+        </svg>
+      </span>
+      <span class="tab-label">首页</span>
+    </router-link>
     <router-link
       to="/leaderboard"
       class="tab"
