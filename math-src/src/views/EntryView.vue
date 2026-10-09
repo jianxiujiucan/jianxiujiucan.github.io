@@ -14,8 +14,6 @@ const auth = useAuthStore()
     <template v-if="auth.state.user">
       <p class="hello">你好，{{ auth.state.user.username }}！</p>
       <button class="primary-btn" @click="router.push('/setup')">开始答题</button>
-      <button class="secondary-btn" @click="router.push('/profile')">个人中心</button>
-      <button class="secondary-btn" @click="router.push('/leaderboard')">排行榜</button>
       <p class="bottom-row">
         <button class="link-btn" @click="auth.logout()">退出登录</button>
       </p>
@@ -25,9 +23,6 @@ const auth = useAuthStore()
       <div class="divider"><span>注册用户</span></div>
       <button class="secondary-btn" @click="router.push('/login')">登 录</button>
       <button class="secondary-btn" @click="router.push('/register')">注册新账号</button>
-      <p class="bottom-row">
-        <router-link class="link" to="/leaderboard">排行榜</router-link>
-      </p>
     </template>
   </div>
   <p class="tip">适合小学一、二年级口算练习</p>

@@ -16,7 +16,7 @@ const { soundOn, toggle } = useSound()
 <style scoped lang="scss">
 .sound-toggle {
   position: fixed;
-  bottom: 0.12rem;
+  bottom: 0.62rem; // 位于底部 Tab 栏上方
   right: 0.12rem;
   z-index: 10;
   width: 0.4rem;

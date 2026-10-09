@@ -1,3 +1,7 @@
+<script setup lang="ts">
+import BottomTabs from '@/components/BottomTabs.vue'
+</script>
+
 <template>
   <main class="page">
     <RouterView v-slot="{ Component }">
@@ -7,4 +11,5 @@
       </KeepAlive>
     </RouterView>
   </main>
+  <BottomTabs />
 </template>
