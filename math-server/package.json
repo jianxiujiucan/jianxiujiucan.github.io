@@ -4,30 +4,27 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "dev": "tsx watch src/index.ts",
-    "start": "tsx src/index.ts",
+    "dev": "tsx watch src/dev.ts",
+    "dev:worker": "wrangler dev",
+    "deploy": "wrangler deploy",
     "type-check": "tsc --noEmit",
     "test": "vitest run"
   },
   "dependencies": {
+    "@hono/node-server": "^1.19.0",
     "bcryptjs": "^3.0.2",
-    "cors": "^2.8.5",
     "dotenv": "^17.2.3",
-    "express": "^5.1.0",
-    "express-rate-limit": "^8.1.0",
-    "jsonwebtoken": "^9.0.2",
-    "nodemailer": "^7.0.6",
+    "hono": "^4.9.0",
+    "jose": "^6.0.12",
     "pg": "^8.16.0"
   },
   "devDependencies": {
-    "@types/cors": "^2.8.19",
-    "@types/express": "^5.0.3",
-    "@types/jsonwebtoken": "^9.0.10",
+    "@cloudflare/workers-types": "^5.20261010.1",
     "@types/node": "^22.18.0",
-    "@types/nodemailer": "^7.0.1",
     "@types/pg": "^8.15.0",
     "tsx": "^4.20.5",
     "typescript": "~5.9.3",
-    "vitest": "^3.2.4"
+    "vitest": "^3.2.4",
+    "wrangler": "^4.149.0"
   }
 }

@@ -1,6 +1,6 @@
-import jwt from 'jsonwebtoken'
-import type { NextFunction, Request, Response } from 'express'
-import { config } from './config'
+import { SignJWT, jwtVerify } from 'jose'
+import type { Next } from 'hono'
+import { getConfig, type AppContext } from './env'
 import { httpError } from './httpError'
 
 export interface AuthPayload {
@@ -8,30 +8,32 @@ export interface AuthPayload {
   username: string
 }
 
-declare global {
-  // eslint-disable-next-line @typescript-eslint/no-namespace
-  namespace Express {
-    interface Request {
-      user?: AuthPayload
-    }
+const enc = new TextEncoder()
+
+export function signToken(payload: AuthPayload, secret: string, expiresIn: string): Promise<string> {
+  return new SignJWT({ ...payload })
+    .setProtectedHeader({ alg: 'HS256' })
+    .setIssuedAt()
+    .setExpirationTime(expiresIn) // jose 支持 '7d' 等时长字符串
+    .sign(enc.encode(secret))
+}
+
+export async function verifyToken(token: string, secret: string): Promise<AuthPayload | null> {
+  try {
+    const { payload } = await jwtVerify(token, enc.encode(secret))
+    return payload as unknown as AuthPayload
+  } catch {
+    return null
   }
 }
 
-export function signToken(payload: AuthPayload): string {
-  return jwt.sign(payload, config.jwtSecret, {
-    expiresIn: config.jwtExpiresIn,
-  } as jwt.SignOptions)
-}
-
-/** requireAuth：Express 5 中同步 throw 会自动进入错误处理中间件 */
-export function requireAuth(req: Request, _res: Response, next: NextFunction): void {
-  const header = req.headers.authorization ?? ''
+/** 登录态中间件：校验 Bearer token，注入 c.get('user') */
+export async function requireAuth(c: AppContext, next: Next): Promise<void> {
+  const header = c.req.header('authorization') ?? ''
   const token = header.startsWith('Bearer ') ? header.slice(7) : ''
   if (!token) throw httpError(401, 'UNAUTHORIZED', '请先登录')
-  try {
-    req.user = jwt.verify(token, config.jwtSecret) as AuthPayload
-    next()
-  } catch {
-    throw httpError(401, 'UNAUTHORIZED', '登录已过期，请重新登录')
-  }
+  const payload = await verifyToken(token, getConfig(c.env).jwtSecret)
+  if (!payload) throw httpError(401, 'UNAUTHORIZED', '登录已过期，请重新登录')
+  c.set('user', payload)
+  await next()
 }

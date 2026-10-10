@@ -1,56 +1,66 @@
 # math-server
 
-口算答题器后端（Express 5 + Postgres）：注册登录、答题成绩存档、个人中心、排行榜。
+口算答题器后端（Hono + Postgres）：注册登录、答题成绩存档、个人中心、排行榜。
 
-- 线上：部署在 **Vercel**（Serverless Functions，入口 `api/[...all].ts`）
-- 数据库：**Supabase** Postgres（默认 `postgres` 库，表自动创建）
-- 本地开发：同样连接 Supabase 数据库（无需本地装数据库）
+- 线上：**Cloudflare Workers**（入口 `src/worker.ts`，数据库经 Hyperdrive 连接 Supabase）
+- 数据库：**Supabase** Postgres（表自动创建，幂等）
+- 本地开发：**Node 入口** `src/dev.ts`（pg 直连 Supabase，与线上共用同一 Hono 应用）
 
-## 一、准备 Supabase（一次性）
-
-1. https://supabase.com 注册（GitHub 登录）→ **New project**，填项目名和数据库密码（密码记好）
-2. 项目首页 **Connect** → **Transaction pooler** 标签 → 复制连接串（端口 6543），形如：
-   `postgresql://postgres.<ref>:<密码>@aws-x-<region>.pooler.supabase.com:6543/postgres`
-3. 把连接串填进 `.env` 的 `DATABASE_URL`
-
-## 二、本地启动
+## 一、本地开发
 
 ```bash
 cd math-server
 npm install
-cp .env.example .env   # 填 DATABASE_URL、改 JWT_SECRET
-npm run dev
+cp .dev.vars.example .dev.vars   # 填 DATABASE_URL（Supabase Transaction pooler 连接串）、JWT_SECRET
+npm run dev                      # http://localhost:3000
 ```
 
-看到 `[db] tables ready` 和 `listening on http://localhost:3000` 即成功（4 张表自动建好）。
 验证：`curl http://localhost:3000/api/health` → `{"ok":true}`
 
-## 三、部署到 Vercel（一次性）
+> `npm run dev:worker`（wrangler dev）是最接近线上的本地模式，但需要先配好 Hyperdrive
+>（见下方部署一节），一般用不上。
 
-1. https://vercel.com 注册（GitHub 登录）→ **Add New → Project** → 导入本仓库
-2. **Root Directory** 选 `math-server`，Framework 选 **Other**（无需构建命令）
-3. 在 **Environment Variables** 里配置：
-   - `DATABASE_URL`（Supabase Transaction pooler 连接串）
-   - `JWT_SECRET`（长随机串）
-   - `SMTP_HOST` / `SMTP_PORT` / `SMTP_USER` / `SMTP_PASS` / `SMTP_FROM`（找回密码真实发信用；不配则验证码只会出现在 Vercel 日志里）
-   - `CORS_ORIGINS` 保持默认即可（已含 GitHub Pages 域名）
-4. Deploy → 得到域名 `https://<项目名>.vercel.app`
-5. 访问 `https://<项目名>.vercel.app/api/health` 验证 `{"ok":true}`
-6. 把该域名填进 `math-src/.env.production` 的 `VITE_API_BASE`，前端重新构建部署
+## 二、部署到 Cloudflare Workers（一次性）
 
-> 说明：Serverless 冷启动时会执行一次幂等建表；限流计数器按实例计（多实例下不完全精确，本项目可接受）。
+前置：注册 https://dash.cloudflare.com （邮箱+密码即可，国内可正常访问）。
 
-## 四、SMTP（找回密码）
+```bash
+cd math-server
+npx wrangler login            # 浏览器跳转授权（国内可正常打开）
 
-`.env`（本地）或 Vercel 环境变量（线上）填 QQ 邮箱示例：
+# 1. 创建 Hyperdrive（Workers 上 pg 的 TLS 直连不受支持，必须经 Hyperdrive 池化转发）
+#    连接串用 Supabase 的 Session pooler（Connect → server 标签，端口 5432 的那条）
+npx wrangler hyperdrive create math-api-db --connection-string "postgresql://postgres.<ref>:<密码>@aws-x-<region>.pooler.supabase.com:5432/postgres"
 
-```ini
-SMTP_HOST=smtp.qq.com
-SMTP_PORT=465
-SMTP_USER=your@qq.com
-SMTP_PASS=授权码   # QQ邮箱：设置→账户→POP3/SMTP服务→生成授权码
-SMTP_FROM=your@qq.com
+# 2. 把返回的 id 填进 wrangler.toml 底部的 [[hyperdrive]] 段并取消注释
+
+# 3. 配置线上密钥（逐个执行，按提示粘贴值）
+npx wrangler secret put JWT_SECRET        # 长随机串
+npx wrangler secret put BREVO_API_KEY     # Brevo API Key（见下节）
+npx wrangler secret put BREVO_FROM        # Brevo 后台验证过的发件人邮箱
+
+# 4. 部署
+npm run deploy
 ```
+
+部署后得到域名 `https://math-api.<你的子域>.workers.dev`，访问 `/api/health` 验证。
+
+> Hyperdrive 的 `local_connection_string`（wrangler.toml 注释里）只在 `wrangler dev` 时需要，
+> 可填 Supabase Transaction pooler 连接串。
+
+## 三、Brevo 邮件（找回密码发信，一次性）
+
+Workers 不支持 SMTP 协议，邮件走 Brevo 的 HTTP API（免费 300 封/天）：
+
+1. 注册 https://app.brevo.com → **SMTP & API → API Keys** → 生成 API Key
+2. **Senders & IP → Senders** → 添加你的邮箱（如 QQ 邮箱）→ 按收到的验证邮件完成验证
+3. API Key 和发件人邮箱分别 `wrangler secret put BREVO_API_KEY / BREVO_FROM`
+4. 不配 BREVO_API_KEY 时，验证码打印到日志（`npx wrangler tail` 可实时查看）
+
+## 四、上线前端
+
+把 Workers 域名填进 `math-src/.env.production` 的 `VITE_API_BASE`，前端重新构建部署
+（push 到 master 由 GitHub Actions 自动完成）。
 
 ## 五、接口清单
 
@@ -70,14 +80,23 @@ SMTP_FROM=your@qq.com
 | GET | /api/leaderboard?op_type=add | 排行榜（公开，op_type: add/sub/addsub/mul/div/muldiv） |
 | GET | /api/health | 健康检查 |
 
-排行榜口径：每种运算类型取每用户「平均每题用时」最佳的一场（该场各题 time_ms 的 AVG），**仅正确率 ≥90% 的场次**，并列先达成者在前，前 50。
+排行榜口径：每种运算类型取每用户「平均每题用时」最佳的一场（该场各题 time_ms 的 AVG），
+**仅正确率 ≥90% 的场次**，并列先达成者在前，前 50。
 
 ## 六、开发
 
 ```bash
-npm run dev          # tsx watch 热重载（本地）
+npm run dev          # Node 本地入口（tsx watch 热重载）
 npm test             # vitest：validate / expr / code 纯逻辑
 npm run type-check   # tsc --noEmit
 ```
 
 前端在 `../math-src`：`npm run dev` 后访问 http://localhost:5173/math/。
+
+## 七、架构备注
+
+- Workers 运行时非 Node：全局作用域禁止随机数/异步 IO（bcrypt 盐需懒计算）；
+  bcryptjs 需 `setRandomFallback` 到 WebCrypto；验证码哈希用 WebCrypto sha256。
+- Supabase 事务池（6543）不支持会话级时区设置：timestamptz 一律 UTC 传输，
+  前端按浏览器本地时区格式化。
+- 限流为单实例内存计数（Workers 多实例下不精确，本项目规模可接受）。

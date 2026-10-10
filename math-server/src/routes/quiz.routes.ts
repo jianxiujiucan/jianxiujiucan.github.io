@@ -1,12 +1,14 @@
-import { Router } from 'express'
-import { pool } from '../db'
+import { Hono } from 'hono'
+import { getPool } from '../db'
 import { requireAuth } from '../auth'
 import { httpError } from '../httpError'
+import { bodyOf } from '../body'
 import { isValidConfig } from '../validate'
 import { evalExpr } from '../expr'
+import type { AppEnv } from '../env'
 import type { IdRow, QuestionRecordDto } from '../types'
 
-export const quizRoutes = Router()
+export const quizRoutes = new Hono<AppEnv>()
 
 /** 单题用时上限（切后台虚高兜底） */
 const MAX_QUESTION_MS = 10 * 60 * 1000
@@ -14,8 +16,8 @@ const MAX_QUESTION_MS = 10 * 60 * 1000
 const MAX_SESSION_MS = 2 * 60 * 60 * 1000
 
 /* ---------- 提交一次答题成绩（session + 全部题目明细） ---------- */
-quizRoutes.post('/', requireAuth, async (req, res) => {
-  const body = req.body ?? {}
+quizRoutes.post('/', requireAuth, async (c) => {
+  const body = await bodyOf(c)
   if (!isValidConfig(body.config)) throw httpError(400, 'INVALID_CONFIG', '答题配置不合法')
   const cfg = body.config
 
@@ -66,7 +68,7 @@ quizRoutes.post('/', requireAuth, async (req, res) => {
   const score = Math.round((correct / total) * 100)
   const durationMs = Math.min(Math.max(Math.round(Number(body.durationMs) || 0), 0), MAX_SESSION_MS)
 
-  const client = await pool.connect()
+  const client = await getPool(c.env).connect()
   try {
     await client.query('BEGIN')
     const { rows } = await client.query<IdRow>(
@@ -75,7 +77,7 @@ quizRoutes.post('/', requireAuth, async (req, res) => {
        VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)
        RETURNING id`,
       [
-        req.user!.uid,
+        c.get('user').uid,
         cfg.count,
         cfg.opType,
         cfg.range,
@@ -103,7 +105,7 @@ quizRoutes.post('/', requireAuth, async (req, res) => {
       values
     )
     await client.query('COMMIT')
-    res.status(201).json({ sessionId })
+    return c.json({ sessionId }, 201)
   } catch (e) {
     await client.query('ROLLBACK')
     throw e

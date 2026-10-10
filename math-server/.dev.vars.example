@@ -1,0 +1,13 @@
+# 本地开发用密钥配置（复制为 .dev.vars 并填真值；.dev.vars 已被 gitignore）
+
+# Supabase Transaction pooler 连接串（控制台 Connect → server 标签）
+DATABASE_URL=
+
+# JWT 签名密钥（长随机串）
+JWT_SECRET=
+
+# Brevo 邮件服务（https://app.brevo.com → SMTP & API → API Keys）
+# 留空则验证码打印到 wrangler 控制台
+BREVO_API_KEY=
+# Brevo 后台验证过的发件人邮箱（Senders & IP 里添加并验证）
+BREVO_FROM=

@@ -1,0 +1,24 @@
+name = "math-api"
+main = "src/worker.ts"
+compatibility_date = "2026-10-01"
+# nodejs_compat 提供 node:net/crypto 等（pg 驱动的 TCP 连接依赖它）
+compatibility_flags = ["nodejs_compat"]
+
+# 非机密默认值；密钥（DATABASE_URL / JWT_SECRET / BREVO_API_KEY / BREVO_FROM）
+# 一律不进仓库：本地放 .dev.vars，线上用 `npx wrangler secret put <KEY>`
+[vars]
+JWT_EXPIRES_IN = "7d"
+BCRYPT_ROUNDS = "10"
+RESET_CODE_TTL_MINUTES = "10"
+RESET_CODE_RESEND_COOLDOWN_SECONDS = "60"
+CORS_ORIGINS = "https://jianxiujiucan.github.io,http://localhost:5173,http://127.0.0.1:5173"
+
+# 数据库经 Hyperdrive 连接（Workers 上 pg 直连 Postgres 的 TLS 升级不受支持）。
+# 部署前配置（详见 README）：
+#   npx wrangler login
+#   npx wrangler hyperdrive create math-api-db --connection-string "<Supabase Session pooler 连接串，端口 5432>"
+#   把返回的 id 填到下方并取消注释
+# [[hyperdrive]]
+# binding = "HYPERDRIVE"
+# id = "粘贴 hyperdrive id"
+# local_connection_string = "<本地 wrangler dev 用的 Supabase 连接串>"

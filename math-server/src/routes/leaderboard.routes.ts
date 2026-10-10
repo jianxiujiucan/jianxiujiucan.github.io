@@ -1,10 +1,11 @@
-import { Router } from 'express'
-import { pool } from '../db'
+import { Hono } from 'hono'
+import { getPool } from '../db'
 import { httpError } from '../httpError'
 import { OP_TYPES } from '../types'
+import type { AppEnv } from '../env'
 import type { LeaderboardRow } from '../types'
 
-export const leaderboardRoutes = Router()
+export const leaderboardRoutes = new Hono<AppEnv>()
 
 /* ---------- 排行榜（公开） ----------
  * 口径：每种运算类型一榜；每用户取「平均每题用时」最佳的一场
@@ -12,13 +13,13 @@ export const leaderboardRoutes = Router()
  * 仅正确率 ≥90% 的场次上榜（correct*10 >= total*9，防乱按秒答刷榜）；
  * 并列先达成者在前；前 50。
  */
-leaderboardRoutes.get('/', async (req, res) => {
-  const opType = String(req.query.op_type ?? '')
+leaderboardRoutes.get('/', async (c) => {
+  const opType = String(c.req.query('op_type') ?? '')
   if (!(OP_TYPES as readonly string[]).includes(opType)) {
     throw httpError(400, 'INVALID_OP_TYPE', '运算类型不合法')
   }
 
-  const { rows } = await pool.query<LeaderboardRow>(
+  const { rows } = await getPool(c.env).query<LeaderboardRow>(
     `WITH session_avg AS (
        SELECT s.id, s.user_id, s.total, s.created_at, AVG(r.time_ms) AS avg_ms
        FROM quiz_sessions s
@@ -43,7 +44,7 @@ leaderboardRoutes.get('/', async (req, res) => {
     [opType]
   )
 
-  res.json({
+  return c.json({
     opType,
     list: rows.map((r, i) => ({
       rank: i + 1,

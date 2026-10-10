@@ -1,17 +1,19 @@
-import { Router } from 'express'
-import { pool } from '../db'
+import { Hono } from 'hono'
+import { getPool } from '../db'
 import { requireAuth } from '../auth'
 import { httpError } from '../httpError'
+import type { AppEnv } from '../env'
 import type { CountRow, PerTypeRow, QuestionRow, SessionRow, TotalsRow, UserPublicRow } from '../types'
 
-export const profileRoutes = Router()
+export const profileRoutes = new Hono<AppEnv>()
 
 // 该路由组全部需要登录
-profileRoutes.use(requireAuth)
+profileRoutes.use('*', requireAuth)
 
 /* ---------- 用户信息 + 统计 ---------- */
-profileRoutes.get('/', async (req, res) => {
-  const uid = req.user!.uid
+profileRoutes.get('/', async (c) => {
+  const uid = c.get('user').uid
+  const pool = getPool(c.env)
 
   const { rows: users } = await pool.query<UserPublicRow>(
     'SELECT username, email, created_at AS "createdAt" FROM users WHERE id = $1',
@@ -47,7 +49,7 @@ profileRoutes.get('/', async (req, res) => {
     [uid]
   )
 
-  res.json({
+  return c.json({
     user,
     stats: {
       totalSessions: Number(t.totalSessions),
@@ -65,12 +67,13 @@ profileRoutes.get('/', async (req, res) => {
 })
 
 /* ---------- 答题记录列表（分页） ---------- */
-profileRoutes.get('/sessions', async (req, res) => {
-  const uid = req.user!.uid
-  const page = Math.max(1, Number.parseInt(String(req.query.page ?? '1'), 10) || 1)
-  const pageSize = Math.min(50, Math.max(1, Number.parseInt(String(req.query.pageSize ?? '10'), 10) || 10))
+profileRoutes.get('/sessions', async (c) => {
+  const uid = c.get('user').uid
+  const page = Math.max(1, Number.parseInt(c.req.query('page') ?? '1', 10) || 1)
+  const pageSize = Math.min(50, Math.max(1, Number.parseInt(c.req.query('pageSize') ?? '10', 10) || 10))
   const offset = (page - 1) * pageSize
 
+  const pool = getPool(c.env)
   const { rows: list } = await pool.query<SessionRow>(
     `SELECT id, op_type AS "opType", count_opt AS count, range_limit AS range,
             operands, carry, total, correct, score,
@@ -85,15 +88,16 @@ profileRoutes.get('/sessions', async (req, res) => {
     'SELECT COUNT(*) AS total FROM quiz_sessions WHERE user_id = $1',
     [uid]
   )
-  res.json({ list, total: Number(cnt[0].total), page, pageSize })
+  return c.json({ list, total: Number(cnt[0].total), page, pageSize })
 })
 
 /* ---------- 单场详情（每题明细；非本人返回 404 不泄露存在性） ---------- */
-profileRoutes.get('/sessions/:id', async (req, res) => {
-  const uid = req.user!.uid
-  const id = Number.parseInt(req.params.id, 10)
+profileRoutes.get('/sessions/:id', async (c) => {
+  const uid = c.get('user').uid
+  const id = Number.parseInt(c.req.param('id'), 10)
   if (!Number.isInteger(id) || id <= 0) throw httpError(404, 'NOT_FOUND', '记录不存在')
 
+  const pool = getPool(c.env)
   const { rows: sessions } = await pool.query<SessionRow>(
     `SELECT id, op_type AS "opType", count_opt AS count, range_limit AS range,
             operands, carry, total, correct, score,
@@ -109,5 +113,5 @@ profileRoutes.get('/sessions/:id', async (req, res) => {
      FROM question_records WHERE session_id = $1 ORDER BY seq ASC`,
     [id]
   )
-  res.json({ session: sessions[0], questions })
+  return c.json({ session: sessions[0], questions })
 })

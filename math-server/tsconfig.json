@@ -8,7 +8,7 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "types": ["node"]
+    "types": ["node", "@cloudflare/workers-types"]
   },
-  "include": ["src/**/*", "tests/**/*", "api/**/*"]
+  "include": ["src/**/*", "tests/**/*"]
 }
