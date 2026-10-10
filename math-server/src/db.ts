@@ -3,37 +3,39 @@ import { schemaStatements } from './schema'
 import type { Bindings } from './env'
 
 // timestamptz(1184) / timestamp(1114) 返回原始字符串（带时区偏移），
-// 前端负责按浏览器本地时区展示（Supavisor 事务池不支持会话级时区设置）
+// 前端负责按浏览器本地时区展示
 pg.types.setTypeParser(1184, (v: string) => v)
 pg.types.setTypeParser(1114, (v: string) => v)
 
-let pool: pg.Pool | null = null
 let ready: Promise<void> | null = null
 
 /**
- * 每个实例内复用一个连接池。
- * 生产（Workers）：走 Hyperdrive 绑定的本地端点（无需 TLS；
- * workerd 的 node:tls 不支持 pg 的 SSL 升级，直连 Postgres 在 Workers 上不可行）。
- * 本地开发（Node）：用 DATABASE_URL 直连 Supabase（SSL 必需）。
+ * 每次请求新建连接（用完即关）。
+ * serverless + Hyperdrive 本地代理会快速关闭空闲连接，连接池复用
+ * 会拿到已断开的连接导致请求挂起；单请求单连接最稳妥，
+ * 上游由 Hyperdrive / Supabase Pooler 负责真正的池化。
  */
-export function getPool(env: Bindings): pg.Pool {
-  if (!pool) {
-    pool = new pg.Pool({
-      connectionString: env.HYPERDRIVE?.connectionString ?? env.DATABASE_URL,
-      ssl: env.HYPERDRIVE ? false : { rejectUnauthorized: false },
-      max: 3, // serverless：单实例并发有限，小池即可
-    })
+export async function withDb<T>(env: Bindings, fn: (client: pg.Client) => Promise<T>): Promise<T> {
+  const client = new pg.Client({
+    connectionString: env.HYPERDRIVE?.connectionString ?? env.DATABASE_URL,
+    // Hyperdrive 本地端点无需 TLS；直连 Supabase 需要
+    ssl: env.HYPERDRIVE ? false : { rejectUnauthorized: false },
+  })
+  await client.connect()
+  try {
+    return await fn(client)
+  } finally {
+    await client.end().catch(() => {})
   }
-  return pool
 }
 
 /** 每个实例首次请求时执行一次幂等建表 */
 export function ensureDb(env: Bindings): Promise<void> {
-  ready ??= (async () => {
+  ready ??= withDb(env, async (db) => {
     for (const ddl of schemaStatements) {
-      await getPool(env).query(ddl)
+      await db.query(ddl)
     }
     console.log('[db] tables ready')
-  })()
+  })
   return ready
 }

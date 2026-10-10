@@ -1,6 +1,6 @@
 import { Hono } from 'hono'
 import bcrypt from 'bcryptjs'
-import { getPool } from '../db'
+import { withDb } from '../db'
 import { requireAuth, signToken } from '../auth'
 import { getConfig, type AppEnv } from '../env'
 import { httpError } from '../httpError'
@@ -47,12 +47,15 @@ authRoutes.post('/register', async (c) => {
 
   const hash = await bcrypt.hash(password, cfg.bcryptRounds)
   try {
-    const { rows } = await getPool(c.env).query<IdRow>(
-      'INSERT INTO users (username, password_hash, email) VALUES ($1, $2, $3) RETURNING id',
-      [username, hash, email]
-    )
-    const user = { id: rows[0].id, username, email }
-    const token = await signToken({ uid: user.id, username }, cfg.jwtSecret, cfg.jwtExpiresIn)
+    const id = await withDb(c.env, async (db) => {
+      const { rows } = await db.query<IdRow>(
+        'INSERT INTO users (username, password_hash, email) VALUES ($1, $2, $3) RETURNING id',
+        [username, hash, email]
+      )
+      return rows[0].id
+    })
+    const user = { id, username, email }
+    const token = await signToken({ uid: id, username }, cfg.jwtSecret, cfg.jwtExpiresIn)
     return c.json({ token, user }, 201)
   } catch (e) {
     // Postgres 唯一约束冲突
@@ -74,11 +77,13 @@ authRoutes.post('/login', async (c) => {
   const password = String(body.password ?? '')
   if (!username || !password) throw httpError(400, 'MISSING_FIELDS', '请输入用户名和密码')
 
-  const { rows } = await getPool(c.env).query<UserAuthRow>(
-    'SELECT id, username, email, password_hash FROM users WHERE username = $1',
-    [username]
-  )
-  const row = rows[0]
+  const row = await withDb(c.env, async (db) => {
+    const { rows } = await db.query<UserAuthRow>(
+      'SELECT id, username, email, password_hash FROM users WHERE username = $1',
+      [username]
+    )
+    return rows[0]
+  })
   const ok = await bcrypt.compare(password, row ? row.password_hash : getDummyHash())
   if (!row || !ok) throw httpError(401, 'INVALID_CREDENTIALS', '用户名或密码不正确')
 
@@ -89,10 +94,13 @@ authRoutes.post('/login', async (c) => {
 
 /* ---------- 当前用户 ---------- */
 authRoutes.get('/me', requireAuth, async (c) => {
-  const { rows } = await getPool(c.env).query<UserPublicRow>(
-    'SELECT id, username, email, created_at AS "createdAt" FROM users WHERE id = $1',
-    [c.get('user').uid]
-  )
-  if (rows.length === 0) throw httpError(401, 'UNAUTHORIZED', '账号不存在，请重新登录')
-  return c.json({ user: rows[0] })
+  const row = await withDb(c.env, async (db) => {
+    const { rows } = await db.query<UserPublicRow>(
+      'SELECT id, username, email, created_at AS "createdAt" FROM users WHERE id = $1',
+      [c.get('user').uid]
+    )
+    return rows[0]
+  })
+  if (!row) throw httpError(401, 'UNAUTHORIZED', '账号不存在，请重新登录')
+  return c.json({ user: row })
 })

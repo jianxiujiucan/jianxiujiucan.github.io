@@ -1,5 +1,5 @@
 import { Hono } from 'hono'
-import { getPool } from '../db'
+import { withDb } from '../db'
 import { requireAuth } from '../auth'
 import { httpError } from '../httpError'
 import { bodyOf } from '../body'
@@ -67,49 +67,50 @@ quizRoutes.post('/', requireAuth, async (c) => {
   const correct = normalized.filter((q) => q.isCorrect).length
   const score = Math.round((correct / total) * 100)
   const durationMs = Math.min(Math.max(Math.round(Number(body.durationMs) || 0), 0), MAX_SESSION_MS)
+  const uid = c.get('user').uid
 
-  const client = await getPool(c.env).connect()
-  try {
-    await client.query('BEGIN')
-    const { rows } = await client.query<IdRow>(
-      `INSERT INTO quiz_sessions
-         (user_id, count_opt, op_type, range_limit, operands, carry, total, correct, score, duration_ms)
-       VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)
-       RETURNING id`,
-      [
-        c.get('user').uid,
-        cfg.count,
-        cfg.opType,
-        cfg.range,
-        cfg.operands,
-        cfg.carry,
-        total,
-        correct,
-        score,
-        durationMs,
-      ]
-    )
-    const sessionId = rows[0].id
+  const sessionId = await withDb(c.env, async (db) => {
+    try {
+      await db.query('BEGIN')
+      const { rows } = await db.query<IdRow>(
+        `INSERT INTO quiz_sessions
+           (user_id, count_opt, op_type, range_limit, operands, carry, total, correct, score, duration_ms)
+         VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)
+         RETURNING id`,
+        [
+          uid,
+          cfg.count,
+          cfg.opType,
+          cfg.range,
+          cfg.operands,
+          cfg.carry,
+          total,
+          correct,
+          score,
+          durationMs,
+        ]
+      )
+      const id = rows[0].id
 
-    // 批量插入题目明细（构造多行 VALUES 占位符）
-    const values: unknown[] = []
-    const tuples = normalized.map((q, i) => {
-      const base = i * 7
-      values.push(sessionId, q.seq, q.expr, q.userAnswer, q.correctAnswer, q.isCorrect, q.timeMs)
-      return `($${base + 1}, $${base + 2}, $${base + 3}, $${base + 4}, $${base + 5}, $${base + 6}, $${base + 7})`
-    })
-    await client.query(
-      `INSERT INTO question_records
-         (session_id, seq, expr, user_answer, correct_answer, is_correct, time_ms)
-       VALUES ${tuples.join(', ')}`,
-      values
-    )
-    await client.query('COMMIT')
-    return c.json({ sessionId }, 201)
-  } catch (e) {
-    await client.query('ROLLBACK')
-    throw e
-  } finally {
-    client.release()
-  }
+      // 批量插入题目明细（构造多行 VALUES 占位符）
+      const values: unknown[] = []
+      const tuples = normalized.map((q, i) => {
+        const base = i * 7
+        values.push(id, q.seq, q.expr, q.userAnswer, q.correctAnswer, q.isCorrect, q.timeMs)
+        return `($${base + 1}, $${base + 2}, $${base + 3}, $${base + 4}, $${base + 5}, $${base + 6}, $${base + 7})`
+      })
+      await db.query(
+        `INSERT INTO question_records
+           (session_id, seq, expr, user_answer, correct_answer, is_correct, time_ms)
+         VALUES ${tuples.join(', ')}`,
+        values
+      )
+      await db.query('COMMIT')
+      return id
+    } catch (e) {
+      await db.query('ROLLBACK').catch(() => {})
+      throw e
+    }
+  })
+  return c.json({ sessionId }, 201)
 })

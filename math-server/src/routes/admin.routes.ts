@@ -1,6 +1,6 @@
 import { Hono } from 'hono'
 import bcrypt from 'bcryptjs'
-import { getPool } from '../db'
+import { withDb } from '../db'
 import { getConfig, type AppEnv } from '../env'
 import { httpError } from '../httpError'
 import { bodyOf } from '../body'
@@ -36,10 +36,13 @@ adminRoutes.post('/reset-password', adminLimiter, async (c) => {
   }
 
   const hash = await bcrypt.hash(newPassword, getConfig(c.env).bcryptRounds)
-  const { rowCount } = await getPool(c.env).query(
-    'UPDATE users SET password_hash = $1 WHERE username = $2',
-    [hash, username]
-  )
+  const rowCount = await withDb(c.env, async (db) => {
+    const r = await db.query('UPDATE users SET password_hash = $1 WHERE username = $2', [
+      hash,
+      username,
+    ])
+    return r.rowCount
+  })
   if (!rowCount) throw httpError(404, 'USER_NOT_FOUND', '该用户名不存在')
   return c.json({ message: `已将 ${username} 的密码重置为新密码` })
 })

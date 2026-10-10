@@ -12,11 +12,8 @@ BCRYPT_ROUNDS = "10"
 CORS_ORIGINS = "https://jianxiujiucan.github.io,http://localhost:5173,http://127.0.0.1:5173"
 
 # 数据库经 Hyperdrive 连接（Workers 上 pg 直连 Postgres 的 TLS 升级不受支持）。
-# 部署前配置（详见 README）：
-#   npx wrangler login
-#   npx wrangler hyperdrive create math-api-db --connection-string "<Supabase Session pooler 连接串，端口 5432>"
-#   把返回的 id 填到下方并取消注释
-# [[hyperdrive]]
-# binding = "HYPERDRIVE"
-# id = "粘贴 hyperdrive id"
-# local_connection_string = "<本地 wrangler dev 用的 Supabase 连接串>"
+[[hyperdrive]]
+binding = "HYPERDRIVE"
+id = "19ea382a47124c9592e5f4c83d08a393"
+# 本地 wrangler dev 的连接串放 .dev.vars 的 HYPERDRIVE_LOCAL_CONNECTION_STRING_HYPERDRIVE
+# （含密码，不进仓库）
