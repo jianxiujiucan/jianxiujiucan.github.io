@@ -6,8 +6,5 @@ DATABASE_URL=
 # JWT 签名密钥（长随机串）
 JWT_SECRET=
 
-# Brevo 邮件服务（https://app.brevo.com → SMTP & API → API Keys）
-# 留空则验证码打印到 wrangler 控制台
-BREVO_API_KEY=
-# Brevo 后台验证过的发件人邮箱（Senders & IP 里添加并验证）
-BREVO_FROM=
+# 管理口令（/admin 管理页重置用户密码用；不配置则管理接口关闭）
+ADMIN_TOKEN=

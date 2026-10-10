@@ -49,18 +49,4 @@ export const schemaStatements: string[] = [
     PRIMARY KEY (id),
     CONSTRAINT uk_records_session_seq UNIQUE (session_id, seq)
   )`,
-
-  `CREATE TABLE IF NOT EXISTS password_resets (
-    id         INT GENERATED ALWAYS AS IDENTITY,
-    email      VARCHAR(254) NOT NULL,
-    code_hash  CHAR(64) NOT NULL,
-    expires_at TIMESTAMPTZ(3) NOT NULL,
-    used       BOOLEAN NOT NULL DEFAULT FALSE,
-    attempts   SMALLINT NOT NULL DEFAULT 0,
-    created_at TIMESTAMPTZ(3) NOT NULL DEFAULT now(),
-    PRIMARY KEY (id)
-  )`,
-
-  `CREATE INDEX IF NOT EXISTS idx_resets_email_id
-   ON password_resets (email, id)`,
 ]

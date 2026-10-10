@@ -23,10 +23,12 @@ interface Options {
   body?: unknown;
   /** 需要携带 Bearer token 的请求 */
   auth?: boolean;
+  /** 额外请求头（如管理口令 X-Admin-Token） */
+  headers?: Record<string, string>;
 }
 
 export async function api<T>(path: string, opts: Options = {}): Promise<T> {
-  const headers: Record<string, string> = {};
+  const headers: Record<string, string> = { ...opts.headers };
   if (opts.body !== undefined) headers["Content-Type"] = "application/json";
   if (opts.auth) {
     const token = getToken();

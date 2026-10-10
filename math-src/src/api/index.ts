@@ -24,17 +24,12 @@ export function registerApi(username: string, password: string, email: string) {
   })
 }
 
-export function forgotApi(email: string) {
-  return api<{ message: string }>('/api/auth/forgot', {
+/** 管理员重置用户密码（/admin 管理页用；口令经 X-Admin-Token 头传递） */
+export function adminResetPasswordApi(username: string, newPassword: string, adminToken: string) {
+  return api<{ message: string }>('/api/admin/reset-password', {
     method: 'POST',
-    body: { email },
-  })
-}
-
-export function resetApi(email: string, code: string, newPassword: string) {
-  return api<{ message: string }>('/api/auth/reset', {
-    method: 'POST',
-    body: { email, code, newPassword },
+    body: { username, newPassword },
+    headers: { 'X-Admin-Token': adminToken },
   })
 }
 

@@ -5,13 +5,14 @@
 - 线上：**Cloudflare Workers**（入口 `src/worker.ts`，数据库经 Hyperdrive 连接 Supabase）
 - 数据库：**Supabase** Postgres（表自动创建，幂等）
 - 本地开发：**Node 入口** `src/dev.ts`（pg 直连 Supabase，与线上共用同一 Hono 应用）
+- 找回密码：**管理员人工重置**（/admin 页面 + 管理口令，无邮件服务依赖）
 
 ## 一、本地开发
 
 ```bash
 cd math-server
 npm install
-cp .dev.vars.example .dev.vars   # 填 DATABASE_URL（Supabase Transaction pooler 连接串）、JWT_SECRET
+cp .dev.vars.example .dev.vars   # 填 DATABASE_URL（Supabase Transaction pooler 连接串）、JWT_SECRET、ADMIN_TOKEN
 npm run dev                      # http://localhost:3000
 ```
 
@@ -35,9 +36,8 @@ npx wrangler hyperdrive create math-api-db --connection-string "postgresql://pos
 # 2. 把返回的 id 填进 wrangler.toml 底部的 [[hyperdrive]] 段并取消注释
 
 # 3. 配置线上密钥（逐个执行，按提示粘贴值）
-npx wrangler secret put JWT_SECRET        # 长随机串
-npx wrangler secret put BREVO_API_KEY     # Brevo API Key（见下节）
-npx wrangler secret put BREVO_FROM        # Brevo 后台验证过的发件人邮箱
+npx wrangler secret put JWT_SECRET      # 长随机串
+npx wrangler secret put ADMIN_TOKEN     # 管理口令（/admin 页面重置密码用）
 
 # 4. 部署
 npm run deploy
@@ -45,17 +45,11 @@ npm run deploy
 
 部署后得到域名 `https://math-api.<你的子域>.workers.dev`，访问 `/api/health` 验证。
 
-> Hyperdrive 的 `local_connection_string`（wrangler.toml 注释里）只在 `wrangler dev` 时需要，
-> 可填 Supabase Transaction pooler 连接串。
+## 三、找回密码（管理员人工重置）
 
-## 三、Brevo 邮件（找回密码发信，一次性）
-
-Workers 不支持 SMTP 协议，邮件走 Brevo 的 HTTP API（免费 300 封/天）：
-
-1. 注册 https://app.brevo.com → **SMTP & API → API Keys** → 生成 API Key
-2. **Senders & IP → Senders** → 添加你的邮箱（如 QQ 邮箱）→ 按收到的验证邮件完成验证
-3. API Key 和发件人邮箱分别 `wrangler secret put BREVO_API_KEY / BREVO_FROM`
-4. 不配 BREVO_API_KEY 时，验证码打印到日志（`npx wrangler tail` 可实时查看）
+用户忘记密码 → 把用户名告诉管理员（家长）→ 管理员打开 `/admin` 页面（如
+`https://jianxiujiucan.github.io/math/#/admin`），输入管理口令 + 用户名 + 新密码即可。
+注册时仍会收集邮箱，将来接入邮件服务后可无缝启用自助找回。
 
 ## 四、上线前端
 
@@ -71,8 +65,7 @@ Workers 不支持 SMTP 协议，邮件走 Brevo 的 HTTP API（免费 300 封/�
 | POST | /api/auth/register | 注册（注册即登录）。{username, password, email} → {token, user} |
 | POST | /api/auth/login | 登录。{username, password} → {token, user} |
 | GET | /api/auth/me | 当前用户（需 Bearer token） |
-| POST | /api/auth/forgot | 发送找回密码验证码。{email}（统一响应防枚举） |
-| POST | /api/auth/reset | 重置密码。{email, code, newPassword} |
+| POST | /api/admin/reset-password | 管理员重置用户密码（需 X-Admin-Token 头）。{username, newPassword} |
 | POST | /api/quiz-sessions | 提交一次答题成绩（需登录，服务端复核答案） |
 | GET | /api/profile | 用户信息 + 统计（需登录） |
 | GET | /api/profile/sessions?page=1&pageSize=10 | 我的答题记录（需登录） |
@@ -87,7 +80,7 @@ Workers 不支持 SMTP 协议，邮件走 Brevo 的 HTTP API（免费 300 封/�
 
 ```bash
 npm run dev          # Node 本地入口（tsx watch 热重载）
-npm test             # vitest：validate / expr / code 纯逻辑
+npm test             # vitest：validate / expr 纯逻辑
 npm run type-check   # tsc --noEmit
 ```
 
@@ -96,7 +89,9 @@ npm run type-check   # tsc --noEmit
 ## 七、架构备注
 
 - Workers 运行时非 Node：全局作用域禁止随机数/异步 IO（bcrypt 盐需懒计算）；
-  bcryptjs 需 `setRandomFallback` 到 WebCrypto；验证码哈希用 WebCrypto sha256。
+  bcryptjs 需 `setRandomFallback` 到 WebCrypto；JWT 用 jose（WebCrypto HS256）。
 - Supabase 事务池（6543）不支持会话级时区设置：timestamptz 一律 UTC 传输，
   前端按浏览器本地时区格式化。
-- 限流为单实例内存计数（Workers 多实例下不精确，本项目规模可接受）。
+- Workers 上 pg 直连 Postgres 不可行（无 node:tls 供 SSL 升级）→ 必须 Hyperdrive；
+  本地 Node 入口直连没问题。
+- 限流为单实例内存计数（每个限流器闭包独立 Map；Workers 多实例下不精确，本项目规模可接受）。

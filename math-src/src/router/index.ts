@@ -46,6 +46,12 @@ const router = createRouter({
       component: () => import("@/views/ForgotView.vue"),
     },
     {
+      // 管理页（不进 Tab 栏）：管理员为用户重置密码
+      path: "/admin",
+      name: "admin",
+      component: () => import("@/views/AdminView.vue"),
+    },
+    {
       path: "/profile",
       name: "profile",
       component: () => import("@/views/ProfileView.vue"),

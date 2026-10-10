@@ -12,11 +12,8 @@ export interface Bindings {
   JWT_EXPIRES_IN?: string
   BCRYPT_ROUNDS?: string
   CORS_ORIGINS?: string
-  BREVO_API_KEY?: string
-  /** Brevo 已验证发件人邮箱 */
-  BREVO_FROM?: string
-  RESET_CODE_TTL_MINUTES?: string
-  RESET_CODE_RESEND_COOLDOWN_SECONDS?: string
+  /** 管理口令（重置用户密码接口 /api/admin/* 用；不配置则管理接口关闭） */
+  ADMIN_TOKEN?: string
 }
 
 import type { Context } from 'hono'
@@ -43,7 +40,5 @@ export function getConfig(env: Bindings) {
       .split(',')
       .map((s) => s.trim())
       .filter(Boolean),
-    resetCodeTtlMinutes: Number(env.RESET_CODE_TTL_MINUTES ?? 10),
-    resetCodeCooldownSeconds: Number(env.RESET_CODE_RESEND_COOLDOWN_SECONDS ?? 60),
   }
 }

@@ -9,6 +9,7 @@ import { authRoutes } from './routes/auth.routes'
 import { quizRoutes } from './routes/quiz.routes'
 import { profileRoutes } from './routes/profile.routes'
 import { leaderboardRoutes } from './routes/leaderboard.routes'
+import { adminRoutes } from './routes/admin.routes'
 
 const app = new Hono<AppEnv>()
 
@@ -37,6 +38,7 @@ app.route('/api/auth', authRoutes)
 app.route('/api/quiz-sessions', quizRoutes)
 app.route('/api/profile', profileRoutes)
 app.route('/api/leaderboard', leaderboardRoutes)
+app.route('/api/admin', adminRoutes)
 app.get('/api/health', (c) => c.json({ ok: true }))
 
 // 404
