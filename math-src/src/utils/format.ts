@@ -16,16 +16,32 @@ export function formatDuration(ms: number): string {
   return m > 0 ? `${m}分${String(r).padStart(2, '0')}秒` : `${r}秒`
 }
 
-/** "2026-10-08 15:30:00.000" → "10-08 15:30" */
-export function formatDateTime(s: string): string {
-  const m = s.match(/^\d{4}-(\d{2}-\d{2})[ T](\d{2}:\d{2})/)
-  return m ? `${m[1]} ${m[2]}` : s
+/**
+ * 解析后端时间串为 Date。后端返回 pg timestamptz 原串，
+ * 形如 "2026-10-10 01:40:39.203987+00"（空格分隔 + 时区偏移），
+ * 规范化为 ISO 后按浏览器本地时区展示。
+ */
+function parseServerTime(s: string): Date {
+  const iso = (s.includes('T') ? s : s.replace(' ', 'T')).replace(/([+-]\d{2})$/, '$1:00')
+  return new Date(iso)
 }
 
-/** "2026-10-08 15:30:00.000" → "2026-10-08" */
+function pad2(n: number): string {
+  return String(n).padStart(2, '0')
+}
+
+/** 时间串 → 本地 "10-08 15:30" */
+export function formatDateTime(s: string): string {
+  const d = parseServerTime(s)
+  if (Number.isNaN(d.getTime())) return s
+  return `${pad2(d.getMonth() + 1)}-${pad2(d.getDate())} ${pad2(d.getHours())}:${pad2(d.getMinutes())}`
+}
+
+/** 时间串 → 本地 "2026-10-08" */
 export function formatDate(s: string): string {
-  const m = s.match(/^(\d{4}-\d{2}-\d{2})/)
-  return m ? m[1] : s
+  const d = parseServerTime(s)
+  if (Number.isNaN(d.getTime())) return s
+  return `${d.getFullYear()}-${pad2(d.getMonth() + 1)}-${pad2(d.getDate())}`
 }
 
 const OP_TYPE_LABELS: Record<string, string> = {

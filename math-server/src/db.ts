@@ -12,16 +12,14 @@ export let pool: pg.Pool
 /**
  * 启动时自动建表（CREATE TABLE IF NOT EXISTS，幂等）。
  * 数据库本身由 Supabase 提供（默认 postgres 库），无需也无法在连接内建库。
+ * 注意：Supavisor 事务池模式下会话级 SET TIME ZONE 不可靠，
+ * 因此时间一律以 timestamptz（UTC 绝对时间）存储传输，由前端按浏览器本地时区展示。
  */
 export async function initDb(): Promise<void> {
   pool = new pg.Pool({
     connectionString: config.databaseUrl,
     ssl: config.dbSsl ? { rejectUnauthorized: false } : undefined,
     max: 10,
-  })
-  // 每个连接的会话时区固定为东八区，created_at 读写与前端展示一致
-  pool.on('connect', (client) => {
-    void client.query("SET TIME ZONE 'Asia/Shanghai'").catch(() => {})
   })
   for (const ddl of schemaStatements) {
     await pool.query(ddl)
