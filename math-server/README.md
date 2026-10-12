@@ -21,7 +21,46 @@ npm run dev                      # http://localhost:3000
 > `npm run dev:worker`（wrangler dev）是最接近线上的本地模式，但需要先配好 Hyperdrive
 >（见下方部署一节），一般用不上。
 
-## 二、部署到 Cloudflare Workers（一次性）
+## 二、部署到 Vultr VPS（当前方案）
+
+前置：Vultr 账号（支持支付宝充值）、一台 Ubuntu 24.04 VPS（东京/首尔/新加坡机房）、
+一个域名（HTTPS 必需，见下注）。
+
+```bash
+# ---- 以下全部在 VPS 上执行（SSH 登录后，root）----
+
+# 1. 装 Node 22 / git / caddy
+apt update && apt upgrade -y
+curl -fsSL https://deb.nodesource.com/setup_22.x | bash -
+apt install -y nodejs git caddy
+
+# 2. 拉代码（feature/auth 分支）
+git clone https://github.com/jianxiujiucan/jianxiujiucan.github.io.git /opt/math
+cd /opt/math && git checkout feature/auth
+cd math-server && npm install
+
+# 3. 写入密钥（内容同本地 .dev.vars：DATABASE_URL / JWT_SECRET / ADMIN_TOKEN）
+nano .dev.vars
+
+# 4. systemd 常驻
+cp deploy/math-api.service /etc/systemd/system/math-api.service
+systemctl daemon-reload && systemctl enable --now math-api
+curl http://127.0.0.1:3000/api/health   # 应返回 {"ok":true}
+
+# 5. Caddy 自动 HTTPS：编辑域名后生效
+cp deploy/Caddyfile.example /etc/caddy/Caddyfile
+nano /etc/caddy/Caddyfile               # api.example.com 换成你的域名
+systemctl reload caddy
+
+# 6. 防火墙只放行 80/443
+ufw allow 80,443/tcp && ufw --force enable
+```
+
+> **HTTPS 是硬要求**：前端在 https 的 GitHub Pages 上，浏览器会拦截 http 接口
+> （混合内容）。没有域名可用免费动态域名 sslip.io（如 `1.2.3.4.sslip.io`，
+> 把 IP 换成你的）直接写在 Caddyfile 里，Caddy 一样能签证书。
+
+## 三、部署到 Cloudflare Workers（备选方案，已就绪未启用）
 
 前置：注册 https://dash.cloudflare.com （邮箱+密码即可，国内可正常访问）。
 

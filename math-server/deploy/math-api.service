@@ -1,0 +1,19 @@
+# systemd 常驻服务配置
+# 用法：复制为 /etc/systemd/system/math-api.service，确认路径后：
+#   systemctl daemon-reload && systemctl enable --now math-api
+[Unit]
+Description=math-api (Hono + Supabase)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/math/math-server
+# 直接用项目内的 tsx，不依赖全局安装
+ExecStart=/opt/math/math-server/node_modules/.bin/tsx src/node.ts
+Restart=always
+RestartSec=3
+Environment=NODE_ENV=production
+
+[Install]
+WantedBy=multi-user.target

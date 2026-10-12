@@ -1,0 +1,7 @@
+# Caddy 反向代理配置（自动申请并续期 Let's Encrypt 证书）
+# 用法：把 api.example.com 换成你的域名，覆盖 /etc/caddy/Caddyfile 后 systemctl reload caddy
+# 前提：域名 DNS 的 A 记录已指向 VPS 的 IP
+
+api.example.com {
+	reverse_proxy 127.0.0.1:3000
+}

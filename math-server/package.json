@@ -4,7 +4,8 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "dev": "tsx watch src/dev.ts",
+    "dev": "tsx watch src/node.ts",
+    "start": "tsx src/node.ts",
     "dev:worker": "wrangler dev",
     "deploy": "wrangler deploy",
     "type-check": "tsc --noEmit",
