@@ -17,17 +17,6 @@ const password = ref("");
 const errorMsg = ref("");
 const loading = ref(false);
 
-// 用户名输入即规范：大写 + 仅字母数字
-function onUsernameInput(e: Event) {
-  const input = e.target as HTMLInputElement;
-  const v = input.value
-    .toUpperCase()
-    .replace(/[^A-Z0-9]/g, "")
-    .slice(0, 20);
-  input.value = v;
-  username.value = v;
-}
-
 async function submit() {
   errorMsg.value = "";
   if (!username.value || !password.value) {
@@ -59,13 +48,12 @@ async function submit() {
       <label class="form-label" for="login-username">用户名</label>
       <input
         id="login-username"
+        v-model="username"
         class="text-input"
         type="text"
-        :value="username"
         maxlength="20"
         autocomplete="username"
         placeholder="请输入用户名"
-        @input="onUsernameInput"
       />
     </div>
 

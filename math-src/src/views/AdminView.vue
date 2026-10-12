@@ -13,16 +13,6 @@ const errorMsg = ref('')
 const successMsg = ref('')
 const loading = ref(false)
 
-function onUsernameInput(e: Event) {
-  const input = e.target as HTMLInputElement
-  const v = input.value
-    .toUpperCase()
-    .replace(/[^A-Z0-9]/g, '')
-    .slice(0, 20)
-  input.value = v
-  username.value = v
-}
-
 async function submit() {
   errorMsg.value = ''
   successMsg.value = ''
@@ -76,13 +66,12 @@ async function submit() {
         <label class="form-label" for="admin-username">要重置的用户名</label>
         <input
           id="admin-username"
+          v-model="username"
           class="text-input"
           type="text"
-          :value="username"
           maxlength="20"
           autocomplete="off"
-          placeholder="大写字母或数字"
-          @input="onUsernameInput"
+          placeholder="字母或数字"
         />
       </div>
 

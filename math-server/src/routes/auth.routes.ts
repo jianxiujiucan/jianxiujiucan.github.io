@@ -30,13 +30,14 @@ function getDummyHash(): string {
 /* ---------- 注册 ---------- */
 authRoutes.post('/register', async (c) => {
   const body = await bodyOf(c)
-  const username = String(body.username ?? '').trim().toUpperCase()
+  // 用户名原样存储（不再转大写）；唯一性由 LOWER(username) 唯一索引保证大小写不敏感
+  const username = String(body.username ?? '').trim()
   const password = String(body.password ?? '')
   const email = String(body.email ?? '').trim().toLowerCase()
   const cfg = getConfig(c.env)
 
   if (!isValidUsername(username)) {
-    throw httpError(400, 'INVALID_USERNAME', '用户名需为 2~20 位大写字母或数字')
+    throw httpError(400, 'INVALID_USERNAME', '用户名需为 2~20 位字母或数字')
   }
   if (!isValidPassword(password)) {
     throw httpError(400, 'INVALID_PASSWORD', '密码需为 8 位以上字母和数字的组合')
@@ -58,7 +59,7 @@ authRoutes.post('/register', async (c) => {
     const token = await signToken({ uid: id, username }, cfg.jwtSecret, cfg.jwtExpiresIn)
     return c.json({ token, user }, 201)
   } catch (e) {
-    // Postgres 唯一约束冲突
+    // Postgres 唯一约束冲突（列唯一 + LOWER 表达式唯一索引都算重名）
     const err = e as { code?: string; constraint?: string }
     if (err.code === '23505') {
       if (err.constraint === 'uk_users_email') {
@@ -70,16 +71,16 @@ authRoutes.post('/register', async (c) => {
   }
 })
 
-/* ---------- 登录 ---------- */
+/* ---------- 登录（用户名大小写不敏感） ---------- */
 authRoutes.post('/login', async (c) => {
   const body = await bodyOf(c)
-  const username = String(body.username ?? '').trim().toUpperCase()
+  const username = String(body.username ?? '').trim()
   const password = String(body.password ?? '')
   if (!username || !password) throw httpError(400, 'MISSING_FIELDS', '请输入用户名和密码')
 
   const row = await withDb(c.env, async (db) => {
     const { rows } = await db.query<UserAuthRow>(
-      'SELECT id, username, email, password_hash FROM users WHERE username = $1',
+      'SELECT id, username, email, password_hash FROM users WHERE LOWER(username) = LOWER($1)',
       [username]
     )
     return rows[0]

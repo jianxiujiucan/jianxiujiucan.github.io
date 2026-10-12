@@ -10,14 +10,14 @@ import {
 
 // 与后端 math-server/tests/validate.test.ts 同一断言表，防前后端规则漂移
 
-describe('isValidUsername（26 个大写字母 + 数字，2~20 位）', () => {
+describe('isValidUsername（字母大小写均可 + 数字，2~20 位）', () => {
   it('合法样本', () => {
-    for (const u of ['AB', 'XIAOMING01', 'A1', 'ABC123XYZ', '0123']) {
+    for (const u of ['AB', 'XIAOMING01', 'A1', 'ABC123XYZ', '0123', 'a1', 'xiaoMing01', 'tt']) {
       expect(isValidUsername(u), u).toBe(true)
     }
   })
   it('非法样本', () => {
-    for (const u of ['', 'A', 'a1', '小明', 'A_B', 'A-B', 'A B', 'A'.repeat(21)]) {
+    for (const u of ['', 'A', '小明', 'A_B', 'A-B', 'A B', 'A'.repeat(21)]) {
       expect(isValidUsername(u), u).toBe(false)
     }
   })

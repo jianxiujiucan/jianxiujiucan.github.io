@@ -1,11 +1,11 @@
 /* =========================================================
  * 输入校验 —— 与后端 math-server/src/validate.ts 同一套规则
  * 两边任何修改必须同步，并以需求为准：
- *   用户名：26 个大写字母 + 数字，2~20 位
+ *   用户名：字母（大小写均可）+ 数字，2~20 位（原样存储，不转大写）
  *   密码：8~64 位，仅字母数字，且必须同时含字母和数字
  * ========================================================= */
 
-export const USERNAME_RE = /^[A-Z0-9]{2,20}$/
+export const USERNAME_RE = /^[A-Za-z0-9]{2,20}$/
 export const PASSWORD_RE = /^[A-Za-z0-9]{8,64}$/
 export const EMAIL_RE = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/
 
@@ -25,7 +25,7 @@ export function isValidEmail(e: string): boolean {
 
 export function usernameError(u: string): string {
   if (!u) return '请输入用户名'
-  if (!USERNAME_RE.test(u)) return '用户名需为 2~20 位大写字母或数字'
+  if (!USERNAME_RE.test(u)) return '用户名需为 2~20 位字母或数字'
   return ''
 }
 

@@ -37,6 +37,10 @@ export const schemaStatements: string[] = [
   `CREATE INDEX IF NOT EXISTS idx_sessions_leaderboard
    ON quiz_sessions (op_type, user_id, correct, total)`,
 
+  // 用户名大小写不敏感唯一（TT 与 tt 视为同一用户）；原 uk_users_username 保留
+  `CREATE UNIQUE INDEX IF NOT EXISTS uk_users_username_lower
+   ON users (LOWER(username))`,
+
   `CREATE TABLE IF NOT EXISTS question_records (
     id             BIGINT GENERATED ALWAYS AS IDENTITY,
     session_id     INT NOT NULL REFERENCES quiz_sessions(id) ON DELETE CASCADE,

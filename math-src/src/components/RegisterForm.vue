@@ -63,18 +63,6 @@ function onFieldInput(field: Field) {
   if (field === "username" || field === "email") serverErrors[field] = "";
 }
 
-// 用户名输入即规范：大写 + 仅字母数字
-function onUsernameInput(e: Event) {
-  const input = e.target as HTMLInputElement;
-  const v = input.value
-    .toUpperCase()
-    .replace(/[^A-Z0-9]/g, "")
-    .slice(0, 20);
-  input.value = v;
-  form.username = v;
-  serverErrors.username = "";
-}
-
 const fieldRefs: Record<Field, typeof usernameRef> = {
   username: usernameRef,
   email: emailRef,
@@ -136,17 +124,17 @@ async function submit() {
       <input
         id="reg-username"
         ref="usernameRef"
+        v-model="form.username"
         class="text-input"
         :class="{
           'input-error': showError('username'),
           'input-ok': isOk('username'),
         }"
         type="text"
-        :value="form.username"
         maxlength="20"
         autocomplete="username"
-        placeholder="2~20 位大写字母或数字"
-        @input="onUsernameInput"
+        placeholder="2~20 位字母或数字"
+        @input="serverErrors.username = ''"
         @blur="onBlur('username')"
       />
       <div class="field-msg" :class="{ ok: isOk('username') }">

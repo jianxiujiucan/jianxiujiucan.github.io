@@ -25,24 +25,25 @@ adminRoutes.post('/reset-password', adminLimiter, async (c) => {
   }
 
   const body = await bodyOf(c)
-  const username = String(body.username ?? '').trim().toUpperCase()
+  const username = String(body.username ?? '').trim()
   const newPassword = String(body.newPassword ?? '')
 
   if (!isValidUsername(username)) {
-    throw httpError(400, 'INVALID_USERNAME', '用户名需为 2~20 位大写字母或数字')
+    throw httpError(400, 'INVALID_USERNAME', '用户名需为 2~20 位字母或数字')
   }
   if (!isValidPassword(newPassword)) {
     throw httpError(400, 'INVALID_PASSWORD', '密码需为 8 位以上字母和数字的组合')
   }
 
   const hash = await bcrypt.hash(newPassword, getConfig(c.env).bcryptRounds)
-  const rowCount = await withDb(c.env, async (db) => {
-    const r = await db.query('UPDATE users SET password_hash = $1 WHERE username = $2', [
-      hash,
-      username,
-    ])
-    return r.rowCount
+  // 大小写不敏感定位用户，返回库里真实的大小写形式
+  const realUsername = await withDb(c.env, async (db) => {
+    const r = await db.query<{ username: string }>(
+      'UPDATE users SET password_hash = $1 WHERE LOWER(username) = LOWER($2) RETURNING username',
+      [hash, username]
+    )
+    return r.rows[0]?.username as string | undefined
   })
-  if (!rowCount) throw httpError(404, 'USER_NOT_FOUND', '该用户名不存在')
-  return c.json({ message: `已将 ${username} 的密码重置为新密码` })
+  if (!realUsername) throw httpError(404, 'USER_NOT_FOUND', '该用户名不存在')
+  return c.json({ message: `已将 ${realUsername} 的密码重置为新密码` })
 })
