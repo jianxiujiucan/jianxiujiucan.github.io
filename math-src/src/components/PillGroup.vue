@@ -2,6 +2,7 @@
 export interface PillOption<T> {
   label: string
   value: T
+  disabled?: boolean
 }
 
 defineProps<{
@@ -25,6 +26,7 @@ const emit = defineEmits<{
         type="button"
         class="pill"
         :class="{ active: opt.value === modelValue }"
+        :disabled="opt.disabled"
         @click="emit('update:modelValue', opt.value)"
       >
         {{ opt.label }}
@@ -66,6 +68,15 @@ const emit = defineEmits<{
 
   &:active {
     transform: scale(0.95);
+  }
+
+  &:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+
+    &:active {
+      transform: none;
+    }
   }
 
   &.active {

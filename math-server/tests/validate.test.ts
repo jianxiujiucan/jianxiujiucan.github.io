@@ -4,18 +4,64 @@ import {
   isValidEmail,
   isValidPassword,
   isValidUsername,
+  normalizeUsername,
 } from '../src/validate'
 
-describe('isValidUsername（字母大小写均可 + 数字，2~20 位）', () => {
+describe('isValidUsername（Unicode 文字 + 数字，NFC 后 2~20 个码点）', () => {
   it('合法样本', () => {
-    for (const u of ['AB', 'XIAOMING01', 'A1', 'ABC123XYZ', '0123', 'a1', 'xiaoMing01', 'tt']) {
+    for (const u of [
+      'AB',
+      'XIAOMING01',
+      'A1',
+      'ABC123XYZ',
+      '0123',
+      'a1',
+      'xiaoMing01',
+      'tt',
+      '小明',
+      'たろう',
+      'カタカナ123',
+      '用户01',
+      '홍길동',
+      'élève01',
+      '１２',
+      '界'.repeat(20),
+      '\u{20BB7}'.repeat(20),
+      'がA',
+      'が'.repeat(20),
+    ]) {
       expect(isValidUsername(u), u).toBe(true)
     }
   })
   it('非法样本', () => {
-    for (const u of ['', 'A', '小明', 'A_B', 'A-B', 'A B', 'A'.repeat(21)]) {
+    for (const u of [
+      '',
+      'A',
+      '小',
+      'A_B',
+      'A-B',
+      'A B',
+      '小 明',
+      '小　明',
+      '小明!',
+      '田中・花子',
+      '😀😀',
+      'A̸B',
+      'A'.repeat(21),
+      '界'.repeat(21),
+      '\u{20BB7}'.repeat(21),
+      'が'.repeat(21),
+    ]) {
       expect(isValidUsername(u), u).toBe(false)
     }
+  })
+})
+
+describe('normalizeUsername（NFC）', () => {
+  it('统一规范等价形式且保持幂等', () => {
+    const normalized = normalizeUsername('が')
+    expect(normalized).toBe('が')
+    expect(normalizeUsername(normalized)).toBe(normalized)
   })
 })
 

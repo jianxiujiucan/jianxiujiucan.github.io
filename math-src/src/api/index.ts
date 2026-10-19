@@ -1,4 +1,5 @@
 import { api } from './http'
+import { normalizeUsername } from '@/utils/validate'
 import type {
   AuthResponse,
   LeaderboardResponse,
@@ -13,14 +14,14 @@ import type { OpType } from '@/types/quiz'
 export function loginApi(username: string, password: string) {
   return api<AuthResponse>('/api/auth/login', {
     method: 'POST',
-    body: { username, password },
+    body: { username: normalizeUsername(username), password },
   })
 }
 
 export function registerApi(username: string, password: string, email: string) {
   return api<AuthResponse>('/api/auth/register', {
     method: 'POST',
-    body: { username, password, email },
+    body: { username: normalizeUsername(username), password, email },
   })
 }
 
@@ -28,7 +29,7 @@ export function registerApi(username: string, password: string, email: string) {
 export function adminResetPasswordApi(username: string, newPassword: string, adminToken: string) {
   return api<{ message: string }>('/api/admin/reset-password', {
     method: 'POST',
-    body: { username, newPassword },
+    body: { username: normalizeUsername(username), newPassword },
     headers: { 'X-Admin-Token': adminToken },
   })
 }

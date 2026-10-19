@@ -5,7 +5,7 @@ import { requireAuth, signToken } from '../auth'
 import { getConfig, type AppEnv } from '../env'
 import { httpError } from '../httpError'
 import { bodyOf } from '../body'
-import { isValidEmail, isValidPassword, isValidUsername } from '../validate'
+import { isValidEmail, isValidPassword, isValidUsername, normalizeUsername } from '../validate'
 import type { IdRow, UserAuthRow, UserPublicRow } from '../types'
 
 export const authRoutes = new Hono<AppEnv>()
@@ -30,14 +30,14 @@ function getDummyHash(): string {
 /* ---------- 注册 ---------- */
 authRoutes.post('/register', async (c) => {
   const body = await bodyOf(c)
-  // 用户名原样存储（不再转大写）；唯一性由 LOWER(username) 唯一索引保证大小写不敏感
-  const username = String(body.username ?? '').trim()
+  // 用户名经 NFC 规范化后存储（保留大小写）；唯一性由 LOWER(username) 唯一索引保证大小写不敏感
+  const username = normalizeUsername(String(body.username ?? '').trim())
   const password = String(body.password ?? '')
   const email = String(body.email ?? '').trim().toLowerCase()
   const cfg = getConfig(c.env)
 
   if (!isValidUsername(username)) {
-    throw httpError(400, 'INVALID_USERNAME', '用户名需为 2~20 位字母或数字')
+    throw httpError(400, 'INVALID_USERNAME', '用户名需为 2~20 位文字或数字，不能包含空格或特殊符号')
   }
   if (!isValidPassword(password)) {
     throw httpError(400, 'INVALID_PASSWORD', '密码需为 8 位以上字母和数字的组合')
@@ -74,7 +74,7 @@ authRoutes.post('/register', async (c) => {
 /* ---------- 登录（用户名大小写不敏感） ---------- */
 authRoutes.post('/login', async (c) => {
   const body = await bodyOf(c)
-  const username = String(body.username ?? '').trim()
+  const username = normalizeUsername(String(body.username ?? '').trim())
   const password = String(body.password ?? '')
   if (!username || !password) throw httpError(400, 'MISSING_FIELDS', '请输入用户名和密码')
 

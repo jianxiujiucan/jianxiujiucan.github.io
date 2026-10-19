@@ -66,6 +66,25 @@ describe('auth store', () => {
     expect(localStorage.getItem('math_token')).toBe('t2')
   })
 
+  it('登录、注册和管理员重置请求都会先规范化用户名', async () => {
+    const { loginApi, registerApi, adminResetPasswordApi } = await import('@/api')
+    fetchMock.mockResolvedValue(jsonResponse(200, {}))
+
+    await loginApi('がA', 'abc12345')
+    await registerApi('がA', 'abc12345', 'n@b.com')
+    await adminResetPasswordApi('がA', 'def12345', 'admin-token')
+
+    const expectedBodies = [
+      { username: 'がA', password: 'abc12345' },
+      { username: 'がA', password: 'abc12345', email: 'n@b.com' },
+      { username: 'がA', newPassword: 'def12345' },
+    ]
+    for (const [index, expected] of expectedBodies.entries()) {
+      const [, init] = fetchMock.mock.calls[index] as [string, RequestInit]
+      expect(JSON.parse(String(init.body))).toEqual(expected)
+    }
+  })
+
   it('login 失败（401 INVALID_CREDENTIALS）：抛出 ApiError，不写登录态', async () => {
     fetchMock.mockResolvedValue(
       jsonResponse(401, { error: { code: 'INVALID_CREDENTIALS', message: '用户名或密码不正确' } })

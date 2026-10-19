@@ -9,7 +9,7 @@
     <p class="desc">
       忘记密码了？请把你的<b>用户名</b>告诉管理员（家长），由管理员重置后告诉你新密码。
     </p>
-    <p class="desc sub">小提示：用户名是注册时填写的字母和数字组合。</p>
+    <p class="desc sub">小提示：用户名由 2~20 位文字或数字组成，不含空格或特殊符号。</p>
     <button class="primary-btn" @click="$router.push('/')">返回登录</button>
   </div>
 </template>

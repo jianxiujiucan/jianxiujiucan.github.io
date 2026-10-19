@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, reactive } from "vue";
+import { computed, reactive, watch } from "vue";
 import { useRouter } from "vue-router";
 import PillGroup, { type PillOption } from "@/components/PillGroup.vue";
 import { useQuizStore } from "@/stores/quiz";
@@ -23,7 +23,7 @@ const countOptions: PillOption<CountOption>[] = [
   { label: "100题", value: 100 },
 ];
 
-const rangeOptions: PillOption<RangeLimit>[] = [
+const baseRangeOptions: PillOption<RangeLimit>[] = [
   { label: "10以内", value: 10 },
   { label: "20以内", value: 20 },
   { label: "100以内", value: 100 },
@@ -49,14 +49,33 @@ const form = reactive<{
   carry: false,
 });
 
+const mulDivTypes: OpType[] = ["mul", "div", "muldiv"];
+
 // 进位/退位只对加减法有意义，乘除类型时隐藏该选项
-const isAddSub = computed(() => ["add", "sub", "addsub"].includes(form.opType));
+const isAddSub = computed(() => !mulDivTypes.includes(form.opType));
+const isMulDiv = computed(() => mulDivTypes.includes(form.opType));
+
+// 乘除类只允许 100 以内，其余范围禁用
+const rangeOptions = computed<PillOption<RangeLimit>[]>(() =>
+  baseRangeOptions.map((opt) => ({
+    ...opt,
+    disabled: isMulDiv.value && opt.value !== 100,
+  }))
+);
+
+// 切到乘/除/乘除混合时，统一重置为 100 以内
+watch(
+  () => form.opType,
+  () => {
+    if (isMulDiv.value) form.range = 100;
+  }
+);
 
 function start() {
   const config: QuizConfig = {
     count: form.count,
     opType: form.opType,
-    range: form.range,
+    range: isMulDiv.value ? 100 : form.range,
     operands: form.operands,
     carry: form.carry && isAddSub.value,
   };

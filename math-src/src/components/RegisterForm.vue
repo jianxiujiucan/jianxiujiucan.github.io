@@ -131,9 +131,8 @@ async function submit() {
           'input-ok': isOk('username'),
         }"
         type="text"
-        maxlength="20"
         autocomplete="username"
-        placeholder="2~20 位字母或数字"
+        placeholder="2~20 位文字、字母或数字"
         @input="serverErrors.username = ''"
         @blur="onBlur('username')"
       />

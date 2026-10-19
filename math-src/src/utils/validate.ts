@@ -1,16 +1,20 @@
 /* =========================================================
  * 输入校验 —— 与后端 math-server/src/validate.ts 同一套规则
  * 两边任何修改必须同步，并以需求为准：
- *   用户名：字母（大小写均可）+ 数字，2~20 位（原样存储，不转大写）
+ *   用户名：Unicode 文字 + 数字，NFC 后 2~20 个码点（保留大小写）
  *   密码：8~64 位，仅字母数字，且必须同时含字母和数字
  * ========================================================= */
 
-export const USERNAME_RE = /^[A-Za-z0-9]{2,20}$/
+export const USERNAME_RE = /^[\p{L}\p{N}]{2,20}$/u
 export const PASSWORD_RE = /^[A-Za-z0-9]{8,64}$/
 export const EMAIL_RE = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/
 
+export function normalizeUsername(u: string): string {
+  return u.normalize('NFC')
+}
+
 export function isValidUsername(u: string): boolean {
-  return USERNAME_RE.test(u)
+  return USERNAME_RE.test(normalizeUsername(u))
 }
 
 export function isValidPassword(p: string): boolean {
@@ -25,7 +29,7 @@ export function isValidEmail(e: string): boolean {
 
 export function usernameError(u: string): string {
   if (!u) return '请输入用户名'
-  if (!USERNAME_RE.test(u)) return '用户名需为 2~20 位字母或数字'
+  if (!isValidUsername(u)) return '用户名需为 2~20 位文字或数字，不能包含空格或特殊符号'
   return ''
 }
 

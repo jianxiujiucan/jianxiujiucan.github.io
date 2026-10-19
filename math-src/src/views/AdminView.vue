@@ -69,9 +69,8 @@ async function submit() {
           v-model="username"
           class="text-input"
           type="text"
-          maxlength="20"
           autocomplete="off"
-          placeholder="字母或数字"
+          placeholder="2~20 位文字或数字"
         />
       </div>
 

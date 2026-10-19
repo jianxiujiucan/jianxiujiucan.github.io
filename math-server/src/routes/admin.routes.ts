@@ -5,7 +5,7 @@ import { getConfig, type AppEnv } from '../env'
 import { httpError } from '../httpError'
 import { bodyOf } from '../body'
 import { rateLimit } from '../rateLimit'
-import { isValidPassword, isValidUsername } from '../validate'
+import { isValidPassword, isValidUsername, normalizeUsername } from '../validate'
 
 export const adminRoutes = new Hono<AppEnv>()
 
@@ -25,11 +25,11 @@ adminRoutes.post('/reset-password', adminLimiter, async (c) => {
   }
 
   const body = await bodyOf(c)
-  const username = String(body.username ?? '').trim()
+  const username = normalizeUsername(String(body.username ?? '').trim())
   const newPassword = String(body.newPassword ?? '')
 
   if (!isValidUsername(username)) {
-    throw httpError(400, 'INVALID_USERNAME', '用户名需为 2~20 位字母或数字')
+    throw httpError(400, 'INVALID_USERNAME', '用户名需为 2~20 位文字或数字，不能包含空格或特殊符号')
   }
   if (!isValidPassword(newPassword)) {
     throw httpError(400, 'INVALID_PASSWORD', '密码需为 8 位以上字母和数字的组合')

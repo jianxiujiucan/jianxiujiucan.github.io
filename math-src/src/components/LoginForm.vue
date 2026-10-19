@@ -51,7 +51,6 @@ async function submit() {
         v-model="username"
         class="text-input"
         type="text"
-        maxlength="20"
         autocomplete="username"
         placeholder="请输入用户名"
       />
