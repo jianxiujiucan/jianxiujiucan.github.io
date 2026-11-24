@@ -44,6 +44,9 @@ html {
     var(--m-accent-from),
     var(--m-accent-to)
   );
+
+  --m-bottom-tabs-space: 0.66rem;
+  --m-keypad-height: max(2.1rem, 210px);
 }
 
 body {
@@ -56,7 +59,7 @@ body {
 .page {
   max-width: 3.75rem; // 设计稿全宽：小屏铺满，大屏居中
   margin: 0 auto;
-  padding: 0.16rem 0.16rem 0.66rem; // 底部给固定 Tab 栏留位
+  padding: 0.16rem 0.16rem var(--m-bottom-tabs-space); // 底部给固定 Tab 栏留位
   min-height: 100vh;
   display: flex;
   flex-direction: column;

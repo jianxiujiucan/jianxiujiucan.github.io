@@ -1,7 +1,17 @@
 <script setup lang="ts">
-import { computed, nextTick, onActivated, onMounted, ref, watch } from "vue";
+import {
+  computed,
+  nextTick,
+  onActivated,
+  onDeactivated,
+  onMounted,
+  ref,
+  watch,
+} from "vue";
 import { useRouter } from "vue-router";
+import NumericKeypad from "@/components/NumericKeypad.vue";
 import SoundToggle from "@/components/SoundToggle.vue";
+import { useMobile } from "@/composables/useMobile";
 import { useSound } from "@/composables/useSound";
 import { useTimer } from "@/composables/useTimer";
 import { useAuthStore } from "@/stores/auth";
@@ -15,6 +25,7 @@ const store = useQuizStore();
 const auth = useAuthStore();
 const { display, start, stop } = useTimer();
 const { play } = useSound();
+const { isMobile } = useMobile();
 
 // 局部 UI 状态（不进 store）
 const answer = ref("");
@@ -22,6 +33,7 @@ const answered = ref(false);
 const lastRight = ref(false);
 const finished = ref(false);
 const inputEl = ref<HTMLInputElement>();
+const isActive = ref(true);
 
 // 每题用时采集与成绩保存
 const records = ref<QuestionRecordDto[]>([]);
@@ -36,6 +48,7 @@ const progress = computed(() => `${store.state.current + 1}/${total.value}`);
 const expr = computed(() => `${exprText(currentQ.value)} =`);
 const answerLen = computed(() => String(currentQ.value.answer).length);
 const isLast = computed(() => store.state.current === total.value - 1);
+const showKeypad = computed(() => isMobile.value && !finished.value);
 
 // 满分 100，按正确比例扣分，四舍五入取整
 const score = computed(() =>
@@ -55,7 +68,10 @@ const summary = computed(
 );
 
 function focusInput() {
-  nextTick(() => inputEl.value?.focus());
+  if (isMobile.value || !isActive.value) return;
+  nextTick(() => {
+    if (!isMobile.value && isActive.value) inputEl.value?.focus();
+  });
 }
 
 /* 组件被 KeepAlive 缓存：路由回来不会重建。
@@ -77,7 +93,13 @@ function syncWithStore() {
 }
 
 onMounted(syncWithStore);
-onActivated(syncWithStore);
+onActivated(() => {
+  isActive.value = true;
+  syncWithStore();
+});
+onDeactivated(() => {
+  isActive.value = false;
+});
 
 // 切到下一题时重置作答状态并聚焦输入框
 watch(
@@ -90,6 +112,15 @@ watch(
   }
 );
 
+// 切换输入模式时关闭系统键盘；后台 KeepAlive 页面不恢复焦点
+watch(isMobile, (mobile) => {
+  if (mobile) {
+    inputEl.value?.blur();
+  } else if (isActive.value && !answered.value && !finished.value) {
+    focusInput();
+  }
+});
+
 // 答题中途去登录：回来后若成绩还没保存，自动补传
 watch(
   () => auth.state.token,
@@ -100,16 +131,31 @@ watch(
   }
 );
 
-// 输入即过滤非数字字符；输入位数达到答案位数时自动判题
-function onInput(e: Event) {
-  const input = e.target as HTMLInputElement;
-  const v = input.value.replace(/\D/g, "").slice(0, 3);
-  input.value = v;
-  answer.value = v;
+// 原生输入与移动小键盘共用过滤、位数限制和自动判题逻辑
+function updateAnswer(raw: string) {
   if (answered.value) return;
+  const v = raw.replace(/\D/g, "").slice(0, 3);
+  answer.value = v;
+  if (inputEl.value && inputEl.value.value !== v) {
+    inputEl.value.value = v;
+  }
   if (v.length > 0 && v.length >= answerLen.value) {
     checkAnswer();
   }
+}
+
+function onInput(e: Event) {
+  const input = e.target as HTMLInputElement;
+  updateAnswer(input.value);
+}
+
+function appendDigit(digit: string) {
+  updateAnswer(answer.value + digit);
+}
+
+function eraseDigit() {
+  if (answered.value) return;
+  answer.value = answer.value.slice(0, -1);
 }
 
 function tryCheck() {
@@ -194,12 +240,14 @@ function goHome() {
         ref="inputEl"
         class="answer-input"
         type="text"
-        inputmode="numeric"
+        :inputmode="isMobile ? 'none' : 'numeric'"
         pattern="[0-9]*"
         maxlength="3"
         autocomplete="off"
+        aria-label="答案"
         placeholder="?"
         :value="answer"
+        :readonly="isMobile"
         :disabled="answered"
         @input="onInput"
         @keydown.enter.prevent="tryCheck"
@@ -252,7 +300,17 @@ function goHome() {
     <button class="primary-btn" @click="goHome">返回首页</button>
   </div>
 
-  <SoundToggle />
+  <SoundToggle :class="{ 'with-keypad': showKeypad }" />
+
+  <NumericKeypad
+    v-if="showKeypad"
+    :disabled="answered"
+    :confirm-disabled="answer.length === 0"
+    :above-tabs="Boolean(auth.state.token)"
+    @digit="appendDigit"
+    @backspace="eraseDigit"
+    @confirm="tryCheck"
+  />
 </template>
 
 <style scoped lang="scss">
@@ -400,6 +458,13 @@ function goHome() {
   span {
     color: green;
   }
+}
+
+.sound-toggle.with-keypad {
+  position: static;
+  align-self: flex-end;
+  flex-shrink: 0;
+  margin: 0.08rem 0.02rem 0;
 }
 
 @media (min-width: 520px) {
